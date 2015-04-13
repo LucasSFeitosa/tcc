@@ -1,37 +1,110 @@
 \chapter{Introdução}
 \label{cap-introducao}
 
+%------------------------------------------------------------------------------%
+\section{Problema e Hipótese}
+
+%
+
+Como interpretar o que certos valores de métricas querem dizer em um
+determinado contexto?
+
+Quais são as técnicas de visualização de software e como aplicá-las no contexto
+de métricas simples e compostas?
+
+Como vizualizar um conjunto de métricas específico?
+
+Como trazer  o acompanhamento de métricas de código ao ciclo de desenvolvimento
+de software livre?
+
+(hipotese)
+Dada a utilização de métricas de software para avaliação da qualidade do código
+fonte, o entendimento dessas métricas são de extrema importância para o
+acompanhamento do desenvolvimento do software sendo que a visualização dessas
+métricas são de difícil interpretação, principalmente quando combinamos várias
+métricas diferentes. Logo é necessário uma forma de visualizar essas métricas
+
+
+%------------------------------------------------------------------------------%
 \section{Justificativa e Motivação}
 
+%
+
+Começar aqui talvez a falar sobre qualidade de software?
+
+%------------------------------------------------------------------------------%
 \section{Objetivos}
 
+%
+
+O obejtivo deste trabalho consiste em um estudo teórico e prático sobre
+vizualização de métricas de software, além de uma proposta de visualização dos
+resulatdo de métricas extraídas de código fonte, no qual o usuário sem
+conhecimento sobre métricas possa entender o que tais resultados querem dizer,
+podendo assim acompanhar melhor a qualidade do software produzido.
+%
+
+Além disso, tem-se como objetivo oferecer uma proposta de visualização de
+métricas nos seguintes cenários:
+
+\begin{itemize}
+  \item  \textbf{Visuzlização de métricas compostas:} Evolução da visualização
+  de métricas  de código na plataforma Mezuro, suportando a visualização de
+  diferentes métricas de código e suas combinações.
+  \item  \textbf{Biblioteca para auxílio na visualização de métricas:}
+  Biblioteca na linguagem ruby para auxílio ao desenvolvimento de aplicações
+  que buscam a vizualização de métricas de código fonte.
+\end{itemize}
+
+%------------------------------------------------------------------------------%
 \section{Organização do trabalho}
 
+%
+
+Esta monografia está dividida em mais outros x capítulos. A seguir, o leitor
+encontrará o Capítulo \ref{cap-proposta} onde são definidos a proposta e
+a meotodologia do trabalho, além de ferramentas e dados que serão utilizados
+como base para pesquisa. No Capítulo \ref{cap-visualizacao}
+são introduzidos os principais conceitos de visualização de software
+....... \ref{cap-metricas}  serão apresentados o conceito
+de metricas de software, sua utilização dentro do ciclo de desenvolvimento de
+software, avaliação da qualiadde do software com apoio a métricas, o que devo falar
+de metricas?........
+
+No fim desta monografia existem X apêndices que complementam e detalham os
+aspectos do presente trabalho. No  \ref{Att:mezuro} apresenta os detalhes
+técnicos sobre o Mezuro.
+
+%------------------------------------------------------------------------------%
 \section{Contribuições}
 %
 \begin{description}
   \item [Contribuições Tecnológicas]\
 \end{description}
     \begin{enumerate}
-      \item \textbf{CT1} - Evolução da plataforma livre Mezuro de monitoramento de código-fonte:
+      \item \textbf{CT1} - Evolução da visualização de métricas na
+      plataforma livre Mezuro:
         \begin{enumerate}
-          \item Evolução da arquitetura do Mezuro para melhorar sua modularização e flexibilidade.
-          \item Evolução da configuração de métricas do Mezuro
-          \item Evolução de mecanismos de visualização de software do Mezuro
+          \item Evolução de mecanismos de vizualização de métricas de código.
+          \item Evolução da configuração de métricas do Mezuro.
         \end{enumerate}
-      \item \textbf{CT2} - Criação de um ambiente de \emph{Data Warehousing} para monitoramento dos cenários de decisão no contexto de vulnerabilidade de software:
+      \item \textbf{CT2} - Criação de uma biblioteca para auxiliar o desenvolvimento
+      de aplicações com conetexto de vizualização de software:
             \begin{enumerate}
-              \item Criação de modelo dimensional que, diferente de um modelo relacional utilizado para modelagem de banco de dados, permitiu melhor performance para processamento analítico dos dados.
-              \item Implementação de mecanismos de extração, transformação e carregamento da base de dados a partir dos resultados das ferramentas de análise estática.
-              \item Geração Cubo de dados para definição das agregações para a manipulação dos dados do \emph{Data Warehouse}.
-          \item Configuração dos mecanismos de visualização do cubo e geração de relatórios.
+              \item  Criação de uma API em ruby para auxiliar o desenvolvimento
+              de aplicações que queiram utilizar a visualização de métricas, no qual
+              o desenvolvedor se preocupará apenas em popular a API já colhendo
+              como resulatdo a visualização e interpretação das métricas.
             \end{enumerate}
     \end{enumerate}
 \begin{description}
   \item [Contribuições Científicas]\
 \end{description}
      \begin{enumerate}
-      \item \textbf{CC1} - Catalogar definições teóricas a respeito dos principais conceitos relacionados à vulnerabilidades de software.
-      \item \textbf{CC2} - Estudo teórico sobre a relação de vulnerabilidades de software com o \emph{design}
-      \item \textbf{CC3} - Definição de cenários a partir de estudos teóricos para melhorar a interpretação e tomada de decisão sobre métricas estáticas de código-fonte.
+      \item \textbf{CC1} - Estudo teórico das técnicas de visualização de software.
+      \item \textbf{CC2} - Estudo teórico das técnicas de visualização de métricas de código
+      e suas combinações.
+      \item \textbf{CC3} - Definição de cenários a partir de estudos teóricos
+       com uma forma de combinar métricas de código fonte para atingir resultados
+       expressivos dentro do desenvolvimento de software.
      \end{enumerate}
