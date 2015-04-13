@@ -1,4 +1,4 @@
-TARGET = TCC_FGA.pdf
+TARGET = TCC_THIAGO.pdf
 
 BIBTEX = bibtex
 LATEX = latex
@@ -24,6 +24,13 @@ EDITAVEIS_SOURCES = informacoes.tex errata.tex dedicatoria.tex \
 
 EDITAVEIS_FILES = $(addprefix $(EDITAVEIS_DIR)/, $(EDITAVEIS_SOURCES))
 
+CHAPTERS_DIR = capitulos
+CHAPTERS_SOURCES = 1-introducao.tex 2-proposta.tex \
+										3-visualizacao.tex 4-metricas.tex \
+
+CHAPTERS_FILES = $(addprefix $(CHAPTERS_DIR)/, $(CHAPTERS_SOURCES))
+
+
 MAIN_FILE = tcc.tex
 DVI_FILE  = $(addsuffix .dvi, $(basename $(MAIN_FILE)))
 AUX_FILE  = $(addsuffix .aux, $(basename $(MAIN_FILE)))
@@ -34,9 +41,9 @@ SOURCES = $(FIXOS_FILES) $(EDITAVEIS_FILES)
 
 .PHONY: all clean dist-clean
 
-all: 
+all:
 	@make $(TARGET)
-     
+
 $(TARGET): $(MAIN_FILE) $(SOURCES) bibliografia.bib
 	$(LATEX) $(MAIN_FILE) $(SOURCES)
 	$(BIBTEX) $(AUX_FILE)
@@ -50,7 +57,7 @@ clean:
 	rm -f *~ *.dvi *.ps *.backup *.aux *.log
 	rm -f *.lof *.lot *.bbl *.blg *.brf *.toc *.idx
 	rm -f *.pdf
-	
+
 dist: clean
 	tar vczf tcc-fga-latex-$(VERSION).tar.gz *
 
