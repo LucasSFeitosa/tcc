@@ -1,0 +1,47 @@
+visualização e metricas antes
+mudar nome do cap deproposta p/ metodologia e resutlados parciais
+considerações preliminares não finais
+
+visualização verificar/focar tecnicas ver aplicações ver como aplicar no mezuro
+
+Hipotese n
+
+alinhar depois as contribuições
+
+tecnicas de visualização
+
+workshop de visualização grupo da ufba
+graficos dependerem de metricas
+t
+razer bibliografia para definir graficos a partir das configurações de métricas,
+variando o tipo de técnica e visualização
+
+
+================================================================================
+
+Duvidas para reunião de quinta feira
+
+Achei coisas relacionadas ao processo de exibir dados para análise visual
+
+lá fala sobre um modelo para a criação de estruturas de visualização da informação
+
+talvez seja legal colocar isso na parte teórica.
+
+ver aqui
+http://reuse.cos.ufrj.br/files/publicacoes/graduacao/PF_Marlon_IAVEMS.pdf
+
+pagina 29
+
+
+os links de coisas sobre tecnicas:
+file:///home/thiagovsk/tcc/R%20-%20D%20-%20WISLAND%20BEL.pdf
+pagina 40
+
+http://reuse.cos.ufrj.br/files/publicacoes/graduacao/PF_Marlon_IAVEMS.pdf
+
+https://vimeo.com/88766766
+
+o que eu achei mais perto do que procuro foi
+http://www.lcad.icmc.usp.br/~rosane/TextoInfoVis.pdf
+
+https://www.lume.ufrgs.br/bitstream/handle/10183/13699/000652284.pdf?sequence=1

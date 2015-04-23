@@ -1,0 +1,59 @@
+Aqui uma breve pesquisa sobre artigos e materiais sobre visualização de softwate
+
+Fiquei um pouco confuso em relação as técnicas achei algumas coisas mas nada do
+que eu esperava encontrar, talvez precise buscar mais coisas.
+
+1- PREVIA: UMA ABORDAGEM PARA A VISUALIZAÇÃO DA EVOLUÇÃO DE
+MODELOS DE SOFTWARE pdf
+
+2-Attribute-Based Visual Explanation of Multidimensional
+Projections pdf
+
+
+Esse parecia mais promissor, falava das metricas OO  e visualização mas não
+ tem nada sobre as técnicas ja vai direto pra ferramenta
+
+3- Visualizac¸ao de Software como Suporte ao Desenvolvimento ˜
+Centrado em Metricas Orientadas a Objetos
+
+4 - Aniche Evolução de Software Ferramentas, técnicas e métricas slides
+http://www.aniche.com.br/wp-content/uploads/2013/04/software-evolution.pdf
+
+
+Esse apesar de mais geral traz mais detalhes das tecnicas
+
+5 - Visualização de Informações – Uma Abordagem
+Prática http://www.lbd.dcc.ufmg.br/colecoes/jai/2005/002.pdf
+
+6 - IAVEMS: INFRAESTRUTURA DE APOIO À VISUALIZAÇÃO DA EVOLUÇÃO DE
+MÉTRICAS DE SOFTWARE
+
+http://reuse.cos.ufrj.br/files/publicacoes/graduacao/PF_Marlon_IAVEMS.pdf
+
+7- Técnicas de Visualização de Dados aplicadas à
+Segurança da Informação
+
+http://dainf.ct.utfpr.edu.br/~maziero/lib/exe/fetch.php/ceseg:2009-sbseg-mc5.pdf
+
+8- Bons slides em : http://pt.slideshare.net/schots/compreendendo-o-software-e-seu-processo-de-desenvolvimento
+
+
+O mais próximo que eu achei do que eu gostaria de falar da parte de visualização
+
+9- TÉCNICAS E SOFTWARE DE VISUALIZAÇÃO DA INFORMAÇÃO COMO
+AUXILIO A TOMADA DE DECISÃO EM INSTITUIÇÕES DE ENSINO
+SUPERIOR
+
+
+http://dspace.c3sl.ufpr.br:8080/dspace/bitstream/handle/1884/37044/R%20-%20D%20-%20WISLAND%20BEL.pdf?sequence=1&isAllowed=y
+
+Não consegui achar os pappers do wbvs mas segue os links deles
+http://www.ppgcomp.unifacs.br/wbvissoft/homeBR.html
+http://reuse.cos.ufrj.br/wbvs2012/
+http://wiki.dcc.ufba.br/Vem2013/EdicoesAnterioresPt?redirectedfrom=Vem2013.EdicoesAnteriores
+http://wiki.dcc.ufba.br/Vem2013/EdicoesAnterioresPt?redirectedfrom=Vem2013.EdicoesAnteriores
+http://reuse.cos.ufrj.br/wbvs2012/index.pt.html
+
+Outros que talvez da rede da unb eu consiga baixar
+http://www.sciencedirect.com/science/article/pii/S0097849314000235
+http://link.springer.com/article/10.1007%2Fs11390-012-1265-5
