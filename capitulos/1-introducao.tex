@@ -1,59 +1,40 @@
 \chapter{Introdução}
 \label{cap-introducao}
 
-%------------------------------------------------------------------------------%
-\section{Problema e Hipótese}
+TODO: Introduzir sobre implantação de software (buscar artigos sobre), segurança
+na implantação de sistemas, etc.
 
+%------------------------------------------------------------------------------%
+\section{Problema}
 %
 
-Como interpretar o que certos valores de métricas querem dizer em um
-determinado contexto?
-
-Quais são as técnicas de visualização de software e como aplicá-las no contexto
-de métricas simples e compostas?
-
-Como vizualizar um conjunto de métricas específico?
-
-Como trazer  o acompanhamento de métricas de código ao ciclo de desenvolvimento
-de software livre?
-
-(hipotese)
-Dada a utilização de métricas de software para avaliação da qualidade do código
-fonte, o entendimento dessas métricas são de extrema importância para o
-acompanhamento do desenvolvimento do software sendo que a visualização dessas
-métricas são de difícil interpretação, principalmente quando combinamos várias
-métricas diferentes. Logo é necessário uma forma de visualizar essas métricas
-
+Como implantar multiplas aplicações de forma centralizada e segura?
 
 %------------------------------------------------------------------------------%
 \section{Justificativa e Motivação}
 
-%
-
-Começar aqui talvez a falar sobre qualidade de software?
 
 %------------------------------------------------------------------------------%
 \section{Objetivos}
 
 %
 
-O obejtivo deste trabalho consiste em um estudo teórico e prático sobre
-vizualização de métricas de software, além de uma proposta de visualização dos
-resulatdo de métricas extraídas de código fonte, no qual o usuário sem
-conhecimento sobre métricas possa entender o que tais resultados querem dizer,
-podendo assim acompanhar melhor a qualidade do software produzido.
+O obejtivo deste trabalho consiste em um estudo prático sobre implantação segura
+de multiplas aplicações, mostrando os aspectos mais importantes que devem ser
+tratados durante todo o processo de configuração e instalação de um software via
+pacotes debian.
+
 %
 
-Além disso, tem-se como objetivo oferecer uma proposta de visualização de
-métricas nos seguintes cenários:
+Além disso, tem-se como objetivo oferecer uma proposta de política de
+empacotamento para aplicações web no Debian no qual busca:
 
 \begin{itemize}
-  \item  \textbf{Visuzlização de métricas compostas:} Evolução da visualização
-  de métricas  de código na plataforma Mezuro, suportando a visualização de
-  diferentes métricas de código e suas combinações.
-  \item  \textbf{Biblioteca para auxílio na visualização de métricas:}
-  Biblioteca na linguagem ruby para auxílio ao desenvolvimento de aplicações
-  que buscam a vizualização de métricas de código fonte.
+  \item  \textbf{Politica de empacotamento para aplicações web:} Manual com
+  práticas de empacotamento para aplicações web, com intuito de padronizar a
+  forma em que as aplicações são empacotadas.
+  \item  \textbf{Implantação segura de aplicações web:} Boas práticas para
+  configuração de aplicações web que utilizam pacotes debian.
 \end{itemize}
 
 %------------------------------------------------------------------------------%
@@ -64,16 +45,14 @@ métricas nos seguintes cenários:
 Esta monografia está dividida em mais outros x capítulos. A seguir, o leitor
 encontrará o Capítulo \ref{cap-proposta} onde são definidos a proposta e
 a meotodologia do trabalho, além de ferramentas e dados que serão utilizados
-como base para pesquisa. No Capítulo \ref{cap-visualizacao}
-são introduzidos os principais conceitos de visualização de software
-....... \ref{cap-metricas}  serão apresentados o conceito
-de metricas de software, sua utilização dentro do ciclo de desenvolvimento de
-software, avaliação da qualiadde do software com apoio a métricas, o que devo falar
-de metricas?........
+como base para pesquisa. No Capítulo xxxxxx
+são introduzidos os principais conceitos de  ....
+
+TODO: Pensar na estrutua de capítulos para a monografia
 
 No fim desta monografia existem X apêndices que complementam e detalham os
-aspectos do presente trabalho. No  \ref{Att:mezuro} apresenta os detalhes
-técnicos sobre o Mezuro.
+aspectos do presente trabalho. No  xxxx apresenta os detalhes
+técnicos sobre empacotamento....
 
 %------------------------------------------------------------------------------%
 \section{Contribuições}
@@ -82,29 +61,29 @@ técnicos sobre o Mezuro.
   \item [Contribuições Tecnológicas]\
 \end{description}
     \begin{enumerate}
-      \item \textbf{CT1} - Evolução da visualização de métricas na
-      plataforma livre Mezuro:
+      \item \textbf{CT1} - Implantação segura de software.
         \begin{enumerate}
-          \item Evolução de mecanismos de vizualização de métricas de código.
-          \item Evolução da configuração de métricas do Mezuro.
+          \item Proposta de implatação segura de software utilizando pacotes
+          Debian.
+          \item Proposta de implantação de multiplas aplicações em um mesmo
+          servidor.
+          \ item Proposta de técnicas para implantação de multiplas instâncias
+           de uma aplicação a partir de um único pacote Debian.
         \end{enumerate}
-      \item \textbf{CT2} - Criação de uma biblioteca para auxiliar o desenvolvimento
-      de aplicações com conetexto de vizualização de software:
+      \item \textbf{CT2} - Política de empacotamento de aplicações web no Debian.
             \begin{enumerate}
-              \item  Criação de uma API em ruby para auxiliar o desenvolvimento
-              de aplicações que queiram utilizar a visualização de métricas, no qual
-              o desenvolvedor se preocupará apenas em popular a API já colhendo
-              como resulatdo a visualização e interpretação das métricas.
+              \item  Proposta de um manual com práticas para empacotamento de
+              aplicações web no Debian.
             \end{enumerate}
     \end{enumerate}
 \begin{description}
   \item [Contribuições Científicas]\
 \end{description}
      \begin{enumerate}
-      \item \textbf{CC1} - Estudo teórico das técnicas de visualização de software.
-      \item \textbf{CC2} - Estudo teórico das técnicas de visualização de métricas de código
-      e suas combinações.
-      \item \textbf{CC3} - Definição de cenários a partir de estudos teóricos
-       com uma forma de combinar métricas de código fonte para atingir resultados
-       expressivos dentro do desenvolvimento de software.
+      \item \textbf{CC1} - Estudo teórico das técnicas de implantação segura de
+      software.
+      \item \textbf{CC2} - Estudo teórico da utilização de certificados de
+      segurança (ssl).
+      \item \textbf{CC3} - Estudo teórico sobre implantação e configuração de
+      multiplas aplicações utilizando virtual hosting.
      \end{enumerate}
