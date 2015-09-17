@@ -1,8 +1,41 @@
 \chapter{Introdução}
 \label{cap-introducao}
 
-TODO: Introduzir sobre implantação de software (buscar artigos sobre), segurança
-na implantação de sistemas, etc.
+A internet tornou-se nos últimos 10 anos a ferramenta mais poderosa de comunição
+mundial, todos os dias milhões de pessoas se conectam e trocam informações,
+milhares de dados são trafegados e várias aplicações são utilizadas todo o tempo.
+
+Com isso a necessidade das aplicações estarem disponíveis na web e online vinte e
+quatro horas por dia é praticamente obrigatória, se você busca usuários para sua
+aplicação sem dúvida você precisa disponibilizar na web para que possa atigingir
+qualquer usuário no mundo todo.
+
+Um dos problemas que mais preocupa a equipe de desenvolvimento de software é a
+segurança, a partir do momento em que você insere sua aplicação na web ela está
+vulnerável a ataques maliciosos, os motivos pelos quais sua aplicação pode receber
+um ataque pode ser variado, e todo cuidado deve ser tomado.
+
+A área de segurança da informação é uma área dentro da engenharia de softwre que
+a cada dia cresce cada vez mais, a importância de manter as informações dos usuários
+segura é diretamente proporcional a qualidade do serviço prestado, já que ninguém
+vai querer utilizar um serviço inseguro. Com isso as empresas investem cada vez
+mais na segurança dos seus softwares, buscando minimizar as vulnerabilidades que
+possam ser alvos de ataques.
+
+Uma fase importante do ciclo de vida de um software é a fase de implatanção, que
+é aonde o software é colocado em produção, ou seja, disponibilizado para os
+todos os usuários que possuem acesso a internet (no caso de aplicações web), antes
+dessa etapa o software é testado em ambiente de testes ou ambiente de desenvolvimento,
+ou seja, nos computadores dos programadores ou em um ambiente controlado, logo é
+importante tomar cuidados com a segurança, no processo de implantação do
+software em produção, evitando brechas para ataques maliciosos quando o software
+for disponibilizado para uso.
+
+Neste trabalho será abordado os aspectos para implantação segura de aplicações
+voltadas para web, quais são as boas práticas, as técnicas, as ferramentas e
+procedimentos para tornar a implantação mais segura e automática, trazendo assim
+benefícios tanto para os engenheiros de software que desenvolveram o sistema
+quanto para os seus possíveis usuários.
 
 %------------------------------------------------------------------------------%
 \section{Problema}
@@ -87,3 +120,110 @@ técnicos sobre empacotamento....
       \item \textbf{CC3} - Estudo teórico sobre implantação e configuração de
       multiplas aplicações utilizando virtual hosting.
      \end{enumerate}
+
+%------------------------------------------------------------------------------%
+\section{Relato google summer of code}
+
+O projeto aprovado para o google summer of code 2015 foi Automated configuration
+of packaged web applications, com a organização Debian Project e com a mentoria de
+Antonio Terceiro. A idéia inicial do projeto era uma ferramenta que
+pudesse ajudar os usuários que não possuem conhecimento técnico, poderem
+instalar e configurar ferramentas a partir de pacotes debian, e tudo isso com
+apenas 1 comando (ou um clique). Dentro desse projeto a minha participação
+inicialmente seria adicionar o máximo de aplicações possíveis na ferramenta,
+e sendo aplicações que fossem bastante conhecidas por usuários da internet.
+
+Um exemplo desse contexto é a configuração e instalação de uma ferramenta de
+blog bastante conhecida chamada wordpress,
+a instalação do wordpress via pacote é bem simples, bastando um apt-get install wordpress,
+porém a fase de configuração é um pouco mais complicada, o usuário precisa
+possuir conhecimentos básicos de linux para conseguir fazer a configuração mais
+simples do wordpress.A tarefa se torna mais complexa quando é necessário fazer
+uma configuração mais complexa, que envolva certificados de segurança por exemplo,
+outra coisa que pode tornar mais difícil a vida do usuário é quando ele precisa
+configurar um servidor web como apache ou nginx.
+
+Logo existe um limite das tarefas que um pacote debian deve fazer e as tarefas
+que o usuário do pacote deve fazer, essas tarefas podem ser automatizadas e assim
+facilitando a vida dos usuários debian a instalar e configurar suas aplicações.
+
+Com isso, meu mentor Antonio Terceiro havia iniciado, antes do google summer of
+code, o desenvolvimento de uma ferramenta com o intuito de automatizar a
+configuração e a instalação de aplicações providas por pacotes debian, a ferramenta
+se chama shak(self hosting aplication kit) e ela foi o ponta pé inicial do projeto.
+
+A partir disso eu dei início ao projeto do google summer of code, com o foco
+principalmente em adicionar o máximo possível de aplicações já empacotadas pelo
+debian, elas serviriam de piloto para a ferramenta, para que assim pudéssemos
+também evoluí-la.
+
+A ferramenta é composta por código ruby, chef (falar um pouco mais sobre), shell,
+servidor web nginx, pacotes debian e uma aplicação web para os usuários. A decisão
+técnica para escolha das ferramentas que compõem o shak já tinha sido feita antes do google summer of
+code começar, porém durante o programa tivemos várias discussões sobre, o que me
+fez concordar com a escolha delas.
+
+Com o início do programa e o início das atividades, logo pude adicionar o wordpress
+como minha primeira aplicação disponível pelo shak, porém não foi algo rápido, dentro
+dessa entrega tivemos várias discurssões interessantes. A primeira delas foi
+o uso de algumas boas práticas para a configuração de virtual hosting com  o
+servidor web nginx a fim de evitar possiveis falhas de segurança.
+
+Além disso também chegamos a conclusão de que seria interessante que o usuário pudesse
+criar várias "instâncias" de wordpress no mesmo servidor, por exemplo: o usuário
+poderia muito bem querer em um mesmo servidor um blog chamado www.pessoalblog.com
+e www.trabalhoblog.net ou até mesmo um caminho personalizado como www.empresa.com/blog
+, e isso trouxe a necessidade de entender como é possível
+a configuração de multiplas "instâncias" de uma aplicação utilizando um pacote
+único no mesmo servidor, já que o modo mais comum de fazer isso seria duplicando
+ todos os arquivos da aplicação no servidor, coisa que sem dúvida não é a forma certa.
+
+Com a primeira aplicação pronta partimos para a segunda aplicação, owncloud, que
+é uma aplicação bem conhecida para compartilhamento de arquivos na nuvem. A grande
+diferença entre o owncloud e o wordpress é que o wordpress suporte multiplas
+instâncias com um pacote único, já o wordpress não. Com isso deu-se a necessidade de
+buscar uma solução para isso, e após estudar o código fonte do owncloud pude
+ver uma forma de adicionar essa nova funcionalidade. Com isso enviei um
+patch ao mantenedor do pacote para adicionar o suporte para multiplas instâncias
+com o owncloud.
+
+Ao finalizar as duas aplicações vimos ainda que era necessário adicionar mais
+uma camada de segurança além do servidor web, que seria forçar as aplicações
+a usarem HTPPS, para facilitar esse tipo de configuração foi necessário também
+automatizar a geração de certificados de segurança(ssl) para que pudéssemos gerar
+um certificado por servidor e assim fazer com que o servidor web use esses certificados
+auto-assinados.
+
+Por fim, como as duas aplicações precisavam de configuração de servidore de email
+a pŕoximo passo foi configurar um servidor de email para servir esse serviço. A
+ferramenta escolhida para ser o servidor de IMAP foi o dovecot, o agente de
+transferência de emails escolhido foi o postfix, também foram tomados alguns
+ cuidados de segurança para que o servidor de email também utilizassem os certificados
+ de segurança utilizando o protocolo SMTPS (SMTP + TLS) com isso forçando o servidor
+ de emails a aceitar apenas autenticaçãi via TLS, assim também utilizando o
+ protocolo IMAPS ao invés de apenas IMAP.
+
+Por fim a última atividade do google summer of code foi a prototipagem da aplicação
+web do shak, além disso algumas evoluções no shak foram feitas, as principais
+contribuições foram:
+
+\begin{itemize}
+  \item  \textbf{Evolução da ferramenta shak:}
+  \subitem Evolução da ferramenta shak adicionando suporte ao php5.
+  \subitem Suporte as aplicações utilizando arquivos de configuração nginx.
+  \subitem Evolução do código em geral e testes unitários.
+  \subitem Documentação para configurar ambiente de desenvolvimento.
+
+  \item  \textbf{Novas Aplicações}
+  \subitem Wordpress
+  \subitem Owncloud
+  \subitem Servidor de email
+
+  \item  \textbf{Segurança na implantação das aplicações}
+  \subitem Forçar aplicações web a sempre utilizarem o protocolo HTTPS.
+  \subitem Gerar certificados de segurança auto-assinados automaticamente.
+  \subitem Forçar aplicação de email a usarem os protocolos SMPTS e IMAPS.
+\end{itemize}
+
+
+%
