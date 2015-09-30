@@ -1,15 +1,64 @@
 \chapter{Implantação de Software}
 \label{cap-implantacao}
 
-nesse capitulo eu pretendo falar sobre implantação de software em geral, trazer
-alguns conceitos, falar sobre as técnicas(citar empacotamento!!!) e as ferramentas
-que permitem automatizar a implantação de um software (citar chef, puppet,etc).
+%nesse capitulo eu pretendo falar sobre implantação de software em geral, trazer
+%alguns conceitos, falar sobre as técnicas(citar empacotamento!!!) e as ferramentas
+%que permitem automatizar a implantação de um software (citar chef, puppet,etc).
+%exemplo de citação
+%\citeonline{arthur&carlos2014}
 
-\section{Gerência de configuração de software}
+A importância da atividade de implantação dentro do ciclo do desenvolvimento
+de software vem ganhando forças, principalmente pela necessidade do alinhamento
+entre o time de desenvolvimento com o time de operações(conhecido como sysadmin).
+Essa necessidade vem em relação a ligação entre as duas equipes no que tange a
+processos de implantação de software, ferramentas para automatizar implatanções
+e responsabilidades dentro do ciclo de desenvolvimento. Com isso surgiu o termo devops, que
+traz as práticas de desenvolvimento ágil a implatanção e une a equipe de desenvolvimento
+com a equipe de opreções a fim de acelerar as entregas do software aumentando
+a sua qualidade, reduzindo as lacunas entre essas duas equipes.
+
+De acordo com \citeonline{deployment1998} as aplicações de software não são mais
+sistemas autônomos, são cada vez mais o resultado da integração de coleções de
+componentes, e nem sempre existe a garantia de que cada componente será implantado
+corretamente. A equipe de devops devem, portanto, encontrar uma maneira de lidar
+com uma maior incerteza no ambiente no qual seus sistemas vão operar.
+Por exemplo, antes que eles possam garantir uma instalação bem-sucedida, o
+s produtores devem ser capazes de determinar quais os componentes estão disponíveis
+ em um dado local, bem como a configuração desses componentes e ser capaz de
+antecipar ou reagir a alterações de componentes que não estão sob seu controle.
+
+Essas questões  devem ser levadas em consideração e a atividade de implatação de
+software deve receber uma atenção especial, visto que os softwares estão ficando
+cada vez mais complexos, podendo ter várias ferramentas integradas em diferentes
+linguagens de programação e diferentes configurações. Neste capítulo falaremos
+sobre (Gerência de configuração de software ou Processo de Implantação de Software)
+para entender melhor como funciona o processo de implantação, depois vamos ver as
+ferramentas que buscam facilitar  e resolver os problemas da implantação de software,
+e as características típicas que essas ferramentas trazem para tornar a implatanção
+mais rápida e com qualidade, por fim faleramos sobre....(se for falar de mais coisas)
+
+\section{Gerência de configuração de software ou Processo de Implantação de Software}
 
 \section{Métodos e ferramentas para implantação de software}
 
-empacotamento, instalação via script, tar.gz, exe, jar, etc.
+%empacotamento, instalação via script, tar.gz, exe, jar, etc.
 
-chef, puppet,
+\citeonline{deployment1998} diz que recentemente, um número de novas tecnologias
+começaram a emergir para resolver o problema de implantação. As características
+típicas oferecidas por estas tecnologias incluem sistemas para automatizar a
+implantação a partir de configurações, pacotes, gerenciamento de rede
+e instalação de recursos, com  propósito de entrega das atualizações de forma
+automática.
+
+
+.................... citações do trabalho do léo.... chef... etc
+
+\citeonline{deployment1998} diz que  apesar da proliferação de tecnologias de
+implantação, não temos nenhuma compreensão clara da questões relacionadas com a
+implantação em escala de Internet, nem uma maneira de caracterizar a adequação
+dessas tecnologias para abordar essas questões, com isso o objetivo deste trabalho
+é trazer os aspectos da implantação segura de múltiplas instâncias de aplicações
+propondo um modelo de implantação caracterizando o uso de ferramentas e tecnologias
+para apoiar as atividades de implantação.
+
 %
