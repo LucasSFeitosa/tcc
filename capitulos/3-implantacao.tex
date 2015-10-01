@@ -11,9 +11,9 @@ A importância da atividade de implantação dentro do ciclo do desenvolvimento
 de software vem ganhando forças, principalmente pela necessidade do alinhamento
 entre o time de desenvolvimento com o time de operações(conhecido como sysadmin).
 Essa necessidade vem em relação a ligação entre as duas equipes no que tange a
-processos de implantação de software, ferramentas para automatizar implatanções
+processos de implantação de software, ferramentas para automatizar implatações
 e responsabilidades dentro do ciclo de desenvolvimento. Com isso surgiu o termo devops, que
-traz as práticas de desenvolvimento ágil a implatanção e une a equipe de desenvolvimento
+traz as práticas de desenvolvimento ágil a implatanção de software e une a equipe de desenvolvimento
 com a equipe de opreções a fim de acelerar as entregas do software aumentando
 a sua qualidade, reduzindo as lacunas entre essas duas equipes.
 
@@ -22,24 +22,90 @@ sistemas autônomos, são cada vez mais o resultado da integração de coleçõe
 componentes, e nem sempre existe a garantia de que cada componente será implantado
 corretamente. A equipe de devops devem, portanto, encontrar uma maneira de lidar
 com uma maior incerteza no ambiente no qual seus sistemas vão operar.
-Por exemplo, antes que eles possam garantir uma instalação bem-sucedida, o
-s produtores devem ser capazes de determinar quais os componentes estão disponíveis
+Por exemplo, antes que eles se possa garantir uma instalação bem-sucedida, o time
+de devops deve ser capazes de determinar quais os componentes estão disponíveis
  em um dado local, bem como a configuração desses componentes e ser capaz de
-antecipar ou reagir a alterações de componentes que não estão sob seu controle.
+antecipar ou reagir a alterações desses componentes.
 
 Essas questões  devem ser levadas em consideração e a atividade de implatação de
 software deve receber uma atenção especial, visto que os softwares estão ficando
 cada vez mais complexos, podendo ter várias ferramentas integradas em diferentes
 linguagens de programação e diferentes configurações. Neste capítulo falaremos
-sobre (Gerência de configuração de software ou Processo de Implantação de Software)
+sobre processo de Implantação de Software
 para entender melhor como funciona o processo de implantação, depois vamos ver as
 ferramentas que buscam facilitar  e resolver os problemas da implantação de software,
 e as características típicas que essas ferramentas trazem para tornar a implatanção
 mais rápida e com qualidade, por fim faleramos sobre....(se for falar de mais coisas)
 
-\section{Gerência de configuração de software ou Processo de Implantação de Software}
+\section{Processo de Implantação de Software}
 
+A implantação de um software é o processo que vai desde a aquisição desse software
+até a sua execução. \cite{leo2014} O processo implatanção consiste em diversas
+atividades que devem ser executadas desde o planejamento da implatanção até a
+disponibilidade para uso.
 
+A OMG (Object Management Group) é uma organização internacional sem fins lucrativos
+que aprova padrões abertos para tecnologias (arrumar fonte, é o site deles, mas
+não sei como referenciar: \url{http://www.omg.org/gettingstarted/gettingstartedindex.htm})
+e eles definem uma especificação de implantação e configuração de aplicações
+distribuidas baseadas em componentes \cite{omg2006} e ela diz que o processo de
+implantação é um processo que se inicia desde a aquisição de um componente até
+o momento em que esse componente está em plena execução, pronto pra uso.
+
+Segundo \cite{omg2006} os principais termos definidos são:
+
+\begin{itemize}
+  \item  \textbf{Implantador:} Pessoa ou equipe responsável pelo processo de
+  implantação  de um sistema.
+  \item  \textbf{Ambiente alvo:} São o servidor ou conjunto de servidores em
+  que os componentes são implantados.
+  \item  \textbf{Nó:} É um recurso computacional onde se implanta um componente,
+  por exemplo uma máquina virtual dentro do servidor que vai hospedar um serviço
+  de banco de dados. Os nós fazem parte do ambiente alvo.
+  \item  \textbf{Pacote:} Artefato executável que contém o código binário do componente
+  . É por meio de um pacote que um serviço pode ser instalado e executado dentro
+  de um sistema operacional, e que são característicos dependendo da distribuição
+  do sistema operacional, por exemplo: .deb para debian e .rpm para redhat, ou
+  pacotes independentes de sistema operacional como: jar.
+\end{itemize}
+
+Além disso, é importante também definir as fases que compõem o processo de
+implantação e de acordo com \cite{omg2006} as fases são:
+
+\begin{itemize}
+  \item  \textbf{Instalação:} O implantador transfere o componente para a infraestrutura
+  alvo, é quando instalamos um dado componente em um servidor, um exemplo disso
+  é a instalação de uma aplicação via pacotes (.deb ou .rmp).
+  \item  \textbf{Configuração:} Edição de arquivos de configuração para alterar
+  determinado comportamento de uma aplicação, o implantador aplica configurações
+  específicas a aplicação a partir de arquivos de configuração.
+  \item  \textbf{Planejamento:} O planejamento da implantação é uma fase
+  para identificar os componentes necessários na implantação e como cada um será
+  distribuido entre os nós do ambiente alvo.
+  \item  \textbf{Preparação:} São os procedimentos necessários para preparar o
+  ambiente alvo para que um determinado componente possa ser executado, isso envolve
+  configuração do sistema operacional, instalação e configuração de dependências
+  necessárias (por exemplo um servidor web como apache ou nginx) e a transferência
+  do componente para o servidor onde ele será executado.
+  \item  \textbf{Inicialização:} É quando a aplicação é iniciada e entra em execução,
+  pronto para receber chamadas de seus clientes.
+\end{itemize}
+
+Dependendo to tamanho da aplicação essas fases podem se tornar tarefas complicadas,
+com isso existe a necessidade de automatizar o processo de implantação, assim
+diminuindo a possibilidade de erros comparado a uma tarefa manual e consequentemente
+tornando o trabalho mais ágil, dando adeus aos longos manuais de instalação.
+\cite{humble2010} diz que o objetivo de um processo de implantação automatizado é
+proporcionar um processo de implantação reprodutível, confiável e fácil de ser
+executado, o que casa perfeitamente no contexto de uma equipe devops.
+
+Para que isso seja possível é necessário utilizar-se de ferramentas para poder
+automatizar todo o processo de implantação, mas é extremamente importante intender todo o processo
+para que possa ser feito um bom planejamento e execução, pois se não o uso da ferramenta também
+trará dificuldades para executar o processo, principalmente se a equipe de devops não tiver conhecimento
+da ferramenta utilziada. Por julgar importante o conhecimento prévio sobre ferramentas
+para automatizar a implantação de software na próxima seção falaremos sobre algumas
+ferramentas conhecidas para automazar implantação e suas maneiras de atuação.
 
 \section{Métodos e ferramentas para implantação de software}
 
