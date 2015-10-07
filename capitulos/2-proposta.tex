@@ -1,14 +1,122 @@
 \chapter{Metodologia}
 \label{cap-metodologia}
 
+================= Precisa falar da pesquisa? ex: qualitativa, descritiva.. etc ============/============
 
-\section{Considerações Iniciais}
+Este capítulo aborda sobre tudo que compõe a meotodologia de pesquisa utilizada
+durante o trabalho, a fim de explciar como o trabalho foi realizado para atingir os
+objetivos, servindo como base para a sua reprodução em trabalhos futuros.
+
+A questão de pesquisa a ser respondida neste trabalho é:
+
+\begin{center}
+  \textit{
+    Como implantar multiplas aplicações a partir de um pacote único
+    de forma centralizada e segura?
+}
+\end{center}
+
+Tendo a questão de pesquisa como isumo, foram levantadas algumas hipóteses  como:
+
+\begin{itemize}
+  \item  \textbf{H1 :} É possível criar varias instâncias de aplicações
+  web a partir de um pacote único no mesmo servidor.
+  \item  \textbf{H2 :} Os aspectos de segurança em uma implantação
+   automatizada de sofware impacta na configuração de múltiplas aplicações no
+   mesmo servidor.
+\end{itemize}
+
+Para responder h1 será necessário definir uma forma de configurar várias instâncias
+de aplicações web utilizando um único pacote, com isso poderemos automatizar
+essa configuração e testar para pacotes debian disponíveis. Com isso poderemos
+mapear os pacotes que são possíveis de realizar tal configuração.
+
+Para responder h2 será necessário definir quais são os aspectos de segurança em
+uma implantação de software e aplicá-los dentro do contexto de implantação de
+automatizada de  múltiplas instâncias de aplicações no mesmo servidor,
+com isso ver o impacto causado na arquitetura de implantação, ver quais são os
+aspectos comuns entre as aplicações, lidar com diferentes linguagens e aspectos
+de implantação segura específicos de cada aplicação.
+
+================= ver como está ficando e tirar duvidas ============/============
+
+\section{Trabalhos Relacionados}
+
+trabalhos academicos:
+
+citar trabalho do rafael
+procurar outros trabalhos acadêmicos
+
+ferramentas do mercado:
+
+citar o bitnami
+citar o storm.io
 
 \section{Detalhes da Proposta}
 
-\section{Metodologia}
+A proposta deste trabalho é trazer uma solução para a implantação automatizada
+de múltiplas aplicações a partir de um pacote único de forma centralizada e segura.
+Para isso será primeiramente necessário definir uma arquitetura padrão para a
+implantação dessas aplicações, ou seja, definir:
+
+\begin{itemize}
+  \item  \textbf{Tecnologia para automatizar implantação :}  Definir qual será a
+  tecnologia escolhida dentre as citadas no referencial teórico para dar suporte
+  a implantação.
+  \item  \textbf{Conjunto mínimo de dependências:} Definir quais são as dependências
+  mínimas para o funcionamento das aplicações escolhidas, tais como: sistema operacional,
+  pacotes pré-instalados e aplicações pré-configuradas.
+  \item  \textbf{Procedimentos para implantação:} Definir quais são etapas da implantação,
+  definir a ordem necessária para a execução de cada fase da implantação.
+  \item  \textbf{Aspectos de segurança} Definir quais são os aspectos de segurança
+  e automatizar os que forem possíveis de serem aplicados dentro do contexto desejado.
+\end{itemize}
+
+Com a arquitetura definida o próximo passo é definir um ambiente de desenvolvimento e de
+testes, dado o contexto de implantação de software é importante possuir um abiente fexível para
+testar facilmente a instalação e configuração das aplicações e podendo facilmente
+reinicializar esse ambiente de forma que ele fique limpo sem resquícios da instalação
+anterior.
+
+Com a arquitetura definida e com um ambiente de desenvolvimento e de testes configurados, é
+necessário definir quais são as ferramentas que servirão como caso de testes
+para a implementação da solução. Elas serão importantes pois a partir delas
+e de suas necessidades que será implementado a primeira versão da proposta para
+a solução. Por isso também é importante definir aspectos que servirão como parâmetro
+para ajudar no desenvolvimento da solução. Esses aspectos são:
+
+\begin{itemize}
+  \item  \textbf{Aplicações empacotadas no debian :}  Como o intuito do trabalho
+  é realizar implantações múltiplas a partir de um pacote único, tais aplicações
+  devem estar empacotadas e disponíveis para instalação nos servidores do debian.
+  Isso impacta na escolha da ferramenta, visto que não será necessário ter o trabalho
+  de empacotar aplicações que ainda não estão empacotadas no debian.
+  \item  \textbf{Servidor web compatível:} As ferramentas escolhidas devem no
+  mínimo possuir o servidor web compatível, por exemplo: as aplicações juntas
+  devem possuir suporte para nginx ou apache ou similares.
+  \item  \textbf{Aplicações com comunidades ativas:} Como estamos trabalhando
+  com software livre, é importante que os softwares escolhidos possuem comunidades
+  ativas, isso pode ajudar na resolução de  possíveis problemas, logo aplicações
+  desconhecidas devem ser evitadas, e aplicações conhecidas devem ser priorizadas.
+  E isso também pode ser um fator importante caso durante os testes sejam descobertos
+  bugs ou melhorias dentro dessas ferramentas.
+  \item  \textbf{Doscumentação do software:} A documentação do software também deve
+  ser levado em consideração, principalmente a documentação da instalação e configuração
+  dentro da arquitetura definida.
+\end{itemize}
+
+FIXME
+Por fim, com a arquitetura definida, ambientes definidos e ferramentas escolhidas
+é mão na massa... como escrever isso?
 
 \section{Ferramentas e Dados}
 
+vou falar aqui sobre o shak, sobre o summer of code? sobre a participação do terceiro
+nas decisões técnicas.
+
 \section{Atividades}
+
+Com intuito de ...., foi definido um fluxo das atividades necessárias para organizar
+o trabalho. .....
+
 %
