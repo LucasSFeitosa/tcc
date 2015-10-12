@@ -1,7 +1,6 @@
 \chapter{Metodologia}
 \label{cap-metodologia}
 
-
 #TODO
 ================= Precisa falar da pesquisa? ex: qualitativa, descritiva.. etc ============/============
 
@@ -50,15 +49,65 @@ dentro de uma implantação segura e centralizada.
 
 \section{Trabalhos Relacionados}
 
-trabalhos academicos:
+Nesta sessão falaremos sobre os trabalhos relacionados, antes de prosseguir no
+trabalho é importante intender o que acontece no mundo sobre o assunto no qual
+está sendo abordado, por isso essa seção é dividida em duas subsseções em que uma
+contém alguns trabalhos acadêmicos relacionados ao tema e outra que contém
+ferramentas disponíveis no mercado.
 
-citar trabalho do rafael
-procurar outros trabalhos acadêmicos
+\subsection{Trabalhos Acadêmicos Relacionados}
 
-ferramentas do mercado:
+\begin{itemize}
+  \item  \textbf{Implantação Automatizada de Composições de Serviços Web de Grande Escala :}
+  Este trabalho feito por \cite{leo2014} foi desenvolvido um sistema de middleware
+  chamado CHOReOS Enactment Engine que é um sistema que possibilita a implantação
+  distribuída e automatizada de composições de serviços web em uma estrutura virtualizada,
+  no qual opera no modelo computacional conhecido como plataforma como serviço,
+  comparando esse sistema com abordagens ah-hoc de implnatação levando em consideração
+  a escalabilidade em relaçaõ ao tempo de implantação das composições do serviços.
+\end{itemize}
 
-citar o bitnami
-citar o storm.io
+\subsection{Ferramentas do Mercado Relacionadas}
+
+\begin{itemize}
+  \item  \textbf{Bitnami :}
+  De acordo com \cite{bitnami} BitNami é uma biblioteca de aplicativos de
+  servidor populares e ambientes de desenvolvimento que pode ser instalado
+  com um clique. Ele automatiza todo o processo de  compilar e configurar os
+   aplicativos e todas as suas dependências (bibliotecas de terceiros,
+  linguagem de programação, bases de dados) para que o usuário comum não
+  se preocupe com questões mais técnicas. O software empacotado resultante é
+  então disponibilizado como instaladores nativos, máquinas virtuais e imagens de nuvem.
+  Estes pacotes de aplicativos BitNami proporcionar uma experiência ao usuário final
+  de forma consistente, seguro e otimizado ao implantar qualquer aplicativo, em qualquer plataforma.
+
+  \item  \textbf{Sandstorm.io :}
+  De acordo com \cite{standstormio} Sandstorm é uma plataforma de código
+  aberto para servidores pessoais. Sandstorm permite que você execute o seu próprio
+  servidor e instalar aplicativos como EtherCalc, GitLab, Etherpad, Wekan, tão
+  facilmente como você instalar aplicativos em seu telefone.
+  Sandstorm lida com o login e controle de acesso, e pode executar qualquer aplicação
+   web que roda em Linux,  embora alguns aplicativos podem precisar de mudanças para trabalhar
+  dentro da sandbox Sandstorm.
+
+ \item  \textbf{Sandstorm.io :}
+ De acordo com \citeJuju Juju permite-lhe implementar,
+ configurar, gerenciar, manter e serviços de forma rápida e eficiente escala nuvem
+ em nuvens públicas, bem como em servidores físicos, OpenStack e contêineres.
+ O mecanismo central por trás Juju é chamado charms ("encantos"). Charms podem
+ ser escritos em qualquer linguagem de programação que pode ser executado
+ a partir da linha de comando. Os charms são feitos pela comunidade do software juju
+ que é quem cuida dos processos de instalação e configuração dos serviços sendo orquestrados.
+
+\end{itemize}
+
+\subsection{Ferramentas do Mercado Relacionadas}
+
+Uma desvantagem do bitnami é que ele é uma ferramenta de código fechado, o que
+dificulta para uma análise sobre sua arquitetura.
+
+Uma desvantagem do standstorm.io é que ele não utiliza pacotes debian.
+
 
 \section{Teste das Hipóteses}
 
@@ -132,7 +181,7 @@ para ajudar no desenvolvimento da solução. Esses aspectos são:
   desconhecidas devem ser evitadas, e aplicações conhecidas devem ser priorizadas.
   E isso também pode ser um fator importante caso durante os testes sejam descobertos
   bugs ou melhorias dentro dessas ferramentas.
-  \item  \textbf{Doscumentação do software:} A documentação do software também deve
+  \item  \textbf{Documentação do software:} A documentação do software também deve
   ser levado em consideração, principalmente a documentação da instalação e configuração
   dentro da arquitetura definida.
 \end{itemize}
