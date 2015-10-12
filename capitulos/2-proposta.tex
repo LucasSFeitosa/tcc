@@ -1,6 +1,8 @@
 \chapter{Metodologia}
 \label{cap-metodologia}
 
+
+#TODO
 ================= Precisa falar da pesquisa? ex: qualitativa, descritiva.. etc ============/============
 
 Este capítulo aborda sobre tudo que compõe a meotodologia de pesquisa utilizada
@@ -16,29 +18,35 @@ A questão de pesquisa a ser respondida neste trabalho é:
 }
 \end{center}
 
-Tendo a questão de pesquisa como isumo, foram levantadas algumas hipóteses  como:
+Tendo a questão de pesquisa como insumo, foram levantadas algumas hipóteses que devem
+ser estudadas e avalidas, como:
 
 \begin{itemize}
   \item  \textbf{H1 :} É possível criar varias instâncias de aplicações
   web a partir de um pacote único no mesmo servidor.
-  \item  \textbf{H2 :} Os aspectos de segurança em uma implantação
-   automatizada de sofware impacta na configuração de múltiplas aplicações no
-   mesmo servidor.
+   \item  \textbf{H2 :} Existe uma arquitetura definida para implantação de
+   múltiplas instâncias de aplicações a partir de um pacote único que levam em consideração
+   os aspectos de segurança em uma implantação automatizada de sofware.
 \end{itemize}
 
-Para responder h1 será necessário definir uma forma de configurar várias instâncias
-de aplicações web utilizando um único pacote, com isso poderemos automatizar
-essa configuração e testar para pacotes debian disponíveis. Com isso poderemos
-mapear os pacotes que são possíveis de realizar tal configuração.
+Para responder H1 seŕa necessário fazer uma busca nas aplicações web que são
+empacotadas no debian e que possuem suporte a configuração de múltiplas instâncias,
+essa busca deve levar em consideração também a documentação para realizar tal
+configuração.
 
-Para responder h2 será necessário definir quais são os aspectos de segurança em
-uma implantação de software e aplicá-los dentro do contexto de implantação de
-automatizada de  múltiplas instâncias de aplicações no mesmo servidor,
-com isso ver o impacto causado na arquitetura de implantação, ver quais são os
-aspectos comuns entre as aplicações, lidar com diferentes linguagens e aspectos
-de implantação segura específicos de cada aplicação.
+Para responder H2 será necessário fazer uma pesquisa em ferramentas ou tecnologias que
+permitem a configuração de múltiplas instâncias de aplicações no mesmo servidor e com
+isso ver a proposta de arquitetura feita por tais ferramentas ou tecnologias. É
+possível que também possam existeir propostas de arquiteura mas sem possuir uma
+ferramenta ou tecnologia que execute tal arquitetura.
 
-================= ver como está ficando e tirar duvidas ============/============
+Também é importante para responder H2 definir quais são os aspectos de segurança em
+uma implantação de software dentro do contexto de implantação automatizada de múltiplas instâncias de aplicações no mesmo servidor,
+com isso ver o impacto causado na arquitetura de implantação, levando em consideração os
+aspectos comuns entre as aplicações, lidar com diferentes linguagens e suas características
+dentro de uma implantação segura e centralizada.
+
+#TODO ver como está ficando e tirar duvidas
 
 \section{Trabalhos Relacionados}
 
@@ -51,6 +59,30 @@ ferramentas do mercado:
 
 citar o bitnami
 citar o storm.io
+
+\section{Teste das Hipóteses}
+
+#TODO
+
+Para o teste de H1 foram levantados algumas aplicações web empacotadas no debian
+da seguinte forma....  .....
+
+Como podemos ver na documentação das aplicações XYZ...
+
+Logo podemos ver que nem todas as aplicações empacotadas no debian possuem
+suporte a múltiplas instâncias.....
+
+
+Para o teste de H2 foi feito primeiramente uma pesquisa dentro das ferramentas
+disponíveis e que são software livre....
+
+A pesquisa foi feita de seguinte maneira....
+
+Logo ao realizar a análise apresentada a cima, chegou-se a conclusão de que
+é necessário a definição de uma arquitetura para implantação de múltiplas
+instâncias de aplicações a partir de um pacote único. Com isso resolveu-se
+realizar uma proposta de arquitetura para implantação dessas apliacções, levando
+em consideração os aspectos de segurança no que tangem essa arquitetura.
 
 \section{Detalhes da Proposta}
 
@@ -105,17 +137,19 @@ para ajudar no desenvolvimento da solução. Esses aspectos são:
   dentro da arquitetura definida.
 \end{itemize}
 
-FIXME
+#TODO
 Por fim, com a arquitetura definida, ambientes definidos e ferramentas escolhidas
 é mão na massa... como escrever isso?
 
 \section{Ferramentas e Dados}
 
+#TODO
 vou falar aqui sobre o shak, sobre o summer of code? sobre a participação do terceiro
 nas decisões técnicas.
 
 \section{Atividades}
 
+#TODO
 Com intuito de ...., foi definido um fluxo das atividades necessárias para organizar
 o trabalho. .....
 
