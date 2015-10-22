@@ -4,8 +4,8 @@
 %#TODO
 ================= Precisa falar da pesquisa? ex: qualitativa, descritiva.. etc ============/============
 
-Este capítulo aborda sobre tudo que compõe a meotodologia de pesquisa utilizada
-durante o trabalho, a fim de explciar como o trabalho foi realizado para atingir os
+Este capítulo aborda sobre tudo que compõe a metodologia de pesquisa utilizada
+durante o trabalho, a fim de explicar como o trabalho foi realizado para atingir os
 objetivos, servindo como base para a sua reprodução em trabalhos futuros.
 
 \section{Trabalhos Relacionados}
@@ -17,19 +17,19 @@ desenvolvido um sistema de middleware chamado CHOReOS Enactment Engine que é um
 sistema que possibilita a implantação distribuída e automatizada de composições
 de serviços web em uma estrutura virtualizada, no qual opera no modelo
 computacional conhecido como plataforma como serviço, comparando esse sistema
-com abordagens ah-hoc de implnatação levando em consideração a escalabilidade
-em relaçaõ ao tempo de implantação das composições do serviços.
+com abordagens ah-hoc de implantação levando em consideração a escalabilidade
+em relação ao tempo de implantação das composições dos serviços.
 
-Existem também ferraments disponíveis no mercado que também trazem a proposta de automação de
-instalação de apliacções alguns exemplos são: \cite{bitnami} BitNami que é uma
-biblioteca de aplicativos de servidor populares e ambientes de desenvolvimento que pode ser instalado
-com um clique. Ele automatiza todo o processo de  compilar e configurar os
- aplicativos e todas as suas dependências (bibliotecas de terceiros,
-linguagem de programação, bases de dados) para que o usuário comum não
-se preocupe com questões mais técnicas. Também temos o \cite{standstormio}
-Sandstorm é uma plataforma de código aberto para servidores pessoais.
-Sandstorm permite que você execute o seu próprio
-servidor e instalar facilmente e por fim a ferramenta \cite{juju} Juju que permite-lhe implementar,
+Existem também ferramentas disponíveis no mercado que também trazem a proposta
+de automação de instalação de aplicações alguns exemplos são: \cite{bitnami}
+BitNami que é uma biblioteca de aplicativos de servidor populares e ambientes de
+desenvolvimento que pode ser instalado com um clique. Ele automatiza todo o
+processo de  compilar e configurar os aplicativos e todas as suas dependências
+(bibliotecas de terceiros,linguagem de programação, bases de dados) para que o
+usuário comum não se preocupe com questões mais técnicas. Também temos o
+\cite{standstormio} Sandstorm é uma plataforma de código aberto para servidores
+pessoais. Sandstorm permite que você execute o seu próprio servidor e instalar
+facilmente e por fim a ferramenta \cite{juju} Juju que lhe permite implementar,
 configurar, gerenciar, manter e serviços de forma rápida e eficiente escala nuvem
 em nuvens públicas.
 
@@ -40,25 +40,25 @@ a questão problema a ser resolvida neste trabalho é:
 
 \begin{center}
   \textit{
-    Como implantar multiplas aplicações a partir de um pacote único
-    de forma centralizada e segura?
+  Como implantar múltiplas aplicações a partir de um pacote único
+  de forma centralizada e segura?
 }
 \end{center}
 
 Com os trabalhos relacionados vimos que apesar de todas elas trazerem soluções
 para automatizar instalação de aplicações mas nenhuma delas traz uma solução que
-permita a aumatizar instalação e configuração de múltiplas instâncias de uma aplicação
+permita a automatizar instalação e configuração de múltiplas instâncias de uma aplicação
 utilizando empacotamento, como vimos na seção TODO a utilização do empacotamento
-tráz inúmeras vantagens no processo de implantação de apliacções.Com isso, tendo
+trás inúmeras vantagens no processo de implantação de aplicações. Com isso, tendo
 os trabalhos relacionados e a questão de pesquisa como insumo,
-foram levantadas algumas hipóteses que devem ser estudadas e avalidas, como:
+foram levantadas algumas hipóteses que devem ser estudadas e avaliadas, como:
 
 \begin{itemize}
   \item  \textbf{H1 :} É possível criar varias instâncias de aplicações
   web a partir de um pacote único no mesmo servidor.
    \item  \textbf{H2 :} Existe uma arquitetura definida para implantação de
    múltiplas instâncias de aplicações a partir de um pacote único que levam em consideração
-   os aspectos de segurança em uma implantação automatizada de sofware.
+   os aspectos de segurança em uma implantação automatizada de software.
 \end{itemize}
 
 Essas hipóteses serão importantes para definir a proposta para a solução da questão
@@ -67,7 +67,7 @@ problema, como de acordo com (MARCONI; LAKATOS, 2000, p. 137) a hipótese
 
 \section{Teste das Hipóteses}
 
-Para responder H1 seŕa necessário fazer uma busca nas aplicações web que são
+Para responder H1 será necessário fazer uma busca nas aplicações web que são
 empacotadas no debian e que possuem suporte a configuração de múltiplas instâncias,
 essa busca deve levar em consideração também a documentação para realizar tal
 configuração.
@@ -83,13 +83,13 @@ Procurando por pacotes que contenham a palavra web recebemos o resultado de 3470
 como wordpress, owncloud, drupal, mailman, chromium, etc.
 pacotes, dentro dessa busca encontramos alguns pacotes de aplicações conhecidas
 
-Como o interesse neste trabalho é a busca por aplicações que possam ser instaldas
+Como o interesse neste trabalho é a busca por aplicações que possam ser instaladas
 em servidores e que sejam interessantes para usuários nos deparamos com ferramentas
 que se encaixam no nosso contexto como por exemplo: owncloud que é uma ferramenta para armazenamento
 na nuvem para arquivos, músicas, calendários, contatos. E wordpress que é
 uma ferramenta conhecida para criação de blogs.
 
-Para avaliar se as aplicações possuem suporte a multiplas instâncias é necessário
+Para avaliar se as aplicações possuem suporte a múltiplas instâncias é necessário
 analisar a documentação das aplicações, as aplicações costumam disponibilizar a sua
 documentação na sua página ou em uma wiki, também é possível checar a documentação
 quando se instala uma aplicação podemos utilizar os comandos:
@@ -100,21 +100,21 @@ ou
 info nomeaplicacao
 \end{verbatim}
 
-Também é possível que existam arquivos de documentação da alicação em /usr/share/doc/.
+Também é possível que existam arquivos de documentação da aplicação em /usr/share/doc/.
 
 
 Para responder H2 será necessário fazer uma pesquisa em ferramentas ou tecnologias que
 permitem a configuração de múltiplas instâncias de aplicações no mesmo servidor e com
 isso ver a proposta de arquitetura feita por tais ferramentas ou tecnologias. É
-possível que também possam existeir propostas de arquiteura mas sem possuir uma
+possível que também possam existir propostas de arquitetura mas sem possuir uma
 ferramenta ou tecnologia que execute tal arquitetura.
 
 Também é importante para responder H2 definir quais são os aspectos de segurança em
-uma implantação de software dentro do contexto de implantação automatizada de múltiplas instâncias de aplicações no mesmo servidor,
+uma implantação de software dentro do contexto de implantação automatizada de
+múltiplas instâncias de aplicações no mesmo servidor,
 com isso ver o impacto causado na arquitetura de implantação, levando em consideração os
 aspectos comuns entre as aplicações, lidar com diferentes linguagens e suas características
 dentro de uma implantação segura e centralizada.
-
 
 Para o teste de H2 foi feito primeiramente uma pesquisa dentro das ferramentas
 disponíveis e que são software livre....
@@ -124,7 +124,7 @@ A pesquisa foi feita de seguinte maneira....
 Logo ao realizar a análise apresentada a cima, chegou-se a conclusão de que
 é necessário a definição de uma arquitetura para implantação de múltiplas
 instâncias de aplicações a partir de um pacote único. Com isso resolveu-se
-realizar uma proposta de arquitetura para implantação dessas apliacções, levando
+realizar uma proposta de arquitetura para implantação dessas aplicações, levando
 em consideração os aspectos de segurança no que tangem essa arquitetura.
 
 \section{Detalhes da Proposta}
@@ -148,7 +148,7 @@ implantação dessas aplicações, ou seja, definir:
 \end{itemize}
 
 Com a arquitetura definida o próximo passo é definir um ambiente de desenvolvimento e de
-testes, dado o contexto de implantação de software é importante possuir um abiente fexível para
+testes, dado o contexto de implantação de software é importante possuir um ambiente flexível para
 testar facilmente a instalação e configuração das aplicações e podendo facilmente
 reinicializar esse ambiente de forma que ele fique limpo sem resquícios da instalação
 anterior.
