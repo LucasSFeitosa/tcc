@@ -8,7 +8,35 @@ Este capítulo aborda sobre tudo que compõe a meotodologia de pesquisa utilizad
 durante o trabalho, a fim de explciar como o trabalho foi realizado para atingir os
 objetivos, servindo como base para a sua reprodução em trabalhos futuros.
 
-A questão de pesquisa a ser respondida neste trabalho é:
+\section{Trabalhos Relacionados}
+
+Para entender o que acontece na comunidade da computação em relação a implantação
+automatizada de aplicações, foi feito uma busca de alguns trabalhos relacionados, o primeiro
+trabalho relacionado é um trabalho acadêmico feito por \cite{leo2014} no qual foi
+desenvolvido um sistema de middleware chamado CHOReOS Enactment Engine que é um
+sistema que possibilita a implantação distribuída e automatizada de composições
+de serviços web em uma estrutura virtualizada, no qual opera no modelo
+computacional conhecido como plataforma como serviço, comparando esse sistema
+com abordagens ah-hoc de implnatação levando em consideração a escalabilidade
+em relaçaõ ao tempo de implantação das composições do serviços.
+
+Existem também ferraments disponíveis no mercado que também trazem a proposta de automação de
+instalação de apliacções alguns exemplos são: \cite{bitnami} BitNami que é uma
+biblioteca de aplicativos de servidor populares e ambientes de desenvolvimento que pode ser instalado
+com um clique. Ele automatiza todo o processo de  compilar e configurar os
+ aplicativos e todas as suas dependências (bibliotecas de terceiros,
+linguagem de programação, bases de dados) para que o usuário comum não
+se preocupe com questões mais técnicas. Também temos o \cite{standstormio}
+Sandstorm é uma plataforma de código aberto para servidores pessoais.
+Sandstorm permite que você execute o seu próprio
+servidor e instalar facilmente e por fim a ferramenta \cite{juju} Juju que permite-lhe implementar,
+configurar, gerenciar, manter e serviços de forma rápida e eficiente escala nuvem
+em nuvens públicas.
+
+\section{Hipótese}
+
+Todas essas ferramentas resolvem parcialmente a questão problema neste trabalho,
+a questão problema a ser resolvida neste trabalho é:
 
 \begin{center}
   \textit{
@@ -17,8 +45,13 @@ A questão de pesquisa a ser respondida neste trabalho é:
 }
 \end{center}
 
-Tendo a questão de pesquisa como insumo, foram levantadas algumas hipóteses que devem
-ser estudadas e avalidas, como:
+Com os trabalhos relacionados vimos que apesar de todas elas trazerem soluções
+para automatizar instalação de aplicações mas nenhuma delas traz uma solução que
+permita a aumatizar instalação e configuração de múltiplas instâncias de uma aplicação
+utilizando empacotamento, como vimos na seção TODO a utilização do empacotamento
+tráz inúmeras vantagens no processo de implantação de apliacções.Com isso, tendo
+os trabalhos relacionados e a questão de pesquisa como insumo,
+foram levantadas algumas hipóteses que devem ser estudadas e avalidas, como:
 
 \begin{itemize}
   \item  \textbf{H1 :} É possível criar varias instâncias de aplicações
@@ -28,10 +61,47 @@ ser estudadas e avalidas, como:
    os aspectos de segurança em uma implantação automatizada de sofware.
 \end{itemize}
 
+Essas hipóteses serão importantes para definir a proposta para a solução da questão
+problema, como de acordo com (MARCONI; LAKATOS, 2000, p. 137) a hipótese
+é suposta, provável e provisória resposta ao problema.
+
+\section{Teste das Hipóteses}
+
 Para responder H1 seŕa necessário fazer uma busca nas aplicações web que são
 empacotadas no debian e que possuem suporte a configuração de múltiplas instâncias,
 essa busca deve levar em consideração também a documentação para realizar tal
 configuração.
+
+Para o teste de H1 foram levantados algumas aplicações web empacotadas no debian
+da seguinte forma:
+
+\begin{verbatim}
+apt-cache search web | wc -l
+\end{verbatim}
+
+Procurando por pacotes que contenham a palavra web recebemos o resultado de 3470
+como wordpress, owncloud, drupal, mailman, chromium, etc.
+pacotes, dentro dessa busca encontramos alguns pacotes de aplicações conhecidas
+
+Como o interesse neste trabalho é a busca por aplicações que possam ser instaldas
+em servidores e que sejam interessantes para usuários nos deparamos com ferramentas
+que se encaixam no nosso contexto como por exemplo: owncloud que é uma ferramenta para armazenamento
+na nuvem para arquivos, músicas, calendários, contatos. E wordpress que é
+uma ferramenta conhecida para criação de blogs.
+
+Para avaliar se as aplicações possuem suporte a multiplas instâncias é necessário
+analisar a documentação das aplicações, as aplicações costumam disponibilizar a sua
+documentação na sua página ou em uma wiki, também é possível checar a documentação
+quando se instala uma aplicação podemos utilizar os comandos:
+
+\begin{verbatim}
+man nomeaplicação
+ou
+info nomeaplicacao
+\end{verbatim}
+
+Também é possível que existam arquivos de documentação da alicação em /usr/share/doc/.
+
 
 Para responder H2 será necessário fazer uma pesquisa em ferramentas ou tecnologias que
 permitem a configuração de múltiplas instâncias de aplicações no mesmo servidor e com
@@ -44,82 +114,6 @@ uma implantação de software dentro do contexto de implantação automatizada d
 com isso ver o impacto causado na arquitetura de implantação, levando em consideração os
 aspectos comuns entre as aplicações, lidar com diferentes linguagens e suas características
 dentro de uma implantação segura e centralizada.
-
-%#TODO ver como está ficando e tirar duvidas
-
-\section{Trabalhos Relacionados}
-
-Nesta sessão falaremos sobre os trabalhos relacionados, antes de prosseguir no
-trabalho é importante intender o que acontece no mundo sobre o assunto no qual
-está sendo abordado, por isso essa seção é dividida em duas subsseções em que uma
-contém alguns trabalhos acadêmicos relacionados ao tema e outra que contém
-ferramentas disponíveis no mercado.
-
-\subsection{Trabalhos Acadêmicos Relacionados}
-
-\begin{itemize}
-  \item  \textbf{Implantação Automatizada de Composições de Serviços Web de Grande Escala :}
-  Este trabalho feito por \cite{leo2014} foi desenvolvido um sistema de middleware
-  chamado CHOReOS Enactment Engine que é um sistema que possibilita a implantação
-  distribuída e automatizada de composições de serviços web em uma estrutura virtualizada,
-  no qual opera no modelo computacional conhecido como plataforma como serviço,
-  comparando esse sistema com abordagens ah-hoc de implnatação levando em consideração
-  a escalabilidade em relaçaõ ao tempo de implantação das composições do serviços.
-\end{itemize}
-
-\subsection{Ferramentas do Mercado Relacionadas}
-
-\begin{itemize}
-  \item  \textbf{Bitnami :}
-  De acordo com \cite{bitnami} BitNami é uma biblioteca de aplicativos de
-  servidor populares e ambientes de desenvolvimento que pode ser instalado
-  com um clique. Ele automatiza todo o processo de  compilar e configurar os
-   aplicativos e todas as suas dependências (bibliotecas de terceiros,
-  linguagem de programação, bases de dados) para que o usuário comum não
-  se preocupe com questões mais técnicas. O software empacotado resultante é
-  então disponibilizado como instaladores nativos, máquinas virtuais e imagens de nuvem.
-  Estes pacotes de aplicativos BitNami proporcionar uma experiência ao usuário final
-  de forma consistente, seguro e otimizado ao implantar qualquer aplicativo, em qualquer plataforma.
-
-  \item  \textbf{Sandstorm.io :}
-  De acordo com \cite{standstormio} Sandstorm é uma plataforma de código
-  aberto para servidores pessoais. Sandstorm permite que você execute o seu próprio
-  servidor e instalar aplicativos como EtherCalc, GitLab, Etherpad, Wekan, tão
-  facilmente como você instalar aplicativos em seu telefone.
-  Sandstorm lida com o login e controle de acesso, e pode executar qualquer aplicação
-   web que roda em Linux,  embora alguns aplicativos podem precisar de mudanças para trabalhar
-  dentro da sandbox Sandstorm.
-
- \item  \textbf{Sandstorm.io :}
- De acordo com \cite{juju} Juju permite-lhe implementar,
- configurar, gerenciar, manter e serviços de forma rápida e eficiente escala nuvem
- em nuvens públicas, bem como em servidores físicos, OpenStack e contêineres.
- O mecanismo central por trás Juju é chamado charms ("encantos"). Charms podem
- ser escritos em qualquer linguagem de programação que pode ser executado
- a partir da linha de comando. Os charms são feitos pela comunidade do software juju
- que é quem cuida dos processos de instalação e configuração dos serviços sendo orquestrados.
-
-\end{itemize}
-
-\subsection{Ferramentas do Mercado Relacionadas}
-
-Uma desvantagem do bitnami é que ele é uma ferramenta de código fechado, o que
-dificulta para uma análise sobre sua arquitetura.
-
-Uma desvantagem do standstorm.io é que ele não utiliza pacotes debian.
-
-
-\section{Teste das Hipóteses}
-
-%#TODO
-
-Para o teste de H1 foram levantados algumas aplicações web empacotadas no debian
-da seguinte forma....  .....
-
-Como podemos ver na documentação das aplicações XYZ...
-
-Logo podemos ver que nem todas as aplicações empacotadas no debian possuem
-suporte a múltiplas instâncias.....
 
 
 Para o teste de H2 foi feito primeiramente uma pesquisa dentro das ferramentas
