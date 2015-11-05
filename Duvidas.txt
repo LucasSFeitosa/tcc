@@ -1,0 +1,7 @@
+1- Na metodologia, preciso falar que escolhi usar vagrant pra criar as VMS
+de testes para validar minha proposta? Por enquanto coloquei apenas que deve
+usar um ambiente limpo.
+
+2- Por enquanto tira a hipótese mesmo?
+
+3- Tempo verbal na metodologia
