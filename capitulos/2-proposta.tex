@@ -123,7 +123,7 @@ Com isso, tendo os trabalhos relacionados e a questão de pesquisa como insumo,
 justifica-se a definição de uma proposta de arquitetura e procedimentos para
 implantação automatizada de aplicações web que utilizam pacotes debian.
 
-\section{Métodos e Procedimentos ou Arquitetura Proposta????}
+\section{Procedimentos para proposta de arquitetura}
 
 A partir do referencial teórico pode-se definir uma proposta de
 arquitetura básica para implantação automatizada de aplicações definindo as
@@ -141,28 +141,69 @@ aspectos:
   diferentes linguagens.
 \end{itemize}
 
-TODO
-Como eu fiz essa arquitetura?
+Esses aspectos são importantes para definir o que vai compor a arquitetura inicial,
+isso é importante para que se possa validar a proposta com os exemplos de uso,
+podendo assim evoluir a arqutetura proposta. Para definir a arquitetura inicial
+deve-se levar em consideração os seguintes pontos:
 
-- Precisar escolher ferramentas de automação de instalação
-- Escolher banco de dados
+\begin{itemize}
+  \item  \textbf{Definir tecnologia para automatizar implantação :}  Definir qual será a
+  tecnologia escolhida dentre as citadas no referencial teórico para dar suporte
+  a implantação.
+  \item  \textbf{Definir conjunto mínimo de dependências:} Definir quais são as dependências
+  mínimas para o funcionamento das aplicações escolhidas, tais como: sistema operacional,
+  pacotes pré-instalados e aplicações pré-configuradas.
+  \item  \textbf{Definir as fases e os procedimentos para implantação automatizada:}
+   Definir quais são etapas da implantação, definir a ordem necessária para a execução de
+  cada fase da implantação, dado a importância de definir as fases que compõem o processo de
+  implantação e de acordo com \cite{omg2006}.
+  \item  \textbf{Definir os aspectos de segurança} Definir quais são os aspectos de segurança
+  e automatizar os que forem possíveis de serem aplicados dentro do contexto desejado.
+\end{itemize}
 
+Com a arquitetura definida o próximo passo é definir um ambiente de desenvolvimento e de
+testes, dado o contexto de implantação de software é importante possuir um ambiente flexível para
+testar facilmente a instalação e configuração das aplicações e podendo facilmente
+reinicializar esse ambiente de forma que ele fique limpo sem resquícios da instalação
+anterior.
 
-\section{Validação do método}
+Com a arquitetura definida e com um ambiente de desenvolvimento e de testes configurados, é
+necessário definir quais são as ferramentas que servirão como caso de testes
+para a implementação da solução. Elas serão importantes pois a partir delas
+e de suas necessidades que será feito a validação da proposta e seus refinamentos.
 
-Para validação do método será feito o uso de uma TODO discreta que de acordo com
-TODO diz que TODO.
+\section{Validação da proposta}
 
-Para validar o método do trabalho será feitos exemplos de uso com aplicações
+Para validar a arquitetura proposta no trabalho serão feitos exemplos de uso com aplicações
 que possam servir como base para validação da proposta de arquitetura, a fim de
 refinar e evoluir a solução, baseada em exemplos de uso com aplicações reais e conhecidas
-na comunidade de software livre.
+na comunidade de software livre, devem ser levados os seguintes aspectos para a
+escolha das aplicações:
 
+\begin{itemize}
+  \item  \textbf{Aplicações empacotadas no debian :}  Como o intuito do trabalho
+  é realizar implantações múltiplas a partir de um pacote único, tais aplicações
+  devem estar empacotadas e disponíveis para instalação nos servidores do debian.
+  Isso impacta na escolha da ferramenta, visto que não será necessário ter o trabalho
+  de empacotar aplicações que ainda não estão empacotadas no debian.
+  \item  \textbf{Servidor web compatível:} As ferramentas escolhidas devem no
+  mínimo possuir o servidor web compatível, por exemplo: as aplicações juntas
+  devem possuir suporte para nginx ou apache ou similares.
+  \item  \textbf{Aplicações com comunidades ativas:} Como estamos trabalhando
+  com software livre, é importante que os softwares escolhidos possuem comunidades
+  ativas, isso pode ajudar na resolução de  possíveis problemas, logo aplicações
+  desconhecidas devem ser evitadas, e aplicações conhecidas devem ser priorizadas.
+  E isso também pode ser um fator importante caso durante os testes sejam descobertos
+  bugs ou melhorias dentro dessas ferramentas.
+  \item  \textbf{Documentação do software:} A documentação do software também deve
+  ser levado em consideração, principalmente a documentação da instalação e configuração
+  dentro da arquitetura definida.
+\end{itemize}
 
 \subsection{Exemplos de uso}
 
-Com isso serão escolhidos alguns exemplos de uso, com a
-finalidade de verificar se com tais métodos e procedimentos atingimos o objetivo
+Para validar a arquitetura, serão escolhidos alguns exemplos de uso, com a
+finalidade de verificar se com tais métodos e procedimentos atingirá o objetivo
 estabelecido. Para a escolha das aplicações que serão utilizadas como exemplos
 de uso é necessário fazer uma busca nas aplicações web que são empacotadas no
 debian e que possuem suporte a configuração de múltiplas instâncias,essa busca
@@ -204,95 +245,3 @@ Para realizar tais validações é importante que as instalações e configuraç
 sejam em um ambiente limpo, ou seja, os testes devem ser criados de preferência
 em máquinas virtuais com a configuração conhecida como "minimal", que contém
 instalado apenas as apliacções necessárias para o funcionamento do sistema.
-
-%------------------------------- TODO MOVER para parte de resultados preliminares
-%Como o interesse neste trabalho é a busca por aplicações que possam ser instaladas
-%em servidores e que sejam interessantes para usuários nos deparamos com ferramentas
-%que se encaixam no nosso contexto como por exemplo: owncloud que é uma ferramenta para armazenamento
-%na nuvem para arquivos, músicas, calendários, contatos. E wordpress que é
-%uma ferramenta conhecida para criação de blogs.
-%-----------------------------------------------------------------------------
-
-% TODO fica ou sai?
-%\section{Hipótese}
-%
-%Todas essas ferramentas resolvem parcialmente a questão problema neste trabalho,
-%a questão problema a ser resolvida neste trabalho é:
-%
-%\begin{center}
-%  \textit{
-%  Como implantar múltiplas aplicações a partir de um pacote único
-%  de forma centralizada e segura?
-%}
-%\end{center}
-%
-%
-%\begin{itemize}
-%  \item  \textbf{H1 :} É possível criar varias instâncias de aplicações
-%  web a partir de um pacote único no mesmo servidor.
-%   \item  \textbf{H2 :} Existe uma arquitetura definida para implantação de
-%   múltiplas instâncias de aplicações a partir de um pacote único que levam em consideração
-%   os aspectos de segurança em uma implantação automatizada de software.
-%\end{itemize}
-%
-%Essas hipóteses serão importantes para definir a proposta para a solução da questão
-%problema, como de acordo com (MARCONI; LAKATOS, 2000, p. 137) a hipótese
-%é suposta, provável e provisória resposta ao problema.
-%
-%\section{Teste das Hipóteses}
-
-\section{Detalhes da Proposta}
-
-A proposta deste trabalho é trazer uma solução para a implantação automatizada
-de múltiplas aplicações a partir de um pacote único de forma centralizada e segura.
-Para isso será primeiramente necessário definir uma arquitetura padrão para a
-implantação dessas aplicações, ou seja, definir:
-
-\begin{itemize}
-  \item  \textbf{Tecnologia para automatizar implantação :}  Definir qual será a
-  tecnologia escolhida dentre as citadas no referencial teórico para dar suporte
-  a implantação.
-  \item  \textbf{Conjunto mínimo de dependências:} Definir quais são as dependências
-  mínimas para o funcionamento das aplicações escolhidas, tais como: sistema operacional,
-  pacotes pré-instalados e aplicações pré-configuradas.
-  \item  \textbf{Procedimentos para implantação:} Definir quais são etapas da implantação,
-  definir a ordem necessária para a execução de cada fase da implantação.
-  \item  \textbf{Aspectos de segurança} Definir quais são os aspectos de segurança
-  e automatizar os que forem possíveis de serem aplicados dentro do contexto desejado.
-\end{itemize}
-
-Com a arquitetura definida o próximo passo é definir um ambiente de desenvolvimento e de
-testes, dado o contexto de implantação de software é importante possuir um ambiente flexível para
-testar facilmente a instalação e configuração das aplicações e podendo facilmente
-reinicializar esse ambiente de forma que ele fique limpo sem resquícios da instalação
-anterior.
-
-Com a arquitetura definida e com um ambiente de desenvolvimento e de testes configurados, é
-necessário definir quais são as ferramentas que servirão como caso de testes
-para a implementação da solução. Elas serão importantes pois a partir delas
-e de suas necessidades que será implementado a primeira versão da proposta para
-a solução. Por isso também é importante definir aspectos que servirão como parâmetro
-para ajudar no desenvolvimento da solução. Esses aspectos são:
-
-\begin{itemize}
-  \item  \textbf{Aplicações empacotadas no debian :}  Como o intuito do trabalho
-  é realizar implantações múltiplas a partir de um pacote único, tais aplicações
-  devem estar empacotadas e disponíveis para instalação nos servidores do debian.
-  Isso impacta na escolha da ferramenta, visto que não será necessário ter o trabalho
-  de empacotar aplicações que ainda não estão empacotadas no debian.
-  \item  \textbf{Servidor web compatível:} As ferramentas escolhidas devem no
-  mínimo possuir o servidor web compatível, por exemplo: as aplicações juntas
-  devem possuir suporte para nginx ou apache ou similares.
-  \item  \textbf{Aplicações com comunidades ativas:} Como estamos trabalhando
-  com software livre, é importante que os softwares escolhidos possuem comunidades
-  ativas, isso pode ajudar na resolução de  possíveis problemas, logo aplicações
-  desconhecidas devem ser evitadas, e aplicações conhecidas devem ser priorizadas.
-  E isso também pode ser um fator importante caso durante os testes sejam descobertos
-  bugs ou melhorias dentro dessas ferramentas.
-  \item  \textbf{Documentação do software:} A documentação do software também deve
-  ser levado em consideração, principalmente a documentação da instalação e configuração
-  dentro da arquitetura definida.
-\end{itemize}
-
-Por fim, com a arquitetura definida, ambientes definidos e ferramentas escolhidas
-servirão de insumo para a construção da solução proposta.
