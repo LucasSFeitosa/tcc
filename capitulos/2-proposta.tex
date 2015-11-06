@@ -106,18 +106,35 @@ usuário comum não se preocupe com questões mais técnicas. Também temos o
 pessoais. Sandstorm permite que você execute o seu próprio servidor e instalar
 facilmente as aplicações em que dão suporte, e por fim a ferramenta \cite{juju}
 Juju que lhe permite implementar,configurar, gerenciar, manter e serviços de forma
-rápida e eficiente escala nuvem em nuvens públicas.
+rápida e eficiente automatizando a instalação e configuração de aplicações na nuvem.
 
-TODO colocar um miolo aqui, explicar as arquiteturas dessas ferramentas...
+O estudo dessas aplicações serve como base para entender como são feitas as
+arquiteturas que são utilizadas pela comunidade da computação, por exemplo o JuJu
+utiliza uma abstração conhecida como charm, que são o códigos que define um serviço,
+um charm contém toda a lógica de que você precisa para implementar e integrar uma
+aplicação, contendo todo o processo de download de ferramentas, instalação e configuração
+de aplicações, podendo ser escrito
+em várias linguagens ou até provisionadores como chef, puppet ou docker \cite{juju}, é
+possível reaproveitar os charms feitos pela comunidade do JuJu assim reaproveitando
+os charms prontos ou não precisando escrever um charm do zero. Já bitnami ja tráz as aplicações
+prontas pra uso, assim o usuário interage no formato click-to-install, porém o usuário
+só tem a disposição as aplicações disponibilizadas pelo bitnami, isso também é
+a forma em que o sandstorm.io trabalha, com a diferença de que o standstorm é
+software livre. Já o trabalho feito por \cite{leo2014} é voltado para serviços web
+de grande escala, com foco na nuvem e escalar infraestrutura, utilizando o middleware
+construido em seu trabalho podendo gerenciar ambientes de computação em nuvem
+como Amazon EC2 e Openstack, sua engine utilizao chef solo como seu agente de configuração.
 
-Com os trabalhos relacionados vimos que apesar de todas elas trazerem soluções
-para automatizar instalação de aplicações mas nenhuma delas traz uma solução que
-permita a automatizar instalação e configuração de múltiplas instâncias de uma aplicação
-utilizando empacotamento, a utilização do empacotamento traz inúmeras vantagens
-no processo de implantação de aplicações como citadas em \ref{cap-introducao}.
-Com isso, tendo os trabalhos relacionados e a questão de pesquisa como insumo,
-justifica-se a definição de uma proposta de arquitetura e procedimentos para
-implantação automatizada de aplicações web que utilizam pacotes debian.
+Com esse levantamento vemos que existem soluções bem próximas do que este trabalho
+pretende atingir como objetivo, assim temos como hipótese que é possível construir
+uma arquitetura que atinja o objetivo deste trabalho que é automatizar instalação e configuração de
+múltiplas instâncias de uma aplicação web utilizando pacotes debian.
+
+Visto que a utilização do empacotamento traz inúmeras vantagens no processo de implantação
+de aplicações como citado em \ref{cap-introducao}, tendo o levantamento dos trabalhos relacionados
+e a questão de pesquisa como insumo, e a hipótese levantada, justifica-se a
+definição de uma proposta de arquitetura e procedimentos para implantação automatizada
+de aplicações web que utilizam pacotes debian.
 
 \section{Procedimentos para proposta de arquitetura}
 
@@ -240,4 +257,4 @@ exemplos de uso também servirão para refinar e evoluir a arquitetura proposta.
 Para realizar tais validações é importante que as instalações e configurações
 sejam em um ambiente limpo, ou seja, os testes devem ser criados de preferência
 em máquinas virtuais com a configuração conhecida como "minimal", que contém
-instalado apenas as aplicações necessárias para o funcionamento do sistema.
+instalado apenas as aplicações necessárias para o funcionamento do sistema operacional.
