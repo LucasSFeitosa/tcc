@@ -2,9 +2,12 @@
 de testes para validar minha proposta? Por enquanto coloquei apenas que deve
 usar um ambiente limpo.
 
-2- Por enquanto tira a hipótese mesmo?
+2- Tempo verbal na metodologia
 
-3- Tempo verbal na metodologia
+3- Cuidar das imagens
+
+
+- Por enquanto tira a hipótese mesmo?
 
 % TODO fica ou sai?
 %\section{Hipótese}
