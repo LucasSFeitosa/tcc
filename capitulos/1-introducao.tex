@@ -1,42 +1,6 @@
 \chapter{Introdução}
 \label{cap-introducao}
 
-A internet tornou-se nos últimos 10 anos a ferramenta mais poderosa de comunição
-mundial, todos os dias milhões de pessoas se conectam e trocam informações,
-milhares de dados são trafegados e várias aplicações são utilizadas todo o tempo.
-
-Com isso a necessidade das aplicações estarem disponíveis na web e online vinte e
-quatro horas por dia é praticamente obrigatória, se você busca usuários para sua
-aplicação sem dúvida você precisa disponibilizar na web para que possa atigingir
-qualquer usuário no mundo todo.
-
-Um dos problemas que mais preocupa a equipe de desenvolvimento de software é a
-segurança, a partir do momento em que você insere sua aplicação na web ela está
-vulnerável a ataques maliciosos, os motivos pelos quais sua aplicação pode receber
-um ataque pode ser variado, e todo cuidado deve ser tomado.
-
-A área de segurança da informação é uma área dentro da engenharia de softwre que
-a cada dia cresce cada vez mais, a importância de manter as informações dos usuários
-segura é diretamente proporcional a qualidade do serviço prestado, já que ninguém
-vai querer utilizar um serviço inseguro. Com isso as empresas investem cada vez
-mais na segurança dos seus softwares, buscando minimizar as vulnerabilidades que
-possam ser alvos de ataques.
-
-Uma fase importante do ciclo de vida de um software é a fase de implatanção, que
-é aonde o software é colocado em produção, ou seja, disponibilizado para os
-todos os usuários que possuem acesso a internet (no caso de aplicações web), antes
-dessa etapa o software é testado em ambiente de testes ou ambiente de desenvolvimento,
-ou seja, nos computadores dos programadores ou em um ambiente controlado, logo é
-importante tomar cuidados com a segurança, no processo de implantação do
-software em produção, evitando brechas para ataques maliciosos quando o software
-for disponibilizado para uso.
-
-Neste trabalho será abordado os aspectos para implantação segura de aplicações
-voltadas para web, quais são as boas práticas, as técnicas, as ferramentas e
-procedimentos para tornar a implantação mais segura e automática, trazendo assim
-benefícios tanto para os engenheiros de software que desenvolveram o sistema
-quanto para os seus possíveis usuários.
-
 %------------------------------------------------------------------------------%
 \section{Problema}
 %
@@ -53,25 +17,22 @@ forma centralizada e segura?
 
 %
 
-O obejtivo deste trabalho consiste em um estudo prático sobre implantação automatizada
-e segura de multiplas aplicações a partir de um pacote único, mostrando os aspectos
+O obejtivo deste trabalho consiste em automatizar instalação e configuração de
+múltiplas instâncias de uma aplicação web a partir de um pacote único, mostrando os aspectos
 mais importantes que devem ser tratados durante todo o processo de configuração
-e instalação de um software via pacotes debian. Além disso ao fim deste trabalho
-conterá uma proposta de arquitetura e procedimentos para implantação automatizada
-de aplicações web que utilizam pacotes debian.
+e instalação de um software via pacotes debian.
 
+%Além disso, tem-se como objetivo oferecer uma proposta de política de
+%empacotamento para aplicações web no Debian no qual busca:
 %
+%\begin{itemize}
+%  \item  \textbf{Politica de empacotamento para aplicações web:} Manual com
+%  práticas de empacotamento para aplicações web, com intuito de padronizar a
+%  forma em que as aplicações são empacotadas.
+%  \item  \textbf{Implantação segura de aplicações web:} Boas práticas para
+%  configuração de aplicações web que utilizam pacotes debian.
+%\end{itemize}
 
-Além disso, tem-se como objetivo oferecer uma proposta de política de
-empacotamento para aplicações web no Debian no qual busca:
-
-\begin{itemize}
-  \item  \textbf{Politica de empacotamento para aplicações web:} Manual com
-  práticas de empacotamento para aplicações web, com intuito de padronizar a
-  forma em que as aplicações são empacotadas.
-  \item  \textbf{Implantação segura de aplicações web:} Boas práticas para
-  configuração de aplicações web que utilizam pacotes debian.
-\end{itemize}
 
 %------------------------------------------------------------------------------%
 \section{Organização do trabalho}
@@ -227,6 +188,3 @@ contribuições foram:
   \subitem Gerar certificados de segurança auto-assinados automaticamente.
   \subitem Forçar aplicação de email a usarem os protocolos SMPTS e IMAPS.
 \end{itemize}
-
-
-%
