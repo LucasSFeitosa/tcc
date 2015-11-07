@@ -20,16 +20,14 @@ Da sua formulação dependerá o desenvolvimento da sua pesquisa
 Para responder a questão problema deste trabalho se faz a necessidade de uma especificação
 de uma metodologia de pesquisa que de acordo com \cite{marconi2002tecnicas} a
 especificação da metodologia serve para abrangir itens que respondam as questões
-Como? Com quê? Onde?
-
-De acordo com \cite{gerhardt2009metodos} existem diferentes tipos de pesquisa,
+Como? Com quê? Onde? De acordo com \cite{gerhardt2009metodos} existem diferentes tipos de pesquisa,
 elas podem ser classificados quanto sua abordagem, sua natureza, seus objetivos e
 seus procedimentos. Por isso é importante selecionar a modalidade de pesquisa
 adequada ao objeto de pesquisa.
 
 Assim este trabalho é classificado quanto à natureza como pesquisa aplicada
 pois tem como objetivo gerar conhecimentos para aplicação prática, dirigidos à
-solução de problemas específicos \cite{gerhardt2009metodos}.Quanto a abordagem,
+solução de problemas específicos \cite{gerhardt2009metodos}. Quanto a abordagem,
 a pesquisa é classificada como qualitativa, pois os pesquisadores que utilizam os
 métodos qualitativos buscam explicar o porquê das coisas, exprimindo o que convém
 a ser feito, mas não quantificam os valores nem nem se submetem a prova de fatos,
@@ -50,7 +48,7 @@ testar a solução proposta.
 Quanto às técnicas de coleta de dados, de acordo com \cite{gerhardt2009metodos}
 a coleta de dados é a busca por informações para a elucidação do fenômeno ou
 fato que o pesquisador quer desvendar, serão utilizados neste trabalho a pesquisa
-bibliográfica e observação simples da aplicação da solução nos exemplos de uso.
+bibliográfica e observação simples da execução da solução nos exemplos de uso.
 A figura \ref{fig:metodologia1} apresenta de forma resumida a classficação da pesquisa
 
 \begin{figure}[h]
@@ -63,8 +61,8 @@ A figura \ref{fig:metodologia1} apresenta de forma resumida a classficação da 
 
 Segundo \cite{andre2008estudo} uma pesquisa é executada de acordo com três fases:
 Planejamento, Coleta de dados e Análise de dados. A fase de planejamento consiste
-em definir o escopo do estudo junto com a questão de pesquisa e a metodologia
-de pesquisa, com os seus procedimentos e exemplos de uso. Na fase de coleta de dados
+em definir o escopo do estudo junto com a questão de pesquisa, e a metodologia
+de pesquisa com os seus procedimentos e exemplos de uso. Na fase de coleta de dados
 se aplicam as técnics de coleta de dados definidas para que na última fase esses
 dados sejam analisados e os resultados possam ser divulgados. Essas fases estão
 resumidas na figura \ref{fig:metodologia2}.
@@ -116,14 +114,16 @@ aplicação, contendo todo o processo de download de ferramentas, instalação e
 de aplicações, podendo ser escrito
 em várias linguagens ou até provisionadores como chef, puppet ou docker \cite{juju}, é
 possível reaproveitar os charms feitos pela comunidade do JuJu assim reaproveitando
-os charms prontos ou não precisando escrever um charm do zero. Já bitnami ja tráz as aplicações
-prontas pra uso, assim o usuário interage no formato click-to-install, porém o usuário
+os charms prontos ou não precisando escrever um charm do zero.
+
+Já bitnami ja tráz as aplicações
+prontas pra uso, assim o usuário interage no formato clique para instalar, porém o usuário
 só tem a disposição as aplicações disponibilizadas pelo bitnami, isso também é
 a forma em que o sandstorm.io trabalha, com a diferença de que o standstorm é
 software livre. Já o trabalho feito por \cite{leo2014} é voltado para serviços web
-de grande escala, com foco na nuvem e escalar infraestrutura, utilizando o middleware
-construido em seu trabalho podendo gerenciar ambientes de computação em nuvem
-como Amazon EC2 e Openstack, sua engine utilizao chef solo como seu agente de configuração.
+de grande escala, com foco em implantação de aplicações na nuvem e escalar infraestrutura, utilizando o middleware
+construido em seu trabalho, assim podendo gerenciar ambientes de computação em nuvem
+como Amazon EC2 e Openstack, sua engine utiliza o chef solo como seu agente de configuração.
 
 Com esse levantamento vemos que existem soluções bem próximas do que este trabalho
 pretende atingir como objetivo, assim temos como hipótese que é possível construir
@@ -131,7 +131,7 @@ uma arquitetura que atinja o objetivo deste trabalho que é automatizar instala�
 múltiplas instâncias de uma aplicação web utilizando pacotes debian.
 
 Visto que a utilização do empacotamento traz inúmeras vantagens no processo de implantação
-de aplicações como citado em \ref{cap-introducao}, tendo o levantamento dos trabalhos relacionados
+de aplicações como citado no capítulo \ref{cap-introducao}, tendo o levantamento dos trabalhos relacionados
 e a questão de pesquisa como insumo, e a hipótese levantada, justifica-se a
 definição de uma proposta de arquitetura e procedimentos para implantação automatizada
 de aplicações web que utilizam pacotes debian.
@@ -152,6 +152,7 @@ aspectos de segurança na implantação de software. Na definição da arquitetu
   \item  \textbf{A3 :} Possibilidade de lidar com aplicações desenvolvidas em
   diferentes linguagens.
   \item  \textbf{A4 :} Aplicações que são empacotadas no debian.
+  \item  \textbf{A5 :} Boas práticas de implantação de software.
 \end{itemize}
 
 Esses aspectos são importantes para definir o que vai compor a arquitetura inicial,
@@ -167,14 +168,16 @@ são os seguintes:
   tecnologia escolhida dentre as citadas no referencial teórico para dar suporte
   a implantação.
   \item  \textbf{Definir conjunto mínimo de dependências:} Definir quais são as dependências
-  mínimas para o funcionamento das aplicações escolhidas, tais como: sistema operacional,
-  pacotes pré-instalados e aplicações pré-configuradas.
+  mínimas para o funcionamento de uma aplicação independente das aplicações escolhidas para
+  servir de exemplos de uso, tais como: sistema operacional, pacotes pré-instalados
+  e aplicações pré-configuradas, como por exemplo: servidor web e banco de dados.
   \item  \textbf{Definir as fases e os procedimentos para implantação automatizada:}
    Definir quais são etapas da implantação, definir a ordem necessária para a execução de
   cada fase da implantação, dado a importância de definir as fases que compõem o processo de
   implantação e de acordo com \cite{omg2006}.
   \item  \textbf{Definir os aspectos de segurança} Definir quais são os aspectos de segurança
-  e automatizar os que forem possíveis de serem aplicados dentro do contexto desejado.
+  e automatizar os que forem possíveis de serem aplicados dentro do contexto da arquitetura
+  proposta.
 \end{itemize}
 
 Com a arquitetura definida o próximo passo é definir um ambiente de desenvolvimento e de
@@ -191,7 +194,7 @@ e de suas necessidades que será feito a validação da proposta e seus refiname
 Para validar a arquitetura proposta no trabalho serão feitos exemplos de uso com aplicações
 que possam servir como base para validação da proposta de arquitetura, a fim de
 refinar e evoluir a solução, baseada em exemplos de uso com aplicações reais e conhecidas
-na comunidade de software livre, devem ser levados os seguintes aspectos para a
+na comunidade de software livre, devem ser levados as seguintes características para a
 escolha das aplicações:
 
 \begin{itemize}
@@ -206,12 +209,16 @@ escolha das aplicações:
   \item  \textbf{Aplicações com comunidades ativas:} Como estamos trabalhando
   com software livre, é importante que os softwares escolhidos possuem comunidades
   ativas, isso pode ajudar na resolução de  possíveis problemas, logo aplicações
-  desconhecidas devem ser evitadas, e aplicações conhecidas devem ser priorizadas.
+  em que sejam difíceis de comunicar com sua comunidade devem ser evitadas, e
+  aplicações com a comunidade de desenvolvedores e usuários ativa devem ser priorizadas.
   E isso também pode ser um fator importante caso durante os testes sejam descobertos
-  bugs ou melhorias dentro dessas ferramentas.
+  bugs ou melhorias dentro dessas ferramentas e tais bugs e melhorias possam ser
+  reportados para a comunidade, ou até mesmo solucionados e devolvidos aos mantenedores
+  das ferramentas.
   \item  \textbf{Documentação do software:} A documentação do software também deve
   ser levado em consideração, principalmente a documentação da instalação e configuração
-  dentro da arquitetura definida.
+  dentro da ferramenta, ferramentas que não possuem documentação de instalação e
+  configuração devem ser evitadas.
 \end{itemize}
 
 \subsection{Exemplos de uso}
@@ -258,3 +265,12 @@ Para realizar tais validações é importante que as instalações e configuraç
 sejam em um ambiente limpo, ou seja, os testes devem ser criados de preferência
 em máquinas virtuais com a configuração conhecida como "minimal", que contém
 instalado apenas as aplicações necessárias para o funcionamento do sistema operacional.
+
+A partir da execução dos exemplos de uso será possível a coleta de informações
+necessárias para a validação da solução proposta, essa validação a princípio
+será feita a partir da execução da implantação e verificação das funcionalidades
+da aplicação implantada, ou seja, após a execução da implantação o testador deverá
+verificar o perfeito funcionamento de algumas funcionalidades básicas da aplicação
+escolhida, e principalmente verificar a implantação de várias instâncias da mesma
+aplicação no mesmo servidor destino, observando o perfeito funcionamento de todas as
+instâncias implantadas assim validando a implantação de múltiplas instâncias.
