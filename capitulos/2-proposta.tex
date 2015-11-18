@@ -8,7 +8,7 @@ servindo como base para a sua reprodução em trabalhos futuros.
 A pesquisa é fundamentada e metodologicamente construída objetivando a resolução
 ou o esclarecimento de um problema. O problema é o ponto de partida da pesquisa.
 Da sua formulação dependerá o desenvolvimento da sua pesquisa
-\cite{moresi2003metodologia}, neste trabalho a questão problema a ser resolvida neste trabalho é:
+\cite{moresi2003metodologia}, neste trabalho a questão problema a ser resolvida é:
 
 \begin{center}
   \textit{
@@ -17,66 +17,61 @@ Da sua formulação dependerá o desenvolvimento da sua pesquisa
 }
 \end{center}
 
-Para responder a questão problema deste trabalho se faz a necessidade de uma especificação
-de uma metodologia de pesquisa que de acordo com \cite{marconi2002tecnicas} a
-especificação da metodologia serve para abrangir itens que respondam as questões
-Como? Com quê? Onde? De acordo com \cite{gerhardt2009metodos} existem diferentes tipos de pesquisa,
-elas podem ser classificados quanto sua abordagem, sua natureza, seus objetivos e
-seus procedimentos. Por isso é importante selecionar a modalidade de pesquisa
-adequada ao objeto de pesquisa.
+Dado a questão problema, e o objetivo que é implantação automatizada
+de aplicações em sistema Debian GNU/Linux, este trabalho consiste em contribuir
+com a construção de uma solução de engenharia de software que resolva a questão
+problema, essa construção será feita a partir dos conhecimentos adquiridos durante
+o curso de engenharia de software, além disso a solução proposta deverá passar
+por uma validação dos resultados, utilizando uma validação baseada em exemplos
+de uso, onde cada exemplo de uso terá um cenário diferente para testar a solução
+proposta. Essa validação tem seus procedimentos definidos na seção\ref{section:validacao} e
+e as definições dos exemplo de uso estão na seção\ref{section:exemplos}.
 
-Assim este trabalho é classificado quanto à natureza como pesquisa aplicada
-pois tem como objetivo gerar conhecimentos para aplicação prática, dirigidos à
-solução de problemas específicos \cite{gerhardt2009metodos}. Quanto a abordagem,
-a pesquisa é classificada como qualitativa, pois os pesquisadores que utilizam os
-métodos qualitativos buscam explicar o porquê das coisas, exprimindo o que convém
-a ser feito, mas não quantificam os valores nem nem se submetem a prova de fatos,
-pois os dados analisados são não-métricos \cite{gerhardt2009metodos}.
+Inicialmente será feito uma pesquisa nos trabalhos relacionados para entender
+melhor o problema, e para guiar essa pesquisa será utilizado a definição de uma
+metodologia de pesquisa. De acordo com\cite{gerhardt2009metodos} existem diferentes
+tipos de pesquisa, elas podem ser classificados quanto sua abordagem, sua natureza,
+seus objetivos e seus procedimentos. Por isso é importante selecionar a modalidade
+de pesquisa adequada ao objeto de pesquisa.
+
+Assim a pesquisa inicial será classificada quanto à natureza como pesquisa aplicada
+pois tem como objetivo gerar conhecimentos para aplicação prática\cite{gerhardt2009metodos},
+relacionada a aplicações que auxiliam na implantação automatizada de software.
+Quanto a abordagem, a pesquisa é classificada como qualitativa, para buscar entender
+o uso da automação da implantação de aplicações, exprimindo o que convém
+a ser feito.
 
 Quanto aos objetivos, esta pesquisa é classificada como pesquisa descritiva, que
-exige do investigador uma série de informações sobre o que deseja pesquisar.
-Esse tipo de estudo pretende descrever os fatos e fenômenos de determinada realidade
+exige do investigador uma série de informações sobre o que deseja pesquisar
 \cite{trivinos1987introduccao}. Quanto aos procedimentos técnicos, serão utilizados
 neste trabalho a pesquisa bibliográfica baseada no levantamento de referências
-teóricas em livros e artigos científicos, permitindo conhecer o que já foi abordado
-no assunto com trabalhos relacionados e conhecimentos prévios sobre a respeito da
-possível solução à questão problema. Além disso também será usado a pesquisa
-experimental que dado a proposta de solução da questão de pesquisa terá sua
-validação baseada em exemplos de uso, cada um com o cenário de uso diferente para
-testar a solução proposta.
-
-Quanto às técnicas de coleta de dados, de acordo com \cite{gerhardt2009metodos}
-a coleta de dados é a busca por informações para a elucidação do fenômeno ou
-fato que o pesquisador quer desvendar, serão utilizados neste trabalho a pesquisa
-bibliográfica e observação simples da execução da solução nos exemplos de uso.
-A figura \ref{fig:metodologia1} apresenta de forma resumida a classficação da pesquisa
+teóricas em livros e artigos científicos, permitindo conhecer os trabalhos
+relacionados. A figura\ref{fig:metodologia1} apresenta de forma resumida a classficação
+da pesquisa:
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=1.0\textwidth]
-      {figuras/metodologia1.eps}
+      {figuras/met1.eps}
   \caption{Resumo da classificação de pesquisa}
-  \label{fig:metodologia1}
+\label{fig:metodologia1}
 \end{figure}
 
-Segundo \cite{andre2008estudo} uma pesquisa é executada de acordo com três fases:
-Planejamento, Coleta de dados e Análise de dados. A fase de planejamento consiste
-em definir o escopo do estudo junto com a questão de pesquisa, e a metodologia
-de pesquisa com os seus procedimentos e exemplos de uso. Na fase de coleta de dados
-se aplicam as técnics de coleta de dados definidas para que na última fase esses
-dados sejam analisados e os resultados possam ser divulgados. Essas fases estão
-resumidas na figura \ref{fig:metodologia2}.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]
-      {figuras/metodologia2.eps}
-  \caption{Fases da pesquisa}
-  \label{fig:metodologia2}
-\end{figure}
+% agora aqui falar do desenvolvimento do software em si, como vou fazer o desenvolvimento
+% depois eu vou dizer o que eu escolhi pra "executar" o desenvolvimento
+% ja tem uma seção de validação, trabalhos relacionados, Exemplos de uso, construcao
+% na validação entra a observação simples e não aqui
+% colocar uma outra figura que represente tudo
+% aqui ja morreu pesquisa bibliográfica
+%
+A partir da metodologia definida é possível encontrar os trabalhos relacionados
+pela pesquisa científica, os trabalhos encontrados serão de insumo para iniciar
+a construção da solução proposta a partir da análise dos resultados encontrados,
+as próximas seções tratam dos trabalhos relacionados encontrados e dos métodos e
+procedimentos para construção da solução.
 
 \section{Trabalhos Relacionados}
-
+\label{section:trabalhos_relacionados}
 Para responder a questão problema primeiramente deve ser feito um levantamento
 de trabalhos relacionados, para entender melhor como a automação da implantação
 de software está sendo utilizada como solução na academia e nas empresas, e
@@ -85,7 +80,7 @@ são levados em consideração.
 
 Para entender o que acontece na comunidade da computação em relação a implantação
 automatizada de aplicações, foi feito uma busca de alguns trabalhos relacionados, o primeiro
-trabalho relacionado é um trabalho acadêmico feito por \cite{leo2014} no qual foi
+trabalho relacionado é um trabalho acadêmico feito por\cite{leo2014} no qual foi
 desenvolvido um sistema de middleware chamado CHOReOS Enactment Engine que é um
 sistema que possibilita a implantação distribuída e automatizada de composições
 de serviços web em uma estrutura virtualizada, no qual opera no modelo
@@ -94,15 +89,14 @@ com abordagens ad-hoc de implantação levando em consideração a escalabilidad
 em relação ao tempo de implantação das composições dos serviços.
 
 Existem também ferramentas disponíveis no mercado que também trazem a proposta
-de automação de instalação de aplicações alguns exemplos são: \cite{bitnami}
+de automação de instalação de aplicações alguns exemplos são:\cite{bitnami}
 BitNami que é uma biblioteca de aplicativos de servidor populares e ambientes de
 desenvolvimento que pode ser instalado com um clique. Ele automatiza todo o
 processo de compilar e configurar os aplicativos e todas as suas dependências
 (bibliotecas de terceiros, linguagem de programação, bases de dados) para que o
-usuário comum não se preocupe com questões mais técnicas. Também temos o
-\cite{sandstormio} Sandstorm é uma plataforma de código aberto para servidores
+usuário comum não se preocupe com questões mais técnicas. Também temos o\cite{sandstormio} Sandstorm é uma plataforma de código aberto para servidores
 pessoais. Sandstorm permite que você execute o seu próprio servidor e instalar
-facilmente as aplicações em que dão suporte, e por fim a ferramenta \cite{juju}
+facilmente as aplicações em que dão suporte, e por fim a ferramenta\cite{juju}
 Juju que lhe permite implementar,configurar, gerenciar, manter e serviços de forma
 rápida e eficiente automatizando a instalação e configuração de aplicações na nuvem.
 
@@ -112,7 +106,7 @@ utiliza uma abstração conhecida como charm, que são o códigos que define um 
 um charm contém toda a lógica de que você precisa para implementar e integrar uma
 aplicação, contendo todo o processo de download de ferramentas, instalação e configuração
 de aplicações, podendo ser escrito
-em várias linguagens ou até provisionadores como chef, puppet ou docker \cite{juju}, é
+em várias linguagens ou até provisionadores como chef, puppet ou docker\cite{juju}, é
 possível reaproveitar os charms feitos pela comunidade do JuJu assim reaproveitando
 os charms prontos ou não precisando escrever um charm do zero.
 
@@ -120,51 +114,135 @@ Já bitnami ja tráz as aplicações
 prontas pra uso, assim o usuário interage no formato clique para instalar, porém o usuário
 só tem a disposição as aplicações disponibilizadas pelo bitnami, isso também é
 a forma em que o sandstorm.io trabalha, com a diferença de que o standstorm é
-software livre. Já o trabalho feito por \cite{leo2014} é voltado para serviços web
+software livre. Já o trabalho feito por\cite{leo2014} é voltado para serviços web
 de grande escala, com foco em implantação de aplicações na nuvem e escalar infraestrutura, utilizando o middleware
 construido em seu trabalho, assim podendo gerenciar ambientes de computação em nuvem
 como Amazon EC2 e Openstack, sua engine utiliza o chef solo como seu agente de configuração.
 
-Com esse levantamento vemos que existem soluções bem próximas do que este trabalho
-pretende atingir como objetivo, assim temos como hipótese que é possível construir
-uma arquitetura que atinja o objetivo deste trabalho que é automatizar instalação e configuração de
-múltiplas instâncias de uma aplicação web utilizando pacotes debian.
+Com esse levantamento vemos que existem algumas soluções  que seguem a mesma
+linha do que este trabalho pretende atingir como objetivo, servindo como motivação
+o desenvolvimento do trabalho. Assim visto que a utilização do empacotamento
+como técnica de implantação, traz inúmeras vantagens no processo de implantação
+de aplicações como citado no capítulo\ref{cap-introducao}, tendo o levantamento
+dos trabalhos relacionados e a questão de pesquisa como insumo, justifica-se a
+construção de uma solução de engenharia de software para implantação automatizada
+de aplicações  em sistemas Debian GNU/Linux.
 
-Visto que a utilização do empacotamento traz inúmeras vantagens no processo de implantação
-de aplicações como citado no capítulo \ref{cap-introducao}, tendo o levantamento dos trabalhos relacionados
-e a questão de pesquisa como insumo, e a hipótese levantada, justifica-se a
-definição de uma proposta de arquitetura e procedimentos para implantação automatizada
-de aplicações web que utilizam pacotes debian.
+\section{Construção da solução}
+\label{section:construcao}
 
-\section{Procedimentos para proposta de arquitetura}
-
-A partir do referencial teórico é possível definir uma proposta de
-arquitetura básica para implantação automatizada de aplicações definindo as
-tecnologias utilizadas, ferramentas escolhidas para compor a arquitetura e procedimentos
-a serem seguidos que levam em consideração as boas práticas de implantação e os
-aspectos de segurança na implantação de software. Na definição da arquitetura inicial
-é importante levar em consideração os seguintes aspectos:
+A engenharia de software é a área da computação que busca evoluir de forma contínua
+todos os aspectos da produção de um software, procurando sempre a garantia da
+qualidade do produto desenvolvido. Segundo\cite{pressman2011engenharia}, a engenharia
+de software é  composta por um conjunto de três elementos fundamentais:
 
 \begin{itemize}
-  \item  \textbf{A1 :} Aspectos de segurança na implantação de aplicações web.
-  \item  \textbf{A2 :} Aspectos para implantação automatizada de múltiplas instâncias de
+  \item \textbf{Métodos:} Como fazer a implementação do software, com modelos,
+  especificações, critérios para qualidade.
+  \item \textbf{Ferramentas:} Objetivo de apoio automatizado para auxiliar as atividades
+  de engenharia de software.
+  \item \textbf{Processos:} Definem a sequência de práticas que serão utilizadas no
+  desenvolvimento.
+\end{itemize}
+
+Seguindo esses três elementos, é possível definir como será construido a solução.
+Primeiramente, é necessário definir o método de desenvolvimento de software, o
+método escolhido para desenvolvimento de software é o método ágil chamado programação
+extrema (XP), de acordo com\cite{796139} essa metodologia contém um conjunto de
+práticas que auxiliam um engenheiro de software. Dentro das práticas que estão
+em\cite{796139} foram escolhidas as que poderiam ser aplicadas no contexto deste
+ trabalho, e são elas:
+
+\begin{itemize}
+  \item \textbf{Pequenas versões:} Implementar pequenas versões para conseguir
+  um feedback mais rápido, atualizando o software frequentemente.
+lançamentos serão feitos a partir
+  \item \textbf{Design simples:} O código desenvolvido deve ser o mais simples possível,
+  facilitando o entendimento de outros desenvolvedores que venham a ler o código.
+  Além disso o código desenvolvido não deve fazer mais do que foi definido como
+  requisito de software.
+  \item \textbf{Refatoração:} O sistema pode ser resstruturado e seu comportamento
+  continuar o mesmo, é muito utilizado para remover duplicações de código, deixar
+  o código mais simples e fácil de dar manutenção.
+  \item \textbf{Programação em pares:} A produção do software deve ser feita por duas
+  pessoas utilizando a mesma máquina, no contexto deste trabalho a programação
+  em pares será feita com o orientando pareando com o orientador ou co-orientador,
+  sempre que possível.
+  \item \textbf{Revisão de código:} Todo o código produzido deverá ser revisado
+  por um progamador mais experiente, para que assim evite que erros sejam
+  adicionados no código, no contexto deste trabalho a revisão de código será
+  feita pelo co-orientador.
+  \item \textbf{Jogo de planejameto:} A equipe de desenvolvimento deve decidir
+  as atividades que serão desenvolvidas baseada em uma estimativa de duração,
+  prioridade das atividades e compelxidade, e também se tais atividades cabem
+  no período do ciclo de desenvolvimento.
+\end{itemize}
+
+O ciclo de desenvolvimento terá iterações com duração de uma semana, ou seja,
+o jogo do planejamento das atividades deverá levar em consideração que a
+estimativa de todas as atividades escolhidas para a a iteração não poderá
+ultrapassar a duração de uma semana, dentro dessa semana além do desenvolvimento
+das funcionalidaes também deve levar em consideração a próprioa atividade de jogo
+de planejamento, a programação em pares e a revisão de cóido. A revisão de código
+pode acarretar em pequenas correções que serão necessárias antes do código novo
+ser incorporado, e isso pode levar algum tempo para ser feito, por isso a importância
+de não deixar a revisão de cóidigo para o último dia da interação.
+
+%imagem
+
+As ferramentas de apoio ao desenvolvilmento de software são importantes para a
+organização do trabalho, auxiliando nas atividades típicas dentro de um projeto
+de engenharia de software. Algumas ferramentas são importantes pois tornan mais fácil
+a execução de algumas atividades, como por exemplo: o controle de versão do software,
+ferramenta para documentação do software e ferramenta para gerenciar as tarefas.
+Os critérios para escolha das ferramentas são:
+
+\begin{itemize}
+  \item \textbf{Forge para sistema de controle de versão git:} Uma ferramenta que
+  possa gerenciar diversas versões do desenvolvimento do código fonte utilizando
+  o sistema de controle de versão git, que seja de preferência um software livre
+  ou que não cobre o serviço de hospedagem. Algumas ferramentas ja são
+  conhecidas como github, gitlab e bitbucket.
+  \item \textbf{Ferramenta para documentação de código:} Uma ferramenta que possa
+  documentar o software, os forges como gitlab e github possuem uma wiki já disponível
+  para o projeto.
+  \item \textbf{Ferramenta de gerenciamento de tarefas:} Ferramenta para gerenciamento
+  das tarefas que serão executadas, que estão em execução ou que vão ser executadas
+  durante o desenvolvimento do projeto. Essa ferramenta será importante para a
+  organização do trabalho, dando visibilidade ao trabalho que está sendo realizado.
+  \item \textbf{Ferramenta de comunicação:} A ferramenta de comunicação será
+  importante para tirar dúvidas rápidas em relação a dificuldades e desafios, as
+  comunidades de software livre costumam usar listas de emails e canais no IRC
+  para a comunicação de seus desenvolvedores e usuários.
+\end{itemize}
+
+%colocar imagem
+
+Por fim é necessário definir a  sequência de práticas  e atividades que serão
+utilizadas no desenvolvimento, já que partir do referencial teórico é possível
+definir uma proposta de arquitetura básica para a solução de implantação automatizada
+de aplicações. A primeira prática é a definição da arquitetura inicial, nela é importante levar em consideração os
+seguintes aspectos:
+
+\begin{itemize}
+  \item  \textbf{A1:} Aspectos de segurança na implantação de aplicações web.
+  \item  \textbf{A2:} Aspectos para implantação automatizada de múltiplas instâncias de
    aplicações no mesmo servidor.
-  \item  \textbf{A3 :} Possibilidade de lidar com aplicações desenvolvidas em
+  \item  \textbf{A3:} Possibilidade de lidar com aplicações desenvolvidas em
   diferentes linguagens.
-  \item  \textbf{A4 :} Aplicações que são empacotadas no debian.
-  \item  \textbf{A5 :} Boas práticas de implantação de software.
+  \item  \textbf{A4:} Aplicações que são empacotadas no debian.
+  \item  \textbf{A5:} Boas práticas de implantação de software.
 \end{itemize}
 
 Esses aspectos são importantes para definir o que vai compor a arquitetura inicial,
-para que se possa validar a proposta com os exemplos de uso,
-podendo assim evoluir a arquitetura proposta. Além disso também é preciso definir
-alguns procedimentos importantes para a construção da arquitetura inicial
-considerando o processo de implantação de software visto no
-capítulo \ref{cap-introducao} e a referência dos trabalhos relacionados, os procedimentos
-são os seguintes:
+para que se possa validar a proposta com os exemplos de uso, podendo assim evoluir
+a arquitetura proposta. Além disso também é preciso definir alguns procedimentos
+importantes para a construção da arquitetura inicial considerando o processo de
+implantação de software visto no capítulo\ref{cap-introducao} e a referência dos
+trabalhos relacionados. Os procedimentos são os seguintes:
 
 \begin{itemize}
-  \item  \textbf{Definir tecnologia para automatizar implantação :}  Definir qual será a
+  \item  \textbf{Definir tecnologia para automatizar implantação:}  Definir qual será a
   tecnologia escolhida dentre as citadas no referencial teórico para dar suporte
   a implantação.
   \item  \textbf{Definir conjunto mínimo de dependências:} Definir quais são as dependências
@@ -174,31 +252,36 @@ são os seguintes:
   \item  \textbf{Definir as fases e os procedimentos para implantação automatizada:}
    Definir quais são etapas da implantação, definir a ordem necessária para a execução de
   cada fase da implantação, dado a importância de definir as fases que compõem o processo de
-  implantação e de acordo com \cite{omg2006}.
+  implantação e de acordo com\cite{omg2006}.
   \item  \textbf{Definir os aspectos de segurança} Definir quais são os aspectos de segurança
   e automatizar os que forem possíveis de serem aplicados dentro do contexto da arquitetura
   proposta.
 \end{itemize}
 
-Com a arquitetura definida o próximo passo é definir um ambiente de desenvolvimento e de
-testes, dado o contexto de implantação de software é importante possuir um ambiente flexível para
-testar facilmente a instalação e configuração das aplicações e podendo facilmente
-reinicializar esse ambiente de forma que ele fique limpo sem resquícios da instalação
-anterior. Com a arquitetura definida e com um ambiente de desenvolvimento e de testes configurados, é
-necessário definir quais são as aplicações que servirão como caso de testes
-para a implementação da solução. Elas serão importantes pois a partir delas
-e de suas necessidades que será feito a validação da proposta e seus refinamentos.
+Com essa base definida o próximo passo é definir um ambiente de desenvolvimento
+e um ambiente de testes, já que dado o contexto de implantação de software,
+é importante possuir um ambiente flexível para testar facilmente a instalação
+e configuração das aplicações, podendo facilmente reinicializar esse ambiente de
+forma que ele fique limpo sem resquícios da instalação anterior. Com a base definida
+e com um ambiente de desenvolvimento e de testes configurados, é necessário definir
+quais são as aplicações que servirão como caso de testes para a implementação da
+solução. Elas serão importantes pois a partir delas e de suas necessidades que será
+feito a validação da proposta e seus refinamentos. Após a escolha das aplicações
+que servirão como exemplos de uso e os ambientes definidos pode-se iniciar o
+ciclo de desenvolvimento de software para a construção da solução.
 
-\section{Validação da proposta}
+%imagem aqui
+\subsection{Exemplos de uso}
+\label{section:validacao}
 
-Para validar a arquitetura proposta no trabalho serão feitos exemplos de uso com aplicações
-que possam servir como base para validação da proposta de arquitetura, a fim de
-refinar e evoluir a solução, baseada em exemplos de uso com aplicações reais e conhecidas
-na comunidade de software livre, devem ser levados as seguintes características para a
-escolha das aplicações:
+Para validar a arquitetura proposta no trabalho serão feitos exemplos de uso
+com aplicações que possam servir para a execução da arquitetura construída, a
+fim de refinar e evoluir a solução, a escolha desses exemplos de uso devem ser
+feitas a partir de aplicações reais e conhecidas na comunidade de software livre.
+ Para isso devem ser levados as seguintes características para a escolha das aplicações:
 
 \begin{itemize}
-  \item  \textbf{Aplicações empacotadas no debian :}  Como o intuito do trabalho
+  \item  \textbf{Aplicações empacotadas no debian:}  Como o intuito do trabalho
   é realizar implantações múltiplas a partir de um pacote único, tais aplicações
   devem estar empacotadas e disponíveis para instalação nos servidores do debian.
   Isso impacta na escolha da ferramenta, visto que não será necessário ter o trabalho
@@ -221,15 +304,14 @@ escolha das aplicações:
   configuração devem ser evitadas.
 \end{itemize}
 
-\subsection{Exemplos de uso}
-
-Para validar a arquitetura, serão escolhidos alguns exemplos de uso, com a
-finalidade de verificar se com tais métodos e procedimentos atingirá o objetivo
-estabelecido. Para a escolha das aplicações que serão utilizadas como exemplos
-de uso é necessário fazer uma busca nas aplicações web que são empacotadas no
-debian e que possuem suporte a configuração de múltiplas instâncias, essa busca
-deve levar em consideração também a documentação para realizar tal configuração.
-Foram levantados algumas aplicações web empacotadas no debian da seguinte forma:
+Para encontrar as aplicações que possam se encaixar dentro desses parâmetros devemos
+alguns exemplos de uso, com a finalidade de verificar se com tais métodos e
+procedimentos atingirá o objetivo estabelecido. Para a escolha das aplicações que
+serão utilizadas como exemplos de uso é necessário fazer uma busca nas aplicações
+web que são empacotadas no debian e que possuem suporte a configuração de múltiplas
+instâncias, essa busca deve levar em consideração também a documentação para realizar
+tal configuração. Foram levantados algumas aplicações web empacotadas no debian da
+seguinte forma:
 
 \begin{center}
 apt-cache search web | wc -l
@@ -263,7 +345,7 @@ no mesmo servidor de forma automatizada a partir de um pacote único, logo os
 exemplos de uso também servirão para refinar e evoluir a arquitetura proposta.
 Para realizar tais validações é importante que as instalações e configurações
 sejam em um ambiente limpo, ou seja, os testes devem ser criados de preferência
-em máquinas virtuais com a configuração conhecida como "minimal", que contém
+em máquinas virtuais com a configuração conhecida como minimal, que contém
 instalado apenas as aplicações necessárias para o funcionamento do sistema operacional.
 
 A partir da execução dos exemplos de uso será possível a coleta de informações
