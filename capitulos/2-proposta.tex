@@ -113,14 +113,14 @@ de grande escala, com foco em implantação de aplicações na nuvem e escalar i
 construído em seu trabalho, assim podendo gerenciar ambientes de computação em nuvem
 como Amazon EC2 e Openstack, sua engine utiliza o chef solo como seu agente de configuração.
 
-Com esse levantamento vemos que existem algumas soluções  que seguem a mesma
+Com esse levantamento vemos que existem algumas soluções que seguem a mesma
 linha do que este trabalho pretende atingir como objetivo, servindo como motivação
 para o seu desenvolvimento. Assim visto que a utilização do empacotamento
 como técnica de implantação, traz inúmeras vantagens no processo de implantação
 de aplicações como citado no capítulo\ref{cap-introducao}, tendo o levantamento
 dos trabalhos relacionados e a questão de pesquisa como insumo, justifica-se a
 construção de uma solução de engenharia de software para implantação automatizada
-de aplicações  em sistemas Debian GNU/Linux.
+de aplicações em sistemas Debian GNU/Linux.
 
 \section{Construção da solução}
 \label{section:construcao}
@@ -141,7 +141,7 @@ de software é composta por um conjunto de três elementos fundamentais:
 
 Seguindo esses três elementos, é possível definir como será construído a solução.
 Primeiramente, é necessário definir o método de desenvolvimento de software, o
-método que será seguido  para desenvolvimento de software é o método ágil chamado
+método que será seguido para desenvolvimento de software é o método ágil chamado
 programação extrema (XP), de acordo com\cite{796139} essa metodologia contém um
 conjunto de práticas que auxiliam um engenheiro de software. Dentro das práticas
 que estão em\cite{796139} foram escolhidas as que poderiam ser aplicadas no
@@ -166,7 +166,7 @@ contexto deste trabalho, e são elas:
   adicionados no código, e que o novo código adicionado seja bom o suficiente
   e possa ser aceito, no contexto deste trabalho a revisão de código será
   feita pelo co-orientador.
-  \item \textbf{Jogo de planejameto:} A equipe de desenvolvimento deve decidir
+  \item \textbf{Jogo de planejamento:} A equipe de desenvolvimento deve decidir
   as atividades que serão desenvolvidas baseada em uma estimativa de duração,
   prioridade das atividades e complexidade, e também se tais atividades cabem
   no período do ciclo de desenvolvimento.
@@ -174,7 +174,7 @@ contexto deste trabalho, e são elas:
 
 O ciclo de desenvolvimento terá iterações com duração de uma semana, ou seja,
 o jogo do planejamento das atividades deverá levar em consideração que a
-estimativa de todas as atividades escolhidas para a a iteração não poderá
+estimativa de todas as atividades escolhidas para a iteração não poderá
 ultrapassar a duração de uma semana, dentro dessa semana além do desenvolvimento
 das funcionalidades também deve levar em consideração a própria atividade de jogo
 de planejamento, a programação em pares e a revisão de código. A revisão de código
@@ -217,7 +217,7 @@ Os critérios para escolha das ferramentas são:
   para a comunicação de seus desenvolvedores e usuários.
 \end{itemize}
 
-Por fim é necessário definir a  sequência de práticas  e atividades que serão
+Por fim é necessário definir a sequência de práticas e atividades que serão
 utilizadas no desenvolvimento, definindo arquitetura básica para a solução de
 implantação automatizada de aplicações. Portanto é preciso definir alguns
 procedimentos importantes para a construção da arquitetura inicial considerando
@@ -267,7 +267,7 @@ que permitirão otimizar a instalação de aplicações, de acordo com\cite{6265
 um grande facilitador do DevOps são as ferramentas de gerenciamento de configuração.
 Tais ferramentas permitem controlar e automatizar a configuração de todos os
 elementos que compõem uma aplicação, são elas: softwares previamente instalados,
-usuários, serviços em execução, arquivos de configuração,tarefas programadas,
+usuários, serviços em execução, arquivos de configuração, tarefas programadas,
 configurações de rede, armazenamento, monitoramento e segurança. Um exemplo citado
 no trabalho feito em\ref{leo2014} no qual ele utiliza a ferramenta chef para
 essas tarefas.
@@ -324,7 +324,7 @@ Com a base de ferramentas definidas agora é necessário definir quais são as
 aplicações que servirão como caso de testes para a implementação da solução. Elas
 serão importantes pois a partir delas e de suas necessidades que serão feitos as
 validações da solução e seus refinamentos. Após a escolha das aplicações que
-servirão como exemplos de uso e os ambientes definidos é que será possivel
+servirão como exemplos de uso e os ambientes definidos é que será possível
 iniciar o ciclo de desenvolvimento de software para a construção da solução.
 
 \subsection{Validação da solução}
@@ -337,7 +337,7 @@ feitas a partir de aplicações reais e conhecidas na comunidade de software liv
  Para isso devem ser levados as seguintes características para a escolha das aplicações:
 
 \begin{itemize}
-  \item  \textbf{Aplicações empacotadas no debian:}  Como o intuito do trabalho
+  \item  \textbf{Aplicações empacotadas no debian:} Como o intuito do trabalho
   é realizar implantações múltiplas a partir de um pacote único, tais aplicações
   devem estar empacotadas e disponíveis para instalação nos servidores do debian.
   Isso impacta na escolha da ferramenta, visto que não será necessário ter o trabalho
@@ -347,12 +347,12 @@ feitas a partir de aplicações reais e conhecidas na comunidade de software liv
   devem possuir suporte para nginx ou apache ou similares.
   \item  \textbf{Aplicações com comunidades ativas:} Como estamos trabalhando
   com software livre, é importante que os softwares escolhidos possuem comunidades
-  ativas, isso pode ajudar na resolução de  possíveis problemas, logo aplicações
+  ativas, isso pode ajudar na resolução de possíveis problemas, logo aplicações
   em que sejam difíceis de comunicar com sua comunidade devem ser evitadas, e
   aplicações com a comunidade de desenvolvedores e usuários ativa devem ser priorizadas.
   E isso também pode ser um fator importante caso durante os testes sejam descobertos
   bugs ou melhorias dentro dessas ferramentas e tais bugs e melhorias possam ser
-  reportados para a comunidade, ou até mesmo solucionados e devolvidos aos mantenedores
+  reportados para a comunidade, ou até mesmo bugs solucionados e devolvidos aos mantenedores
   das ferramentas.
   \item  \textbf{Documentação do software:} A documentação do software também deve
   ser levado em consideração, principalmente a documentação da instalação e configuração
@@ -404,7 +404,7 @@ info nomeaplicação
 
 Analisando a documentação de algumas aplicações como wordpress, redmine,
 owncloud, mailman, wikimédia, foram escolhidas as aplicações wordpress e owncloud por
-atingirem complemtamente as caracteristicas definidas anteriormente. Primeiro
+atingirem completamente as características definidas anteriormente. Primeiro
 foi feito uma análise da documentação dessas ferramentas para encontrar a
 possibilidade da configuração de múltiplas instâncias no mesmo servidor, além
 disso também foi visto se as aplicações tinham suporte ao servidor Nginx que é
