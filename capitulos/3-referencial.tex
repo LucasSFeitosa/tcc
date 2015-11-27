@@ -74,12 +74,6 @@ Além disso, é importante também definir as fases que compõem o processo de
 implantação e de acordo com \cite{omg2006} as fases são:
 
 \begin{itemize}
-  \item  \textbf{Instalação:} O implantador transfere o componente para a infraestrutura
-  alvo, é quando instalamos um dado componente em um servidor, um exemplo disso
-  é a instalação de uma aplicação via pacotes (.deb ou .rmp).
-  \item  \textbf{Configuração:} Edição de arquivos de configuração para alterar
-  determinado comportamento de uma aplicação, o implantador aplica configurações
-  específicas a aplicação a partir de arquivos de configuração.
   \item  \textbf{Planejamento:} O planejamento da implantação é uma fase
   para identificar os componentes necessários na implantação e como cada um será
   distribuido entre os nós do ambiente alvo.
@@ -88,6 +82,12 @@ implantação e de acordo com \cite{omg2006} as fases são:
   configuração do sistema operacional, instalação e configuração de dependências
   necessárias (por exemplo um servidor web como apache ou nginx) e a transferência
   do componente para o servidor onde ele será executado.
+  \item  \textbf{Instalação:} O implantador transfere o componente para a infraestrutura
+  alvo, é quando instalamos um dado componente em um servidor, um exemplo disso
+  é a instalação de uma aplicação via pacotes (.deb ou .rmp).
+  \item  \textbf{Configuração:} Edição de arquivos de configuração para alterar
+  determinado comportamento de uma aplicação, o implantador aplica configurações
+  específicas a aplicação a partir de arquivos de configuração.
   \item  \textbf{Inicialização:} É quando a aplicação é iniciada e entra em execução,
   pronto para receber chamadas de seus clientes.
 \end{itemize}

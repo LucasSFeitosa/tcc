@@ -1,26 +1,160 @@
 \chapter{Resultados parciais}
 \label{cap-resultados}
 
-\section{Arquitetura inicial}
+Este capítulo aborda sobre os resultados parciais que foram obtidos, de acordo
+com a execução da metodologia proposta, como dito no capítulo\ref{metodologia}
+as aplicações escolhidas para terem sua instalação automatizada foram Owncloud e
+wordpress, seguindo a escolha da ferramenta Shak como arquitetura inicial. O
+desenvolvimento do trabalho também seguiu a metodologia da programação extrema
+(XP) para o desenvolvimento. Todo o trabalho foi organizado na ferramenta Gitlab
+no projeto Shak disponível no endereço \href{https://gitlab.com/shak/shak/} nele
+contém todo o código fonte e as milestones e issues. As issues são as atividades
+definidas nas reuniões do jogo do planjemento e as milestones são o conjunto de
+atividades definidas para serem executadas dentro do período de uma semana, todas
+essas informações também estão disponíveis no endereço do projeto.
 
-A proposta deste trabalho é trazer uma solução para a implantação automatizada
-de múltiplas aplicações a partir de um pacote único de forma centralizada e segura.
-Para isso será primeiramente necessário definir uma arquitetura padrão para a
-implantação dessas aplicações, ou seja, definir:
+\section{Planejamento das Atividades}
+
+O planejamento das atividades foi feito a partir das aplicações worpress e owncloud,
+que foram escolhidas na seção\ref{subsection:exemplos} para servirem como exemplos
+de uso, logo a meta inicial planejada foi conter a instalação as duas aplicações
+de forma automatizada, levando em consideração todos os apectos definidos no capítulo
+\ref{cap-metodologia}. As atividades iniciais levantadas foram:
+
+ \begin{itemize}
+   \item \textbf{Issue #1} Livro de Receitas para instalação do Wordpress.
+   \item \textbf{Issue #7} Livro de Receitas para instalação do Owncloud.
+   \item \textbf{Issue #8} Livro de Receitas para instalação do servidor de email.
+   \item \textbf{Issue #9} Forçar Wordpress a utilizar https.
+   \item \textbf{Issue #10} Forçar Owncloud a utilizar https.
+   \item \textbf{Issue #11} Prototipação do front-end para a ferramenta Shak.
+ \end{itemize}
+
+Ao verificar que tanto a ferramenta owncloud como a ferramenta wordpress precisam
+de configurações servidor de email para algumas funcionalidades, também foi adicionado
+a atividade de criação de uma receita para a automatizar a configuração de
+servidor de email. Como aspecto de segurança, ficou definido que tanto a aplicação
+owncloud como wordpress deveriam usar sempre https por padrão, isso envolve também
+uma extratégia de como serão gerenciados os certificados de segurança para aplicar
+o protocolo https.Além dessas atividades previstas, também foram feitas evoluções
+no Shak para que seja possível a implementação dessas atividades.Nas seções a
+seguir serão apresentados os resutlados das atividades levantadas, a partir da
+proposta da construção da solução vista no capítudo\ref{cap-metodoologia}.
+
+\subsection{Wordpress}
+\label{sub:wordpress}
+
+De acordo com a documentação oficial\cite{wordpress} WordPress é uma plataforma
+semântica de vanguarda para publicação pessoal, com foco na estética, nos
+Padrões Web e na usabilidade e ao mesmo tempo é um software livre. WordPress é
+um dos maiores software de publicação de conteúdo, sendo hoje a maior
+plataforma de Gerenciamento de Conteúdo do mundo,com quase 70\% do mercado. O
+wordpress foi a primeira ferramenta escolhida para automatizar a instalação, partindo
+dessa decisão deu início a construção da solução.
+
+Primeiramente foi seguido os procedimentos para construção da solução definidos em\ref{section:construcao}, é
+necessário definir as fases e procedimentos paara a implantação automatizada,
+seguindo as fases que compõem o processo de implantação de aplicações e de acordo
+ com\cite{omg2006}, e isso será o que o Shak irá automatizar, cada fase desse processo
+ será  tratada como uma subseção. No wordpress as fases e procedimentos são:
+
+\begin{itemize}
+  \item  \textbf{Planejamento}
+  \item  \textbf{Preparação}
+  \item  \textbf{Instalação de pacotes}
+  \item  \textbf{Configuração}
+  \item  \textbf{Inicialização}
+\end{itemize}
+
+
+\subsubsection{Planejamento}
+
+O planejamento da implantação é uma fase para identificar os componentes
+necessários na implantação da aplicação. Definir quais são as dependências mínimas
+para o funcionamento de uma aplicação tais como: banco de dados, pacotes
+pré-instalados e aplicações pré-configuradas. Para o wordpress foram escolhidas:
+
+\begin{itemize}
+   \item \textbf{Pacote wordpress para o Debian:} Pacote Debian com o wordpress.
+   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o nginx.
+   \item \textbf{Pacote mysql para o Debian:} Pacote debian com o anco de dados mysql
+   que será usado pelo wordpress.
+   \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
+   necessários para configurar o wordpress, o servidor web Nginx e o banco de dados
+   mysql.
+\end{itemize}
+
+A instalação e execução desses recursos serão feitas nas fases seguintes.
+
+\subsubsection{Preparação}
+
+São os procedimentos necessários para preparar o ambiente alvo para que o wordpress
+possa ser executado, isso envolve configuração do sistema operacional, instalação
+e configuração de dependências necessárias, e a transferência do componente
+para o servidor onde ele será executado.
+
+Para o funcionamento correto do wordpress é necessário a instalação do php5, além
+disso também é necessário que algum servidor web, na arquitetura do Shak o servidor
+web padrão é o Nginx.
+
+Para solução desse procedimento bastou apenas instalar os pacotes php5-fpm e o
+pacote nginx, além disso habilitar o serviço do php5-fpm, todos esses passos são
+feitos antes da instalação do wordpress, pois por default se ele não encontrar
+essas dependências ele instala o servidor apache2.
+
+% TODO explicar como faz isso no shak...
+
+\subsubsection{Instalação de pacotes}
+
+Os únicos pacotes necessários para o instalar nessa fase é o próprio pacote do
+wordpress e o pacote do mysql.
+
+% TODO explicar como faz isso no shak...
+
+\subsubsection{Arquivos de configuração}
+
+Como levantado no planjeamento é necessário a edição de arquivos de configuração
+do wordpress, arquivos de configuração do banco de dados e aqruivo de configuração
+do nginx.
+
+O primeiro aqruivo de configuração é o config.php, é nesse arquivo de
+configuração onde ficam as informações de banco de dados como nome do banco de dados,
+login do usuário do banco de dados, senha, o host do banco de dados e o diretório
+onde irá ficar os temas, galeria de mídas e plugins de cada instância do wordpress.
+Por padrão ele deve ficar no diretório /etc/wordpress/ e seu nome deve conter
+a seguinte estrutura: config-nomehost.php, onde o nomehost deve ser o hostname
+desejado. O segundo arquivo é o database.sql que é um pequeno script sql que
+cria o banco de dados do wrodpress e dá os privilégios ao usuário desejado. Por fim
+o arquivo de configuração do Nginx configuração do servidor web.
+
+% TODO explicar como faz isso no shak...
+
+\subsubsection{Inicialização}
+
+% TODO explicar como faz isso no shak...
+
+\subsection{Owncloud}
+\label{sub:owncloud}
+
+\subsubsection{Planejamento}
+\subsubsection{Preparação}
+\subsubsection{Instalação de Pacotes}
+\subsubsection{Configuração}
+\subsubsection{Inicialização}
 
 
 
-\section{Ferramentas utilizadas}
+\subsection{Servidor de Email}
+\label{sub:email}
 
-\section{Resultados encontrados}
+\subsubsection{Planejamento}
+\subsubsection{Preparação}
+\subsubsection{Instalação de Pacotes}
+\subsubsection{Configuração}
+\subsubsection{Inicialização}
 
-\section{Dificuldades encontradas}
 
+\subsection{Protótipo de Front-End}
+\label{sub:prototipo}
 
-%------------------------------- TODO MOVER para parte de resultados preliminares
-%Como o interesse neste trabalho é a busca por aplicações que possam ser instaladas
-%em servidores e que sejam interessantes para usuários nos deparamos com ferramentas
-%que se encaixam no nosso contexto como por exemplo: owncloud que é uma ferramenta para armazenamento
-%na nuvem para arquivos, músicas, calendários, contatos. E wordpress que é
-%uma ferramenta conhecida para criação de blogs.
-%-----------------------------------------------------------------------------
+% TODO falar do protótipo de alta fidelidade, o que é, como fiz.
