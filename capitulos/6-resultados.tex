@@ -1,6 +1,8 @@
 \chapter{Resultados parciais}
 \label{cap-resultados}
 
+
+%TODO falar de multiplas instancias em algum lugar
 Este capítulo aborda sobre os resultados parciais que foram obtidos, de acordo
 com a execução da metodologia proposta, como dito no capítulo\ref{metodologia}
 as aplicações escolhidas para terem sua instalação automatizada foram Owncloud e
@@ -41,7 +43,52 @@ no Shak para que seja possível a implementação dessas atividades.Nas seções
 seguir serão apresentados os resutlados das atividades levantadas, a partir da
 proposta da construção da solução vista no capítudo\ref{cap-metodoologia}.
 
-%criar ambiente de desenvolviento
+\subsection{Criação de Ambientes de Desenvolvimento}
+
+Uma das necessiadades para o desenvolvimento do projeto é ter um ambiente de desenvolvimento
+flexível que possa ser rapidamente construído e destruído, onde possa testar as
+implantações feitas e verificar erros caso aconteçam. Para isso é necessário utilizar
+alguma ferramenta que automatize esse processo, construir ambientes manualmente pode
+ser um processo longo e demorado, além disso mais factível de acontecer erros por
+desantenção ao executar os passos manuais, logo utilizar uma ferramenta que possa
+auxiliar na criação da máquinas virtuais e que seja possível gerenciá-las de forma
+automatizada servindo de suporte para a execução da implantação automatizada, facilitando
+a execução e teste da implantação das aplicações escolhidas.
+
+A ferramenta escolhida para auxiliar a criação de um ambiente de desenvolvimento é
+a ferramenta vagrant, com o Vagrant pode-se gerenciar a criação de máquinas
+virtuais para os ambientes de desenvolvimento do projeto, também é possível usar
+ferramentas de automação para criar o servidor de implantação , definindo tudo
+em arquivos que irão fazer parte do repositório git do Shak. Dessa maneira,
+qualquer pessoa que clonar o repositório poderá rodar uma instância desse servidor, que será exatamente
+idêntico para todos os usuários que forem criar uma máquina virtual, reduzindo ao
+máximo os problemas que surgem por causa das diferenças entre sistemas operacionais e configurações de sistema.
+
+Quando executamos o comando vagrant up o Vagrant cria uma máquina virtual com as
+configurações que estão no arquivo Vagrantfile na raiz do projeto Shak, nele
+estão todas as configurações e definições da máquina virtual em questão. Para o
+vagrant criar uma máquina virtual era necessário escolher um software que gerencie
+esse procedimento, a ferramenta escolhida foi o virtualbox para poder emular o sistema
+operacional em uma máquina virtual, assim o  Vagrant inicia uma máquina virtual
+utilizando o virtualbox, com a distribuição linux e as configurações que estiverem
+definida no arquivo de configuração Vagrantfile.
+
+Para executar o vagrant basta instalar o pacote disponível pelo debian, além disso
+o repositório do projeto Shak já possui um Vagrantfile padrão para que todos os
+desenvolvedores tenham o mesmo ambiente, passa acessar a máquina virtual criada
+basta acessá-la via ssh, o vagrant já gerenciar as chaves ssh, portanto basta
+dar o comando vagrant ssh que você estará conectado a máquia virtual via ssh.
+O ambiente que será levantado é um ambiente com debian na sua versão
+stretch(atualmente a versão unstalbe) e 64 bits, apesar da versão ser a versão
+unstalbe isso é importante para que possamos utilizar as versões mais novas dos
+ pacotes das ferramentas escolhidas, também será importante para reportar algum
+ bug caso seja encontrado.
+
+ Com o ambiente de desenvolvimento definido, agora pode-se iniciar a criação dos
+ livros de receitas das aplicações, o repositório do Shak possui alguns scripts
+ para instalar algumas dependências ao iniciar uma máquina virtual, dentro
+ desses scripts temos as instalções das dependências para o Shak funcionar perfeitamente
+ e também o próprio chef, que é utilizado pela ferramenta Shak para instalar aplicações e suas dependências.
 
 \subsection{Wordpress}
 \label{sub:wordpress}
@@ -64,6 +111,7 @@ seguindo as fases que compõem o processo de implantação de aplicações e de 
   \item  \textbf{Planejamento}
   \item  \textbf{Preparação e Instalação de Pacotes}
   \item  \textbf{Configuração}
+  \item  \textbf{Configuração de múltiplas instâncias}
   \item  \textbf{Inicialização}
 \end{itemize}
 
@@ -88,6 +136,7 @@ pré-instalados e aplicações pré-configuradas. Para o wordpress foram escolhi
 A instalação e execução desses recursos serão feitas nas fases seguintes.
 
 \subsubsection{Preparação e Instalação de Pacotes}
+\label{wordpress:preparacao}
 
 São os procedimentos necessários para preparar o ambiente alvo para que o wordpress
 possa ser executado, isso envolve configuração do sistema operacional, instalação
@@ -104,9 +153,37 @@ php5-fpm, todos esses passos são feitos antes da instalação do wordpress,
 pois por default se ele não encontrar essas dependências ele instala o servidor
 apache2.
 
-% TODO explicar como faz isso no shak...
+Para executar essas instalações é preciso criar uma receita no livro de receitas
+do wordpress, primeiramente é necessário criar o próprio livro de receitas no Shak,
+para isso existe o comando rake cookbook que cria a estrutura básica
+de um livro de receitas que deve ser usado pelo chef, como por exemplo:
+
+\begin{center}
+  rake cookbook
+  Cookbook name: wordpress
+  knife cookbook create wordpress -o cookbooks/
+  ** Creating cookbook foo in /home/thiago/shak/cookbooks
+  ** Creating README for cookbook: wordpress
+  ** Creating CHANGELOG for cookbook: wordpress
+  ** Creating metadata for cookbook: wordpress
+\end{center}
+
+Assim com a estrutura inicial, é possível declarar as dependências do wordpress
+dentro do arquivo default.rb dentro da pasta recipes. Nesse arquivo é aonde
+será declarado os pacotes que devem ser instalados, os arquivos de configuração,
+os serviços que precissar rodar, as pastas, permissões de usuários, etc. Um exemplo
+de como declarar pacotes e serviços dentro de uma receita chef é:
+
+\begin{center}
+package "mysql-server"
+service "mysql" do
+  action :start
+end
+\end{center}
+
 
 \subsubsection{Configuração}
+\label{wordpress:preparacao}
 
 Como levantado no planjeamento é necessário a edição de arquivos de configuração
 do wordpress, arquivos de configuração do banco de dados e aqruivo de configuração
@@ -122,13 +199,69 @@ desejado. O segundo arquivo é o database.sql que é um pequeno script sql que
 cria o banco de dados do wrodpress e dá os privilégios ao usuário desejado. Por fim
 o arquivo de configuração do Nginx configuração do servidor web.
 
-% TODO explicar como faz isso no shak...
-% explicar a configuração de múltiplas instâncias
-\subsubsection{Inicialização}
+Esses arquivos de configuração serão criados dentro da pasta template, com o conteúdo
+desejado dos arquivos de configuração, seguindo a mesma estrutura
+inicial que foi criada em \ref{wordpress:preparacao}, e a ação de criação criação é
+declarada dentro do arquivo default.rb, de forma semelhante como foi feito com
+a declaração dos pacotes. Um exemplo de como gerenciar templates em uma receita chef
+é:
 
-% TODO explicar como faz isso no shak...
+\begin{center}
+  template "text\_file.txt" do
+  source "text\_file.txt"
+  mode "0755"
+  owner "root"
+  group "root"
+end
+\end{center}
+
+
 
 \subsubsection{Múltiplas Instâncias}
+
+O uso de múltiplas instâncias do wordpress pode ser feito de duas maneiras, e servem
+para que o usuário possa ter várias isntâncias de wordpress no mesmo servidor, de
+acordo com a documentação do wordpress é possível ter multiplos sites e múltiplas
+instâncias, no caso do shak queremos que seja múltiplas instãncias, a partir da
+repetição da instalação. O wordpress recomenda que se for necessário o uso de múltiplas
+instâncias é necessário realmente instalar cada WordPress, um por vez.
+
+A arquitetura para isso não é muito complicada, porém algumas pastas do sistema
+precisam ser dividas, ou seja, uma para cada aplicação, essa pasta é a pasta wp-content
+que é a pasta aonde fica os uploads, os temas, os plugins e etc, portanto para não
+existir conflito entre as instâncias essas pastas devem estar devidamente separadas
+com seus caminhos referenciados em cada arquivo config.php, o arquivo config.php também
+deve ser único para cada instância. Além disso também é preciso que cada instância
+tenha seu banco de dados, para evitar novamente os conflitos. Para
+solucionar esse problema o Shak possui um recurso interessante onde cada aplicação
+possui um atributo id, que é um atributo único para cada instância executada pelo
+shak, com isso é possível criar pastas personalizadas com o id da aplicação e também
+bancos de dados específicos e arquivos config.php específicos.
+
+Por fim basta que seja criado um arquivo de configuração Nginx para cada aplicação,
+como visto no capitulo \ref{cap-referencial} todo arquivo arquivo de configuração
+do Nginx possui um bloco server, e cada bloco server equivale a um virtual hosting,
+por isso as aplicações serão também independentes a nível de servidor web sendo assim
+possível o acesso entre elas separadamente.
+
+\subsubsection{Inicialização}
+
+Após a construção da receita do wordpress é necessário testar a receita construída,
+para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
+que será instalada, e segunda o hostname destino. Como é um ambiente de desenvolvimento
+não é preciso configurar um ip ou configurar um dns, é preciso apenas adicionar o
+hostname desejado no arquivo /etc/hosts. Assim mesmo que esteja na sua máquina local
+é possível acessar um endereço mais familiar em seu navegador. Um exemplo da execução
+da instaalação via shak é:
+
+\begin{center}
+shak install wordpress hostname=wordpress.dev
+\end{center}
+
+E em assim o chef inicia o processo de instalação dos pacotes, criação dos arquivos
+de configuração, incia os serviços desejados, e ao fim do procedimento a aplicação
+ja estará pronta para uso no hostname escolhido.
+
 
 \subsection{Owncloud}
 \label{sub:owncloud}
@@ -151,6 +284,7 @@ fases e procedimentos são:
   \item  \textbf{Planejamento}
   \item  \textbf{Preparação e Instalação de Pacotes}
   \item  \textbf{Configuração}
+  \item  \textbf{Configuração de múltiplas instâncias}
   \item  \textbf{Inicialização}
 \end{itemize}
 
@@ -190,7 +324,33 @@ também foi necessário instalar o pacote php5-pgsql que é um módulo para
 conexões de banco de dados postgresql, necessário para o funcionamento de
 aplicações php com o postgresql.
 
-% TODO mostrar como faz isso no shak
+Para executar essas instalações é preciso criar uma receita no livro de receitas
+do owncloud, bastando executar novamente o comando rake cookbook que cria a estrutura básica
+de um livro de receitas que deve ser usado pelo chef, como por exemplo:
+
+\begin{center}
+  rake cookbook
+  Cookbook name: owncloud
+  knife cookbook create owncloud -o cookbooks/
+  ** Creating cookbook foo in /home/thiago/shak/cookbooks
+  ** Creating README for cookbook: owncloud
+  ** Creating CHANGELOG for cookbook: owncloud
+  ** Creating metadata for cookbook: owncloud
+\end{center}
+
+Assim com a estrutura inicial, é possível declarar as dependências do owncloud
+dentro do arquivo default.rb dentro da pasta recipes. Nesse arquivo é aonde
+será declarado os pacotes que devem ser instalados, os arquivos de configuração,
+os serviços que precissar rodar, as pastas, permissões de usuários, etc. Um exemplo
+de como declarar pacotes e serviços dentro de uma receita chef é:
+
+\begin{center}
+package "posgresql"
+service "posgresql" do
+  action :start
+end
+\end{center}
+
 \subsubsection{Configuração}
 
 Como levantado no planjeamento é necessário a edição de arquivos de configuração
@@ -211,11 +371,55 @@ que é um pequeno script sql que cria o banco de dados do owncloud e dá os
 privilégios ao usuário desejado. Por fim o arquivo de configuração do Nginx
 configuração do servidor web.
 
+\subsubsection{Múltiplas Instâncias}
+
+Diferentemente do wordpress o owncloud não suporta múltiplas instâncias, porém isso
+não foi um empeditivo ao trabalho, com uma busca econtrou-se uma discussão no repositório
+oficial do owncloud relacionado a implementação dessa funcionalidade, a discussão está
+disponibilizada em \href{https://github.com/owncloud/core/pull/16424}, nela existia
+uma propsota de solução ao fato de não existir a opção de múltiplas instâncias. O
+resultado desta discussão foi que os desenvovledores do owncloud não acharam relevante
+a funcionalidade, mas que caso o desenvolvedor ache necessário ele poderia fazer essa
+alteração diretamente no código fonte.
+
+Porém manter isso no Shak seria enviável, uma solução a esse problema seria enviar
+uma contribuição ao pacote do owncloud no debian, onde assim a contribuição feita
+poderia ser facilmente utilizada por mais pessoas que queiram essa funcionalidade,
+bastando utilizar a versão disponibilizada nos servidores do debian. Com isso, foi
+feito a contribuição que adicionaria a funcionalidade de múltiplas instâncias para
+o owncloud e enviado ao mantenedor do pacote do owncloud no debian,
+a discussão está disponível em \href{https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=789726},
+a contribuição foi bem vista pelo mantenedor do pacote, e será incorporada na nova
+versão do owncloud no debian.
+
+Em paralelo ao processo da contribuição estar disponível no novo pacote debian,
+foi necessário utilizar apenas instâncias únicas do owncloud, porém também foi
+adicionado na receita do owncloud o suporte a múltiplas instâncias, portanto
+assim que o owncloud suportar múltiplas instâncias via pacote debian, será possívarel
+também criar múltiplas instâncias do owncloud.
+
+A solução feita na receita do owncloud foi baseada na contribuição enviada, portanto
+os testes foram feitos gerando um novo pacote debian do owncloud porém incoporando
+a contribuição feita. Os procedimentos feitos para suportar múltiplas instâncias
+no owncloud são bem semelhantes aos do wordpress, criando um diretório de dados
+para cada aplicação, um arquvio de configuração para cada aplicação e um banco de
+dados para cada aplicação. Seguindo também a mesma abordagem do wordpress também
+são criados virtual hostings para cada instância do owncloud.
+
 \subsubsection{Inicialização}
 
-%TODO ver como faz isso no shak
+Após a construção da receita do owncloud é necessário testar a receita construída,
+para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
+que será instalada, e segunda o hostname destino, para executar a instalação
+do owncloud basta:
 
-\subsubsection{Múltiplas Instâncias}
+\begin{center}
+shak install owncloud hostname=owncloud.dev
+\end{center}
+
+E em assim o chef inicia o processo de instalação dos pacotes, criação dos arquivos
+de configuração, incia os serviços desejados, e ao fim do procedimento a aplicação
+ja estará pronta para uso no hostname escolhido.
 
 
 \subsection{Servidor de Email}
@@ -354,8 +558,33 @@ porém foram interpretados como spam.
 
 \subsubsection{Inicialização}
 
+Após a construção da receita do servidor de email é necessário testar a receita construída,
+para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
+que será instalada, e segunda o hostname destino, para executar a instalação
+do servidor de email basta:
 
-%TODO mostrar como faz bo Shak
+\begin{center}
+shak install email hostname=owncloud.dev
+\end{center}
+
+E em assim o chef inicia o processo de instalação dos pacotes, criação dos arquivos
+de configuração, incia os serviços desejados, e ao fim do procedimento a aplicação
+ja estará pronta para uso no hostname escolhido.
+
+Para testar o funcionamento foram feitos dois procedimentos, o primeiro era utilizar
+um cliente de email para testes, o cliente de email escolhido foi o mutt, utilizando
+suas funções básicas de enviar e receber emails. O segundo passo foi realizar conexões
+com o servidor de email via telnet, com os seguintes comandos:
+
+\begin{center}
+  telnet localhost imap
+  telnet localhost imaps
+\end{center}
+
+Pela configuração do servidor de email não será possível abrir uma conexão telnet
+em imap, porém em imaps será possível, isso serve para testar que o servidor de email
+está barrando as conexões que não utilizem os protocolos criptografados.
+
 
 %TODO ver se no tcc 2 rola de colocar o front end e tal....
 %TODO falar do protótipo de alta fidelidade, o que é, como fiz.
@@ -396,7 +625,26 @@ Com as chaves geradas basta configurar as aplciações indicando os caminhos dos
 e das chaves, para forçar as aplicações web a utilizarem o https foi necessário fazer
 uma configuração específica no servidor web Nginx:
 
-%TODO Print de como foi
+\begin{center}
+server {
+    server\_name <%= @hostname %>;
+    rewrite     \^   https://\$server\_name\$request\_uri? permanent;
+}
+
+server {
+    server\_name <%= @hostname %>;
+
+    listen 443 ssl;
+    ssl\_certificate       /etc/ssl/certs/<%= @hostname %>.pem;
+    ssl\_certificate\_key   /etc/ssl/private/<%= @hostname %>.key;
+
+    access\_log            /var/log/nginx/<%= @hostname %>.access.log;
+    error\_log             /var/log/nginx/<%= @hostname %>.error.log;
+
+    include /var/lib/shak/etc/nginx/<%= @hostname %>/*.conf;
+}
+
+\end{center}
 
 Com isso todas as requisições serão forçadas a utilizar a porta 443 que é a porta
 TCP padrão para sites que utilizam http + ssl, assim as aplicações estarão utilizando
@@ -404,4 +652,4 @@ um protocolo mais seguro utilizando criptografia dos dados, utilizando o
 certificado auto-assinado que foi gerado para o servidor específico.
 
 
-% TODO colocar mais coisas do dovecot, spamassassin, etc.
+% TODO colocar mais informações do dovecot, spamassassin, etc se necessário.
