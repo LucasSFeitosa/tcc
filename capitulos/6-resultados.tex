@@ -22,12 +22,12 @@ de forma automatizada, levando em consideração todos os apectos definidos no c
 \ref{cap-metodologia}. As atividades iniciais levantadas foram:
 
  \begin{itemize}
-   \item \textbf{Issue #1} Livro de Receitas para instalação do Wordpress.
-   \item \textbf{Issue #7} Livro de Receitas para instalação do Owncloud.
-   \item \textbf{Issue #8} Livro de Receitas para instalação do servidor de email.
-   \item \textbf{Issue #9} Forçar Wordpress a utilizar https.
-   \item \textbf{Issue #10} Forçar Owncloud a utilizar https.
-   \item \textbf{Issue #11} Prototipação do front-end para a ferramenta Shak.
+   \item \textbf{Issue 1} Livro de Receitas para instalação do Wordpress.
+   \item \textbf{Issue 7} Livro de Receitas para instalação do Owncloud.
+   \item \textbf{Issue 8} Livro de Receitas para instalação do servidor de email.
+   \item \textbf{Issue 9} Forçar Wordpress a utilizar https.
+   \item \textbf{Issue 10} Forçar Owncloud a utilizar https.
+   \item \textbf{Issue 11} Prototipação do front-end para a ferramenta Shak.
  \end{itemize}
 
 Ao verificar que tanto a ferramenta owncloud como a ferramenta wordpress precisam
@@ -40,6 +40,8 @@ o protocolo https.Além dessas atividades previstas, também foram feitas evolu�
 no Shak para que seja possível a implementação dessas atividades.Nas seções a
 seguir serão apresentados os resutlados das atividades levantadas, a partir da
 proposta da construção da solução vista no capítudo\ref{cap-metodoologia}.
+
+%criar ambiente de desenvolviento
 
 \subsection{Wordpress}
 \label{sub:wordpress}
@@ -60,8 +62,7 @@ seguindo as fases que compõem o processo de implantação de aplicações e de 
 
 \begin{itemize}
   \item  \textbf{Planejamento}
-  \item  \textbf{Preparação}
-  \item  \textbf{Instalação de pacotes}
+  \item  \textbf{Preparação e Instalação de Pacotes}
   \item  \textbf{Configuração}
   \item  \textbf{Inicialização}
 \end{itemize}
@@ -86,7 +87,7 @@ pré-instalados e aplicações pré-configuradas. Para o wordpress foram escolhi
 
 A instalação e execução desses recursos serão feitas nas fases seguintes.
 
-\subsubsection{Preparação}
+\subsubsection{Preparação e Instalação de Pacotes}
 
 São os procedimentos necessários para preparar o ambiente alvo para que o wordpress
 possa ser executado, isso envolve configuração do sistema operacional, instalação
@@ -95,23 +96,17 @@ para o servidor onde ele será executado.
 
 Para o funcionamento correto do wordpress é necessário a instalação do php5, além
 disso também é necessário que algum servidor web, na arquitetura do Shak o servidor
-web padrão é o Nginx.
+web padrão é o Nginx, e o banco de dados mysql.
 
-Para solução desse procedimento bastou apenas instalar os pacotes php5-fpm e o
-pacote nginx, além disso habilitar o serviço do php5-fpm, todos esses passos são
-feitos antes da instalação do wordpress, pois por default se ele não encontrar
-essas dependências ele instala o servidor apache2.
-
-% TODO explicar como faz isso no shak...
-
-\subsubsection{Instalação de pacotes}
-
-Os únicos pacotes necessários para o instalar nessa fase é o próprio pacote do
-wordpress e o pacote do mysql.
+Para solução desse procedimento bastou apenas instalar os pacotes php5-fpm, o pacote
+do banco de dados mysql e o pacote nginx, além disso habilitar o serviço do
+php5-fpm, todos esses passos são feitos antes da instalação do wordpress,
+pois por default se ele não encontrar essas dependências ele instala o servidor
+apache2.
 
 % TODO explicar como faz isso no shak...
 
-\subsubsection{Arquivos de configuração}
+\subsubsection{Configuração}
 
 Como levantado no planjeamento é necessário a edição de arquivos de configuração
 do wordpress, arquivos de configuração do banco de dados e aqruivo de configuração
@@ -128,33 +123,285 @@ cria o banco de dados do wrodpress e dá os privilégios ao usuário desejado. P
 o arquivo de configuração do Nginx configuração do servidor web.
 
 % TODO explicar como faz isso no shak...
-
+% explicar a configuração de múltiplas instâncias
 \subsubsection{Inicialização}
 
 % TODO explicar como faz isso no shak...
 
+\subsubsection{Múltiplas Instâncias}
+
 \subsection{Owncloud}
 \label{sub:owncloud}
 
+De acordo com a documentação oficial\cite{owncloud} Owncloud é uma ferramenta
+para compartilhamento de arquivos, é um softwre livre em que é possível compartilhar
+um ou mais arquivos e pastas do seu computador na nuvem, e sincronizá-los com o seu
+servidor ownCloud, esses arquivos são imediatamente sincronizadoss com o servidor
+e disponiblizados para outros dispositivos que utilizam o ambiente de trabalho
+ownCloud ou app Android ou app Ios.
+
+Também foram seguidos os mesmos passos feitos em\ref{sub:wordpress}, primeiramente
+foi seguido os procedimentos para construção da solução definidos em\ref{section:construcao},
+definindo as fases e procedimentos paara a implantação automatizada, seguindo as
+fases que compõem o processo de implantação de aplicações e de acordo com\cite{omg2006},
+cada fase desse processo também será tratado como uma subseção. No Owncloud as
+fases e procedimentos são:
+
+\begin{itemize}
+  \item  \textbf{Planejamento}
+  \item  \textbf{Preparação e Instalação de Pacotes}
+  \item  \textbf{Configuração}
+  \item  \textbf{Inicialização}
+\end{itemize}
+
 \subsubsection{Planejamento}
-\subsubsection{Preparação}
-\subsubsection{Instalação de Pacotes}
+
+Seguindo a mesma linha do wordpress, é necessário definir quais são as dependências
+mínimas para o funcionamento do owncloud tais como: banco de dados, pacotes
+pré-instalados e aplicações pré-configuradas. Para o owncloud foram escolhidas:
+
+\begin{itemize}
+   \item \textbf{Pacote owncloud para o Debian:} Pacote Debian com o wordpress.
+   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o nginx.
+   \item \textbf{Pacote postgresql para o Debian:} Pacote debian com o anco de dados mysql
+   que será usado pelo wordpress.
+   \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
+   necessários para configurar o wordpress, o servidor web Nginx e o banco de dados
+   mysql.
+\end{itemize}
+
+A diferença da escolha do banco de dados em relação ao wordpress é poder aumentar
+o suporte a diferentes bancos de dados, na documentação do wordpress é recomendado
+o uso do banco de dados mysql, porém no owncloud fica a escolha do desenvolvedor.
+A escolha do postgresql vêm om a possibilidade de trabalhar com dois bancos de
+dados diferentes, aumentando o suporte do Shak, assim quando existirem aplicações
+que suportam apenas o postgresql o Shak ja terá uma estrutura básica pronta.
+A instalação e execução desses recursos serão feitas nas fases seguintes.
+
+\subsubsection{Preparação e Instalação de Pacotes}
+
+Para o funcionamento correto do owncloud é necessário a instalação do php5, além
+disso também é necessário que algum servidor web, na arquitetura do Shak o servidor
+web padrão é o Nginx, e o banco de dados posqtgresql.
+
+Para solução desse procedimento foi necessário instalar os pacotes php5-fpm, o banco
+de dados postgresql e o pacote nginx, além disso habilitar o serviço do php5-fpm,
+também foi necessário instalar o pacote php5-pgsql que é um módulo para
+conexões de banco de dados postgresql, necessário para o funcionamento de
+aplicações php com o postgresql.
+
+% TODO mostrar como faz isso no shak
 \subsubsection{Configuração}
+
+Como levantado no planjeamento é necessário a edição de arquivos de configuração
+do owncloud, arquivos de configuração do banco de dados e aqruivo de configuração
+do nginx.
+
+O primeiro aqruivo de configuração é o autoconfig.php, é nesse arquivo de
+configuração onde ficam as informações de banco de dados como nome do banco de dados,
+login do usuário do banco de dados, senha, o host do banco de dados e o diretório
+onde irá ficar os arquivos de configuração do owncloud, além disso o login e senha
+do administrador, isso é necessário apenas para o primeiro acesso, ou seja, o usuário
+fará o login automaticamente quando o owncloud terminar a instalação, após isso
+a recomendação é trocar a senha do administrador.
+
+Além disso é necessário criar a pasta de conteúdos públicos do owncloud, que por
+padrão devem ficar em /etc/owncloud. O segundo arquivo é o postgresql-conf.sql
+que é um pequeno script sql que cria o banco de dados do owncloud e dá os
+privilégios ao usuário desejado. Por fim o arquivo de configuração do Nginx
+configuração do servidor web.
+
 \subsubsection{Inicialização}
 
+%TODO ver como faz isso no shak
+
+\subsubsection{Múltiplas Instâncias}
 
 
 \subsection{Servidor de Email}
 \label{sub:email}
 
+Todas as outras aplicações anteriores utilizam o protoloco
+HTTPS na camada de aplicação, agora com o servidor de email será trabalhado um
+protocolo diferente, como visto no capítulo\ref{cap-referencial}
+de acordo\ref{kurose2010redes} a camada de aplicção é aonde residem  as aplicações
+de rede e seus protocolos, detre eles o protocolo SMTP que provê mensagens de correio
+eletronico.
+
+Servidores de email formam a infraestrutura do email, sendo o SMTP o protocolo
+mais importante pois é o responsável por transferir as mensagens de servidores
+de email remetentes para servidores de email destinatários, ou seja transferindo
+arquivos (as mensagens de email) de um servidor para o outro. Porém o protocolo
+SMTP é um protocolo do tipo de envio de informações, diferente do protocolo HTTP
+que é um protocolo que recupera informações, o que acarretria no problema de que
+o usuário não consegueria recuperar suas informações como emails recebidos, já
+que o SMTP apenas envia informações.
+
+Para solucionar esse problema existem os protoclos de acesso a servidores de
+email, que recuperam as informações do servidor de email até ao usuário final.
+Como visto no capítulo\ref{cap-referencial} exitem protocolos de acesso ao correio
+como POP3, IMAP ou usar até mesmo o protoclo HTTP servindo de protoclo para recuperar
+informações.
+
+Dando continuidade na construção da solução, tanto owncloud como wordpress
+possuem funcionalidades que dependem de serviços de email funcionando, portanto
+é necessário uma configuração mínima de email para que funcione tais funcionaldiades.
+Portanto a construção de um servidor de email possui bastante relevância pois
+assim qualquer aplicação que precisar de um servidor de email ja poderá utilizar
+o servidor de email que o Shak fornece.
+
+Para a construção do servidor de email também foram seguidos os mesmos passos
+feitos em\ref{sub:wordpress} e\ref{sub:owncloud}, primeiramente foi seguido os
+procedimentos para construção da solução definidos em\ref{section:construcao},
+definindo as fases e procedimentos paara a implantação automatizada, seguindo as
+fases que compõem o processo de implantação de aplicações e de acordo com\cite{omg2006},
+cada fase desse processo também será tratado como uma subseção. No servidor de email
+as fases e procedimentos são:
+
+ \begin{itemize}
+   \item  \textbf{Planejamento}
+   \item  \textbf{Preparação e Instalação de Pacotes}
+   \item  \textbf{Configuração}
+   \item  \textbf{Inicialização}
+ \end{itemize}
+
 \subsubsection{Planejamento}
-\subsubsection{Preparação}
-\subsubsection{Instalação de Pacotes}
+
+Seguindo o mesmo raciocínio das aplicações anteriores, é necessário definir
+quais são as dependências mínimas para o funcionamento do servidor de email,
+como vimos é necessário configurar um servidor que utiliza o procolo IMAP ou POP3,
+também é necessário a configuração de um agente de transferência de emails e também
+alguma ferramenta para controle de spam.
+
+Primeiramente ficou definido que o protocolo escolhido seria o protolo IMAP, já
+que o protocolo IMAP é um protocolo online, ou seja ele se conecta ao servidor
+e realiza o download das mensagens, depois ainda  mantém a conexão para que
+as alterações e mensagens novas sejam atualizadas em tempo real, diferentemente do
+protocolo POP3 que é um protoclo offline, onde opós o download das mensagens encerra
+a conexão. Outra vantagem do IMAP em relação ao POP3 é que o IMAP mantém uma cópia
+de mensagens no servidor, ideal para quem precisa acessar os emails de mais de um local.
+
+O servidor IMAP escolhido foi o Dovecot que é um servidor de e-mail
+IMAP, além disso dovecot é um software livre simples de configurar, requer nenhuma
+administração especial e ele usa muito pouca memória\cite{dovecot}. O agente
+de transferência de emails (MTA) escolhido foi o Postfix, que é um software
+livre para envio e entrega de emails. Sua escolha foi feita pela facilidade de
+integração com o Dovecot, Postfix é quem irá cuidar do método de entrega de email
+utilizando SMTP como protocolo de transferência de emails. Por fim a aplicação
+que servirá como anti-spam será o Apache SpamAssassin que é uma plataforma anti-spam
+que que dá aos administradores de servidor de email, um filtro para classificar
+ e-mailis e bloquear os emails que julgarem como spam \cite{spam}.
+
+\begin{itemize}
+   \item \textbf{Pacote dovecot para o Debian:} Pacote Debian com o dovecot.
+   \item \textbf{Pacote postfix para o Debian:} Pacote Debian com o postfix.
+   \item \textbf{Pacote spamassasin para o Debian:} Pacote Debian com o spamassasin.
+   \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
+   necessários para configurar o spamassasin, dovecot e postfix.
+\end{itemize}
+
+\subsubsection{Preparação e Instalação de Pacotes }
+
+Para o funcionamento correto do servidor de email são necessários vários pacotes
+e com isso podemos separar as dependências dos pcotes necessários para cada ferramenta
+escolhida para compor o sevidor de email. Primeiramente para o postfix são necessários
+os pacotes postfix e bsd-mailx, além de habilitar o serviço do postfix, para o dovecot
+é necessário instalar o pacote dovecot-imadp além de habilitar o serviço do dovecot,
+para o spamassassin são necessários os pacotes spamassassin e o pacote spamc e ativar
+o serviço do spamassassin.
+
 \subsubsection{Configuração}
+
+Como levantado no planjeamento é necessário a edição de arquivos de configuração
+de todas as ferramentas, existem arquivos de configuração para cada uma delas, inclusive
+o dovecot que precisa saber que estamos utilizando o postfix como agência de transferência
+de emails.
+
+Primeiramente, para essa configuração específica do dovecot, foi utilizado 5 arquivos
+de configuração, o primeiro é o 10-mail.conf que é um arquivo de configurção para
+indicar onde será o local no qual os emails ficarão. O segundo arquivo é o 10-ssl.conf
+que é o arquivo em que possui os caminhos do certificado ssl e da chave ssl, sendo o
+certificado pode ser lido por todos e o arquivo de chave apenas para um usuário root
+ou que esteja no grupo de usuários ssl-cert, a geração de chaves e de certificados serão
+explicados na seção %TODO qual seção ?
+. O terceiro arquivo é o arquivo
+11-postfix-auth.conf, arquivo responsável por indicar o caminho do arquivo de autenticação
+do postfix. O quarto arquivo é o arquivo 20-imap.conf onde será indicado o tamanho
+máximo de conexões por ip permitidas no servidor. Por fim o arquivo
+20-disable-imap-non-ssl.conf que permitirá que o imap utilize sempre uma conexão
+segura utilizando o imaps (imap + ssl), assim bloqueando qualquer conexão ou
+tentativa na porta imap comum.
+
+Para o posfix são apenas dois arquivos de configuração, o main.cf e o master.cf,
+o main.cf é aonde se configura os parâmetros mínimos de configuração, lá dizemos
+que vamos filtrar os emails com spamassassin e algumas configurações do SMTP, no
+master.cf definimos como um programa cliente se conecta a um serviço, e qual o
+programa que é executado quando um serviço é solicitado. Neste caso habilitamos
+recursos como: smtpd usar tls e autenticação, caminho dos arquivos de chave e certificados
+o destino das mensagens como o host do servidor de email, o smtpd utilziar o doveot
+e rejeitar conexões não autenticadas.
+
+Por fim a configuração do spamassasis, são necessários dois arquivos de configuração
+o spamassassin que é o arquivo de configurações padrão para o spamassasin e o
+local.cf que são as configurações locais. No spamassassin você habilita o spamassasin
+e configura o caminho do arquivo de log, opções e habilitar a cronjob que será
+executada de tempos em tempos. Já o local.cf possui um parâmetro importante, o
+parâmetro required\_score é um nível de 0 a 10 em que são classificados os emails
+como spam, por default esse valor é 5 porém se o usuário quiser aumentar o filtro
+pode aumentar para valores como 6 ou 7 até chegar em um nível de confiança em que
+o spamassasin cuide dos casos falsos-postivos, ou seja emails que não são spam
+porém foram interpretados como spam.
+
 \subsubsection{Inicialização}
 
 
-\subsection{Protótipo de Front-End}
+%TODO mostrar como faz bo Shak
+
+%TODO ver se no tcc 2 rola de colocar o front end e tal....
+%TODO falar do protótipo de alta fidelidade, o que é, como fiz.
+
+%\subsection{Protótipo de Front-End}
+%\label{sub:prototipo}
+
+\subsection{Segurança}
 \label{sub:prototipo}
 
-% TODO falar do protótipo de alta fidelidade, o que é, como fiz.
+Na implantação das aplicações foram feitos dois procedimentos de segurança, o primeiro
+é forçar as aplicações web a sempre utilizarem o protocolo https e a segunda foi forçar o
+servidor de email a não permitir a conexão via protocolos sem criptografia, neste
+caso sendo o protocolo imap utilizando o protocolo imaps. Para que isso fosse possível
+foi necessário gerar um certificado ssl, certificados ssl são necessários para
+que um determinado serviço opere com suporte a conexão segura por meio de criptografia.
+É de conhecimento do autor que a melhor forma é obter um certificado assinado
+por uma certificadora registrada, porém inicialemtne foi trabalhado apenas com certificados
+autoassinados.
+
+Para suprir a necessidade das aplicações, cada aplicação terá um certificado para
+si, além disso o servidor também terá o seu certificado auto-assinado, isso foi necessário
+pois a idéia é de as aplicações possam ser instaladas em diferentes servidores, por
+isso devemos garantir que cada servidor possua o seu certificado.Para adicionar
+esse novo suporte ao Shak foi necessário criar uma nova receita chef,
+para que possa gerenciar os certificados ssl. Optou-se por utilizar a ferramenta
+openssl para geração das chaves e certificados, o opensssl é uma ferramenta de
+implementação do Transport Layer Security (TLS) e Secure Sockets Layer (SSL),
+além de ser uma biblioteca de propósito geral de criptografia\cite{openssl}.
+
+Esse novo componente no Shak é composto basicamente do pacote openssl e da geração
+de certificados auto-assinados utilizando o openssl, são gerados certificados
+para cada aplicação e para o servidor, o padrão do caminho onde os certificados são
+gerados é etc/ssl/certs/hostname.pem onde hostname é o endereço do servidor
+e o caminho onde as chaves são geradas é etc/ssl/private/hostname.key.
+
+Com as chaves geradas basta configurar as aplciações indicando os caminhos dos certificados
+e das chaves, para forçar as aplicações web a utilizarem o https foi necessário fazer
+uma configuração específica no servidor web Nginx:
+
+%TODO Print de como foi
+
+Com isso todas as requisições serão forçadas a utilizar a porta 443 que é a porta
+TCP padrão para sites que utilizam http + ssl, assim as aplicações estarão utilizando
+um protocolo mais seguro utilizando criptografia dos dados, utilizando o
+certificado auto-assinado que foi gerado para o servidor específico.
+
+
+% TODO colocar mais coisas do dovecot, spamassassin, etc.
