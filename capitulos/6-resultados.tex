@@ -4,62 +4,63 @@
 
 %TODO falar de multiplas instancias em algum lugar
 Este capítulo aborda sobre os resultados parciais que foram obtidos, de acordo
-com a execução da metodologia proposta, como dito no capítulo\ref{metodologia}
+com a execução da metodologia proposta, como dito no capítulo \ref{metodologia}
 as aplicações escolhidas para terem sua instalação automatizada foram Owncloud e
-wordpress, seguindo a escolha da ferramenta Shak como arquitetura inicial. O
+Wordpress, seguindo a escolha da ferramenta Shak como arquitetura inicial. O
 desenvolvimento do trabalho também seguiu a metodologia da programação extrema
 (XP) para o desenvolvimento. Todo o trabalho foi organizado na ferramenta Gitlab
-no projeto Shak disponível no endereço \href{https://gitlab.com/shak/shak/} nele
+no projeto Shak disponível no endereço \href{https://gitlab.com/Shak/Shak/} nele
 contém todo o código fonte e as milestones e issues. As issues são as atividades
-definidas nas reuniões do jogo do planjemento e as milestones são o conjunto de
+definidas nas reuniões do jogo do planejamento e as milestones são o conjunto de
 atividades definidas para serem executadas dentro do período de uma semana, todas
 essas informações também estão disponíveis no endereço do projeto.
 
 \section{Planejamento das Atividades}
 
 O planejamento das atividades foi feito a partir das aplicações worpress e owncloud,
-que foram escolhidas na seção\ref{subsection:exemplos} para servirem como exemplos
+que foram escolhidas na seção \ref{subsection:exemplos} para servirem como exemplos
 de uso, logo a meta inicial planejada foi conter a instalação as duas aplicações
-de forma automatizada, levando em consideração todos os apectos definidos no capítulo
+de forma automatizada, levando em consideração todos os aspectos definidos no capítulo
 \ref{cap-metodologia}. As atividades iniciais levantadas foram:
 
  \begin{itemize}
    \item \textbf{Issue 1} Livro de Receitas para instalação do Wordpress.
    \item \textbf{Issue 7} Livro de Receitas para instalação do Owncloud.
-   \item \textbf{Issue 8} Livro de Receitas para instalação do servidor de email.
+   \item \textbf{Issue 8} Livro de Receitas para instalação do servidor de e-mail.
    \item \textbf{Issue 9} Forçar Wordpress a utilizar https.
    \item \textbf{Issue 10} Forçar Owncloud a utilizar https.
    \item \textbf{Issue 11} Prototipação do front-end para a ferramenta Shak.
  \end{itemize}
 
 Ao verificar que tanto a ferramenta owncloud como a ferramenta wordpress precisam
-de configurações servidor de email para algumas funcionalidades, também foi adicionado
+de configurações servidor de e-mail para algumas funcionalidades, também foi adicionado
 a atividade de criação de uma receita para a automatizar a configuração de
-servidor de email. Como aspecto de segurança, ficou definido que tanto a aplicação
+servidor de e-mail. Como aspecto de segurança, ficou definido que tanto a aplicação
 owncloud como wordpress deveriam usar sempre https por padrão, isso envolve também
-uma extratégia de como serão gerenciados os certificados de segurança para aplicar
-o protocolo https.Além dessas atividades previstas, também foram feitas evoluções
-no Shak para que seja possível a implementação dessas atividades.Nas seções a
-seguir serão apresentados os resutlados das atividades levantadas, a partir da
-proposta da construção da solução vista no capítudo\ref{cap-metodoologia}.
+uma estratégia de como serão gerenciados os certificados de segurança para aplicar
+o protocolo https. Além dessas atividades previstas, também foram feitas evoluções
+no Shak para que seja possível a implementação dessas atividades. Nas seções a
+seguir serão apresentados os resultados das atividades levantadas, a partir da
+proposta da construção da solução vista no capítudo \ref{cap-metodoologia}.
 
 \subsection{Criação de Ambientes de Desenvolvimento}
 
-Uma das necessiadades para o desenvolvimento do projeto é ter um ambiente de desenvolvimento
+Uma das necessidades para o desenvolvimento do projeto é ter um ambiente de desenvolvimento
 flexível que possa ser rapidamente construído e destruído, onde possa testar as
 implantações feitas e verificar erros caso aconteçam. Para isso é necessário utilizar
 alguma ferramenta que automatize esse processo, construir ambientes manualmente pode
 ser um processo longo e demorado, além disso mais factível de acontecer erros por
-desantenção ao executar os passos manuais, logo utilizar uma ferramenta que possa
-auxiliar na criação da máquinas virtuais e que seja possível gerenciá-las de forma
-automatizada servindo de suporte para a execução da implantação automatizada, facilitando
-a execução e teste da implantação das aplicações escolhidas.
+desatenção ao executar vários passos manuais, assim para automatizar a implantação
+das aplicações utilizou-se uma ferramenta para auxiliar na criação da máquinas virtuais onde é
+possível gerenciá-las de forma automatizada servindo de suporte para a criação
+dos ambientes de desenvolvimento, facilitandoa execução e teste da implantação das
+aplicações escolhidas.
 
 A ferramenta escolhida para auxiliar a criação de um ambiente de desenvolvimento é
-a ferramenta vagrant, com o Vagrant pode-se gerenciar a criação de máquinas
+a ferramenta Vagrant, com o Vagrant pode-se gerenciar a criação de máquinas
 virtuais para os ambientes de desenvolvimento do projeto, também é possível usar
-ferramentas de automação para criar o servidor de implantação , definindo tudo
-em arquivos que irão fazer parte do repositório git do Shak. Dessa maneira,
+ferramentas de automação para criar o servidor de implantação, definindo tudo
+em arquivos que farão parte do repositório git do Shak. Dessa maneira,
 qualquer pessoa que clonar o repositório poderá rodar uma instância desse servidor, que será exatamente
 idêntico para todos os usuários que forem criar uma máquina virtual, reduzindo ao
 máximo os problemas que surgem por causa das diferenças entre sistemas operacionais e configurações de sistema.
@@ -67,45 +68,45 @@ máximo os problemas que surgem por causa das diferenças entre sistemas operaci
 Quando executamos o comando vagrant up o Vagrant cria uma máquina virtual com as
 configurações que estão no arquivo Vagrantfile na raiz do projeto Shak, nele
 estão todas as configurações e definições da máquina virtual em questão. Para o
-vagrant criar uma máquina virtual era necessário escolher um software que gerencie
+Vagrant criar uma máquina virtual era necessário escolher um software que gerencie
 esse procedimento, a ferramenta escolhida foi o virtualbox para poder emular o sistema
-operacional em uma máquina virtual, assim o  Vagrant inicia uma máquina virtual
+operacional em uma máquina virtual, assim o Vagrant inicia uma máquina virtual
 utilizando o virtualbox, com a distribuição linux e as configurações que estiverem
 definida no arquivo de configuração Vagrantfile.
 
-Para executar o vagrant basta instalar o pacote disponível pelo debian, além disso
+Para executar o Vagrant basta instalar o pacote disponível pelo Debian, além disso
 o repositório do projeto Shak já possui um Vagrantfile padrão para que todos os
 desenvolvedores tenham o mesmo ambiente, passa acessar a máquina virtual criada
-basta acessá-la via ssh, o vagrant já gerenciar as chaves ssh, portanto basta
-dar o comando vagrant ssh que você estará conectado a máquia virtual via ssh.
-O ambiente que será levantado é um ambiente com debian na sua versão
-stretch(atualmente a versão unstalbe) e 64 bits, apesar da versão ser a versão
-unstalbe isso é importante para que possamos utilizar as versões mais novas dos
- pacotes das ferramentas escolhidas, também será importante para reportar algum
- bug caso seja encontrado.
+basta acessá-la via ssh, o Vagrant já gerenciar as chaves ssh, portanto basta
+dar o comando vagrant ssh que estará conectado a máquia virtual via ssh.
+O ambiente de desenvolvimento levantado é um ambiente com Debian na sua versão
+stretch(atualmente a versão instâvel) e 64 bits, apesar de a versão ser a versão
+instâvel isso é importante para que possamos utilizar as versões mais novas dos
+pacotes das ferramentas escolhidas, também será importante para reportar algum
+bug caso seja encontrado.
 
- Com o ambiente de desenvolvimento definido, agora pode-se iniciar a criação dos
- livros de receitas das aplicações, o repositório do Shak possui alguns scripts
- para instalar algumas dependências ao iniciar uma máquina virtual, dentro
- desses scripts temos as instalções das dependências para o Shak funcionar perfeitamente
- e também o próprio chef, que é utilizado pela ferramenta Shak para instalar aplicações e suas dependências.
+Com o ambiente de desenvolvimento definido, agora é possível iniciar a criação dos
+livros de receitas das aplicações, o repositório do Shak possui alguns scripts
+para instalar algumas dependências ao iniciar uma máquina virtual, dentro
+desses scripts temos as instalações das dependências para o Shak funcionar perfeitamente
+e também o próprio Chef, que é utilizado pela ferramenta Shak para instalar aplicações e suas dependências.
 
 \subsection{Wordpress}
 \label{sub:wordpress}
 
-De acordo com a documentação oficial\cite{wordpress} WordPress é uma plataforma
+De acordo com a documentação oficial \cite{wordpress} WordPress é uma plataforma
 semântica de vanguarda para publicação pessoal, com foco na estética, nos
 Padrões Web e na usabilidade e ao mesmo tempo é um software livre. WordPress é
 um dos maiores software de publicação de conteúdo, sendo hoje a maior
-plataforma de Gerenciamento de Conteúdo do mundo,com quase 70\% do mercado. O
+plataforma de Gerenciamento de Conteúdo do mundo, com quase 70\% do mercado. O
 wordpress foi a primeira ferramenta escolhida para automatizar a instalação, partindo
 dessa decisão deu início a construção da solução.
 
-Primeiramente foi seguido os procedimentos para construção da solução definidos em\ref{section:construcao}, é
-necessário definir as fases e procedimentos paara a implantação automatizada,
+Primeiramente foi seguido os procedimentos para construção da solução definidos na seção \ref{section:construcao}, é
+necessário definir as fases e procedimentos para a implantação automatizada,
 seguindo as fases que compõem o processo de implantação de aplicações e de acordo
- com\cite{omg2006}, e isso será o que o Shak irá automatizar, cada fase desse processo
- será  tratada como uma subseção. No wordpress as fases e procedimentos são:
+com \cite{omg2006}, e isso será o que o Shak automatizará, cada fase desse processo
+ será tratada como uma subseção. No wordpress as fases e procedimentos são:
 
 \begin{itemize}
   \item  \textbf{Planejamento}
@@ -120,13 +121,13 @@ seguindo as fases que compõem o processo de implantação de aplicações e de 
 
 O planejamento da implantação é uma fase para identificar os componentes
 necessários na implantação da aplicação. Definir quais são as dependências mínimas
-para o funcionamento de uma aplicação tais como: banco de dados, pacotes
+para o funcionamento de uma aplicação, tais como: banco de dados, pacotes
 pré-instalados e aplicações pré-configuradas. Para o wordpress foram escolhidas:
 
 \begin{itemize}
    \item \textbf{Pacote wordpress para o Debian:} Pacote Debian com o wordpress.
    \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o nginx.
-   \item \textbf{Pacote mysql para o Debian:} Pacote debian com o anco de dados mysql
+   \item \textbf{Pacote mysql para o Debian:} Pacote Debian com o anco de dados mysql
    que será usado pelo wordpress.
    \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
    necessários para configurar o wordpress, o servidor web Nginx e o banco de dados
@@ -156,43 +157,43 @@ apache2.
 Para executar essas instalações é preciso criar uma receita no livro de receitas
 do wordpress, primeiramente é necessário criar o próprio livro de receitas no Shak,
 para isso existe o comando rake cookbook que cria a estrutura básica
-de um livro de receitas que deve ser usado pelo chef, como por exemplo:
+de um livro de receitas que deve ser usado pelo Chef, como por exemplo:
 
-\begin{center}
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do wordpress com shak}]
   rake cookbook
   Cookbook name: wordpress
   knife cookbook create wordpress -o cookbooks/
-  ** Creating cookbook foo in /home/thiago/shak/cookbooks
+  ** Creating cookbook foo in /home/thiago/Shak/cookbooks
   ** Creating README for cookbook: wordpress
   ** Creating CHANGELOG for cookbook: wordpress
   ** Creating metadata for cookbook: wordpress
-\end{center}
+\end{lstlisting}
 
 Assim com a estrutura inicial, é possível declarar as dependências do wordpress
 dentro do arquivo default.rb dentro da pasta recipes. Nesse arquivo é aonde
 será declarado os pacotes que devem ser instalados, os arquivos de configuração,
-os serviços que precissar rodar, as pastas, permissões de usuários, etc. Um exemplo
-de como declarar pacotes e serviços dentro de uma receita chef é:
+os serviços que precisar executar, as pastas, permissões de usuários, etc. Um exemplo
+de como declarar pacotes e serviços dentro de uma receita Chef é:
 
-\begin{center}
-package "mysql-server"
-service "mysql" do
-  action :start
-end
-\end{center}
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de serviço do mysql com o chef}]
+  package "mysql-server"
+  service "mysql" do
+    action :start
+  end
+\end{lstlisting}
 
 
 \subsubsection{Configuração}
 \label{wordpress:preparacao}
 
-Como levantado no planjeamento é necessário a edição de arquivos de configuração
-do wordpress, arquivos de configuração do banco de dados e aqruivo de configuração
+Como levantado no planejamento é necessário a edição de arquivos de configuração
+do wordpress, arquivos de configuração do banco de dados e arquivo de configuração
 do nginx.
 
 O primeiro aqruivo de configuração é o config.php, é nesse arquivo de
 configuração onde ficam as informações de banco de dados como nome do banco de dados,
 login do usuário do banco de dados, senha, o host do banco de dados e o diretório
-onde irá ficar os temas, galeria de mídas e plugins de cada instância do wordpress.
+onde irá ficar os temas, galeria de mídias e plugins de cada instância do wordpress.
 Por padrão ele deve ficar no diretório /etc/wordpress/ e seu nome deve conter
 a seguinte estrutura: config-nomehost.php, onde o nomehost deve ser o hostname
 desejado. O segundo arquivo é o database.sql que é um pequeno script sql que
@@ -203,31 +204,28 @@ Esses arquivos de configuração serão criados dentro da pasta template, com o 
 desejado dos arquivos de configuração, seguindo a mesma estrutura
 inicial que foi criada em \ref{wordpress:preparacao}, e a ação de criação criação é
 declarada dentro do arquivo default.rb, de forma semelhante como foi feito com
-a declaração dos pacotes. Um exemplo de como gerenciar templates em uma receita chef
+a declaração dos pacotes. Um exemplo de como gerenciar templates em uma receita Chef
 é:
 
-\begin{center}
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de templates com o chef}]
   template "text\_file.txt" do
   source "text\_file.txt"
   mode "0755"
   owner "root"
   group "root"
-end
-\end{center}
-
-
+\end{lstlisting}
 
 \subsubsection{Múltiplas Instâncias}
 
 O uso de múltiplas instâncias do wordpress pode ser feito de duas maneiras, e servem
 para que o usuário possa ter várias isntâncias de wordpress no mesmo servidor, de
-acordo com a documentação do wordpress é possível ter multiplos sites e múltiplas
-instâncias, no caso do shak queremos que seja múltiplas instãncias, a partir da
+acordo com a documentação do wordpress é possível ter múltiplos sites e múltiplas
+instâncias, no caso do Shak queremos que seja múltiplas instâncias, a partir da
 repetição da instalação. O wordpress recomenda que se for necessário o uso de múltiplas
 instâncias é necessário realmente instalar cada WordPress, um por vez.
 
 A arquitetura para isso não é muito complicada, porém algumas pastas do sistema
-precisam ser dividas, ou seja, uma para cada aplicação, essa pasta é a pasta wp-content
+precisam ser divididas, ou seja, uma para cada aplicação, essa pasta é a pasta wp-content
 que é a pasta aonde fica os uploads, os temas, os plugins e etc, portanto para não
 existir conflito entre as instâncias essas pastas devem estar devidamente separadas
 com seus caminhos referenciados em cada arquivo config.php, o arquivo config.php também
@@ -235,7 +233,7 @@ deve ser único para cada instância. Além disso também é preciso que cada in
 tenha seu banco de dados, para evitar novamente os conflitos. Para
 solucionar esse problema o Shak possui um recurso interessante onde cada aplicação
 possui um atributo id, que é um atributo único para cada instância executada pelo
-shak, com isso é possível criar pastas personalizadas com o id da aplicação e também
+Shak, com isso é possível criar pastas personalizadas com o id da aplicação e também
 bancos de dados específicos e arquivos config.php específicos.
 
 Por fim basta que seja criado um arquivo de configuração Nginx para cada aplicação,
@@ -252,31 +250,30 @@ que será instalada, e segunda o hostname destino. Como é um ambiente de desenv
 não é preciso configurar um ip ou configurar um dns, é preciso apenas adicionar o
 hostname desejado no arquivo /etc/hosts. Assim mesmo que esteja na sua máquina local
 é possível acessar um endereço mais familiar em seu navegador. Um exemplo da execução
-da instaalação via shak é:
+da instaalação via Shak é:
 
-\begin{center}
-shak install wordpress hostname=wordpress.dev
-\end{center}
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de exexução de instalação do wordpress com shak}]
+Shak install wordpress hostname=wordpress.dev
+\end{lstlisting}
 
-E em assim o chef inicia o processo de instalação dos pacotes, criação dos arquivos
+E em assim o Chef inicia o processo de instalação dos pacotes, criação dos arquivos
 de configuração, incia os serviços desejados, e ao fim do procedimento a aplicação
 ja estará pronta para uso no hostname escolhido.
-
 
 \subsection{Owncloud}
 \label{sub:owncloud}
 
-De acordo com a documentação oficial\cite{owncloud} Owncloud é uma ferramenta
-para compartilhamento de arquivos, é um softwre livre em que é possível compartilhar
+De acordo com a documentação oficial \cite{owncloud} Owncloud é uma ferramenta
+para compartilhamento de arquivos, é um softawre livre em que é possível compartilhar
 um ou mais arquivos e pastas do seu computador na nuvem, e sincronizá-los com o seu
-servidor ownCloud, esses arquivos são imediatamente sincronizadoss com o servidor
-e disponiblizados para outros dispositivos que utilizam o ambiente de trabalho
-ownCloud ou app Android ou app Ios.
+servidor ownCloud, esses arquivos são imediatamente sincronizados com o servidor
+e disponibilizados para outros dispositivos que utilizam o ambiente de trabalho
+ownCloud ou app Android ou app IOS.
 
-Também foram seguidos os mesmos passos feitos em\ref{sub:wordpress}, primeiramente
-foi seguido os procedimentos para construção da solução definidos em\ref{section:construcao},
-definindo as fases e procedimentos paara a implantação automatizada, seguindo as
-fases que compõem o processo de implantação de aplicações e de acordo com\cite{omg2006},
+Também foram seguidos os mesmos passos feitos em \ref{sub:wordpress}, primeiramente
+foi seguido os procedimentos para construção da solução definidos em \ref{section:construcao},
+definindo as fases e procedimentos para a implantação automatizada, seguindo as
+fases que compõem o processo de implantação de aplicações e de acordo com \cite{omg2006},
 cada fase desse processo também será tratado como uma subseção. No Owncloud as
 fases e procedimentos são:
 
@@ -297,7 +294,7 @@ pré-instalados e aplicações pré-configuradas. Para o owncloud foram escolhid
 \begin{itemize}
    \item \textbf{Pacote owncloud para o Debian:} Pacote Debian com o wordpress.
    \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o nginx.
-   \item \textbf{Pacote postgresql para o Debian:} Pacote debian com o anco de dados mysql
+   \item \textbf{Pacote postgresql para o Debian:} Pacote Debian com o anco de dados mysql
    que será usado pelo wordpress.
    \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
    necessários para configurar o wordpress, o servidor web Nginx e o banco de dados
@@ -326,36 +323,36 @@ aplicações php com o postgresql.
 
 Para executar essas instalações é preciso criar uma receita no livro de receitas
 do owncloud, bastando executar novamente o comando rake cookbook que cria a estrutura básica
-de um livro de receitas que deve ser usado pelo chef, como por exemplo:
+de um livro de receitas que deve ser usado pelo Chef, como por exemplo:
 
-\begin{center}
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do owncloud com shak}]
   rake cookbook
   Cookbook name: owncloud
   knife cookbook create owncloud -o cookbooks/
-  ** Creating cookbook foo in /home/thiago/shak/cookbooks
+  ** Creating cookbook foo in /home/thiago/Shak/cookbooks
   ** Creating README for cookbook: owncloud
   ** Creating CHANGELOG for cookbook: owncloud
   ** Creating metadata for cookbook: owncloud
-\end{center}
+\end{lstlisting}
 
 Assim com a estrutura inicial, é possível declarar as dependências do owncloud
 dentro do arquivo default.rb dentro da pasta recipes. Nesse arquivo é aonde
 será declarado os pacotes que devem ser instalados, os arquivos de configuração,
-os serviços que precissar rodar, as pastas, permissões de usuários, etc. Um exemplo
-de como declarar pacotes e serviços dentro de uma receita chef é:
+os serviços que precisar executar, as pastas, permissões de usuários, etc. Um exemplo
+de como declarar pacotes e serviços dentro de uma receita Chef é:
 
-\begin{center}
-package "posgresql"
-service "posgresql" do
-  action :start
-end
-\end{center}
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de como habilitar serviço do postgresql com chef}]
+  package "posgresql"
+  service "posgresql" do
+    action :start
+  end
+\end{lstlisting}
 
 \subsubsection{Configuração}
 
-Como levantado no planjeamento é necessário a edição de arquivos de configuração
-do owncloud, arquivos de configuração do banco de dados e aqruivo de configuração
-do nginx.
+Como levantado no planejamento é necessário a edição de arquivos de configuração
+do owncloud, arquivos de configuração do banco de dados e arquivo de configuração
+do Nginx.
 
 O primeiro aqruivo de configuração é o autoconfig.php, é nesse arquivo de
 configuração onde ficam as informações de banco de dados como nome do banco de dados,
@@ -374,32 +371,32 @@ configuração do servidor web.
 \subsubsection{Múltiplas Instâncias}
 
 Diferentemente do wordpress o owncloud não suporta múltiplas instâncias, porém isso
-não foi um empeditivo ao trabalho, com uma busca econtrou-se uma discussão no repositório
+não foi um impeditivo na execução do trabalho, com uma busca encontrou-se uma discussão no repositório
 oficial do owncloud relacionado a implementação dessa funcionalidade, a discussão está
 disponibilizada em \href{https://github.com/owncloud/core/pull/16424}, nela existia
-uma propsota de solução ao fato de não existir a opção de múltiplas instâncias. O
-resultado desta discussão foi que os desenvovledores do owncloud não acharam relevante
+uma proposta de solução ao fato de não existir a opção de múltiplas instâncias. O
+resultado desta discussão foi que os desenvolvedores do owncloud não acharam relevante
 a funcionalidade, mas que caso o desenvolvedor ache necessário ele poderia fazer essa
 alteração diretamente no código fonte.
 
 Porém manter isso no Shak seria enviável, uma solução a esse problema seria enviar
-uma contribuição ao pacote do owncloud no debian, onde assim a contribuição feita
+uma contribuição ao pacote do owncloud no Debian, onde assim a contribuição feita
 poderia ser facilmente utilizada por mais pessoas que queiram essa funcionalidade,
-bastando utilizar a versão disponibilizada nos servidores do debian. Com isso, foi
+bastando utilizar a versão disponibilizada nos servidores do Debian. Com isso, foi
 feito a contribuição que adicionaria a funcionalidade de múltiplas instâncias para
-o owncloud e enviado ao mantenedor do pacote do owncloud no debian,
+o owncloud e enviado ao mantenedor do pacote do owncloud no Debian,
 a discussão está disponível em \href{https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=789726},
 a contribuição foi bem vista pelo mantenedor do pacote, e será incorporada na nova
-versão do owncloud no debian.
+versão do owncloud no Debian.
 
-Em paralelo ao processo da contribuição estar disponível no novo pacote debian,
+Em paralelo ao processo da contribuição estar disponível no novo pacote Debian,
 foi necessário utilizar apenas instâncias únicas do owncloud, porém também foi
 adicionado na receita do owncloud o suporte a múltiplas instâncias, portanto
-assim que o owncloud suportar múltiplas instâncias via pacote debian, será possívarel
+assim que o owncloud suportar múltiplas instâncias via pacote Debian, será possível
 também criar múltiplas instâncias do owncloud.
 
 A solução feita na receita do owncloud foi baseada na contribuição enviada, portanto
-os testes foram feitos gerando um novo pacote debian do owncloud porém incoporando
+os testes foram feitos gerando um novo pacote Debian do owncloud porém incorporando
 a contribuição feita. Os procedimentos feitos para suportar múltiplas instâncias
 no owncloud são bem semelhantes aos do wordpress, criando um diretório de dados
 para cada aplicação, um arquvio de configuração para cada aplicação e um banco de
@@ -413,53 +410,53 @@ para isso o Shak precisa de duas informações importantes, a primeira é a apli
 que será instalada, e segunda o hostname destino, para executar a instalação
 do owncloud basta:
 
-\begin{center}
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do owncloud com shak}]
 shak install owncloud hostname=owncloud.dev
-\end{center}
+\end{lstlisting}
 
-E em assim o chef inicia o processo de instalação dos pacotes, criação dos arquivos
+E em assim o Chef inicia o processo de instalação dos pacotes, criação dos arquivos
 de configuração, incia os serviços desejados, e ao fim do procedimento a aplicação
-ja estará pronta para uso no hostname escolhido.
+já estará pronta para uso no hostname escolhido.
 
 
-\subsection{Servidor de Email}
-\label{sub:email}
+\subsection{Servidor de e-mail}
+\label{sub:e-mail}
 
-Todas as outras aplicações anteriores utilizam o protoloco
-HTTPS na camada de aplicação, agora com o servidor de email será trabalhado um
-protocolo diferente, como visto no capítulo\ref{cap-referencial}
-de acordo\ref{kurose2010redes} a camada de aplicção é aonde residem  as aplicações
+Todas as outras aplicações anteriores utilizam o protocolo
+HTTP na camada de aplicação, agora com o servidor de e-mail será trabalhado um
+protocolo diferente, como visto no capítulo \ref{cap-referencial}
+de acordo \ref{kurose2010redes} a camada de aplicação é aonde residem  as aplicações
 de rede e seus protocolos, detre eles o protocolo SMTP que provê mensagens de correio
-eletronico.
+eletrônico.
 
-Servidores de email formam a infraestrutura do email, sendo o SMTP o protocolo
+Servidores de e-mail formam a infraestrutura do e-mail, sendo o SMTP o protocolo
 mais importante pois é o responsável por transferir as mensagens de servidores
-de email remetentes para servidores de email destinatários, ou seja transferindo
-arquivos (as mensagens de email) de um servidor para o outro. Porém o protocolo
+de e-mail remetentes para servidores de e-mail destinatários, ou seja, transferindo
+arquivos (as mensagens de e-mail) de um servidor para o outro. Porém o protocolo
 SMTP é um protocolo do tipo de envio de informações, diferente do protocolo HTTP
-que é um protocolo que recupera informações, o que acarretria no problema de que
-o usuário não consegueria recuperar suas informações como emails recebidos, já
+que é um protocolo que recupera informações, o que acarretaria em um problema em que
+o usuário não conseguiria recuperar suas informações como e-mails recebidos, já
 que o SMTP apenas envia informações.
 
-Para solucionar esse problema existem os protoclos de acesso a servidores de
-email, que recuperam as informações do servidor de email até ao usuário final.
-Como visto no capítulo\ref{cap-referencial} exitem protocolos de acesso ao correio
-como POP3, IMAP ou usar até mesmo o protoclo HTTP servindo de protoclo para recuperar
+Para solucionar esse problema existem os protocolos de acesso a servidores de
+e-mail, que recuperam as informações do servidor de e-mail até ao usuário final.
+Como visto no capítulo \ref{cap-referencial} exitem protocolos de acesso ao correio
+como POP3, IMAP ou usar até mesmo o protocolo HTTP servindo de protocolo para recuperar
 informações.
 
 Dando continuidade na construção da solução, tanto owncloud como wordpress
-possuem funcionalidades que dependem de serviços de email funcionando, portanto
-é necessário uma configuração mínima de email para que funcione tais funcionaldiades.
-Portanto a construção de um servidor de email possui bastante relevância pois
-assim qualquer aplicação que precisar de um servidor de email ja poderá utilizar
-o servidor de email que o Shak fornece.
+possuem funcionalidades que dependem de serviços de e-mail funcionando, portanto
+é necessário uma configuração mínima de e-mail para que funcione tais funcionalidades.
+Portanto a construção de um servidor de e-mail possui bastante relevância pois
+assim qualquer aplicação que precisar de um servidor de e-mail ja poderá utilizar
+o servidor de e-mail que o Shak fornece.
 
-Para a construção do servidor de email também foram seguidos os mesmos passos
-feitos em\ref{sub:wordpress} e\ref{sub:owncloud}, primeiramente foi seguido os
-procedimentos para construção da solução definidos em\ref{section:construcao},
-definindo as fases e procedimentos paara a implantação automatizada, seguindo as
-fases que compõem o processo de implantação de aplicações e de acordo com\cite{omg2006},
-cada fase desse processo também será tratado como uma subseção. No servidor de email
+Para a construção do servidor de e-mail também foram seguidos os mesmos passos
+feitos em \ref{sub:wordpress} e \ref{sub:owncloud}, primeiramente foi seguido os
+procedimentos para construção da solução definidos em \ref{section:construcao},
+definindo as fases e procedimentos para a implantação automatizada, seguindo as
+fases que compõem o processo de implantação de aplicações e de acordo com \cite{omg2006},
+cada fase desse processo também será tratado como uma subseção. No servidor de e-mail
 as fases e procedimentos são:
 
  \begin{itemize}
@@ -472,29 +469,29 @@ as fases e procedimentos são:
 \subsubsection{Planejamento}
 
 Seguindo o mesmo raciocínio das aplicações anteriores, é necessário definir
-quais são as dependências mínimas para o funcionamento do servidor de email,
+quais são as dependências mínimas para o funcionamento do servidor de e-mail,
 como vimos é necessário configurar um servidor que utiliza o procolo IMAP ou POP3,
-também é necessário a configuração de um agente de transferência de emails e também
+também é necessário a configuração de um agente de transferência de e-mails e também
 alguma ferramenta para controle de spam.
 
 Primeiramente ficou definido que o protocolo escolhido seria o protolo IMAP, já
 que o protocolo IMAP é um protocolo online, ou seja ele se conecta ao servidor
 e realiza o download das mensagens, depois ainda  mantém a conexão para que
 as alterações e mensagens novas sejam atualizadas em tempo real, diferentemente do
-protocolo POP3 que é um protoclo offline, onde opós o download das mensagens encerra
+protocolo POP3 que é um protocolo offline, onde após o download das mensagens encerra
 a conexão. Outra vantagem do IMAP em relação ao POP3 é que o IMAP mantém uma cópia
-de mensagens no servidor, ideal para quem precisa acessar os emails de mais de um local.
+de mensagens no servidor, ideal para quem precisa acessar os e-mails de mais de um local.
 
 O servidor IMAP escolhido foi o Dovecot que é um servidor de e-mail
 IMAP, além disso dovecot é um software livre simples de configurar, requer nenhuma
-administração especial e ele usa muito pouca memória\cite{dovecot}. O agente
-de transferência de emails (MTA) escolhido foi o Postfix, que é um software
-livre para envio e entrega de emails. Sua escolha foi feita pela facilidade de
-integração com o Dovecot, Postfix é quem irá cuidar do método de entrega de email
-utilizando SMTP como protocolo de transferência de emails. Por fim a aplicação
+administração especial e ele usa muito pouca memória \cite{dovecot}. O agente
+de transferência de e-mails (MTA) escolhido foi o Postfix, que é um software
+livre para envio e entrega de e-mails. Sua escolha foi feita pela facilidade de
+integração com o Dovecot, Postfix é quem cuidará do método de entrega de e-mail
+utilizando SMTP como protocolo de transferência de e-mails. Por fim a aplicação
 que servirá como anti-spam será o Apache SpamAssassin que é uma plataforma anti-spam
-que que dá aos administradores de servidor de email, um filtro para classificar
- e-mailis e bloquear os emails que julgarem como spam \cite{spam}.
+que que dá aos administradores de servidor de e-mail, um filtro para classificar
+ e-mailis e bloquear os e-mails que julgarem como spam \cite{spam}.
 
 \begin{itemize}
    \item \textbf{Pacote dovecot para o Debian:} Pacote Debian com o dovecot.
@@ -506,9 +503,9 @@ que que dá aos administradores de servidor de email, um filtro para classificar
 
 \subsubsection{Preparação e Instalação de Pacotes }
 
-Para o funcionamento correto do servidor de email são necessários vários pacotes
-e com isso podemos separar as dependências dos pcotes necessários para cada ferramenta
-escolhida para compor o sevidor de email. Primeiramente para o postfix são necessários
+Para o funcionamento correto do servidor de e-mail são necessários vários pacotes
+e com isso podemos separar as dependências dos pacotes necessários para cada ferramenta
+escolhida para compor o servidor de e-mail. Primeiramente para o postfix são necessários
 os pacotes postfix e bsd-mailx, além de habilitar o serviço do postfix, para o dovecot
 é necessário instalar o pacote dovecot-imadp além de habilitar o serviço do dovecot,
 para o spamassassin são necessários os pacotes spamassassin e o pacote spamc e ativar
@@ -516,14 +513,14 @@ o serviço do spamassassin.
 
 \subsubsection{Configuração}
 
-Como levantado no planjeamento é necessário a edição de arquivos de configuração
+Como levantado no planejamento é necessário a edição de arquivos de configuração
 de todas as ferramentas, existem arquivos de configuração para cada uma delas, inclusive
 o dovecot que precisa saber que estamos utilizando o postfix como agência de transferência
-de emails.
+de e-mails.
 
 Primeiramente, para essa configuração específica do dovecot, foi utilizado 5 arquivos
-de configuração, o primeiro é o 10-mail.conf que é um arquivo de configurção para
-indicar onde será o local no qual os emails ficarão. O segundo arquivo é o 10-ssl.conf
+de configuração, o primeiro é o 10-mail.conf que é um arquivo de configuração para
+indicar onde será o local no qual os e-mails ficarão. O segundo arquivo é o 10-ssl.conf
 que é o arquivo em que possui os caminhos do certificado ssl e da chave ssl, sendo o
 certificado pode ser lido por todos e o arquivo de chave apenas para um usuário root
 ou que esteja no grupo de usuários ssl-cert, a geração de chaves e de certificados serão
@@ -538,11 +535,11 @@ tentativa na porta imap comum.
 
 Para o posfix são apenas dois arquivos de configuração, o main.cf e o master.cf,
 o main.cf é aonde se configura os parâmetros mínimos de configuração, lá dizemos
-que vamos filtrar os emails com spamassassin e algumas configurações do SMTP, no
+que vamos filtrar os e-mails com spamassassin e algumas configurações do SMTP, no
 master.cf definimos como um programa cliente se conecta a um serviço, e qual o
 programa que é executado quando um serviço é solicitado. Neste caso habilitamos
 recursos como: smtpd usar tls e autenticação, caminho dos arquivos de chave e certificados
-o destino das mensagens como o host do servidor de email, o smtpd utilziar o doveot
+o destino das mensagens como o host do servidor de e-mail, o smtpd utilizar o dovedcot
 e rejeitar conexões não autenticadas.
 
 Por fim a configuração do spamassasis, são necessários dois arquivos de configuração
@@ -550,39 +547,40 @@ o spamassassin que é o arquivo de configurações padrão para o spamassasin e 
 local.cf que são as configurações locais. No spamassassin você habilita o spamassasin
 e configura o caminho do arquivo de log, opções e habilitar a cronjob que será
 executada de tempos em tempos. Já o local.cf possui um parâmetro importante, o
-parâmetro required\_score é um nível de 0 a 10 em que são classificados os emails
+parâmetro required\_score é um nível de 0 a 10 em que são classificados os e-mails
 como spam, por default esse valor é 5 porém se o usuário quiser aumentar o filtro
 pode aumentar para valores como 6 ou 7 até chegar em um nível de confiança em que
-o spamassasin cuide dos casos falsos-postivos, ou seja emails que não são spam
+o spamassasin cuide dos casos falsos-postivos, ou seja, e-mails que não são spam
 porém foram interpretados como spam.
 
 \subsubsection{Inicialização}
 
-Após a construção da receita do servidor de email é necessário testar a receita construída,
+Após a construção da receita do servidor de e-mail é necessário testar a receita construída,
 para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
 que será instalada, e segunda o hostname destino, para executar a instalação
-do servidor de email basta:
+do servidor de e-mail basta:
 
-\begin{center}
-shak install email hostname=owncloud.dev
-\end{center}
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do servidor de e-mailcom shak}]
+Shak install e-mail hostname=owncloud.dev
+\end{lstlisting}
 
-E em assim o chef inicia o processo de instalação dos pacotes, criação dos arquivos
+
+E em assim o Chef inicia o processo de instalação dos pacotes, criação dos arquivos
 de configuração, incia os serviços desejados, e ao fim do procedimento a aplicação
 ja estará pronta para uso no hostname escolhido.
 
 Para testar o funcionamento foram feitos dois procedimentos, o primeiro era utilizar
-um cliente de email para testes, o cliente de email escolhido foi o mutt, utilizando
-suas funções básicas de enviar e receber emails. O segundo passo foi realizar conexões
-com o servidor de email via telnet, com os seguintes comandos:
+um cliente de e-mail para testes, o cliente de e-mail escolhido foi o mutt, utilizando
+suas funções básicas de enviar e receber e-mails. O segundo passo foi realizar conexões
+com o servidor de e-mail via telnet, com os seguintes comandos:
 
-\begin{center}
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de teste de conexão telnet no servidor imap}]
   telnet localhost imap
   telnet localhost imaps
-\end{center}
+\end{lstlisting}
 
-Pela configuração do servidor de email não será possível abrir uma conexão telnet
-em imap, porém em imaps será possível, isso serve para testar que o servidor de email
+Pela configuração do servidor de e-mail não será possível abrir uma conexão telnet
+em imap, porém em imaps será possível, isso serve para testar que o servidor de e-mail
 está barrando as conexões que não utilizem os protocolos criptografados.
 
 
@@ -597,7 +595,7 @@ está barrando as conexões que não utilizem os protocolos criptografados.
 
 Na implantação das aplicações foram feitos dois procedimentos de segurança, o primeiro
 é forçar as aplicações web a sempre utilizarem o protocolo https e a segunda foi forçar o
-servidor de email a não permitir a conexão via protocolos sem criptografia, neste
+servidor de e-mail a não permitir a conexão via protocolos sem criptografia, neste
 caso sendo o protocolo imap utilizando o protocolo imaps. Para que isso fosse possível
 foi necessário gerar um certificado ssl, certificados ssl são necessários para
 que um determinado serviço opere com suporte a conexão segura por meio de criptografia.
@@ -609,11 +607,11 @@ Para suprir a necessidade das aplicações, cada aplicação terá um certificad
 si, além disso o servidor também terá o seu certificado auto-assinado, isso foi necessário
 pois a idéia é de as aplicações possam ser instaladas em diferentes servidores, por
 isso devemos garantir que cada servidor possua o seu certificado.Para adicionar
-esse novo suporte ao Shak foi necessário criar uma nova receita chef,
+esse novo suporte ao Shak foi necessário criar uma nova receita Chef,
 para que possa gerenciar os certificados ssl. Optou-se por utilizar a ferramenta
 openssl para geração das chaves e certificados, o opensssl é uma ferramenta de
 implementação do Transport Layer Security (TLS) e Secure Sockets Layer (SSL),
-além de ser uma biblioteca de propósito geral de criptografia\cite{openssl}.
+além de ser uma biblioteca de propósito geral de criptografia \cite{openssl}.
 
 Esse novo componente no Shak é composto basicamente do pacote openssl e da geração
 de certificados auto-assinados utilizando o openssl, são gerados certificados
@@ -625,26 +623,26 @@ Com as chaves geradas basta configurar as aplciações indicando os caminhos dos
 e das chaves, para forçar as aplicações web a utilizarem o https foi necessário fazer
 uma configuração específica no servidor web Nginx:
 
-\begin{center}
-server {
-    server\_name <%= @hostname %>;
-    rewrite     \^   https://\$server\_name\$request\_uri? permanent;
-}
 
-server {
-    server\_name <%= @hostname %>;
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de arquivo de configuração do Nginx para aplicações web no shak}]
+  server {
+      server\_name <%= @hostname %>;
+      rewrite     \^   https://\$server\_name\$request\_uri? permanent;
+  }
 
-    listen 443 ssl;
-    ssl\_certificate       /etc/ssl/certs/<%= @hostname %>.pem;
-    ssl\_certificate\_key   /etc/ssl/private/<%= @hostname %>.key;
+  server {
+      server\_name <%= @hostname %>;
 
-    access\_log            /var/log/nginx/<%= @hostname %>.access.log;
-    error\_log             /var/log/nginx/<%= @hostname %>.error.log;
+      listen 443 ssl;
+      ssl\_certificate       /etc/ssl/certs/<%= @hostname %>.pem;
+      ssl\_certificate\_key   /etc/ssl/private/<%= @hostname %>.key;
 
-    include /var/lib/shak/etc/nginx/<%= @hostname %>/*.conf;
-}
+      access\_log            /var/log/nginx/<%= @hostname %>.access.log;
+      error\_log             /var/log/nginx/<%= @hostname %>.error.log;
 
-\end{center}
+      include /var/lib/Shak/etc/nginx/<%= @hostname %>/*.conf;
+  }
+\end{lstlisting}
 
 Com isso todas as requisições serão forçadas a utilizar a porta 443 que é a porta
 TCP padrão para sites que utilizam http + ssl, assim as aplicações estarão utilizando
