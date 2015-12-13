@@ -20,7 +20,7 @@ componentes, o que pode tornar a implantação de software um processo complicad
 nem sempre existir a garantia de que cada componente será implantado corretamente.
 Portanto, a equipe de desenvolvimento deve encontrar uma maneira de lidar
 com uma maior incerteza no ambiente no qual seus sistemas vão operar, garantindo
-que a implantação do software seja feita da forma correta, evitando o acontecimento
+que a implantação do software seja feita da forma correta, evitando orose acontecimento
 de erros e imprevistos.
 
 Uma grande aliada das equipes de desenvolvimento é a implantação automatizada de
@@ -297,28 +297,189 @@ não são de responsabilidade dos pacotes e sim do usuário que deseja utilizar 
 software, já que o pacote não poderia prever qual é a estrutura e configuração
 que o usuário pretende utilizar, logo a execução desses passos são feitas de
 acordo com a preferência do usuário, podendo serfeita manualmente ou a partir
-de uma implantação automatizada que utilize alguma ferramenta para isso.
+de uma implantação automatizada que utilize alguma ferramenta para isso. Um exemplo
+desse tipo de atividade que não é de responsabilidade de um pacote é a configuração
+de hospagem virtual, que será visto na subseção a seguir.
 
-Outro fator importante é que um pacote também não pode prever quais são os procedimentos
-de segurança que devem ser tomados, como por exemplo a criação de certificados de
-segurança. Para entender melhor quais são esses procedimentos, na próxima seção
-será abordado os procedimentos de segurança na implantação de aplicações web utilizando
+
+\subsection{Múltiplas Instâncias com Hospedagem Virtual}
+%falar sobre
+
+Na implantação de software deve-se escolher um ambiente alvo, onde a aplicação
+será instalada, esse ambiente deve possuir um nó, que é um recurso computacional
+onde se implanta um componente, como por exemplo uma máquina virtual. Porém pode
+existir a necessidade de implantar várias aplicações no mesmo servidor, e no caso
+de aplicações web isso pode ser um problema, visto que as aplicações estarão em um
+único servidor, assim também em um único IP, que é o número que o servidor recebe
+ao se conectar na internet.
+
+Uma forma de solucionar esse problema é o uso de Hospedagem Virtual, de acordo com
+\cite{apachevh} hospedagem virtual é um termo que refere-se à prática de executar
+mais de uma aplicação web em uma única máquina. Com a Hospedagem Virtual é possível
+hospedar mais de um nome de domínio no mesmo computador, o que significa que você
+tem vários nomes em execução em um único endereço de ip, possibiltiando que em um
+mesmo servidor você possa ter uma aplicação em www.blog.com e www.nuvem.com. O fato
+de que eles estão em execução no mesmo servidor físico não é aparente para o usuário final. Essa
+solução é importante para economizar recursos, já que não será necessário possuir
+um servidor dedicado apenas a uma aplicação.
+
+Alguns softwares possuem suporte para a implementação de hospedagem virtual, como por
+exemplo o Acpahe e o Nginx, o funcionamento de ambos é a partir de arquivos que
+especificam a configuração da hospedagem virtual e determina como o servidor
+irá responder às várias requisições de domínio. No apache o arquivo padrão de
+é chamado 000-default.conf que pode ser utilizado como referência, como por exemplo:
+
+\begin{lstlisting}[language=Xml,label=dice_index,caption={Exemplo de arquivo de confgiuração de hospedagem virtual no apache}]
+  <VirtualHost *:80>
+      ServerAdmin webmaster@localhost
+      DocumentRoot /var/www/html
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+  </VirtualHost>
+\end{lstlisting}
+
+Isso quer dizer que as requisições na porta 80 vindas de webmaster@localhost serão
+direcioandas aos arquivos que estão em /var/www/html. Já no Nginx a configuração
+de hospedagem virtual também é feita através de arquivos de configuração, o arquivo
+padrão no Nginx é chamado de default.conf que também pode ser utilizado como
+referência, como por exemplo:
+
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de arquivo de confgiuração de hospedagem virtual no Nginx}]
+  server {
+         listen   80; ## listen for ipv4; this line is default and implied
+         #listen   [::]:80 default ipv6only=on; ## listen for ipv6
+
+         root /var/www/example.com/public_html;
+         index index.html index.htm;
+
+         # Make site accessible from http://localhost/
+         server_name example.com;
+  }
+\end{lstlisting}
+
+Isso quer dizer que as requisições que são ouvidas da porta 80 serão direcionadas
+aos arquivos que estão em /var/www/example.com/public\_html, também é indicado o
+arquivo index que será o arquivo da pagina inicial do nome do servidor na porta 80,
+além disso é definido example.com para o nome servidor. Além disso existem vários
+outros recursos que essas ferramentas possuem, como por exemplo o recurso de proxy,
+porém para este trabalho será necessáro apenas o uso de hospedagem virtual.
+
+\subsection{Segurança na Implantação de Aplicações Web}
+\label{sec:seguranca}
+
+Como vimos, um pacote cumpre bem suas responsabilidades dentro de uma implantação de
+softwre, porém outras atividades também são importantes e que fogem da responsabilidade
+de um pacote, outro fator importante é que um pacote também não pode prever quais são
+os procedimentos de segurança que devem ser tomados numa implantação, como por exemplo a criação de certificados de
+segurança. Para entender melhor quais são esses procedimentos, será abordado quais são
+os procedimentos de segurança na implantação de aplicações web utilizando
 pacotes Debian, no qual trata o uso de protocolos que utilizam criptografia para a segurança de dados,
 que também são procedimentos que podem ser feitos manualmente ou utilizando alguma
 ferramentas para automatizar o processo.
 
-\section{Segurança na Implantação de Aplicações Web}
-\label{sec:seguranca}
+De acordo com \cite{kurose2010redes} existem algumas categorias predominantes e prejudiciais
+de ataques na internet, são eles: ataques via malware, recusa de serviços, analisador
+de pacotes, disfarce na fonte e modifcação e exclusão de mensagem, e para proteger
+desses ataques é importnte o uso de comunidação segura, protegendo as aplicações. Para
+isso Kurose ainda identifica as propriedades desejáveis da comunicação segura, são elas:
 
-%colocar uma introdução
+\begin{itemize}
+  \item \textbf{Confidencialidade:} Diz respeito a somente o remetente e o destinatário
+  pretendido podem entender o conteúdo da mensagem transmitida.
+  \item \textbf{Autenticação do ponto final:} Diz respeito a tanto o remetente como o destinatário
+  precisam confirmar a identidade da outra parte envolvida na comunicação.
+  \item \textbf{Integridade da Mensagem:} Diz respeito a assegurar que o conteúdo
+  da mensagem não seja modificado.
+  \item \textbf{Segurança Operacional:} Diz respeito a segurança da rede, no qual
+  os atacantes podem tentar adiquirir os segredos da rede e lançar ataques DoS,
+  por isso é necessário uma boa configuração de firewall e e sistemas de detecção
+  de invasão.
+\end{itemize}
 
-\subsection{Protocolos}
+No contexto implantação de aplicações web, tomaremos como objetivo a segurança
+dos dados transmitidos, com isso aplicando criptografia nos protocolos da camada
+de aplicação, que serão utilizados neste trabalho, sendo eles os protocolos HTTP
+e SMTP, assim tornando adicioanndo uma camada de segurança as aplicações que
+serão implantadas.
 
-%falar dos protocolos
+\subsection{Protocolos da Camada de Aplicação e Camada de Segurança}
 
-\subsection{Ceritificados}
+As aplicações web utilizam protocolos da camada de aplicação, que é uma das
+cinco camadas do modelo utilizado por Kurose em \cite{kurose2010redes}, a camada
+de aplicação é onde residem as aplicações de rede e seus protocolos, incluindo
+os protocolos HTTP e SMTP, que são protocolos importantes neste trabalho, já que
+aplicações web utilizam o HTTP para transferência de arquivos e o SMTP para
+transferência de mensagens de correio eletrônico. Os protocolos HTTP e SMTP estão especificados em RFCs, a especificação do protocolo
+HTTP está disponível na RFC 2616 e RFC 1945, já o protocolo SMTP está especificado na RFC 5321.
 
-%falar dos certificados
+A aplicações que serão utilizadas neste trabalho são aplicações web empacotadas no
+dDebian, e aplicações Web costumam ser aplicações cliente-servidor, que permitem aos
+usuários obterem documentos de servidores web a partir de requisições \cite{kurose2010redes},
+esses documentos são padrozindos, como por exemplo o HTML, para que os navegadores
+possam interpretar e passar a infomação ao usuário.
 
-\subsection{Múltiplas Instâncias com VirtualHosting}
-%falar sobre
+De acordo com \cite{kurose2010redes} o HTTP é um protocolo da camada de aplicação
+da web, e é implementado em dois programas, um cliente e um servidor, conversando
+um com outro a partir de troca de mesagens, o papel do HTTP é definir a estrutura dessas
+mensagens e o modo como o servidor e o cliente as trocam. O principal conteúdo das
+mensagens trocadas entre clientes e servidores são os objetos, um objeto é basicamente
+um arquivo, podendo ser um vídeo, uma imagem ou um arquivo HTML.
+
+Já o SMTP é protocolo responsável por transfer mensagens de servidores de correio
+remetentes para servidores de correio destinatários, também transferindo arquivos,
+de um servidor de correio para o outro. Uma diferença diferença entre o HTTP e o SMTP
+é que o protocolo HTTP é um protocolo de recuperação de informações, enquanto
+o protoclo SMTP é um protocolo de envio de informações \cite{kuroseredes2010}. Isso implica que para um
+usuário recuperar as informações de email é necessário o uso de outros componentes,
+já que isso não é possível via SMTP, para resolver isto existem os protocolos
+de acesso ao correio, entre eles o POP3 e IMAP.
+
+Para adicionar uma camada de segurança, com sigilo e itegridade de dados é necessário
+o uso de outro protocolo, o protocolo SSL, para complementar os protocolos HTTP
+e SMTP. O protocolo SSL é utilizado por basicamente todos os sites, como Googlem
+Amazon, eBay, e seu uso é para oferecer segurança em transações, pois ele cria um
+canal criptografado entre um servidor web e um navegador, garantido que todos os
+dados transmitidos sejam sigilosos e seguros \cite{kuroseredes2010}. Para poder utilizar o SSL é necessaŕio
+que o seu servidor web possua um certificado, que possa responder algumas questões
+sobre a identidade do seu servidor. Com as devidas configurações, tanto HTTP como
+SMTP estarão sobre uma camada adicional de segurança, que utiliza o protocolo SSL/TLS.
+ Essa camada adicional permite que os dados sejam transmitidos por meio de uma
+conexão criptografada e que se verifique a autenticidade do servidor e do cliente
+ por meio de certificados digitais. Agora o próximo passo é ver o que são os certificados
+ digitais e seu papel dentro da segurança em aplicações web.
+
+\subsection{Assinaturas e Ceritificados Digitais}
+
+As assinaturas e certificados digitais servem para agregar confiança e segurança
+nas trocas de dados pela internet, principalmente quando se trata de troca de informações
+sigilosas e que precisam de uma confiabilidade maior, basta imaginar que ninguém
+gostaria de ter seus dados bancários expostos, ou ter seus dados trafegando sem
+nenhum tipo de segurança em uma rede aberta. De acordo com \cite{kuroseredes2010}
+assinatura digital é uma técnica criptográfica usada para atestar que você e não
+outra pessoa conhece e ou concorda com tal tipo de documento. O que viabiliza a
+assinatura digital é o emprego de criptografia assimétrica ou criptografia de chaves
+públicas, logo a assinatura digital deve ser algo verificável e não falsificável.
+
+Uma aplicação importante de assinaturas digitais é a certificação de chaves públicas,
+que certifica que uma chave pública pertence a uma entidade específica\cite{kuroseredes2010},
+e a certificação de chaves públicas é utilizada no protocolo SSL, visto anteriormente.
+Uma maneira de se obter o certificado, é através de uma
+entidade conhecida como entidade certificadora, que é responsável por validar e
+emitir certificados, e verifica se uma entidade é realmente quem ela diz ser,
+após essa validação a entidade certificadora cria um certificado que vincula a
+chave pública da entidade a essa verificação, assim o certificado passa a ter a
+chave pública e a identificação de que é realmente o proprietário daquela chave pública.
+
+Porém essas entidades certificadoras cobram para esse serviço, e os certificados também
+possuem validade. Uma outra maneira de se obter certificados é a partir dos certificados
+auto-assinados, que são os certificados gerandos por conta própria através de
+ferramentas, uma exemplo de ferramenta é a ferramenta OpenSSL, que permite requisitar,
+ assinar, gerar, exportar e converter certificados digitais.
+
+Um problema em utilizar certificados auto-assinados é que os clientes precisam
+apenas dos certificados das entidades certificadores em quem eles confiam, por
+exemplo, um navegador não vai conhecer o certificado que foi auto-assinado por
+alguém que ele não conhece, e logo vai avisar ao usuário de que ele não está em uma
+conexão segura, por mais que esteja sobre uma conexão HTTPS. Por isso que manter certificados
+auto-assinados pode tornar-se mais difícil, porém é uma saída principalmente para
+fins de testes, e melhor do que não utilizar nenhum tipo de segurança.
