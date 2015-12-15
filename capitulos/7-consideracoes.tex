@@ -1,9 +1,85 @@
 \chapter{Considerações preliminares}
 \label{cap-conclusoes}
 
-\section{Trabalhos futuros}
+No decorrer deste trabalho, alguns resultados foram alcançados. Primeiramente, o
+pesquisador estabeleceu um bom conhecimento sobre implantação automatizada
+de software e tecnologias que permites tal implementação, como por exemplo o chef
+e o puppet, sendo possível automatizar todo o processo de implantação de um software,
+desde o planejamento até a execução também foi conhecido ferramentas que são
+utilizadas para implantação de aplicações de forma automatizada, como por exemplo
+o JuJu e o Bitnami, que ajudam usuários que não possuem conhecimento a
+instalarem aplicações com facilidade.
 
-\section{Dificuldades encontradas}
+Além disso, também foram adquiridos os conhecimentos sobre DevOps, que é um conjunto
+de práticas e princípios para a implantação ágil de software, que agregou bastante
+ao trabalho, pois também trata de automação de implantação de software, resolvendo
+um problema maior, que é a falta de integração entre a equipe de desenvolvimento
+e a equipe de implantação. E também hospedagem virtual, que é uma forma de manter
+várias aplicações no mesmo servidor com um único endereço IP e vários domínios diferentes.
+
+Em relação a construção de solução, foram realizadas melhorias na ferramenta Shak,
+provendo três novas aplicações, sendo elas Owncloud, Wordpress e servidor de e-mail,
+todas sendo implantadas automaticamente, levando em consideração o uso de protocolos
+seguros como HTTP junto ao SSL e SMTP junto ao SSL. Logo também foi adicionado a
+ferramenta Shak suporte a criação de certificados autoassinados, permitindo que
+as aplicações possam usar certificados para configurar tais protocolos. Ainda foi
+adicionado ao Shak o suporte a forçar que sempre as aplicações web utilizem
+o protocolo HTTPS, evitando assim implantações inseguras, independente da ferramenta.
+
+Também foi configurado o suporte a múltiplas instâncias nas aplicações disponíveis
+no shak, o Wordpress já previa tal suporte, bastando configurá-lo, porém no Owncloud
+foi necessário o envio de um patch para o mantenedor do pacote Debian, visto que
+é uma funcionalidade nova no Owncloud, permitindo assim a criação de múltiplas
+instâncias do Owncloud, em ambos os casos foi utilizado a técnica de hospedagem
+virtual, disponibilizada pelo servidor web Nginx.
+
+Todos esses resultados parciais são importantes para o objetivo de pesquisa, que vão
+desde compreender como é o processo de implantação de um software, até os cuidados
+a se tomar ao implantar uma aplicação, baseado nas considerações, serão apresentado
+na próxima seção um Cronograma de atividades para o TCC2.
+
 
 \section{Cronograma}
 %
+
+Afim de apresentar uma continuação para este trabalho, a tabela \ref{tab:atividades_futuras},
+apresenta as atividades a serem realizadas e suas respectivas datas.
+O objetivo inicial na próxima etapa do projeto é continuar a evolução do shak,
+propondo uma forma de descentralizar as receitas chef da aplicação central do shak,
+evitando que as receitas chef que instalam as aplicações precisem estar junto ao
+código fonte do shak. Além disso, evoluir a documentação do Shak, para que novas
+pessoas que se interessarem possam evoluir a ferramenta e propor novas aplicações,
+além disso escreverem suas próprias aplicações.
+
+Outro objetivo é melhorar a a forma que são gerados os certificados autoassinados,
+para prover uma melhor segurança a infraestrutura do Shak, e facilitando a gerência
+desses certificados, de forma que caso seja possível que o usuário possa inserir um certificado
+reconhecido por alguma entidade certificadora.
+
+Além disso prover ao Shak uma forma de realizar testes nas aplicações inseridas,
+com casos de teste e prover uma qualidade maior das aplicações. Também será levantado
+uma lista dos bugs existentes no Shak, para que possam ser solucionados durante
+a fase seguinte, provendo a manutenção e evolução do software. Uma das evoluções
+propostas será o suporte a implantação de aplicações em caminhos diversos no mesmo
+domínio, sendo possível, por exemplo: www.exemplo.com.br/blog para o Wordpress e
+www.exemplo.com.br/nuvem para o Owncloud. As atividades serão listadas na tabela
+a seguir:
+
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{EFEFEF}
+{\textbf{Atividade}} & {\textbf{Data de Início}} & {\textbf{Data de Término}} \\ \hline
+Levantamento de bugs e soluções de bugs no Shak & 01/03/2016 & 15/03/2016 \\
+Descentralização de receitas & 15/03/2016 & 30/03/2016 \\
+Suporte a novas apliacções & 01/04/2016 & 15/04/2016 \\
+Levantamento de bugs e soluções de bugs no Shak & 15/04/2016 & 30/04/2016 \\
+Evolução da gerência de certificados  & 01/05/2016 & 15/05/2016 \\
+Levantamento de bugs e soluções de bugs no Shak & 15/05/2016 & 30/05/2016 \\
+Finalizar documento & 01/05/2016 & 30/06/2016 \\
+\hline
+\end{tabular}}
+\caption{Atividades a serem realizadas no TCC2}
+\label{tab:atividades_futuras}
+\end{table}
