@@ -1,8 +1,6 @@
 \chapter{Resultados parciais}
 \label{cap-resultados}
 
-
-%TODO falar de multiplas instancias em algum lugar
 Este capítulo aborda sobre os resultados parciais que foram obtidos, de acordo
 com a execução da metodologia proposta, como dito no capítulo \ref{metodologia}
 as aplicações escolhidas para terem sua instalação automatizada foram Owncloud e
@@ -53,7 +51,7 @@ ser um processo longo e demorado, além disso mais factível de acontecer erros 
 desatenção ao executar vários passos manuais, assim para automatizar a implantação
 das aplicações utilizou-se uma ferramenta para auxiliar na criação da máquinas virtuais onde é
 possível gerenciá-las de forma automatizada servindo de suporte para a criação
-dos ambientes de desenvolvimento, facilitandoa execução e teste da implantação das
+dos ambientes de desenvolvimento, facilitando a execução e teste da implantação das
 aplicações escolhidas.
 
 A ferramenta escolhida para auxiliar a criação de um ambiente de desenvolvimento é
@@ -102,7 +100,7 @@ plataforma de Gerenciamento de Conteúdo do mundo, com quase 70\% do mercado. O
 wordpress foi a primeira ferramenta escolhida para automatizar a instalação, partindo
 dessa decisão deu início a construção da solução.
 
-Primeiramente foi seguido os procedimentos para construção da solução definidos na seção \ref{section:construcao}, é
+Primeiramente foram seguido os procedimentos para construção da solução definidos na seção \ref{section:construcao}, é
 necessário definir as fases e procedimentos para a implantação automatizada,
 seguindo as fases que compõem o processo de implantação de aplicações e de acordo
 com \cite{omg2006}, e isso será o que o Shak automatizará, cada fase desse processo
@@ -190,7 +188,7 @@ Como levantado no planejamento é necessário a edição de arquivos de configur
 do wordpress, arquivos de configuração do banco de dados e arquivo de configuração
 do nginx.
 
-O primeiro aqruivo de configuração é o config.php, é nesse arquivo de
+O primeiro arquivo de configuração é o config.php, é nesse arquivo de
 configuração onde ficam as informações de banco de dados como nome do banco de dados,
 login do usuário do banco de dados, senha, o host do banco de dados e o diretório
 onde irá ficar os temas, galeria de mídias e plugins de cada instância do wordpress.
@@ -202,7 +200,7 @@ o arquivo de configuração do Nginx configuração do servidor web.
 
 Esses arquivos de configuração serão criados dentro da pasta template, com o conteúdo
 desejado dos arquivos de configuração, seguindo a mesma estrutura
-inicial que foi criada em \ref{wordpress:preparacao}, e a ação de criação criação é
+inicial que foi criada em \ref{wordpress:preparacao}, e a ação de criação é
 declarada dentro do arquivo default.rb, de forma semelhante como foi feito com
 a declaração dos pacotes. Um exemplo de como gerenciar templates em uma receita Chef
 é:
@@ -218,7 +216,7 @@ a declaração dos pacotes. Um exemplo de como gerenciar templates em uma receit
 \subsubsection{Múltiplas Instâncias}
 
 O uso de múltiplas instâncias do wordpress pode ser feito de duas maneiras, e servem
-para que o usuário possa ter várias isntâncias de wordpress no mesmo servidor, de
+para que o usuário possa ter várias instâncias de wordpress no mesmo servidor, de
 acordo com a documentação do wordpress é possível ter múltiplos sites e múltiplas
 instâncias, no caso do Shak queremos que seja múltiplas instâncias, a partir da
 repetição da instalação. O wordpress recomenda que se for necessário o uso de múltiplas
@@ -237,7 +235,7 @@ Shak, com isso é possível criar pastas personalizadas com o id da aplicação 
 bancos de dados específicos e arquivos config.php específicos.
 
 Por fim basta que seja criado um arquivo de configuração Nginx para cada aplicação,
-como visto no capitulo \ref{cap-referencial} todo arquivo arquivo de configuração
+como visto no capitulo \ref{cap-referencial} todo arquivo de configuração
 do Nginx possui um bloco server, e cada bloco server equivale a um virtual hosting,
 por isso as aplicações serão também independentes a nível de servidor web sendo assim
 possível o acesso entre elas separadamente.
@@ -264,14 +262,14 @@ ja estará pronta para uso no hostname escolhido.
 \label{sub:owncloud}
 
 De acordo com a documentação oficial \cite{owncloud} Owncloud é uma ferramenta
-para compartilhamento de arquivos, é um softawre livre em que é possível compartilhar
+para compartilhamento de arquivos, é um software livre em que é possível compartilhar
 um ou mais arquivos e pastas do seu computador na nuvem, e sincronizá-los com o seu
 servidor ownCloud, esses arquivos são imediatamente sincronizados com o servidor
 e disponibilizados para outros dispositivos que utilizam o ambiente de trabalho
 ownCloud ou app Android ou app IOS.
 
 Também foram seguidos os mesmos passos feitos em \ref{sub:wordpress}, primeiramente
-foi seguido os procedimentos para construção da solução definidos em \ref{section:construcao},
+foram seguidos os procedimentos para construção da solução definidos em \ref{section:construcao},
 definindo as fases e procedimentos para a implantação automatizada, seguindo as
 fases que compõem o processo de implantação de aplicações e de acordo com \cite{omg2006},
 cada fase desse processo também será tratado como uma subseção. No Owncloud as
@@ -354,7 +352,7 @@ Como levantado no planejamento é necessário a edição de arquivos de configur
 do owncloud, arquivos de configuração do banco de dados e arquivo de configuração
 do Nginx.
 
-O primeiro aqruivo de configuração é o autoconfig.php, é nesse arquivo de
+O primeiro arquivo de configuração é o autoconfig.php, é nesse arquivo de
 configuração onde ficam as informações de banco de dados como nome do banco de dados,
 login do usuário do banco de dados, senha, o host do banco de dados e o diretório
 onde irá ficar os arquivos de configuração do owncloud, além disso o login e senha
@@ -448,11 +446,11 @@ Dando continuidade na construção da solução, tanto owncloud como wordpress
 possuem funcionalidades que dependem de serviços de e-mail funcionando, portanto
 é necessário uma configuração mínima de e-mail para que funcione tais funcionalidades.
 Portanto a construção de um servidor de e-mail possui bastante relevância pois
-assim qualquer aplicação que precisar de um servidor de e-mail ja poderá utilizar
+assim qualquer aplicação que precisar de um servidor de e-mail já poderá utilizar
 o servidor de e-mail que o Shak fornece.
 
 Para a construção do servidor de e-mail também foram seguidos os mesmos passos
-feitos em \ref{sub:wordpress} e \ref{sub:owncloud}, primeiramente foi seguido os
+feitos em \ref{sub:wordpress} e \ref{sub:owncloud}, primeiramente foram seguidos os
 procedimentos para construção da solução definidos em \ref{section:construcao},
 definindo as fases e procedimentos para a implantação automatizada, seguindo as
 fases que compõem o processo de implantação de aplicações e de acordo com \cite{omg2006},
@@ -475,7 +473,7 @@ também é necessário a configuração de um agente de transferência de e-mail
 alguma ferramenta para controle de spam.
 
 Primeiramente ficou definido que o protocolo escolhido seria o protolo IMAP, já
-que o protocolo IMAP é um protocolo online, ou seja ele se conecta ao servidor
+que o protocolo IMAP é um protocolo online, ou seja,ele se conecta ao servidor
 e realiza o download das mensagens, depois ainda  mantém a conexão para que
 as alterações e mensagens novas sejam atualizadas em tempo real, diferentemente do
 protocolo POP3 que é um protocolo offline, onde após o download das mensagens encerra
@@ -600,26 +598,26 @@ caso sendo o protocolo imap utilizando o protocolo imaps. Para que isso fosse po
 foi necessário gerar um certificado ssl, certificados ssl são necessários para
 que um determinado serviço opere com suporte a conexão segura por meio de criptografia.
 É de conhecimento do autor que a melhor forma é obter um certificado assinado
-por uma certificadora registrada, porém inicialemtne foi trabalhado apenas com certificados
+por uma certificadora registrada, porém inicialmente foi trabalhado apenas com certificados
 autoassinados.
 
 Para suprir a necessidade das aplicações, cada aplicação terá um certificado para
-si, além disso o servidor também terá o seu certificado auto-assinado, isso foi necessário
+si, além disso o servidor também terá o seu certificado autoassinado, isso foi necessário
 pois a idéia é de as aplicações possam ser instaladas em diferentes servidores, por
 isso devemos garantir que cada servidor possua o seu certificado.Para adicionar
-esse novo suporte ao Shak foi necessário criar uma nova receita Chef,
+esse novo suporte ao Shak foi necessário criar uma receita Chef,
 para que possa gerenciar os certificados ssl. Optou-se por utilizar a ferramenta
 openssl para geração das chaves e certificados, o opensssl é uma ferramenta de
 implementação do Transport Layer Security (TLS) e Secure Sockets Layer (SSL),
 além de ser uma biblioteca de propósito geral de criptografia \cite{openssl}.
 
 Esse novo componente no Shak é composto basicamente do pacote openssl e da geração
-de certificados auto-assinados utilizando o openssl, são gerados certificados
+de certificados autoassinados utilizando o openssl, são gerados certificados
 para cada aplicação e para o servidor, o padrão do caminho onde os certificados são
 gerados é etc/ssl/certs/hostname.pem onde hostname é o endereço do servidor
 e o caminho onde as chaves são geradas é etc/ssl/private/hostname.key.
 
-Com as chaves geradas basta configurar as aplciações indicando os caminhos dos certificados
+Com as chaves geradas basta configurar as aplicações indicando os caminhos dos certificados
 e das chaves, para forçar as aplicações web a utilizarem o https foi necessário fazer
 uma configuração específica no servidor web Nginx:
 
@@ -645,9 +643,9 @@ uma configuração específica no servidor web Nginx:
 \end{lstlisting}
 
 Com isso todas as requisições serão forçadas a utilizar a porta 443 que é a porta
-TCP padrão para sites que utilizam http + ssl, assim as aplicações estarão utilizando
+TCP padrão para sites que utilizam http + ssl, assim as aplicações utilizarão
 um protocolo mais seguro utilizando criptografia dos dados, utilizando o
-certificado auto-assinado que foi gerado para o servidor específico.
+certificado autoassinado que foi gerado para o servidor específico.
 
 
 % TODO colocar mais informações do dovecot, spamassassin, etc se necessário.
