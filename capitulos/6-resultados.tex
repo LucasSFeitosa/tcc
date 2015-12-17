@@ -49,7 +49,7 @@ implantações feitas e verificar erros caso aconteçam. Para isso é necessári
 alguma ferramenta que automatize esse processo, construir ambientes manualmente pode
 ser um processo longo e demorado, além disso mais factível de acontecer erros por
 desatenção ao executar vários passos manuais, assim para automatizar a implantação
-das aplicações utilizou-se uma ferramenta para auxiliar na criação da máquinas virtuais onde é
+das aplicações utilizou-se uma ferramenta para auxiliar na criação das máquinas virtuais onde é
 possível gerenciá-las de forma automatizada servindo de suporte para a criação
 dos ambientes de desenvolvimento, facilitando a execução e teste da implantação das
 aplicações escolhidas.
@@ -78,8 +78,8 @@ desenvolvedores tenham o mesmo ambiente, passa acessar a máquina virtual criada
 basta acessá-la via ssh, o Vagrant já gerenciar as chaves ssh, portanto basta
 dar o comando vagrant ssh que estará conectado a máquia virtual via ssh.
 O ambiente de desenvolvimento levantado é um ambiente com Debian na sua versão
-stretch(atualmente a versão instâvel) e 64 bits, apesar de a versão ser a versão
-instâvel isso é importante para que possamos utilizar as versões mais novas dos
+stretch(atualmente a versão instável) e 64 bits, apesar de a versão ser a versão
+instável isso é importante para que possamos utilizar as versões mais novas dos
 pacotes das ferramentas escolhidas, também será importante para reportar algum
 bug caso seja encontrado.
 
@@ -256,7 +256,7 @@ Shak install wordpress hostname=wordpress.dev
 
 E em assim o Chef inicia o processo de instalação dos pacotes, criação dos arquivos
 de configuração, incia os serviços desejados, e ao fim do procedimento a aplicação
-ja estará pronta para uso no hostname escolhido.
+já estará pronta para uso no hostname escolhido.
 
 \subsection{Owncloud}
 \label{sub:owncloud}
@@ -397,7 +397,7 @@ A solução feita na receita do owncloud foi baseada na contribuição enviada, 
 os testes foram feitos gerando um novo pacote Debian do owncloud porém incorporando
 a contribuição feita. Os procedimentos feitos para suportar múltiplas instâncias
 no owncloud são bem semelhantes aos do wordpress, criando um diretório de dados
-para cada aplicação, um arquvio de configuração para cada aplicação e um banco de
+para cada aplicação, um arquivo de configuração para cada aplicação e um banco de
 dados para cada aplicação. Seguindo também a mesma abordagem do wordpress também
 são criados virtual hostings para cada instância do owncloud.
 
@@ -423,7 +423,7 @@ já estará pronta para uso no hostname escolhido.
 Todas as outras aplicações anteriores utilizam o protocolo
 HTTP na camada de aplicação, agora com o servidor de e-mail será trabalhado um
 protocolo diferente, como visto no capítulo \ref{cap-referencial}
-de acordo \ref{kurose2010redes} a camada de aplicação é aonde residem  as aplicações
+de acordo \ref{kurose2010redes} a camada de aplicação é aonde residem as aplicações
 de rede e seus protocolos, detre eles o protocolo SMTP que provê mensagens de correio
 eletrônico.
 
@@ -432,7 +432,7 @@ mais importante pois é o responsável por transferir as mensagens de servidores
 de e-mail remetentes para servidores de e-mail destinatários, ou seja, transferindo
 arquivos (as mensagens de e-mail) de um servidor para o outro. Porém o protocolo
 SMTP é um protocolo do tipo de envio de informações, diferente do protocolo HTTP
-que é um protocolo que recupera informações, o que acarretaria em um problema em que
+que é um protocolo que recupera informações, o que acarretaria um problema em que
 o usuário não conseguiria recuperar suas informações como e-mails recebidos, já
 que o SMTP apenas envia informações.
 
@@ -472,8 +472,8 @@ como vimos é necessário configurar um servidor que utiliza o procolo IMAP ou P
 também é necessário a configuração de um agente de transferência de e-mails e também
 alguma ferramenta para controle de spam.
 
-Primeiramente ficou definido que o protocolo escolhido seria o protolo IMAP, já
-que o protocolo IMAP é um protocolo online, ou seja,ele se conecta ao servidor
+Primeiramente ficou definido que o protocolo escolhido seria o protocolo IMAP, já
+que o protocolo IMAP é um protocolo online, ou seja, ele se conecta ao servidor
 e realiza o download das mensagens, depois ainda  mantém a conexão para que
 as alterações e mensagens novas sejam atualizadas em tempo real, diferentemente do
 protocolo POP3 que é um protocolo offline, onde após o download das mensagens encerra
@@ -565,7 +565,7 @@ Shak install e-mail hostname=owncloud.dev
 
 E em assim o Chef inicia o processo de instalação dos pacotes, criação dos arquivos
 de configuração, incia os serviços desejados, e ao fim do procedimento a aplicação
-ja estará pronta para uso no hostname escolhido.
+já estará pronta para uso no hostname escolhido.
 
 Para testar o funcionamento foram feitos dois procedimentos, o primeiro era utilizar
 um cliente de e-mail para testes, o cliente de e-mail escolhido foi o mutt, utilizando
@@ -604,7 +604,7 @@ autoassinados.
 Para suprir a necessidade das aplicações, cada aplicação terá um certificado para
 si, além disso o servidor também terá o seu certificado autoassinado, isso foi necessário
 pois a idéia é de as aplicações possam ser instaladas em diferentes servidores, por
-isso devemos garantir que cada servidor possua o seu certificado.Para adicionar
+isso devemos garantir que cada servidor possua o seu certificado. Para adicionar
 esse novo suporte ao Shak foi necessário criar uma receita Chef,
 para que possa gerenciar os certificados ssl. Optou-se por utilizar a ferramenta
 openssl para geração das chaves e certificados, o opensssl é uma ferramenta de
