@@ -1,302 +1,137 @@
 \chapter{Introdução}
 \label{cap-introducao}
 
+A forma como as equipes de desenvolvimento entregam software estão mudando, as
+necessidades do mercado estão mudando continuamente, a tecnologia está mudando
+rapidamente, ao longo dos anos as organizações adotaram muitos processos ágeis para
+otimizações em seu desenvolvimento de software \cite{7173368}. As práticas ágeis
+têm aumentado a capacidade do software ser desenvolvido continuamente, contudo,
+a implantação do software ainda é uma atividade que pode ser complexa, principalmente
+pelo fato das aplicações voltadas para internet estarem evoluindo, se tornando
+aplicações mais complexas que envolvem vários componentes, integrando até mesmo
+aplicações em arquiteturas diferentes em um único pacote \cite{6265084}, essas
+arquiteturas diferentes envolvem aplicações em diferentes linguagens de programação
+, diferentes dependências e configurações, e isso impacta diretamente na implantação
+ de uma aplicação web.
 
-%isso é bom para introdução
-A forma como as empresas entregar software vai
-por meio de uma onda de mudanças como o ambiente,
-as empresas funcionam, está mudando - as necessidades do mercado
-estão mudando continuamente, a tecnologia está mudando
-rapidamente, existe mais pressão para se adaptar ao mercado
-precisa e entregar rapidamente. As empresas não podem
-já não ter recursos para fazer uma torre de menagem do cliente à espera de
-6 meses ou 1 ano para uma liberação para vir e, em seguida,
-solicitar feedback de cliente sobre como software
-se comporta. Os clientes esperam que o engajamento contínuo
-de modo que eles podem fornecer feedback contínuo. Dentro
-a fim de enfrentar os desafios de hoje, as empresas
-precisa ser magra e ágil em todas as fases de
-software ciclo de vida de desenvolvimento. Ao longo dos anos
-organizações adotaram muitos processos
-otimizações em seu desenvolvimento de software (ágeis
-transformação) práticas. \cite{7173368}
+Sistemas voltado para a Internet consistem em muitas partes que são complicadas
+de gerenciar, alguns requisitos como disponibilidade e desempenho são requisitos
+indispensáveis, é também necessário gerenciar as aplicações em seus devidos
+servidores, gerenciamento de banco de dados, e configurações de recuperação de dados
+, além de administrar uma infinidade de bibliotecas de terceiros e serviços online.
+ Considerando que no passado, a maioria dos softwares eram como uma ilha isolada,
+hoje, os softwares são disponibilizados através da Web ou conectado através da Internet,
+como por exemplo as redes sociais e mercados de compras online \cite{6265084}.
 
+Em uma implantação de software, executar todas essas tarefas de forma manual pode ser
+uma atividade complicada, porém felizmente, é possível controlar e conquistar
+esta complexidade, utilizando sistemas de configuração de ferramentas e de
+gerenciamento de implantação. Que vem para facilitar a instalação e configuração de ferramentas,
+de forma que automatize todas as tarefas de uma implantação de software.
 
-%fala de ágeis e implantação, bom para introdução
-Hoje, o software é desenvolvido em rápida mudança e os mercados imprevisíveis,
-com os requisitos do cliente complexas e em mudança
-com a pressão adicional de tempo de colocação no mercado de mais curto. Para
-resolver esta
-situação, práticas ágeis têm aumentado a capacidade para software
-empresas de desenvolvimento para lidar com as necessidades dos clientes complexos
- e mudando, e mudando as necessidades do mercado [23]. Contudo,
-enquanto métodos e práticas ágeis são atraentes para muitos software
-empresas de desenvolvimento, existem poucas empresas (por exemplo, Facebook
-[21,40], Atlassian [41], a IBM [4], Adobe e Tesla [10], e Microsoft
-[26] que tiveram sucesso na implementação de práticas ágeis para um
-medida em que software é continuamente implantado para seus clientes
-[42]). Ao mesmo tempo, uma série de estudos recentes [16,47]
-revelaram que os profissionais de desenvolvimento de software ágil tem
-mostrado um interesse crescente no sentido de compreender o princípio de
-desenvolvimento ágil de software '' Entregar [ndo] de software que trabalha
-freqüentemente '' [7].
-Para ser capaz de se mover em direção, e implementar um Continuous
-Implantação (CD) processo de software, vários passos precisam ser
-tomado [33]. Enquanto implantação contínua de software pode criar
-novas oportunidades de negócios, implantação contínua também apresenta
-novos desafios. Uma série de blogs organizacionais dos praticantes
-[4,22,41,48] manifestaram os desafios que enfrentaram quando
-adotar e utilizar o CD. Estes desafios incluem a facilidade de
-implantação de bugs de software, estabelecendo uma cultura de toda a organização,
-a necessidade de adoção de princípios 'magras', e a colaboração entre equipes.
-Além disso, Humble e Farley [27] afirma que um '' objeção intuitiva para
-implantação contínua é que é muito arriscado '', e que
-é um fato conhecido que mais lançamentos levar a um menor risco de qualquer
-lançamento. Assim, implantação contínua reduz os riscos de cada
-versão do software.
-%aqui pode ir na introdução
-A instalação e configuração de um software é um assunto sério, esta aumenta
-vez mais nos afeta principalmente devido desenvolvedores à proliferação e
-complexidade do sistemas voltados para a internet. Felizmente, nós podemos
-controlar e conquistar este comcomplexidade, adotando IT-sistema de figuração
-ferramentas de gerenciamento de implantação. Comece com a complexidade das novas
-aplicações na internet, são aplicações de louças foram monolítico contraptions
-que podem ser instalados numa ambiente padrão básico. para em aplicações de
-prémios e do usuário final, a ambiente seria a operar sis; para sistemas embarcados, seria
-o hardware subjacente. Tudo o que desenvolvedores tinha que fazer era o teste de software
-procedimentos de implantação e gerenciar configuração do nosso software com uma ver
- sistema de controle de Sion, para que pudéssemos proporcionar uma linha de base
- conhecida para o  para a instalação. \cite{6265084}
+A implantação de software é um processo que vai desde a sua aquisição até o momento
+em que ela é disponibilizada para uso \cite{OMG06}, um exemplo de aquisição de software
+é quando um usuário busca um software desejado a partir dos pacotes disponíveis em uma
+distribuição linux. As distribuições linux que optam por disponibilizar
+pacotes mantém uma infraestrutura de servidores como fonte, sendo possível assim
+instalar uma aplicação desejada. Como visto, aplicações web podem conter tarefas
+que são complicadas dentro da sua implantação, existem diferentes perfis de
+usuários que buscam instalar aplicações \cite{araujo2011apprecommender}, um seria
+um usuário que detém um certo conhecimento na área de computação, que poderia
+cuidar dessas tarefas mais complicadas, e usuários regulares de computadores,
+que estão interessados apenas no uso das aplicações.
 
-%introdução do trabalho
-Sistemas voltado para a Internet consistem em muitas partes que não podem mais con-
-trolar como um bloco monolítico de software. Disponibilidade e desempenho requisitos
-mentos impulsionar a adoção de aplicação, servidores, soluções de balanceamento de
- carga, rela sistemas de gerenciamento de banco de dados adicionais, e configurações de
-recuperação de desastres, enquanto interoperability requisitos e complexo normas
-nos fazer usar uma infinidade de bibliotecas de terceiros e serviços online. Em
-seguida, considere a onipresença da Sistemas voltados para a Internet. Considerando
-que, no passado, a maioria dos softwares felizmente correu como uma ilha isolada;
-hoje, nós expect todos os nossos pedidos para ser Adesãosível através da Web ou
-conectado através da Internet. Sistemas ranging de au-molhando do nosso flowerpot
-tomation para motores a jato de um avião telefonar regularmente para casa para
-fazer upload de seu instruções mais recentes status e recebem. Todos os apps de
-smartphone que se preze exigem conectividade com a Internet. Compa-sas, grandes e
-pequenos, oferecem o seu duto dutos e serviços através da Web e cada vez mais usam
-redes sociais para o mercado e até mesmo criar seu OFERTA Ings. O ecologicamente
- incontestado simplicidade de software monolítica tinha ido a maneira do dodo. Finalmente, percebemos que a complexidade e
-alimentação onipresença na infra mais barato custos ture oferecidos pela solução
-baseada em nuvem ções e virtualização. A criação de um datacenter usado para ser apenas algo
-uma grande empresa pode pagar. Agora, armado com um cartão de crédito, uma startup pode
-usar um provedor de nuvem para configurar separado desenvolvimento, teste e produção Serv
-ers, um sistema de gerenciamento de banco de dados, um subsistema de armazenamento, um clus- computação
-ter, monitoramento e recuperação de desastres em uma semana. \cite{6265084}
+Um problema desse contexto é que ao instalar um pacote, são feitos todos os
+procedimentos necessários para a instalação de uma aplicação, porém, existem
+ainda casos em que o usuário precise fazer algumas configurações específicas após
+a instalação desses pacotes, alguns exemplos são a configuração do banco de dados
+da aplicação e customização a apartir de arquivos de configuração, e quando se
+trata de segurança, ainda é necessário gerenciar certificados de segurança para
+poder utilizar protocolos seguros como HTTPS. Para usuários regulares essas
+atividades não são comuns, e o uso de alguma ferramenta que automatize todo
+esse processo de implantação pode ser uma solução a este problema, cuidando das
+tarefas mais complexas. Já existem diferentes ferramentas para a solução desse
+problema, que disponibilizam a aplicação pronta para uso ao usuário, essas ferramentas
+cuidam de todo o processo de implantação de software, como por exemplo \cite{bitnami}
+e \cite{sandstormio} que são ferramentas que disponibilizam a aplicação ao
+usuário com apenas um clique.
 
+Este trabalho relata a evolução de uma ferramenta para implantação automatizada
+de aplicações web em sistema Debian GNU/Linux, que vão desde uma pesquisa para
+descobrir as ferramentas que são utilizadas para automatizar implantação de aplicações
+como trabalhos relacionados, até a contribuição da construção de uma solução, de
+acordo com os objetivos definidos, os desafios superados, e a validação dos
+resultados alcançados.
 
-%problemas que podem acontecer, também bom para introdução.
-Entrega de software sofre como resultado de muitos pós-
-questões de desenvolvimento: problemas de gerenciamento de configuração,
-falta de testes em um clone de produção e o ambiente
-insuficiente colaboração entre as equipes de desenvolvimento e
-a equipe de implantação (operações) são os principais problemas que
-rejeição software causa nesta fase [2]. Um exemplo é a
-falha completa do software na produção
-ambiente devido a pressupostos construído em teste anterior
-- ambientes que são diferentes em relação às características de
-o ambiente de produção. Outro exemplo de tais
-problemas que derivam desses fatores é adiantado pela
-operações da equipe para perceber que não pode apoiar uma versão do
-desenvolveu um software devido à incompatibilidade do software
-arquitetura com sua infra-estrutura disponível. O resultado final:
-falha de entrega.\cite{akerele2013system}
+O trabalho está organizado na seguinte forma:  O Capítulo \ref{cap-referencial}
+tras uma brave introdução em alguns aspectos necessários para a construção da solução,
+como implantação de software, métodos e técnicas, já o Capítulo \ref{cap-metodolgia}
+tráz a metodologia do trabalho, que envolve os trabalhos relacionados, envolve também
+como será construído a solução e também como a solução será validada. Já no Capítulo
+\ref{cap-resultados} contém os resultados alcançados até o momento, e por fim as
+considerações parciais no Capítulo \ref{cap-conclusoes}.
 
-
-
-%------------------------------------------------------------------------------%
 \section{Problema}
-%
 
-Como implantar multiplas aplicações a partir de um pacote único de
-forma centralizada e segura?
+O que problema que envolve todo este trabalho é:
 
-%------------------------------------------------------------------------------%
-\section{Justificativa e Motivação}
-\label{sec:motivacao}
+\begin{center}
+  \textit{
+  Como implantar aplicações web em sistema Debian GNU/Linux de forma automatizada e
+  e segura?
+}
+\end{center}
 
+\section{Objetivo}
 
-%------------------------------------------------------------------------------%
-\section{Objetivos}
-
-%
-
-O obejtivo deste trabalho consiste em automatizar instalação e configuração de
-múltiplas instâncias de uma aplicação web a partir de um pacote único, mostrando os aspectos
-mais importantes que devem ser tratados durante todo o processo de configuração
-e instalação de um software via pacotes debian.
-
-%Além disso, tem-se como objetivo oferecer uma proposta de política de
-%empacotamento para aplicações web no Debian no qual busca:
-%
-%\begin{itemize}
-%  \item  \textbf{Politica de empacotamento para aplicações web:} Manual com
-%  práticas de empacotamento para aplicações web, com intuito de padronizar a
-%  forma em que as aplicações são empacotadas.
-%  \item  \textbf{Implantação segura de aplicações web:} Boas práticas para
-%  configuração de aplicações web que utilizam pacotes debian.
-%\end{itemize}
-
+O objetivo deste trabalho consiste na contribuição da construção de uma ferramenta
+que possa automatizar instalação e configuração de aplicações web em sistemas
+Debian GNU/LINUX, a partir de pacotes que sejam distribuídos oficialmente pelo
+Debian, mostrando os aspectos mais importantes que devem ser tratados durante
+todo o processo de configuração e instalação de um software.
 
 %------------------------------------------------------------------------------%
-\section{Organização do trabalho}
-
+%\section{Contribuições}
 %
+%As contribuições parciais deste trabalho são:
 
-Esta monografia está dividida em mais outros x capítulos. A seguir, o leitor
-encontrará o Capítulo xxxxx onde são definidos a proposta e
-a meotodologia do trabalho, além de ferramentas e dados que serão utilizados
-como base para pesquisa. No Capítulo xxxxxx
-são introduzidos os principais conceitos de  ....
-
-TODO: Pensar na estrutua de capítulos para a monografia
-
-No fim desta monografia existem X apêndices que complementam e detalham os
-aspectos do presente trabalho. No  xxxx apresenta os detalhes
-técnicos sobre empacotamento....
+%\begin{description}
+%  \item [Contribuições Tecnológicas]\
+%\end{description}
+%    \begin{enumerate}
+%      \item \textbf{CT1} - Implantação de sistemas Debian GNU/LINUX,
+%        \begin{enumerate}
+%          \item Gerência de certificados digitais autoassinados.
+%          \item Implantação de multiplas aplicações em um mesmo servidor utilizando
+%          hospedagem virtual.
+%          \item Implantação de automatizada de aplicações web utilizando pacotes
+%          distribuídos oficialmente pelo Debian.
+%        \end{enumerate}
+%    \end{enumerate}
+%\begin{description}
 
 %------------------------------------------------------------------------------%
-\section{Contribuições}
-%
-\begin{description}
-  \item [Contribuições Tecnológicas]\
-\end{description}
-    \begin{enumerate}
-      \item \textbf{CT1} - Implantação segura de software.
-        \begin{enumerate}
-          \item Proposta de implatação segura de software utilizando pacotes
-          Debian.
-          \item Proposta de implantação de multiplas aplicações em um mesmo
-          servidor.
-          \ item Proposta de técnicas para implantação de multiplas instâncias
-           de uma aplicação a partir de um único pacote Debian.
-        \end{enumerate}
-      \item \textbf{CT2} - Política de empacotamento de aplicações web no Debian.
-            \begin{enumerate}
-              \item  Proposta de um manual com práticas para empacotamento de
-              aplicações web no Debian.
-            \end{enumerate}
-    \end{enumerate}
-\begin{description}
-  \item [Contribuições Científicas]\
-\end{description}
-     \begin{enumerate}
-      \item \textbf{CC1} - Estudo teórico das técnicas de implantação segura de
-      software.
-      \item \textbf{CC2} - Estudo teórico da utilização de certificados de
-      segurança (ssl).
-      \item \textbf{CC3} - Estudo teórico sobre implantação e configuração de
-      multiplas aplicações utilizando virtual hosting.
-     \end{enumerate}
+\section{Motivação}
 
-%------------------------------------------------------------------------------%
-\section{Relato google summer of code}
+A motivação deste trabalho é a continuidade do projeto iniciado pelo Google Summer
+of Code 2015, Google Summer of Code é um programa global que oferece aos
+alunos uma oportunidade para desenvolverem projetos de código aberto durante o período
+de verão americano, de maio até agosto \cite{gsoc2015}.
 
-O projeto aprovado para o google summer of code 2015 foi Automated configuration
-of packaged web applications, com a organização Debian Project e com a mentoria de
-Antonio Terceiro. A idéia inicial do projeto era uma ferramenta que
+O projeto aprovado para o google summer of code 2015 foi "Automated configuration
+of packaged web applications", com a organização Debian Project e com a mentoria de
+Antonio Terceiro. A ideia inicial do projeto era uma ferramenta que
 pudesse ajudar os usuários que não possuem conhecimento técnico, poderem
 instalar e configurar ferramentas a partir de pacotes debian, e tudo isso com
 apenas 1 comando (ou um clique). Dentro desse projeto a minha participação
 inicialmente seria adicionar o máximo de aplicações possíveis na ferramenta,
-e sendo aplicações que fossem bastante conhecidas por usuários da internet.
+e sendo aplicações que fossem bastante conhecidas por usuários da internet. Com o
+ fim do programa, viu-se a possibilidade de dar continuidade ao projeto, ajudando
+na construção da ferrmenta Shak, para a implantação automatizada de aplicações.
 
-Um exemplo desse contexto é a configuração e instalação de uma ferramenta de
-blog bastante conhecida chamada wordpress,
-a instalação do wordpress via pacote é bem simples, bastando um apt-get install wordpress,
-porém a fase de configuração é um pouco mais complicada, o usuário precisa
-possuir conhecimentos básicos de linux para conseguir fazer a configuração mais
-simples do wordpress.A tarefa se torna mais complexa quando é necessário fazer
-uma configuração mais complexa, que envolva certificados de segurança por exemplo,
-outra coisa que pode tornar mais difícil a vida do usuário é quando ele precisa
-configurar um servidor web como apache ou nginx.
-
-Logo existe um limite das tarefas que um pacote debian deve fazer e as tarefas
-que o usuário do pacote deve fazer, essas tarefas podem ser automatizadas e assim
-facilitando a vida dos usuários debian a instalar e configurar suas aplicações.
-
-Com isso, meu mentor Antonio Terceiro havia iniciado, antes do google summer of
-code, o desenvolvimento de uma ferramenta com o intuito de automatizar a
-configuração e a instalação de aplicações providas por pacotes debian, a ferramenta
-se chama shak(self hosting aplication kit) e ela foi o ponta pé inicial do projeto.
-
-A partir disso eu dei início ao projeto do google summer of code, com o foco
-principalmente em adicionar o máximo possível de aplicações já empacotadas pelo
-debian, elas serviriam de piloto para a ferramenta, para que assim pudéssemos
-também evoluí-la.
-
-A ferramenta é composta por código ruby, chef (falar um pouco mais sobre), shell,
-servidor web nginx, pacotes debian e uma aplicação web para os usuários. A decisão
-técnica para escolha das ferramentas que compõem o shak já tinha sido feita antes do google summer of
-code começar, porém durante o programa tivemos várias discussões sobre, o que me
-fez concordar com a escolha delas.
-
-Com o início do programa e o início das atividades, logo pude adicionar o wordpress
-como minha primeira aplicação disponível pelo shak, porém não foi algo rápido, dentro
-dessa entrega tivemos várias discurssões interessantes. A primeira delas foi
-o uso de algumas boas práticas para a configuração de virtual hosting com  o
-servidor web nginx a fim de evitar possiveis falhas de segurança.
-
-Além disso também chegamos a conclusão de que seria interessante que o usuário pudesse
-criar várias "instâncias" de wordpress no mesmo servidor, por exemplo: o usuário
-poderia muito bem querer em um mesmo servidor um blog chamado \url{www.pessoalblog.com}
-e \url{www.trabalhoblog.net} ou até mesmo um caminho personalizado como \url{www.empresa.com/blog}
-, e isso trouxe a necessidade de entender como é possível
-a configuração de multiplas "instâncias" de uma aplicação utilizando um pacote
-único no mesmo servidor, já que o modo mais comum de fazer isso seria duplicando
- todos os arquivos da aplicação no servidor, coisa que sem dúvida não é a forma certa.
-
-Com a primeira aplicação pronta partimos para a segunda aplicação, owncloud, que
-é uma aplicação bem conhecida para compartilhamento de arquivos na nuvem. A grande
-diferença entre o owncloud e o wordpress é que o wordpress suporte multiplas
-instâncias com um pacote único, já o wordpress não. Com isso deu-se a necessidade de
-buscar uma solução para isso, e após estudar o código fonte do owncloud pude
-ver uma forma de adicionar essa nova funcionalidade. Com isso enviei um
-patch ao mantenedor do pacote para adicionar o suporte para multiplas instâncias
-com o owncloud.
-
-Ao finalizar as duas aplicações vimos ainda que era necessário adicionar mais
-uma camada de segurança além do servidor web, que seria forçar as aplicações
-a usarem HTPPS, para facilitar esse tipo de configuração foi necessário também
-automatizar a geração de certificados de segurança(ssl) para que pudéssemos gerar
-um certificado por servidor e assim fazer com que o servidor web use esses certificados
-autoassinados.
-
-Por fim, como as duas aplicações precisavam de configuração de servidore de email
-a pŕoximo passo foi configurar um servidor de email para servir esse serviço. A
-ferramenta escolhida para ser o servidor de IMAP foi o dovecot, o agente de
-transferência de emails escolhido foi o postfix, também foram tomados alguns
- cuidados de segurança para que o servidor de email também utilizassem os certificados
- de segurança utilizando o protocolo SMTPS (SMTP + TLS) com isso forçando o servidor
- de emails a aceitar apenas autenticaçãi via TLS, assim também utilizando o
- protocolo IMAPS ao invés de apenas IMAP.
-
-Por fim a última atividade do google summer of code foi a prototipagem da aplicação
-web do shak, além disso algumas evoluções no shak foram feitas, as principais
-contribuições foram:
-
-\begin{itemize}
-  \item  \textbf{Evolução da ferramenta shak:}
-  \subitem Evolução da ferramenta shak adicionando suporte ao php5.
-  \subitem Suporte as aplicações utilizando arquivos de configuração nginx.
-  \subitem Evolução do código em geral e testes unitários.
-  \subitem Documentação para configurar ambiente de desenvolvimento.
-
-  \item  \textbf{Novas Aplicações}
-  \subitem Wordpress
-  \subitem Owncloud
-  \subitem Servidor de email
-
-  \item  \textbf{Segurança na implantação das aplicações}
-  \subitem Forçar aplicações web a sempre utilizarem o protocolo HTTPS.
-  \subitem Gerar certificados de segurança autoassinados automaticamente.
-  \subitem Forçar aplicação de email a usarem os protocolos SMPTS e IMAPS.
-\end{itemize}
+Outra motivação foi a oportunidade de contribuir com software livre, visto que é
+um projeto junto a organização Debian Project, o que poderia ser de grande proveito
+para a formação acadêmica, no qual seria possível contribuir com outras
+aplicações aumentando o conhecimento como engenheiro de software, interagir com
+pessoas com bastante conhecimento na área de desenvolvimento de software e também
+crescer como profissional.
