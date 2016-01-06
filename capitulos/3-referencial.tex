@@ -30,14 +30,14 @@ a prática de implantação automatizada facilita na rápida entrega de software
 para implantações de aplicações em servidores na nuvem, como implantação de software
 para usuários em seus computadores.\cite{7284592}.
 
-Essas questões devem ser levadas em consideração e a atividade de implantação de
+Todas essas questões devem ser levadas em consideração e a atividade de implantação de
 software deve receber uma atenção especial, visto que os softwares estão ficando
 cada vez mais complexos, podendo ter várias ferramentas integradas em diferentes
 linguagens de programação e diferentes configurações, com todas essas variáveis compondo
 uma implantação automatizada de software. Este capítulo possui uma subseção sobre
-processo de Implantação de Software, para entender melhor como funciona o processo de implantação,
-depois uma subseção falando sobre DevOps, que busca trazer um conceito de implantação
-automatizada de software junto com métodos ágeis e por fim, uma subseção sobre
+processo de Implantação de Software, para entender melhor como funciona o processo de implantação
+de software, depois uma subseção sobre DevOps, que busca trazer um conceito de implantação
+automatizada de software junto aos métodos ágeis, e por fim, uma subseção sobre
 ferramentas e técnicas que buscam facilitar e resolver os problemas da
 implantação automatizada de software, com as características típicas que essas
 ferramentas trazem para tornar a implantação mais rápida e com qualidade.
@@ -97,7 +97,7 @@ com \cite{omg2006} as fases são:
 \end{itemize}
 
 Os termos e fases formam uma estrutura básica que um processo de implantação de software
-deve conter, podendo haver modificações de acordo com a necessidade da equipe de implantação,
+deve conter, podendo haver modificações de acordo com a necessidade do implantador,
 cada fase é necessária para que possa ter uma implantação consistente, ou seja, as
 atividades dentro de uma implantação de software estarão organizadas, evitando assim
 possíveis erros durante a implantação, essa organização também podendo ajudar o
@@ -114,14 +114,13 @@ executado.
 
 Para que a implantação automatizada de software seja possível, é necessário o uso
 de ferramentas para poder automatizar todo o processo de implantação,
-mas é extremamente importante compreender cada fase do processo para que possa ser
+mas é necessário que o implantador compreenda cada fase do processo para que possa ser
 feito um bom planejamento e execução da implantação.
 
-\subsection{DevOps}
+\subsection{Introdução ao DevOps}
 \label{subsec:DevOps}
-Como resultado ao longo dos anos o que aconteceu é que o desenvolvimento de software
-equipes são capazes de entregar a um ritmo muito mais rápido do que o ritmo em
-que as equipes de operações pode absorver o constrói, principalmente a adoção
+Como resultado ao longo dos anos, o que aconteceu é que as equipes de desenvolvimento de software
+são capazes de entregar a um ritmo muito mais rápido, principalmente a adoção
 de métodos ágeis de desenvolvimento de software \cite{7173368}, como podemos
 ver na figura \ref{fig:DevOps}, as equipes desenvolvem de forma acelerada, enquanto
 a equipe de operações consegue implantar de forma sequencial. Sendo assim DevOps
@@ -177,11 +176,8 @@ Em \cite{7173368} é abordado as práticas DevOps, que podem ser aplicadas diver
  \end{itemize}
 
  Os benefícios do uso do DevOps são vários, como por exemplo: economia de tempo,
- implantação de software passa a ser um processo natural, economia de custos, aumentar
- a organização e eficiência do desenvolvimento de software como um todo \cite{7173368},
- assim podendo resolver um problema que talvez ainda não é conhecido pela equipe
- de desenvolvimento, pois a necessidade também depende de cada equipe, sem
- esquecer o principal foco do DevOps que é a automação.
+ já que implantação de software passa a ser um processo natural, economia de custos, aumentar
+ a organização e eficiência do desenvolvimento de software como um todo \cite{7173368}.
 
 Para a entender melhor a prática de implantação automatizada, que é o coração
 do DevOps, é necessário possuir um conhecimento prévio sobre ferramentas para
@@ -203,8 +199,8 @@ em uma organização, foi dito também na seção \ref{subsec:DevOps} que é imp
 integração entre desenvolvedores e operadores, uma vez que o desenvolvimento desses
 scripts ou utilização das ferramentas precisam de participação de ambos os perfis.
 
-Existem várias soluções técnicas  para melhorar a implantação de software,
-\cite{5741269} no entanto, apesar da sua importância para as empresas de software, as atividades
+Existem várias soluções técnicas  para melhorar a implantação de software \cite{5741269},
+no entanto, apesar da sua importância para as empresas de software, as atividades
 de implantação de software têm recebido pouca atenção. Em \cite{deployment1998}
 é dito que recentemente, um número de novas tecnologias começaram a emergir para
 resolver o problema de implantação. As características típicas oferecidas por
@@ -236,11 +232,11 @@ cada um podendo executar: um aplicativo, um serviço, papéis de usuários do si
 aruivos de configuração e etc.
 
 Cada passo da configuração desejada pode depender de outros passos, ou seja, para
-instalar uma aplicação é preciso instalar um compilador ou interpretador da linguagem,
-para rodar uma aplicação web é necessário a instalaçã de um servidor web. Para
-lidar com estas dependências essas ferramentas descrevem o estado em que a aplicação
-deve estar, ou seja, todos os pacotes, arquivos de configuração diretórios, usuários,
-sendo possível definir dependência entre as tarefas a serem executadas.
+instalar uma aplicação é preciso instalar previamente um compilador ou interpretador da linguagem,
+um exemplo é que para rodar uma aplicação web é necessário a instalaçã prévia de
+um servidor web. Para lidar com estas dependências essas ferramentas descrevem o estado em que a aplicação
+deve estar, ou seja, todos os pacotes, arquivos de configuração diretórios e usuários,
+sendo possível definir a dependência entre as tarefas a serem executadas.
 
 Com essas ferramentas a implantação de um software dentro de uma infraestrutura
 não precisa ser um esforço manual, com elas podemos automatizar toda a implantação
@@ -292,15 +288,14 @@ A estrutura de um pacote debian pode ser observado a partir de qualquer pacote
 Ao instalar um pacote .deb, são feitos todos os procedimentos necessários para a instalação
 de uma aplicação, porém, existem ainda casos em que o usuário precise fazer algumas
 configurações, um exemplo é quando o usuário precisa configurar um banco de dados
-ou configuração da aplicação a partir de arquivos de configuração. Essas tarefas
-não são de responsabilidade dos pacotes e sim do usuário que deseja utilizar esse
-software, já que o pacote não poderia prever qual é a estrutura e configuração
+ou fazer uma configuração específica de uma aplicação a partir de arquivos de configuração.
+Essas tarefas não são de responsabilidade dos pacotes e sim do usuário que deseja utilizar esse
+software, já que o pacote não poderia prever qual é a estrutura e a configuração
 que o usuário pretende utilizar, logo a execução desses passos são feitas de
 acordo com a preferência do usuário, podendo ser feita manualmente ou a partir
 de uma implantação automatizada que utilize alguma ferramenta para isso. Um exemplo
 desse tipo de atividade que não é de responsabilidade de um pacote é a configuração
 de hospedagem virtual, que será visto na subseção a seguir.
-
 
 \subsection{Múltiplas Instâncias com Hospedagem Virtual}
 %falar sobre
@@ -326,7 +321,7 @@ um servidor dedicado apenas a uma aplicação.
 Alguns softwares possuem suporte para a implementação de hospedagem virtual, como por
 exemplo o Acpahe e o Nginx, o funcionamento de ambos é a partir de arquivos que
 especificam a configuração da hospedagem virtual e determina como o servidor
-irá responder às várias requisições de domínio. No apache o arquivo padrão de
+irá responder às várias requisições de domínio. No apache o arquivo padrão de configuração
 é chamado 000-default.conf que pode ser utilizado como referência, como por exemplo:
 
 \begin{lstlisting}[language=Xml,label=dice_index,caption={Exemplo de arquivo de configuração de hospedagem virtual no apache}]
@@ -369,7 +364,7 @@ porém para este trabalho será necessário apenas o uso de hospedagem virtual.
 
 Como vimos, um pacote cumpre bem suas responsabilidades dentro de uma implantação de
 software, porém outras atividades também são importantes e que fogem da responsabilidade
-de um pacote, outro fator importante é que um pacote também não pode prever quais são
+de um pacote, outro fator importante é que um pacote também não pode prever é quais são
 os procedimentos de segurança que devem ser tomados numa implantação, como por exemplo a criação de certificados de
 segurança. Para entender quais são esses procedimentos, será abordado quais são
 os procedimentos de segurança na implantação de aplicações web utilizando
@@ -399,7 +394,7 @@ isso Kurose ainda identifica as propriedades desejáveis da comunicação segura
 No contexto implantação de aplicações web, tomaremos como objetivo a segurança
 dos dados transmitidos, com isso aplicando criptografia nos protocolos da camada
 de aplicação, que serão utilizados neste trabalho, sendo eles os protocolos HTTP
-e SMTP, assim tornando adicionando uma camada de segurança as aplicações que
+e SMTP, assim adicionando uma camada de segurança as aplicações que
 serão implantadas.
 
 \subsubsection{Protocolos da Camada de Aplicação e Camada de Segurança}
@@ -413,7 +408,7 @@ transferência de mensagens de correio eletrônico. Os protocolos HTTP e SMTP es
 HTTP está disponível na RFC 2616 e RFC 1945, já o protocolo SMTP está especificado na RFC 5321.
 
 A aplicações que serão utilizadas neste trabalho são aplicações web empacotadas no
-dDebian, e aplicações Web costumam ser aplicações cliente-servidor, que permitem aos
+Debian, e aplicações Web costumam ser aplicações cliente-servidor, que permitem aos
 usuários obterem documentos de servidores web a partir de requisições \cite{kurose2010redes},
 esses documentos são padronizados, como por exemplo o HTML, para que os navegadores
 possam interpretar e passar a informação ao usuário.
@@ -436,17 +431,18 @@ de acesso ao correio, entre eles o POP3 e IMAP.
 
 Para adicionar uma camada de segurança, com sigilo e integridade de dados é necessário
 o uso de outro protocolo, o protocolo SSL, para complementar os protocolos HTTP
-e SMTP. O protocolo SSL é utilizado por basicamente todos os sites, como Google,
+e SMTP. O protocolo SSL é utilizado por basicamente todos os sites conhecidos, como Google,
 Amazon, eBay, e seu uso é para oferecer segurança em transações, pois ele cria um
 canal criptografado entre um servidor web e um navegador, garantido que todos os
-dados transmitidos sejam sigilosos e seguros \cite{kuroseredes2010}. Para poder utilizar o SSL é necessário
-que o seu servidor web possua um certificado, que possa responder algumas questões
-sobre a identidade do seu servidor. Com as devidas configurações, tanto HTTP como
-SMTP estarão sobre uma camada adicional de segurança, que utiliza o protocolo SSL/TLS.
- Essa camada adicional permite que os dados sejam transmitidos por meio de uma
-conexão criptografada e que se verifique a autenticidade do servidor e do cliente
- por meio de certificados digitais. Agora o próximo passo é ver o que são os certificados
- digitais e seu papel dentro da segurança em aplicações web.
+dados transmitidos sejam sigilosos e seguros \cite{kuroseredes2010}. Para poder
+utilizar o SSL é necessário que o seu servidor web possua um certificado, que
+possa responder algumas questões sobre a identidade do seu servidor.
+
+Com as devidas configurações, tanto HTTP como SMTP estarão sobre uma camada adicional de segurança,
+que utiliza o protocolo SSL/TLS. Essa camada adicional permite que os dados sejam
+transmitidos por meio de uma conexão criptografada e que se verifique a autenticidade
+do servidor e do cliente por meio de certificados digitais. Agora o próximo passo
+é ver o que são os certificados digitais e seu papel dentro da segurança em aplicações web.
 
 \subsubsection{Assinaturas e Ceritificados Digitais}
 
@@ -458,26 +454,26 @@ nenhum tipo de segurança em uma rede aberta. De acordo com \cite{kuroseredes201
 assinatura digital é uma técnica criptográfica usada para atestar que você e não
 outra pessoa conhece e ou concorda com tal tipo de documento. O que viabiliza a
 assinatura digital é o emprego de criptografia assimétrica ou criptografia de chaves
-públicas, logo a assinatura digital deve ser algo verificável e não falsificável.
-
-Uma aplicação importante de assinaturas digitais é a certificação de chaves públicas,
+públicas, logo a assinatura digital deve ser algo verificável e não falsificável. Uma
+aplicação importante de assinaturas digitais é a certificação de chaves públicas,
 que certifica que uma chave pública pertence a uma entidade específica\cite{kuroseredes2010},
 e a certificação de chaves públicas é utilizada no protocolo SSL, visto anteriormente.
-Uma maneira de se obter o certificado, é através de uma
-entidade conhecida como entidade certificadora, que é responsável por validar e
-emitir certificados, e verifica se uma entidade é realmente quem ela diz ser,
-após essa validação a entidade certificadora cria um certificado que vincula a
-chave pública da entidade a essa verificação, assim o certificado passa a ter a
-chave pública e a identificação de que é realmente o proprietário daquela chave pública.
+
+Uma maneira de se obter o certificado, é através de uma entidade conhecida como
+entidade certificadora, que é responsável por validar e emitir certificados, e
+verifica se uma entidade é realmente quem ela diz ser, após essa validação a
+entidade certificadora cria um certificado que vincula a chave pública da entidade
+a essa verificação, assim o certificado passa a ter a chave pública e a
+identificação de que é realmente o proprietário daquela chave pública.
 
 Porém essas entidades certificadoras cobram para esse serviço, e os certificados também
 possuem validade. Uma outra maneira de se obter certificados é a partir dos certificados
 autoassinados, que são os certificados gerados por conta própria através de
 ferramentas, um exemplo de ferramenta é a ferramenta OpenSSL, que permite requisitar,
- assinar, gerar, exportar e converter certificados digitais.
+assinar, gerar, exportar e converter certificados digitais.
 
-Um problema em utilizar certificados autoassinados é que os clientes precisam
-apenas dos certificados das entidades certificadores em quem eles confiam, por
+Um problema em utilizar certificados autoassinados é que os clientes, como navegadores,
+precisam apenas dos certificados das entidades certificadores em quem eles confiam, por
 exemplo, um navegador não vai conhecer o certificado que foi autoassinado por
 alguém que ele não conhece, e logo vai avisar ao usuário de que ele não está em uma
 conexão segura, por mais que esteja sobre uma conexão HTTPS. Por isso que manter certificados
