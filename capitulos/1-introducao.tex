@@ -1,7 +1,7 @@
 \chapter{Introdução}
 \label{cap-introducao}
 
-A forma como as equipes de desenvolvimento entregam software estão mudando, as
+A forma como as equipes de desenvolvimento entregam software está mudando, as
 necessidades do mercado estão mudando continuamente, a tecnologia está mudando
 rapidamente, ao longo dos anos as organizações adotaram muitos processos ágeis para
 otimizações em seu desenvolvimento de software \cite{7173368}. As práticas ágeis
@@ -24,7 +24,7 @@ hoje, os softwares são disponibilizados através da Web ou conectado através d
 como por exemplo as redes sociais e mercados de compras online \cite{6265084}.
 
 Em uma implantação de software, executar todas essas tarefas de forma manual pode ser
-uma atividade complicada, porém felizmente, é possível controlar e conquistar
+uma atividade complicada, porém, é possível controlar e conquistar
 esta complexidade, utilizando sistemas de configuração de ferramentas e de
 gerenciamento de implantação. Que vem para facilitar a instalação e configuração de ferramentas,
 de forma que automatize todas as tarefas de uma implantação de software.
@@ -36,36 +36,38 @@ distribuição linux. As distribuições linux que optam por disponibilizar
 pacotes mantém uma infraestrutura de servidores como fonte, sendo possível assim
 instalar uma aplicação desejada. Como visto, aplicações web podem conter tarefas
 que são complicadas dentro da sua implantação, existem diferentes perfis de
-usuários que buscam instalar aplicações \cite{araujo2011apprecommender}, um seria
-um usuário que detém um certo conhecimento na área de computação, que poderia
-cuidar dessas tarefas mais complicadas, e usuários regulares de computadores,
+usuários que buscam instalar aplicações, \cite{araujo2011apprecommender} cita dois,
+um seria o usuário que detém um certo conhecimento na área de computação, que
+poderia cuidar dessas tarefas mais complicadas, e usuários regulares de computadores,
 que estão interessados apenas no uso das aplicações.
 
-Um problema desse contexto é que ao instalar um pacote, são feitos todos os
-procedimentos necessários para a instalação de uma aplicação, porém, existem
-ainda casos em que o usuário precise fazer algumas configurações específicas após
-a instalação desses pacotes, alguns exemplos são a configuração do banco de dados
-da aplicação e customização a a partir de arquivos de configuração, e quando se
-trata de segurança, ainda é necessário gerenciar certificados de segurança para
-poder utilizar protocolos seguros como HTTPS. Para usuários regulares essas
-atividades não são comuns, e o uso de alguma ferramenta que automatize todo
-esse processo de implantação pode ser uma solução a este problema, cuidando das
-tarefas mais complexas. Já existem diferentes ferramentas para a solução desse
-problema, que disponibilizam a aplicação pronta para uso ao usuário, essas ferramentas
-cuidam de todo o processo de implantação de software, como por exemplo \cite{bitnami}
-e \cite{sandstormio} que são ferramentas que disponibilizam a aplicação ao
-usuário com apenas um clique.
+Um problema desse contexto de instalação de apliacções em linux, é que ao instalar
+um pacote da aplicação desejada, são feitos todos os procedimentos necessários
+para a instalação de uma aplicação, porém, existem ainda casos em que o usuário
+precise fazer algumas configurações específicas após a instalação desses pacotes,
+alguns exemplos são: a configuração do banco de dados da aplicação, customização
+a a partir de arquivos de configuração, e quando se trata de segurança, ainda é
+necessário gerenciar certificados de segurança para poder utilizar protocolos seguros como HTTPS.
+
+Para usuários regulares essas atividades não são comuns, e o uso de alguma
+ferramenta que automatize todo esse processo de implantação pode ser uma solução
+a este problema, cuidando das tarefas mais complexas. Já existem diferentes
+ferramentas para a solução desse problema, que disponibilizam a aplicação pronta
+para uso ao usuário, essas ferramentas cuidam de todo o processo de implantação
+de software, como por exemplo \cite{bitnami} e \cite{sandstormio} que são
+ferramentas que disponibilizam a aplicação ao usuário com apenas um clique.
 
 Este trabalho relata a evolução de uma ferramenta para implantação automatizada
 de aplicações web em sistema Debian GNU/Linux, que vão desde uma pesquisa para
 descobrir as ferramentas que são utilizadas para automatizar implantação de aplicações
 como trabalhos relacionados, até a contribuição da construção de uma solução, de
-acordo com os objetivos definidos, os desafios superados, e a validação dos
+acordo com os objetivos definidos, os desafios a serem superados, e a validação dos
 resultados alcançados.
 
 O trabalho está organizado na seguinte forma:  O Capítulo \ref{cap-referencial}
-trás uma brave introdução em alguns aspectos necessários para a construção da solução,
-como implantação de software, métodos e técnicas, já o Capítulo \ref{cap-metodolgia}
+trás o referencial teórico necessário para apoio o desenvolvimento da solução,
+como o processo de implantação de software e métodos e técnicas para implantação
+automatizada de software, já o Capítulo \ref{cap-metodologia}
 trás a metodologia do trabalho, que envolve os trabalhos relacionados, envolve também
 como será construído a solução e também como a solução será validada. Já no Capítulo
 \ref{cap-resultados} contém os resultados alcançados até o momento, e por fim as
@@ -77,7 +79,7 @@ O que problema que envolve todo este trabalho é:
 
 \begin{center}
   \textit{
-  Como implantar aplicações web em sistema Debian GNU/Linux de forma automatizada e
+  Como implantar aplicações web em sistema Debian GNU/Linux de forma automatizada
   e segura?
 }
 \end{center}
@@ -88,7 +90,9 @@ O objetivo deste trabalho consiste na contribuição da construção de uma ferr
 que possa automatizar instalação e configuração de aplicações web em sistemas
 Debian GNU/LINUX, a partir de pacotes que sejam distribuídos oficialmente pelo
 Debian, mostrando os aspectos mais importantes que devem ser tratados durante
-todo o processo de configuração e instalação de um software.
+todo o processo de configuração e instalação de um software, facilitando assim, que
+tanto usuários como desenvolvedores possam implantar aplicações com apenas uma
+instrução.
 
 %------------------------------------------------------------------------------%
 %\section{Contribuições}
