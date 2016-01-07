@@ -2,7 +2,7 @@
 \label{cap-resultados}
 
 Este capítulo aborda sobre os resultados parciais que foram obtidos, de acordo
-com a execução da metodologia proposta, como dito no capítulo \ref{metodologia}
+com a execução da metodologia proposta, como dito no capítulo \ref{cap-metodologia}
 as aplicações escolhidas para terem sua instalação automatizada foram Owncloud e
 Wordpress, seguindo a escolha da ferramenta Shak como arquitetura inicial. O
 desenvolvimento do trabalho também seguiu a metodologia da programação extrema
@@ -27,7 +27,6 @@ de forma automatizada, levando em consideração todos os aspectos definidos no 
    \item \textbf{Issue 8} Livro de Receitas para instalação do servidor de e-mail.
    \item \textbf{Issue 9} Forçar Wordpress a utilizar https.
    \item \textbf{Issue 10} Forçar Owncloud a utilizar https.
-   \item \textbf{Issue 11} Prototipação do front-end para a ferramenta Shak.
  \end{itemize}
 
 Ao verificar que tanto a ferramenta owncloud como a ferramenta wordpress precisam
@@ -39,7 +38,7 @@ uma estratégia de como serão gerenciados os certificados de segurança para ap
 o protocolo https. Além dessas atividades previstas, também foram feitas evoluções
 no Shak para que seja possível a implementação dessas atividades. Nas seções a
 seguir serão apresentados os resultados das atividades levantadas, a partir da
-proposta da construção da solução vista no capítudo \ref{cap-metodoologia}.
+proposta da construção da solução vista no capítudo \ref{cap-metodologia}.
 
 \subsection{Criação de Ambientes de Desenvolvimento}
 
@@ -125,7 +124,7 @@ pré-instalados e aplicações pré-configuradas. Para o wordpress foram escolhi
 \begin{itemize}
    \item \textbf{Pacote wordpress para o Debian:} Pacote Debian com o wordpress.
    \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o nginx.
-   \item \textbf{Pacote mysql para o Debian:} Pacote Debian com o anco de dados mysql
+   \item \textbf{Pacote mysql para o Debian:} Pacote Debian com o banco de dados mysql
    que será usado pelo wordpress.
    \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
    necessários para configurar o wordpress, o servidor web Nginx e o banco de dados
@@ -290,19 +289,19 @@ mínimas para o funcionamento do owncloud tais como: banco de dados, pacotes
 pré-instalados e aplicações pré-configuradas. Para o owncloud foram escolhidas:
 
 \begin{itemize}
-   \item \textbf{Pacote owncloud para o Debian:} Pacote Debian com o wordpress.
+   \item \textbf{Pacote owncloud para o Debian:} Pacote Debian com o owncloud.
    \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o nginx.
-   \item \textbf{Pacote postgresql para o Debian:} Pacote Debian com o anco de dados mysql
-   que será usado pelo wordpress.
+   \item \textbf{Pacote postgresql para o Debian:} Pacote Debian com o banco de dados postgresql
+   que será usado pelo owncloud.
    \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
-   necessários para configurar o wordpress, o servidor web Nginx e o banco de dados
-   mysql.
+   necessários para configurar o owncloud, o servidor web Nginx e o banco de dados
+   postgresql.
 \end{itemize}
 
 A diferença da escolha do banco de dados em relação ao wordpress é poder aumentar
 o suporte a diferentes bancos de dados, na documentação do wordpress é recomendado
 o uso do banco de dados mysql, porém no owncloud fica a escolha do desenvolvedor.
-A escolha do postgresql vêm om a possibilidade de trabalhar com dois bancos de
+A escolha do postgresql vêm com a possibilidade de trabalhar com dois bancos de
 dados diferentes, aumentando o suporte do Shak, assim quando existirem aplicações
 que suportam apenas o postgresql o Shak ja terá uma estrutura básica pronta.
 A instalação e execução desses recursos serão feitas nas fases seguintes.
@@ -423,7 +422,7 @@ já estará pronta para uso no hostname escolhido.
 Todas as outras aplicações anteriores utilizam o protocolo
 HTTP na camada de aplicação, agora com o servidor de e-mail será trabalhado um
 protocolo diferente, como visto no capítulo \ref{cap-referencial}
-de acordo \ref{kurose2010redes} a camada de aplicação é aonde residem as aplicações
+de acordo \cite{kurose2010redes} a camada de aplicação é aonde residem as aplicações
 de rede e seus protocolos, detre eles o protocolo SMTP que provê mensagens de correio
 eletrônico.
 

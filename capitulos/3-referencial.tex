@@ -309,7 +309,7 @@ de aplicações web isso pode ser um problema, visto que as aplicações estarã
 ao se conectar na internet.
 
 Uma forma de solucionar esse problema é o uso de Hospedagem Virtual, de acordo com
-\cite{apachevh} hospedagem virtual é um termo que se refere à prática de executar
+\cite{apachvh} hospedagem virtual é um termo que se refere à prática de executar
 mais de uma aplicação web em uma única máquina. Com a Hospedagem Virtual é possível
 hospedar mais de um nome de domínio no mesmo computador, o que significa que você
 tem vários nomes em execução em um único endereço de ip, possibilitando que em um
@@ -324,7 +324,7 @@ especificam a configuração da hospedagem virtual e determina como o servidor
 irá responder às várias requisições de domínio. No apache o arquivo padrão de configuração
 é chamado 000-default.conf que pode ser utilizado como referência, como por exemplo:
 
-\begin{lstlisting}[language=Xml,label=dice_index,caption={Exemplo de arquivo de configuração de hospedagem virtual no apache}]
+\begin{lstlisting}[language=Xml,label=dice_index,caption={ Exemplo de arquivo de configuração de hospedagem virtual no apache}]
   <VirtualHost *:80>
       ServerAdmin webmaster@localhost
       DocumentRoot /var/www/html
@@ -339,11 +339,9 @@ de hospedagem virtual também é feita através de arquivos de configuração, o
 padrão no Nginx é chamado de default.conf que também pode ser utilizado como
 referência, como por exemplo:
 
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de arquivo de configuração de hospedagem virtual no Nginx}]
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={ Exemplo de arquivo de configuração de hospedagem virtual no Nginx}]
   server {
-         listen   80; ## listen for ipv4; this line is default and implied
-         #listen   [::]:80 default ipv6only=on; ## listen for ipv6
-
+         listen   80;
          root /var/www/example.com/public_html;
          index index.html index.htm;
 
@@ -424,7 +422,7 @@ Já o SMTP é protocolo responsável por transferir mensagens de servidores de c
 remetentes para servidores de correio destinatários, também transferindo arquivos,
 de um servidor de correio para o outro. Uma diferença entre o HTTP e o SMTP
 é que o protocolo HTTP é um protocolo de recuperação de informações, enquanto
-o protocolo SMTP é um protocolo de envio de informações \cite{kuroseredes2010}. Isso implica que para um
+o protocolo SMTP é um protocolo de envio de informações \cite{kurose2010redes}. Isso implica que para um
 usuário recuperar as informações de e-mail é necessário o uso de outros componentes,
 já que isso não é possível via SMTP, para resolver isto existem os protocolos
 de acesso ao correio, entre eles o POP3 e IMAP.
@@ -434,7 +432,7 @@ o uso de outro protocolo, o protocolo SSL, para complementar os protocolos HTTP
 e SMTP. O protocolo SSL é utilizado por basicamente todos os sites conhecidos, como Google,
 Amazon, eBay, e seu uso é para oferecer segurança em transações, pois ele cria um
 canal criptografado entre um servidor web e um navegador, garantido que todos os
-dados transmitidos sejam sigilosos e seguros \cite{kuroseredes2010}. Para poder
+dados transmitidos sejam sigilosos e seguros \cite{kurose2010redes}. Para poder
 utilizar o SSL é necessário que o seu servidor web possua um certificado, que
 possa responder algumas questões sobre a identidade do seu servidor.
 
@@ -450,13 +448,13 @@ As assinaturas e certificados digitais servem para agregar confiança e seguran�
 nas trocas de dados pela internet, principalmente quando se trata de troca de informações
 sigilosas e que precisam de uma confiabilidade maior, basta imaginar que ninguém
 gostaria de ter seus dados bancários expostos, ou ter seus dados trafegando sem
-nenhum tipo de segurança em uma rede aberta. De acordo com \cite{kuroseredes2010}
+nenhum tipo de segurança em uma rede aberta. De acordo com \cite{kurose2010redes}
 assinatura digital é uma técnica criptográfica usada para atestar que você e não
 outra pessoa conhece e ou concorda com tal tipo de documento. O que viabiliza a
 assinatura digital é o emprego de criptografia assimétrica ou criptografia de chaves
 públicas, logo a assinatura digital deve ser algo verificável e não falsificável. Uma
 aplicação importante de assinaturas digitais é a certificação de chaves públicas,
-que certifica que uma chave pública pertence a uma entidade específica\cite{kuroseredes2010},
+que certifica que uma chave pública pertence a uma entidade específica\cite{kurose2010redes},
 e a certificação de chaves públicas é utilizada no protocolo SSL, visto anteriormente.
 
 Uma maneira de se obter o certificado, é através de uma entidade conhecida como
