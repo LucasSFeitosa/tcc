@@ -85,7 +85,7 @@ bug caso seja encontrado.
 Com o ambiente de desenvolvimento definido, agora é possível iniciar a criação dos
 livros de receitas das aplicações, o repositório do Shak possui alguns scripts
 para instalar algumas dependências ao iniciar uma máquina virtual, dentro
-desses scripts temos as instalações das dependências para o Shak funcionar perfeitamente
+desses scripts contém as instalações das dependências para o Shak funcionar perfeitamente
 e também o próprio Chef, que é utilizado pela ferramenta Shak para instalar aplicações e suas dependências.
 
 \subsection{Wordpress}
@@ -217,7 +217,7 @@ a declaração dos pacotes. Um exemplo de como gerenciar templates em uma receit
 O uso de múltiplas instâncias do wordpress pode ser feito de duas maneiras, e servem
 para que o usuário possa ter várias instâncias de wordpress no mesmo servidor, de
 acordo com a documentação do wordpress é possível ter múltiplos sites e múltiplas
-instâncias, no caso do Shak queremos que seja múltiplas instâncias, a partir da
+instâncias, no caso do Shak é desejado que seja múltiplas instâncias, a partir da
 repetição da instalação. O wordpress recomenda que se for necessário o uso de múltiplas
 instâncias é necessário realmente instalar cada WordPress, um por vez.
 
@@ -423,7 +423,7 @@ Todas as outras aplicações anteriores utilizam o protocolo
 HTTP na camada de aplicação, agora com o servidor de e-mail será trabalhado um
 protocolo diferente, como visto no capítulo \ref{cap-referencial}
 de acordo \cite{kurose2010redes} a camada de aplicação é aonde residem as aplicações
-de rede e seus protocolos, detre eles o protocolo SMTP que provê mensagens de correio
+de rede e seus protocolos, dentre eles o protocolo SMTP que provê mensagens de correio
 eletrônico.
 
 Servidores de e-mail formam a infraestrutura do e-mail, sendo o SMTP o protocolo
@@ -437,7 +437,7 @@ que o SMTP apenas envia informações.
 
 Para solucionar esse problema existem os protocolos de acesso a servidores de
 e-mail, que recuperam as informações do servidor de e-mail até ao usuário final.
-Como visto no capítulo \ref{cap-referencial} exitem protocolos de acesso ao correio
+Como visto no capítulo \ref{cap-referencial} existem protocolos de acesso ao correio
 como POP3, IMAP ou usar até mesmo o protocolo HTTP servindo de protocolo para recuperar
 informações.
 
@@ -501,7 +501,7 @@ que que dá aos administradores de servidor de e-mail, um filtro para classifica
 \subsubsection{Preparação e Instalação de Pacotes }
 
 Para o funcionamento correto do servidor de e-mail são necessários vários pacotes
-e com isso podemos separar as dependências dos pacotes necessários para cada ferramenta
+e com isso é possível separar as dependências dos pacotes necessários para cada ferramenta
 escolhida para compor o servidor de e-mail. Primeiramente para o postfix são necessários
 os pacotes postfix e bsd-mailx, além de habilitar o serviço do postfix, para o dovecot
 é necessário instalar o pacote dovecot-imadp além de habilitar o serviço do dovecot,
@@ -531,8 +531,7 @@ segura utilizando o imaps (imap + ssl), assim bloqueando qualquer conexão ou
 tentativa na porta imap comum.
 
 Para o posfix são apenas dois arquivos de configuração, o main.cf e o master.cf,
-o main.cf é aonde se configura os parâmetros mínimos de configuração, lá dizemos
-que vamos filtrar os e-mails com spamassassin e algumas configurações do SMTP, no
+o main.cf é aonde se configura os parâmetros mínimos de configuração, lá é aonde fica as configurações que filtram os e-mails com spamassassin e algumas configurações do SMTP, no
 master.cf definimos como um programa cliente se conecta a um serviço, e qual o
 programa que é executado quando um serviço é solicitado. Neste caso habilitamos
 recursos como: smtpd usar tls e autenticação, caminho dos arquivos de chave e certificados
@@ -603,7 +602,7 @@ autoassinados.
 Para suprir a necessidade das aplicações, cada aplicação terá um certificado para
 si, além disso o servidor também terá o seu certificado autoassinado, isso foi necessário
 pois a idéia é de as aplicações possam ser instaladas em diferentes servidores, por
-isso devemos garantir que cada servidor possua o seu certificado. Para adicionar
+isso é necessário garantir garantir que cada servidor possua o seu certificado. Para adicionar
 esse novo suporte ao Shak foi necessário criar uma receita Chef,
 para que possa gerenciar os certificados ssl. Optou-se por utilizar a ferramenta
 openssl para geração das chaves e certificados, o opensssl é uma ferramenta de
@@ -623,19 +622,19 @@ uma configuração específica no servidor web Nginx:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de arquivo de configuração do Nginx para aplicações web no shak}]
   server {
-      server\_name <%= @hostname %>;
-      rewrite     \^   https://\$server\_name\$request\_uri? permanent;
+      server_name <%= @hostname %>;
+      rewrite     \^https://\$server\_name\$request\_uri? permanent;
   }
 
   server {
-      server\_name <%= @hostname %>;
+      server_name <%= @hostname %>;
 
       listen 443 ssl;
-      ssl\_certificate       /etc/ssl/certs/<%= @hostname %>.pem;
-      ssl\_certificate\_key   /etc/ssl/private/<%= @hostname %>.key;
+      ssl_certificate       /etc/ssl/certs/<%= @hostname %>.pem;
+      ssl_certificate_key   /etc/ssl/private/<%= @hostname %>.key;
 
-      access\_log            /var/log/nginx/<%= @hostname %>.access.log;
-      error\_log             /var/log/nginx/<%= @hostname %>.error.log;
+      access_log            /var/log/nginx/<%= @hostname %>.access.log;
+      error_log             /var/log/nginx/<%= @hostname %>.error.log;
 
       include /var/lib/Shak/etc/nginx/<%= @hostname %>/*.conf;
   }
