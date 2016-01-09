@@ -7,8 +7,7 @@ servindo como base para a sua reprodução em trabalhos futuros.
 
 A pesquisa é fundamentada e metodologicamente construída objetivando a resolução
 ou o esclarecimento de um problema. O problema é o ponto de partida da pesquisa.
-Da sua formulação dependerá o desenvolvimento da sua pesquisa
-\cite{moresi2003metodologia}, neste trabalho a questão problema a ser resolvida é:
+Da sua formulação dependerá o desenvolvimento da sua pesquisa \cite{moresi2003metodologia}, neste trabalho a questão problema a ser resolvida é:
 
 \begin{center}
   \textit{
@@ -30,13 +29,13 @@ estão na seção \ref{subsection:exemplos}.
 
 Inicialmente será feito uma pesquisa nos trabalhos relacionados para entender
 melhor o problema, e para guiar essa pesquisa será utilizado a definição de uma
-metodologia de pesquisa. De acordo com\cite{gerhardt2009metodos} existem diferentes
+metodologia de pesquisa. De acordo com \cite{gerhardt2009metodos} existem diferentes
 tipos de pesquisa, elas podem ser classificados quanto sua abordagem, sua natureza,
 seus objetivos e seus procedimentos. Por isso é importante selecionar a modalidade
 de pesquisa adequada ao objeto de pesquisa.
 
 Assim a pesquisa inicial será classificada quanto à natureza como pesquisa aplicada
-pois tem como objetivo gerar conhecimentos para aplicação prática\cite{gerhardt2009metodos},
+pois tem como objetivo gerar conhecimentos para aplicação prática \cite{gerhardt2009metodos},
 relacionada a aplicações que auxiliam na implantação automatizada de software.
 Quanto a abordagem, a pesquisa é classificada como qualitativa, para buscar entender
 o uso da automação da implantação de aplicações, exprimindo o que convém
@@ -74,7 +73,7 @@ quais são os procedimentos e técnicas utilizados.
 
 Para entender o que acontece na comunidade da computação em relação a implantação
 automatizada de aplicações, foi feito uma busca de alguns trabalhos relacionados, o primeiro
-trabalho relacionado é um trabalho acadêmico feito por\cite{leo2014} no qual foi
+trabalho relacionado é um trabalho acadêmico feito por \cite{leo2014} no qual foi
 desenvolvido um sistema de middleware chamado CHOReOS Enactment Engine que é um
 sistema que possibilita a implantação distribuída e automatizada de composições
 de serviços web em uma estrutura virtualizada, no qual opera no modelo
@@ -83,15 +82,15 @@ com abordagens ad-hoc de implantação levando em consideração a escalabilidad
 em relação ao tempo de implantação das composições dos serviços.
 
 Existem também ferramentas disponíveis no mercado que também trazem a proposta
-de automação de instalação de aplicações alguns exemplos são:\cite{bitnami}
+de automação de instalação de aplicações alguns exemplos são: \cite{bitnami}
 BitNami que é uma biblioteca de aplicativos de servidor populares e ambientes de
 desenvolvimento que pode ser instalado com um clique. Ele automatiza todo o
 processo de compilar e configurar os aplicativos e todas as suas dependências
 (bibliotecas de terceiros, linguagem de programação, bases de dados) para que o
-usuário comum não se preocupe com questões mais técnicas. Também temos o\cite{sandstormio}
+usuário comum não se preocupe com questões mais técnicas. Também temos o \cite{sandstormio}
 Sandstorm é uma plataforma de código aberto para servidores
 pessoais. Sandstorm permite que você execute o seu próprio servidor e instalar
-facilmente as aplicações em que dão suporte, e por fim a ferramenta\cite{juju}
+facilmente as aplicações em que dão suporte, e por fim a ferramenta \cite{juju}
 Juju que lhe permite implementar, configurar, gerenciar, manter e serviços de forma
 rápida e eficiente automatizando a instalação e configuração de aplicações na nuvem.
 
@@ -102,7 +101,7 @@ escrito em várias linguagens, e esse código define um serviço, como por exemp
 instale a aplicação de banco de dados ou instale a aplicação wordpress. Um charm
 contém toda a lógica de que você precisa para implementar e integrar uma aplicação,
 contendo todo o processo de download de ferramentas, instalação e configuração de
-aplicações, podendo ser por provisionadores como chef, puppet ou docker\cite{juju},
+aplicações, podendo ser por provisionadores como chef, puppet ou docker \cite{juju},
 é possível reaproveitar os charms feitos pela comunidade do JuJu assim
 reaproveitando os charms prontos ou não precisando escrever um charm do zero.
 
@@ -110,7 +109,7 @@ Já bitnami já trás as aplicações
 prontas pra uso, assim o usuário interage no formato clique para instalar, porém
 o usuário só tem a disposição as aplicações disponibilizadas pelo bitnami, isso
 também é a forma em que o sandstorm.io trabalha, com a diferença de que o standstorm é
-software livre. Já o trabalho feito por\cite{leo2014} é voltado para serviços web
+software livre. Já o trabalho feito por \cite{leo2014} é voltado para serviços web
 de grande escala, com foco em implantação de aplicações na nuvem e escalar infraestrutura, utilizando o middleware
 construído em seu trabalho, assim podendo gerenciar ambientes de computação em nuvem
 como Amazon EC2 e Openstack, sua engine utiliza o chef solo como seu agente de configuração.
@@ -119,7 +118,7 @@ Com esse levantamento vemos que existem algumas soluções que seguem a mesma
 linha do que este trabalho pretende atingir como objetivo, servindo como motivação
 para o seu desenvolvimento. Assim visto que a utilização do empacotamento
 como técnica de implantação, traz inúmeras vantagens no processo de implantação
-de aplicações como citado no capítulo\ref{cap-introducao}, tendo o levantamento
+de aplicações como citado no capítulo \ref{cap-introducao}, tendo o levantamento
 dos trabalhos relacionados e a questão de pesquisa como insumo, justifica-se a
 construção de uma solução de engenharia de software para implantação automatizada
 de aplicações em sistemas Debian GNU/Linux.
@@ -129,7 +128,7 @@ de aplicações em sistemas Debian GNU/Linux.
 
 A engenharia de software é a área da computação que busca evoluir de forma contínua
 todos os aspectos da produção de um software, procurando sempre a garantia da
-qualidade do produto desenvolvido. Segundo\cite{pressman2011engenharia}, a engenharia
+qualidade do produto desenvolvido. Segundo \cite{pressman2011engenharia}, a engenharia
 de software é composta por um conjunto de três elementos fundamentais:
 
 \begin{itemize}
@@ -144,7 +143,7 @@ de software é composta por um conjunto de três elementos fundamentais:
 Seguindo esses três elementos, é possível definir como será construído a solução.
 Primeiramente, é necessário definir o método de desenvolvimento de software, o
 método que será seguido para desenvolvimento de software é o método ágil chamado
-programação extrema (XP), de acordo com\cite{796139} essa metodologia contém um
+programação extrema (XP), de acordo com \cite{796139} essa metodologia contém um
 conjunto de práticas que auxiliam um engenheiro de software. Dentro das práticas
 que estão em\cite{796139} foram escolhidas as que poderiam ser aplicadas no
 contexto deste trabalho, e são elas:
@@ -219,14 +218,14 @@ Por fim é necessário definir a sequência de práticas e atividades que serão
 utilizadas no desenvolvimento, definindo arquitetura básica para a solução de
 implantação automatizada de aplicações. Portanto é preciso definir alguns
 procedimentos importantes para a construção da arquitetura inicial considerando
-o processo de implantação de software visto no capítulo\ref{cap-introducao}
+o processo de implantação de software visto no capítulo \ref{cap-introducao}
 e a referência dos trabalhos relacionados. Os procedimentos são os seguintes:
 
 \begin{itemize}
   \item  \textbf{Definir as fases e os procedimentos para implantação automatizada:}
    Definir quais são etapas da implantação, definir a ordem necessária para a execução de
   cada fase da implantação, dado a importância de definir as fases que compõem o processo de
-  implantação e de acordo com\cite{omg2006}.
+  implantação e de acordo com \cite{omg2006}.
   \item  \textbf{Definir os procedimentos de segurança na implantação:} Definir
   quais são os procedimentos de segurança e automatizar os que forem possíveis
   de serem aplicados dentro do contexto da arquitetura proposta. Um exemplo
@@ -279,15 +278,15 @@ será a ferramenta shak, a ferramenta shak é basicamente composta de:
   \item  \textbf{Código Ruby} A arquitetura do Shak foi desenvolvida na linguagem
   ruby, com programação orientado a objetos.
   \item  \textbf{Servidor Web} O Shak utiliza o software livre Nginx, que é
-  servidor HTTP de alto desempenho\cite{nginx}.
+  servidor HTTP de alto desempenho \cite{nginx}.
   \item  \textbf{Pacotes Debian} O Shak utiliza pacotes incluídos na distribuição
   oficial do Debian.
   \item  \textbf{Gems} O shak também utiliza algumas gems para seu funcionamento,
   uma gem nada mais é do que uma biblioteca, que provê um formato padrão para
-  a distribuição de programas Ruby\cite{gem}.
+  a distribuição de programas Ruby \cite{gem}.
   \item  \textbf{Código Shellscript} O shak também utiliza algumas gems para seu funcionamento,
   uma gem nada mais é do que uma biblioteca, que provê um formato padrão para
-  a distribuição de programas Ruby\cite{gem}.
+  a distribuição de programas Ruby \cite{gem}.
 \end{itemize}
 
 As ferramentas escolhidas para o apoio ao desenvolvimento foram:
@@ -305,14 +304,14 @@ As ferramentas escolhidas para o apoio ao desenvolvimento foram:
   \item \textbf{Comunicação:} A comunicação será feita via IRC, é uma ferramenta
   de comunicação no formato de chat com canais e usuários dentro dos canais,
   apesar de ser uma ferramenta antiga ainda é muito usada pelas comunidades de software
-  livre e grandes empresas como facebook\cite{artigofacebook}.
+  livre e grandes empresas como facebook \cite{artigofacebook}.
 \end{itemize}
 
 Por fim a ferramenta escolhida para gerenciar o ambiente de desenvolvimento e
 ambiente de testes é a ferramenta Vagrant que é uma ferramenta que torna mais fácil
 a configuração de ambientes de desenvolvimento, sendo eles reprodutíveis e
 portáteis para ajudar a maximizar a produtividade e a flexibilidade necessária
-de construir e destruir ambientes virtuais.\cite{vagrant}
+de construir e destruir ambientes virtuais \cite{vagrant}.
 
 Com a base de ferramentas definidas agora é necessário definir quais são as
 aplicações que servirão como caso de testes para a implementação da solução. Elas
@@ -361,8 +360,7 @@ exemplos de uso devem pacotes incluídos na distribuição oficial do Debian.
 \subsection{Exemplos de uso}
 \label{subsection:exemplos}
 
-Para encontrar as aplicações que possam se encaixar dentro desses parâmetros devemos
-alguns exemplos de uso, com a finalidade de verificar se com tais métodos e
+Para encontrar as aplicações que possam se encaixar dentro desses parâmetros devemos buscar por alguns exemplos de uso, com a finalidade de verificar se com tais métodos e
 procedimentos atingirá o objetivo estabelecido. Para a escolha das aplicações que
 serão utilizadas como exemplos de uso é necessário fazer uma busca nas aplicações
 web que são empacotadas no debian e que possuem suporte a configuração de múltiplas
