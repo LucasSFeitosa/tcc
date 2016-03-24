@@ -1,67 +1,114 @@
 \chapter{Introdução}
 \label{cap-introducao}
 
-A forma como as equipes de desenvolvimento entregam software está mudando, as
-necessidades do mercado estão mudando continuamente, a tecnologia está mudando
-rapidamente, ao longo dos anos as organizações adotaram muitos processos ágeis para
-otimizações em seu desenvolvimento de software \cite{7173368}. As práticas ágeis
-têm aumentado a capacidade do software ser desenvolvido continuamente, contudo,
-a implantação do software ainda é uma atividade que pode ser complexa, principalmente
-pelo fato das aplicações voltadas para internet estarem evoluindo, se tornando
-aplicações mais complexas que envolvem vários componentes, integrando até mesmo
-aplicações em arquiteturas diferentes em um único pacote \cite{6265084}, essas
-arquiteturas diferentes envolvem aplicações em diferentes linguagens de programação
-, diferentes dependências e configurações, e isso impacta diretamente na implantação
- de uma aplicação web.
+Nos últimos anos a demanda por soluções na internet vem crescendo. Por um lado,
+o acesso à internet aumenta mais e mais, tanto em
+função do aumento da disponibilidade de conexões de banda larga, quanto a
+explosão na utilização de dispositivos móveis \cite{shak2015}.
 
-Sistemas voltado para a Internet consistem em muitas partes que são complicadas
-de gerenciar, alguns requisitos como disponibilidade e desempenho são requisitos
-indispensáveis, é também necessário gerenciar as aplicações em seus devidos
-servidores, gerenciamento de banco de dados, e configurações de recuperação de dados
-, além de administrar uma infinidade de bibliotecas de terceiros e serviços online.
- Considerando que no passado, a maioria dos softwares eram como uma ilha isolada,
+Desde a sua origem, a internet foi projetada para ser uma rede
+descentralizada. A grande maioria dos protocolos utilizados na rede não
+dependem de pontos centrais para funcionar. De fato, é de conhecimento geral
+que, por exemplo, usuários com contas de emails em provedores diferentes podem
+trocar mensagens entre si sem qualquer problema \cite{shak2015}. Considerando que no
+passado, a maioria dos softwares eram como uma ilha isolada,
 hoje, os softwares são disponibilizados através da Web ou conectado através da Internet,
 como por exemplo as redes sociais e mercados de compras online \cite{6265084}.
 
-Em uma implantação de software, executar todas essas tarefas de forma manual pode ser
-uma atividade complicada, porém, é possível controlar e conquistar
-esta complexidade, utilizando sistemas de configuração de ferramentas e de
-gerenciamento de implantação. Que vem para facilitar a instalação e configuração de ferramentas,
-de forma que automatize todas as tarefas de uma implantação de software.
+Os novos serviços de alta sofisticação implicam numa alta complexidade de
+desenvolvimento e manutenção \cite{shak2015}. Esta complexidade faz com que a
+implantação de software e a manutenção de serviços exija conhecimento técnico
+especializado. Para organizações, isto implica num maior
+custo para manter sistemas e aplicações. Para indivíduos, isto quase sempre
+impossibilita a manutenção de serviços próprios e leva à procura por serviços
+gratuitos.
 
-A implantação de software é um processo que vai desde a sua aquisição até o momento
-em que ela é disponibilizada para uso \cite{OMG06}, um exemplo de aquisição de software
-é quando um usuário busca um software desejado a partir dos pacotes disponíveis em uma
-distribuição linux. As distribuições linux que optam por disponibilizar
-pacotes mantém uma infraestrutura de servidores como fonte, sendo possível assim
-instalar uma aplicação desejada. Como visto, aplicações web podem conter tarefas
-que são complicadas dentro da sua implantação, existem diferentes perfis de
-usuários que buscam instalar aplicações, \cite{araujo2011apprecommender} cita dois,
-um seria o usuário que detém um certo conhecimento na área de computação, que
-poderia cuidar dessas tarefas mais complicadas, e usuários regulares de computadores,
-que estão interessados apenas no uso das aplicações.
+O mesmo vale para outras aplicações, em especial para aquelas aplicações
+que são utilizadas na web, como por exemplo: um blog, uma rede social ou site de
+notícias. Eles podem estar hospedados em qualquer provedor de internet, e mesmo os
+usuários de outros provedores, também terão acesso a elas.
 
-Um problema desse contexto de instalação de apliacções em linux, é que ao instalar
-um pacote da aplicação desejada, são feitos todos os procedimentos necessários
-para a instalação de uma aplicação, porém, existem ainda casos em que o usuário
-precise fazer algumas configurações específicas após a instalação desses pacotes,
-alguns exemplos são: a configuração do banco de dados da aplicação, customização
-a a partir de arquivos de configuração, e quando se trata de segurança, ainda é
-necessário gerenciar certificados de segurança para poder utilizar protocolos seguros como HTTPS.
+Apesar disso, existe atualmente uma tendência de centralização da internet.
+A imensa maioria dos usuários individuais utilizam contas de email em algum
+poucos grandes provedores \cite{shak2015}. O mesmo acontece com utilitários como armazenamento
+de documentos na nuvem, documentos como fotos, vídeos, arquivos, são geralmente
+armazenados em ferramentas conhecidas, como google drive ou dropbox, estes serviços
+são geralmente serviços gratuitos, mas os termos com os quais os usuários concordam, muitas vezes,
+permitem aos provedores fazerem uso de informações pessoais para usos comerciais.
 
-Para usuários regulares essas atividades não são comuns, e o uso de alguma
-ferramenta que automatize todo esse processo de implantação pode ser uma solução
-a este problema, cuidando das tarefas mais complexas. Já existem diferentes
-ferramentas para a solução desse problema, que disponibilizam a aplicação pronta
-para uso ao usuário, essas ferramentas cuidam de todo o processo de implantação
-de software, como por exemplo \cite{bitnami} e \cite{sandstormio} que são
-ferramentas que disponibilizam a aplicação ao usuário com apenas um clique.
+De acordo com \cite{shak2015} essa excessiva centralização traz os seguintes
+problemas para a sociedade:
 
-Este trabalho relata a evolução de uma ferramenta para implantação automatizada
-de aplicações web em sistema Debian GNU/Linux, que vão desde uma pesquisa para
+\textbf{Riscos à privacidade}
+
+A quantidade de informações pessoais fornecidas a serviços online
+centralizados por uma quantidade imensa de pessoas faz com que estes serviços
+representem um risco muito grande à privacidade dos seus usuários. Diversos
+destes provedores mencionam explicitamente em seus termos de serviço que
+informações pessoais serão usadas para fins de marketing como exibição de
+propaganda, e não há forma de saber se são feitos outros usos dessas
+informações.
+
+Mesmo em mente que os serviços oferecidos pelos provedores são
+confiáveis, eventuais problemas de segurança em seus sistemas podem deixar as
+informações pessoais de seus usuários vulneráveis. Se essas informações estivessem dispersas em
+diversos provedores de serviços, uma eventual invasão afetaria uma quantidade
+muito menor de pessoas.
+
+\textbf{Subordinação dos usuários aos provedores}
+
+Os grandes provedores de serviços acumulam uma quantidade excessiva de poder
+sobre a sociedade. Uma vez que a imensa maioria dos usuários da internet usa
+os seus serviços, estas empresas têm a capacidade de usar dados dos usuários para
+seus interesses comerciais.
+
+\textbf{Pontos centrais de falha}
+
+Provedores centralizados também se tornam pontos centrais de falha, e uma
+eventual indisponibilidade de seus serviços podem consequências econômicas
+gravíssimas. Na medida em que mais e mais pessoas e negócios dependem do seu
+bom andamento de suas atividades, os riscos à economia mundial se tornam cada
+vez maiores.
+
+Mesmo que toda a sociedade tivesse plena consciência destes problemas causados
+pela centralização dos serviços digitais, a maioria dos usuários ainda
+continuaria utilizando-os, visto que para trocar os serviços utilizados, seria
+necessário que existisse uma alternativa à centralização da internet através
+de uma solução que elimina barreira técnica para que usuários interessados
+possam ter servidores próprios com aplicações sem a necessidade de conhecimento
+técnico especializado .
+
+A grande dificuldade de prover essa alternativa é que os sistemas voltado para a
+Internet consistem em muitas partes que são complicadas de gerenciar, alguns
+requisitos como disponibilidade e desempenho são requisitos indispensáveis, além de ser
+necessário gerenciar as aplicações em seus devidos servidores, gerenciamento de
+banco de dados, e configurações de recuperação de dados, além de administrar uma
+infinidade de bibliotecas de terceiros e serviços online \cite{6265084}.
+
+Além disso, também existe o impeditivo dos usuários terem que hospedar seus próprios serviços,
+porém, nos últimos anos este fator vem perdendo relevância em função de
+dois fenômenos. O primeiro deles é o barateamento do acesso a servidores virtuais
+privados decorrente os avanços da computação em nuvem. Por outro lado, a
+disponibilidade de servidores físicos de dimensão reduzida e baixo consumo de
+energia, em conjunto com o barateamento de conexões de banda larga à internet \cite{shak2015}.
+
+Se essas partes já não são tão simples de gerenciar por pessoas qualificadas, a dificuldade
+aumenta bastante para usuários regulares, o usuário final tem a opção de ou contratar
+um técnico qualificado para fazer tal serviço, no entanto esta é uma barreira
+que é muito mais difícil, e a decisão acaba sendo de utilizar
+serviços gratuitos das grandes empresas, em troca de acesso às suas informações pessoais,
+cedidas de forma consciente ou não, e com todas as consequências negativas já
+mencionadas anteriormente.
+
+Este trabalho relata a evolução da ferramenta Shak, que é uma faerramenta para implantação
+automatizada de aplicações web em sistema Debian GNU/Linux, que tem como objetivo fornecer
+uma alternativa à centralização da internet através de uma solução que elimina
+barreira técnica para que usuários interessados possam ter servidores próprios
+com aplicações sem a necessidade de conhecimento
+técnico especializado. Este tabalho também relata uma pesquisa para
 descobrir as ferramentas que são utilizadas para automatizar implantação de aplicações
-como trabalhos relacionados, até a contribuição da construção de uma solução, de
-acordo com os objetivos definidos, os desafios a serem superados, e a validação dos
+como trabalhos relacionados, e também as evoluções feitas na ferramenta de acordo
+com os objetivos definidos, os desafios a serem superados, e a validação dos
 resultados alcançados.
 
 O trabalho está organizado na seguinte forma:  O Capítulo \ref{cap-referencial}

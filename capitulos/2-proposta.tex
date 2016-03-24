@@ -265,11 +265,109 @@ configurações de rede, armazenamento, monitoramento e segurança. Um exemplo c
 no trabalho feito em \cite{leo2014} no qual ele utiliza a ferramenta chef para
 essas tarefas.
 
+As ferramentas escolhidas para o apoio ao desenvolvimento foram:
+\begin{itemize}
+  \item \textbf{Forge Git:} O Gitlab foi forge escolhido para o armazenar o
+  repositório git, é semelhante ao github, porém é software livre, distribuído pela
+  licensa mit\cite{gitlab}.
+  \item \textbf{Documentação de Código:} Toda documentação será disponibilizada
+  na wiki do projeto no gitlab.
+  \item \textbf{Gerenciamento de Tarefas:} O gerenciamento de tarefas também será
+  feito pelo projeto do gitlab, onde é possível criar atividades para serem feitas
+  e criar marcos podendo adicionar as atividades a esses marcos. Como o ciclo de
+  desenvolvimento será de uma semana, serão criados marcos para cada semana e atividades
+  agrupadas em cada marco.
+  \item \textbf{Comunicação:} A comunicação será feita via IRC, é uma ferramenta
+  de comunicação no formato de chat com canais e usuários dentro dos canais,
+  apesar de ser uma ferramenta antiga ainda é muito usada pelas comunidades de software
+  livre e grandes empresas como facebook \cite{artigofacebook}.
+\end{itemize}
+
+Além disso a ferramenta escolhida para gerenciar o ambiente de desenvolvimento e
+ambiente de testes é a ferramenta Vagrant que é uma ferramenta que torna mais fácil
+a configuração de ambientes de desenvolvimento, sendo eles reprodutíveis e
+portáteis para ajudar a maximizar a produtividade e a flexibilidade necessária
+de construir e destruir ambientes virtuais \cite{vagrant}.
+
 Neste trabalho, de acordo com a motivação da contribuição em software livre
 e a participação do google summer of code como dito na seção de motivação
 \ref{sec:motivacao}, e todo o contexto definido na seção \ref{section:construcao},
 a ferramenta para apoio a implantação de software escolhida
-será a ferramenta shak, a ferramenta shak é basicamente composta de:
+será a ferramenta shak.
+
+\subsubsection{Ferramenta Shak}
+
+A ferramenta Shak tem o objetivo de facilitar ao máximo que usuários sem conhecimento
+técnico possam ter os seus próprios serviços de internet, garantindo sua privacidade
+e segurança. Esta plataforma está concebida de acordo com os seguintes princípios:
+
+\textbf{Base: pacotes Debian}
+
+Sistemas operacionais livres, como o Debian
+GNU/Linux , permitem que usuários com conhecimento
+técnico para tal possam hospedar os seus próprios serviços de internet,
+utilizando exatamente a mesma tecnologia que é empregada nos maiores sites
+profissionais. Todo tipo de serviço pode ser hospedado com sistemas
+operacionais livres, mas esta realidade ainda está longe do usuário final.
+
+De acordo com \cite{shak2015}, a plataforma Shak é baseada no sistema de pacotes
+do Debian, uma das distribuições GNU/Linux mais consolidadas e com maior comunidade internacional. Os
+pacotes do Debian fornecem atualizações consistentes de correção e de segurança,
+e são utilizados por uma grande quantidade de usuários que reportam problemas a
+serem resolvidos. Porém, para garantirem uma flexibilidade e suportar diferentes
+casos de uso, normalmente os pacotes não realizam a configuração completa do ambiente,
+deixando os detalhes finais para o administrador do sistema.
+
+Além disso, normalmente aplicações são compostas de diversos pacotes, e
+requerem configurações que dizem respeitos a mais de um deles e que por consequencia não poderiam ser
+feitas automaticamente de uma forma sustentável em nenhum dos pacotes.
+
+\textbf{Nova abstração: Aplicação}
+
+Para resolver as questões que não podem ser resolvidas a nível de pacotes, o
+Shak introduz uma nova abstração: a aplicação. Uma aplicação geralmente
+contém mais de um pacote, inclusive necessita de configurações em vários pacotes.
+
+Uma vez que o usuário seleciona uma determinada aplicação para
+ser instalada, os pacotes necessários são instalados e as configurações
+necessárias são feitas de forma automática, fornecendo de fato um "instalador
+de um clique" para aplicações suportadas. Todas as configurações são feitas de
+forma consistente utilizando um framework comum, buscando o maior nível de
+segurança possível, e assumindo responsabilidades que não podem ser tomadas por
+um pacote.
+
+\textbf{Diferencial para outras soluções existentes}
+
+Existem outras soluções disponíveis para instalação de aplicações por um clique no
+mercado, como por exemplo \cite{bitnami} e \cite{sandstormio}, mas o shak se
+diferencia delas nos seguintes aspectos:
+
+\begin{itemize}
+  \item O shak pode ser implantando em um VPS na nuvem ou em servidores físicos
+    próprios, a critério do usuário.
+
+  \item O shak reutiliza o trabalho dos mantenedores Debian, que fornecem pacotes
+    de alta qualidade.
+
+  \item O shak reutiliza a infraestrutura do projeto Debian.
+
+\end{itemize}
+
+Por outro lado, apenas software que esteja empacotado no Debian estará
+disponível, mas isso pode ser visto de forma positiva também: o shak
+fornecerá um incentivo para que ainda mais software esteja disponível no
+Debian, o que é um benefício coletivo para o ecossistema do software livre, e
+para os seus usuários. Logo, quanto mais aplicações disponíveis no Debian,
+mais aplicações serão disponibilizadas para os usuários do Debian e seus derivados,
+como ubuntu e outros.
+
+O Debian possui espelhos do seu repositório espalhados por todo o mundo,
+fornecendo links para downloads mais rápidos aonde quer que o usuário esteja.
+Atualizações de defeitos e correções de segurança realizadas no Debian estarão
+automaticamente disponíveis para usuários do shak de forma transparente. Além disso,
+o próprio shak estará disponível como um pacote dentro do próprio repositório oficial do Debian.
+
+A arquitetura da ferramenta Shak é compsota de:
 
 \begin{itemize}
   \item  \textbf{Livro de Receitas Chef:} Shak contém alguns livros de receitas
@@ -289,36 +387,10 @@ será a ferramenta shak, a ferramenta shak é basicamente composta de:
   a distribuição de programas Ruby \cite{gem}.
 \end{itemize}
 
-As ferramentas escolhidas para o apoio ao desenvolvimento foram:
-\begin{itemize}
-  \item \textbf{Forge Git:} O Gitlab foi forge escolhido para o armazenar o
-  repositório git, é semelhante ao github, porém é software livre, distribuído pela
-  licensa mit\cite{gitlab}.
-  \item \textbf{Documentação de Código:} Toda documentação será disponibilizada
-  na wiki do projeto no gitlab.
-  \item \textbf{Gerenciamento de Tarefas:} O gerenciamento de tarefas também será
-  feito pelo projeto do gitlab, onde é possível criar atividades para serem feitas
-  e criar marcos podendo adicionar as atividades a esses marcos. Como o ciclo de
-  desenvolvimento será de uma semana, serão criados marcos para cada semana e atividades
-  agrupadas em cada marco.
-  \item \textbf{Comunicação:} A comunicação será feita via IRC, é uma ferramenta
-  de comunicação no formato de chat com canais e usuários dentro dos canais,
-  apesar de ser uma ferramenta antiga ainda é muito usada pelas comunidades de software
-  livre e grandes empresas como facebook \cite{artigofacebook}.
-\end{itemize}
-
-Por fim a ferramenta escolhida para gerenciar o ambiente de desenvolvimento e
-ambiente de testes é a ferramenta Vagrant que é uma ferramenta que torna mais fácil
-a configuração de ambientes de desenvolvimento, sendo eles reprodutíveis e
-portáteis para ajudar a maximizar a produtividade e a flexibilidade necessária
-de construir e destruir ambientes virtuais \cite{vagrant}.
-
 Com a base de ferramentas definidas agora é necessário definir quais são as
 aplicações que servirão como caso de testes para a implementação da solução. Elas
 serão importantes pois a partir delas e de suas necessidades que serão feitos as
-validações da solução e seus refinamentos. Após a escolha das aplicações que
-servirão como exemplos de uso e os ambientes definidos é que será possível
-iniciar o ciclo de desenvolvimento de software para a construção da solução.
+validações da solução e seus refinamentos.
 
 \subsection{Validação da solução}
 \label{subsection:validacao}
