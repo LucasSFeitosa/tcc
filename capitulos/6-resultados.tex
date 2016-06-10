@@ -13,82 +13,8 @@ definidas nas reuniões do jogo do planejamento e as milestones são o conjunto 
 atividades definidas para serem executadas dentro do período de uma semana, todas
 essas informações também estão disponíveis no endereço do projeto.
 
-\section{Planejamento das Atividades}
 
-O planejamento das atividades foi feito a partir das aplicações worpress e owncloud,
-que foram escolhidas na seção \ref{subsection:exemplos} para servirem como exemplos
-de uso, logo a meta inicial planejada foi conter a instalação as duas aplicações
-de forma automatizada, levando em consideração todos os aspectos definidos no capítulo
-\ref{cap-metodologia}. As atividades iniciais levantadas foram:
-
- \begin{itemize}
-   \item \textbf{Issue 1} Livro de Receitas para instalação do Wordpress.
-   \item \textbf{Issue 7} Livro de Receitas para instalação do Owncloud.
-   \item \textbf{Issue 8} Livro de Receitas para instalação do servidor de e-mail.
-   \item \textbf{Issue 9} Forçar Wordpress a utilizar https.
-   \item \textbf{Issue 10} Forçar Owncloud a utilizar https.
- \end{itemize}
-
-Ao verificar que tanto a ferramenta owncloud como a ferramenta wordpress precisam
-de configurações servidor de e-mail para algumas funcionalidades, também foi adicionado
-a atividade de criação de uma receita para a automatizar a configuração de
-servidor de e-mail. Como aspecto de segurança, ficou definido que tanto a aplicação
-owncloud como wordpress deveriam usar sempre https por padrão, isso envolve também
-uma estratégia de como serão gerenciados os certificados de segurança para aplicar
-o protocolo https. Além dessas atividades previstas, também foram feitas evoluções
-no Shak para que seja possível a implementação dessas atividades. Nas seções a
-seguir serão apresentados os resultados das atividades levantadas, a partir da
-proposta da construção da solução vista no capítudo \ref{cap-metodologia}.
-
-\subsection{Criação de Ambientes de Desenvolvimento}
-
-Uma das necessidades para o desenvolvimento do projeto é ter um ambiente de desenvolvimento
-flexível que possa ser rapidamente construído e destruído, onde possa testar as
-implantações feitas e verificar erros caso aconteçam. Para isso é necessário utilizar
-alguma ferramenta que automatize esse processo, construir ambientes manualmente pode
-ser um processo longo e demorado, além disso mais factível de acontecer erros por
-desatenção ao executar vários passos manuais, assim para automatizar a implantação
-das aplicações utilizou-se uma ferramenta para auxiliar na criação das máquinas virtuais onde é
-possível gerenciá-las de forma automatizada servindo de suporte para a criação
-dos ambientes de desenvolvimento, facilitando a execução e teste da implantação das
-aplicações escolhidas.
-
-A ferramenta escolhida para auxiliar a criação de um ambiente de desenvolvimento é
-a ferramenta Vagrant, com o Vagrant pode-se gerenciar a criação de máquinas
-virtuais para os ambientes de desenvolvimento do projeto, também é possível usar
-ferramentas de automação para criar o servidor de implantação, definindo tudo
-em arquivos que farão parte do repositório git do Shak. Dessa maneira,
-qualquer pessoa que clonar o repositório poderá rodar uma instância desse servidor, que será exatamente
-idêntico para todos os usuários que forem criar uma máquina virtual, reduzindo ao
-máximo os problemas que surgem por causa das diferenças entre sistemas operacionais e configurações de sistema.
-
-Quando executamos o comando vagrant up o Vagrant cria uma máquina virtual com as
-configurações que estão no arquivo Vagrantfile na raiz do projeto Shak, nele
-estão todas as configurações e definições da máquina virtual em questão. Para o
-Vagrant criar uma máquina virtual era necessário escolher um software que gerencie
-esse procedimento, a ferramenta escolhida foi o virtualbox para poder emular o sistema
-operacional em uma máquina virtual, assim o Vagrant inicia uma máquina virtual
-utilizando o virtualbox, com a distribuição linux e as configurações que estiverem
-definida no arquivo de configuração Vagrantfile.
-
-Para executar o Vagrant basta instalar o pacote disponível pelo Debian, além disso
-o repositório do projeto Shak já possui um Vagrantfile padrão para que todos os
-desenvolvedores tenham o mesmo ambiente, passa acessar a máquina virtual criada
-basta acessá-la via ssh, o Vagrant já gerenciar as chaves ssh, portanto basta
-dar o comando vagrant ssh que estará conectado a máquia virtual via ssh.
-O ambiente de desenvolvimento levantado é um ambiente com Debian na sua versão
-stretch(atualmente a versão instável) e 64 bits, apesar de a versão ser a versão
-instável isso é importante para que possamos utilizar as versões mais novas dos
-pacotes das ferramentas escolhidas, também será importante para reportar algum
-bug caso seja encontrado.
-
-Com o ambiente de desenvolvimento definido, agora é possível iniciar a criação dos
-livros de receitas das aplicações, o repositório do Shak possui alguns scripts
-para instalar algumas dependências ao iniciar uma máquina virtual, dentro
-desses scripts contém as instalações das dependências para o Shak funcionar perfeitamente
-e também o próprio Chef, que é utilizado pela ferramenta Shak para instalar aplicações e suas dependências.
-
-\subsection{Wordpress}
+\section{Wordpress}
 \label{sub:wordpress}
 
 De acordo com a documentação oficial \cite{wordpress} WordPress é uma plataforma
@@ -114,7 +40,7 @@ com \cite{omg2006}, e isso será o que o Shak automatizará, cada fase desse pro
 \end{itemize}
 
 
-\subsubsection{Planejamento}
+\subsection{Planejamento}
 
 O planejamento da implantação é uma fase para identificar os componentes
 necessários na implantação da aplicação. Definir quais são as dependências mínimas
@@ -133,7 +59,7 @@ pré-instalados e aplicações pré-configuradas. Para o wordpress foram escolhi
 
 A instalação e execução desses recursos serão feitas nas fases seguintes.
 
-\subsubsection{Preparação e Instalação de Pacotes}
+\subsection{Preparação e Instalação de Pacotes}
 \label{wordpress:preparacao}
 
 São os procedimentos necessários para preparar o ambiente alvo para que o wordpress
@@ -180,7 +106,7 @@ de como declarar pacotes e serviços dentro de uma receita Chef é:
 \end{lstlisting}
 
 
-\subsubsection{Configuração}
+\subsection{Configuração}
 \label{wordpress:preparacao}
 
 Como levantado no planejamento é necessário a edição de arquivos de configuração
@@ -212,7 +138,7 @@ a declaração dos pacotes. Um exemplo de como gerenciar templates em uma receit
   group "root"
 \end{lstlisting}
 
-\subsubsection{Múltiplas Instâncias}
+\subsection{Múltiplas Instâncias}
 
 O uso de múltiplas instâncias do wordpress pode ser feito de duas maneiras, e servem
 para que o usuário possa ter várias instâncias de wordpress no mesmo servidor, de
@@ -239,7 +165,7 @@ do Nginx possui um bloco server, e cada bloco server equivale a um virtual hosti
 por isso as aplicações serão também independentes a nível de servidor web sendo assim
 possível o acesso entre elas separadamente.
 
-\subsubsection{Inicialização}
+\subsection{Inicialização}
 
 Após a construção da receita do wordpress é necessário testar a receita construída,
 para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
@@ -257,7 +183,7 @@ E assim o Chef inicia o processo de instalação dos pacotes, criação dos arqu
 de configuração, incia os serviços desejados, e ao fim do procedimento a aplicação
 já estará pronta para uso no hostname escolhido.
 
-\subsection{Owncloud}
+\section{Owncloud}
 \label{sub:owncloud}
 
 De acordo com a documentação oficial \cite{owncloud} Owncloud é uma ferramenta
@@ -282,7 +208,7 @@ fases e procedimentos são:
   \item  \textbf{Inicialização}
 \end{itemize}
 
-\subsubsection{Planejamento}
+\subsection{Planejamento}
 
 Seguindo a mesma linha do wordpress, é necessário definir quais são as dependências
 mínimas para o funcionamento do owncloud tais como: banco de dados, pacotes
@@ -306,7 +232,7 @@ dados diferentes, aumentando o suporte do Shak, assim quando existirem aplicaç�
 que suportam apenas o postgresql o Shak ja terá uma estrutura básica pronta.
 A instalação e execução desses recursos serão feitas nas fases seguintes.
 
-\subsubsection{Preparação e Instalação de Pacotes}
+\subsection{Preparação e Instalação de Pacotes}
 
 Para o funcionamento correto do owncloud é necessário a instalação do php5, além
 disso também é necessário que algum servidor web, na arquitetura do Shak o servidor
@@ -345,7 +271,7 @@ de como declarar pacotes e serviços dentro de uma receita Chef é:
   end
 \end{lstlisting}
 
-\subsubsection{Configuração}
+\subsection{Configuração}
 
 Como levantado no planejamento é necessário a edição de arquivos de configuração
 do owncloud, arquivos de configuração do banco de dados e arquivo de configuração
@@ -365,7 +291,7 @@ que é um pequeno script sql que cria o banco de dados do owncloud e dá os
 privilégios ao usuário desejado. Por fim o arquivo de configuração do Nginx
 configuração do servidor web.
 
-\subsubsection{Múltiplas Instâncias}
+\subsection{Múltiplas Instâncias}
 
 Diferentemente do wordpress o owncloud não suporta múltiplas instâncias, porém isso
 não foi um impeditivo na execução do trabalho, com uma busca encontrou-se uma discussão no repositório
@@ -400,7 +326,7 @@ para cada aplicação, um arquivo de configuração para cada aplicação e um b
 dados para cada aplicação. Seguindo também a mesma abordagem do wordpress também
 são criados virtual hostings para cada instância do owncloud.
 
-\subsubsection{Inicialização}
+\subsection{Inicialização}
 
 Após a construção da receita do owncloud é necessário testar a receita construída,
 para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
@@ -416,7 +342,7 @@ de configuração, incia os serviços desejados, e ao fim do procedimento a apli
 já estará pronta para uso no hostname escolhido.
 
 
-\subsection{Servidor de e-mail}
+\section{Servidor de e-mail}
 \label{sub:e-mail}
 
 Todas as outras aplicações anteriores utilizam o protocolo
@@ -463,7 +389,7 @@ as fases e procedimentos são:
    \item  \textbf{Inicialização}
  \end{itemize}
 
-\subsubsection{Planejamento}
+\subsection{Planejamento}
 
 Seguindo o mesmo raciocínio das aplicações anteriores, é necessário definir
 quais são as dependências mínimas para o funcionamento do servidor de e-mail,
@@ -498,7 +424,7 @@ que que dá aos administradores de servidor de e-mail, um filtro para classifica
    necessários para configurar o spamassasin, dovecot e postfix.
 \end{itemize}
 
-\subsubsection{Preparação e Instalação de Pacotes }
+\subsection{Preparação e Instalação de Pacotes }
 
 Para o funcionamento correto do servidor de e-mail são necessários vários pacotes
 e com isso é possível separar as dependências dos pacotes necessários para cada ferramenta
@@ -508,7 +434,7 @@ os pacotes postfix e bsd-mailx, além de habilitar o serviço do postfix, para o
 para o spamassassin são necessários os pacotes spamassassin e o pacote spamc e ativar
 o serviço do spamassassin.
 
-\subsubsection{Configuração}
+\subsection{Configuração}
 
 Como levantado no planejamento é necessário a edição de arquivos de configuração
 de todas as ferramentas, existem arquivos de configuração para cada uma delas, inclusive
@@ -549,7 +475,7 @@ pode aumentar para valores como 6 ou 7 até chegar em um nível de confiança em
 o spamassasin cuide dos casos falsos-postivos, ou seja, e-mails que não são spam
 porém foram interpretados como spam.
 
-\subsubsection{Inicialização}
+\subsection{Inicialização}
 
 Após a construção da receita do servidor de e-mail é necessário testar a receita construída,
 para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
@@ -586,7 +512,7 @@ está barrando as conexões que não utilizem os protocolos criptografados.
 %\subsection{Protótipo de Front-End}
 %\label{sub:prototipo}
 
-\subsection{Segurança}
+\section{Segurança}
 \label{sub:prototipo}
 
 Na implantação das aplicações foram feitos dois procedimentos de segurança, o primeiro
