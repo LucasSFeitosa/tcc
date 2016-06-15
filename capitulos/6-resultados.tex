@@ -8,18 +8,14 @@ Wordpress, seguindo a escolha da ferramenta Shak como arquitetura inicial. O
 desenvolvimento do trabalho também seguiu a metodologia da programação extrema
 (XP) para o desenvolvimento. Todo o trabalho foi organizado na ferramenta Gitlab
 no projeto Shak disponível no endereço \href{https://gitlab.com/Shak/Shak/} nele
-contém todo o código fonte e as milestones e issues. As issues são as atividades
-definidas nas reuniões do jogo do planejamento e as milestones são o conjunto de
-atividades definidas para serem executadas dentro do período de uma semana, todas
-essas informações também estão disponíveis no endereço do projeto.
-
-
+contém todo o código fonte disponível.
+ 
 \section{Wordpress}
 \label{sub:wordpress}
 
-De acordo com a documentação oficial \cite{wordpress} WordPress é uma plataforma
+De acordo com a documentação oficial \cite{wordpress} Wordpress é uma plataforma
 semântica de vanguarda para publicação pessoal, com foco na estética, nos
-Padrões Web e na usabilidade e ao mesmo tempo é um software livre. WordPress é
+Padrões Web e na usabilidade e ao mesmo tempo é um software livre. Wordpress é
 um dos maiores software de publicação de conteúdo, sendo hoje a maior
 plataforma de Gerenciamento de Conteúdo do mundo, com quase 70\% do mercado. O
 wordpress foi a primeira ferramenta escolhida para automatizar a instalação, partindo
@@ -49,7 +45,7 @@ pré-instalados e aplicações pré-configuradas. Para o wordpress foram escolhi
 
 \begin{itemize}
    \item \textbf{Pacote wordpress para o Debian:} Pacote Debian com o wordpress.
-   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o nginx.
+   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o Nginx.
    \item \textbf{Pacote mysql para o Debian:} Pacote Debian com o banco de dados mysql
    que será usado pelo wordpress.
    \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
@@ -120,7 +116,7 @@ onde irá ficar os temas, galeria de mídias e plugins de cada instância do wor
 Por padrão ele deve ficar no diretório /etc/wordpress/ e seu nome deve conter
 a seguinte estrutura: config-nomehost.php, onde o nomehost deve ser o hostname
 desejado. O segundo arquivo é o database.sql que é um pequeno script sql que
-cria o banco de dados do wrodpress e dá os privilégios ao usuário desejado. Por fim
+cria o banco de dados do Wordpress e dá os privilégios ao usuário desejado. Por fim
 o arquivo de configuração do Nginx configuração do servidor web.
 
 Esses arquivos de configuração serão criados dentro da pasta template, com o conteúdo
@@ -145,7 +141,7 @@ para que o usuário possa ter várias instâncias de wordpress no mesmo servidor
 acordo com a documentação do wordpress é possível ter múltiplos sites e múltiplas
 instâncias, no caso do Shak é desejado que seja múltiplas instâncias, a partir da
 repetição da instalação. O wordpress recomenda que se for necessário o uso de múltiplas
-instâncias é necessário realmente instalar cada WordPress, um por vez.
+instâncias é necessário realmente instalar cada Wordpress, um por vez.
 
 A arquitetura para isso não é muito complicada, porém algumas pastas do sistema
 precisam ser divididas, ou seja, uma para cada aplicação, essa pasta é a pasta wp-content
@@ -170,10 +166,10 @@ possível o acesso entre elas separadamente.
 Após a construção da receita do wordpress é necessário testar a receita construída,
 para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
 que será instalada, e segunda o hostname destino. Como é um ambiente de desenvolvimento
-não é preciso configurar um ip ou configurar um dns, é preciso apenas adicionar o
+não é preciso configurar um ip ou configurar um DNS, é preciso apenas adicionar o
 hostname desejado no arquivo /etc/hosts. Assim mesmo que esteja na sua máquina local
 é possível acessar um endereço mais familiar em seu navegador. Um exemplo da execução
-da instaalação via Shak é:
+da instalação via Shak é:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de exexução de instalação do wordpress com shak}]
 Shak install wordpress hostname=wordpress.dev
@@ -189,9 +185,9 @@ já estará pronta para uso no hostname escolhido.
 De acordo com a documentação oficial \cite{owncloud} Owncloud é uma ferramenta
 para compartilhamento de arquivos, é um software livre em que é possível compartilhar
 um ou mais arquivos e pastas do seu computador na nuvem, e sincronizá-los com o seu
-servidor ownCloud, esses arquivos são imediatamente sincronizados com o servidor
+servidor Owncloud, esses arquivos são imediatamente sincronizados com o servidor
 e disponibilizados para outros dispositivos que utilizam o ambiente de trabalho
-ownCloud ou app Android ou app IOS.
+Owncloud ou app Android ou app IOS.
 
 Também foram seguidos os mesmos passos feitos em \ref{sub:wordpress}, primeiramente
 foram seguidos os procedimentos para construção da solução definidos em \ref{section:construcao},
@@ -211,32 +207,32 @@ fases e procedimentos são:
 \subsection{Planejamento}
 
 Seguindo a mesma linha do wordpress, é necessário definir quais são as dependências
-mínimas para o funcionamento do owncloud tais como: banco de dados, pacotes
-pré-instalados e aplicações pré-configuradas. Para o owncloud foram escolhidas:
+mínimas para o funcionamento do Owncloud tais como: banco de dados, pacotes
+pré-instalados e aplicações pré-configuradas. Para o Owncloud foram escolhidas:
 
 \begin{itemize}
-   \item \textbf{Pacote owncloud para o Debian:} Pacote Debian com o owncloud.
+   \item \textbf{Pacote Owncloud para o Debian:} Pacote Debian com o Owncloud.
    \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o nginx.
-   \item \textbf{Pacote postgresql para o Debian:} Pacote Debian com o banco de dados postgresql
-   que será usado pelo owncloud.
+   \item \textbf{Pacote Postgresql para o Debian:} Pacote Debian com o banco de dados postgresql
+   que será usado pelo Owncloud.
    \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
-   necessários para configurar o owncloud, o servidor web Nginx e o banco de dados
+   necessários para configurar o Owncloud, o servidor web Nginx e o banco de dados
    postgresql.
 \end{itemize}
 
 A diferença da escolha do banco de dados em relação ao wordpress é poder aumentar
 o suporte a diferentes bancos de dados, na documentação do wordpress é recomendado
-o uso do banco de dados mysql, porém no owncloud fica a escolha do desenvolvedor.
+o uso do banco de dados mysql, porém no Owncloud fica a escolha do desenvolvedor.
 A escolha do postgresql vêm com a possibilidade de trabalhar com dois bancos de
 dados diferentes, aumentando o suporte do Shak, assim quando existirem aplicações
-que suportam apenas o postgresql o Shak ja terá uma estrutura básica pronta.
+que suportam apenas o postgresql o Shak já terá uma estrutura básica pronta.
 A instalação e execução desses recursos serão feitas nas fases seguintes.
 
 \subsection{Preparação e Instalação de Pacotes}
 
-Para o funcionamento correto do owncloud é necessário a instalação do php5, além
+Para o funcionamento correto do Owncloud é necessário a instalação do php5, além
 disso também é necessário que algum servidor web, na arquitetura do Shak o servidor
-web padrão é o Nginx, e o banco de dados posqtgresql.
+web padrão é o Nginx, e o banco de dados Postgresql.
 
 Para solução desse procedimento foi necessário instalar os pacotes php5-fpm, o banco
 de dados postgresql e o pacote nginx, além disso habilitar o serviço do php5-fpm,
@@ -265,8 +261,8 @@ os serviços que precisar executar, as pastas, permissões de usuários, etc. Um
 de como declarar pacotes e serviços dentro de uma receita Chef é:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de como habilitar serviço do postgresql com chef}]
-  package "posgresql"
-  service "posgresql" do
+  package "postgresql"
+  service "postgresql" do
     action :start
   end
 \end{lstlisting}
@@ -324,7 +320,7 @@ a contribuição feita. Os procedimentos feitos para suportar múltiplas instân
 no owncloud são bem semelhantes aos do wordpress, criando um diretório de dados
 para cada aplicação, um arquivo de configuração para cada aplicação e um banco de
 dados para cada aplicação. Seguindo também a mesma abordagem do wordpress também
-são criados virtual hostings para cada instância do owncloud.
+será criado um virtual hosting para cada instância do owncloud.
 
 \subsection{Inicialização}
 
@@ -414,7 +410,7 @@ integração com o Dovecot, Postfix é quem cuidará do método de entrega de e-
 utilizando SMTP como protocolo de transferência de e-mails. Por fim a aplicação
 que servirá como anti-spam será o Apache SpamAssassin que é uma plataforma anti-spam
 que que dá aos administradores de servidor de e-mail, um filtro para classificar
- e-mailis e bloquear os e-mails que julgarem como spam \cite{spam}.
+ e-mails e bloquear os e-mails que julgarem como spam \cite{spam}.
 
 \begin{itemize}
    \item \textbf{Pacote dovecot para o Debian:} Pacote Debian com o dovecot.
@@ -453,18 +449,18 @@ explicados na seção %TODO qual seção ?
 do postfix. O quarto arquivo é o arquivo 20-imap.conf onde será indicado o tamanho
 máximo de conexões por ip permitidas no servidor. Por fim o arquivo
 20-disable-imap-non-ssl.conf que permitirá que o imap utilize sempre uma conexão
-segura utilizando o imaps (imap + ssl), assim bloqueando qualquer conexão ou
+segura utilizando o IMAPS (IMAP + SSL), assim bloqueando qualquer conexão ou
 tentativa na porta imap comum.
 
 Para o posfix são apenas dois arquivos de configuração, o main.cf e o master.cf,
 o main.cf é aonde se configura os parâmetros mínimos de configuração, lá é aonde fica as configurações que filtram os e-mails com spamassassin e algumas configurações do SMTP, no
 master.cf definimos como um programa cliente se conecta a um serviço, e qual o
 programa que é executado quando um serviço é solicitado. Neste caso habilitamos
-recursos como: smtpd usar tls e autenticação, caminho dos arquivos de chave e certificados
+recursos como: smtpd usar TLS e autenticação, caminho dos arquivos de chave e certificados
 o destino das mensagens como o host do servidor de e-mail, o smtpd utilizar o dovedcot
 e rejeitar conexões não autenticadas.
 
-Por fim a configuração do spamassasis, são necessários dois arquivos de configuração
+Por fim a configuração do spamassasin, são necessários dois arquivos de configuração
 o spamassassin que é o arquivo de configurações padrão para o spamassasin e o
 local.cf que são as configurações locais. No spamassassin você habilita o spamassasin
 e configura o caminho do arquivo de log, opções e habilitar a cronjob que será
@@ -472,7 +468,7 @@ executada de tempos em tempos. Já o local.cf possui um parâmetro importante, o
 parâmetro required\_score é um nível de 0 a 10 em que são classificados os e-mails
 como spam, por default esse valor é 5 porém se o usuário quiser aumentar o filtro
 pode aumentar para valores como 6 ou 7 até chegar em um nível de confiança em que
-o spamassasin cuide dos casos falsos-postivos, ou seja, e-mails que não são spam
+o spamassasin cuide dos casos falsos-positivos, ou seja, e-mails que não são spam
 porém foram interpretados como spam.
 
 \subsection{Inicialização}
@@ -516,33 +512,33 @@ está barrando as conexões que não utilizem os protocolos criptografados.
 \label{sub:prototipo}
 
 Na implantação das aplicações foram feitos dois procedimentos de segurança, o primeiro
-é forçar as aplicações web a sempre utilizarem o protocolo https e a segunda foi forçar o
+é forçar as aplicações web a sempre utilizarem o protocolo HTTPS e a segunda foi forçar o
 servidor de e-mail a não permitir a conexão via protocolos sem criptografia, neste
 caso sendo o protocolo imap utilizando o protocolo imaps. Para que isso fosse possível
 foi necessário gerar um certificado ssl, certificados ssl são necessários para
 que um determinado serviço opere com suporte a conexão segura por meio de criptografia.
 É de conhecimento do autor que a melhor forma é obter um certificado assinado
 por uma certificadora registrada, porém inicialmente foi trabalhado apenas com certificados
-autoassinados.
+auto-assinados.
 
 Para suprir a necessidade das aplicações, cada aplicação terá um certificado para
-si, além disso o servidor também terá o seu certificado autoassinado, isso foi necessário
-pois a idéia é de as aplicações possam ser instaladas em diferentes servidores, por
+si, além disso o servidor também terá o seu certificado auto-assinado, isso foi necessário
+pois a ideia é de as aplicações possam ser instaladas em diferentes servidores, por
 isso é necessário garantir garantir que cada servidor possua o seu certificado. Para adicionar
 esse novo suporte ao Shak foi necessário criar uma receita Chef,
 para que possa gerenciar os certificados ssl. Optou-se por utilizar a ferramenta
-openssl para geração das chaves e certificados, o opensssl é uma ferramenta de
+openssl para geração das chaves e certificados, o openssl é uma ferramenta de
 implementação do Transport Layer Security (TLS) e Secure Sockets Layer (SSL),
 além de ser uma biblioteca de propósito geral de criptografia \cite{openssl}.
 
 Esse novo componente no Shak é composto basicamente do pacote openssl e da geração
-de certificados autoassinados utilizando o openssl, são gerados certificados
+de certificados auto-assinados utilizando o openssl, são gerados certificados
 para cada aplicação e para o servidor, o padrão do caminho onde os certificados são
 gerados é etc/ssl/certs/hostname.pem onde hostname é o endereço do servidor
 e o caminho onde as chaves são geradas é etc/ssl/private/hostname.key.
 
 Com as chaves geradas basta configurar as aplicações indicando os caminhos dos certificados
-e das chaves, para forçar as aplicações web a utilizarem o https foi necessário fazer
+e das chaves, para forçar as aplicações web a utilizarem o HTTPS foi necessário fazer
 uma configuração específica no servidor web Nginx:
 
 
@@ -567,8 +563,24 @@ uma configuração específica no servidor web Nginx:
 \end{lstlisting}
 
 Com isso todas as requisições serão forçadas a utilizar a porta 443 que é a porta
-TCP padrão para sites que utilizam http + ssl, assim as aplicações utilizarão
+TCP padrão para sites que utilizam HTTP + SSL, assim as aplicações utilizarão
 um protocolo mais seguro utilizando criptografia dos dados, utilizando o
-certificado autoassinado que foi gerado para o servidor específico.
+certificado auto-assinado que foi gerado para o servidor específico.
 
 % TODO colocar mais informações do dovecot, spamassassin, etc se necessário.
+\section{Protótipo da interface web}
+%TODO mudar esse nome
+
+Outro resultado obtido neste trabalho foi a construção de um protótipo para a interface
+web da aplicação, como um dos objetivos do Shak é possuir uma interface web para que
+os usuários não precisem utilizar um terminal para realizar as ações, também foi
+feito um protótipo funcional, para ser aplicado no shak. O protótipo foi feito
+na ferramenta chamada Pingendo, que é um software livre utilizado para construir
+protótipos funcionais. Além de ter um protótipo funcional, a ferramenta Pingendo
+também gera o código HTML e CSS, que pode ser aproveitado para a construção
+do layout do Shak. A sugestão inicial foi feita utilizando HTML + CSS utilizando
+bootstrap 3, que é um framework para criar aplicações responsivas na web. A versão
+inicial está disponível em https://gitlab.com/Thiagovsk/shak_frontend/tree/master.
+
+
+%TODO colocar aplicações novas que forem inseridas

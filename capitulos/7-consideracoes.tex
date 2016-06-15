@@ -3,8 +3,8 @@
 
 No decorrer deste trabalho, alguns resultados foram alcançados. Primeiramente, o
 pesquisador estabeleceu o conhecimento sobre implantação automatizada
-de software e tecnologias que permites tal implementação, como por exemplo o chef
-e o puppet, sendo possível automatizar todo o processo de implantação de um software,
+de software e tecnologias que permites tal implementação, como por exemplo o Chef
+e o Puppet, sendo possível automatizar todo o processo de implantação de um software,
 desde o planejamento até a execução também foi conhecido ferramentas que são
 utilizadas para implantação de aplicações de forma automatizada, como por exemplo
 o JuJu e o Bitnami, que ajudam usuários que não possuem conhecimento a
@@ -21,14 +21,14 @@ Em relação a construção de solução, foram realizadas melhorias na ferramen
 provendo três novas aplicações, sendo elas Owncloud, Wordpress e servidor de e-mail,
 todas sendo implantadas automaticamente, levando em consideração o uso de protocolos
 seguros como HTTP junto ao SSL e SMTP junto ao SSL. Logo também foi adicionado a
-ferramenta Shak suporte a criação de certificados autoassinados, permitindo que
+ferramenta Shak suporte a criação de certificados auto-assinados, permitindo que
 as aplicações possam usar certificados para configurar tais protocolos. Ainda foi
 adicionado ao Shak o suporte a as aplicações web sempre utilizarem
 o protocolo HTTPS, evitando assim implantações inseguras, independente da ferramenta.
 
 Também foi configurado o suporte a múltiplas instâncias nas aplicações disponíveis
 no shak, o Wordpress já previa tal suporte, bastando configurá-lo, porém no Owncloud
-foi necessário o envio de um patch para o mantenedor do pacote Debian, visto que
+foi necessário o envio de uma correção para o mantenedor do pacote Debian, visto que
 é uma funcionalidade nova no Owncloud, permitindo assim a criação de múltiplas
 instâncias do Owncloud, em ambos os casos foi utilizado a técnica de hospedagem
 virtual, disponibilizada pelo servidor web Nginx.
@@ -45,20 +45,20 @@ na próxima seção um Cronograma de atividades para o TCC2.
 Afim de apresentar uma continuação para este trabalho, o cronograma apresenta as
 atividades a serem realizadas e suas respectivas datas.
 O objetivo inicial na próxima etapa do projeto é continuar a evolução do shak,
-propondo uma forma de descentralizar as receitas chef da aplicação central do shak,
-evitando que as receitas chef que instalam as aplicações precisem estar junto ao
+propondo uma forma de descentralizar as receitas Chef da aplicação central do shak,
+evitando que as receitas Chef que instalam as aplicações precisem estar junto ao
 código fonte do shak. Além disso, evoluir a documentação do Shak, para que novas
 pessoas que se interessarem possam evoluir a ferramenta e propor novas aplicações,
 além disso escreverem suas próprias aplicações.
 
-Outro objetivo é melhorar a forma que são gerados os certificados autoassinados,
+Outro objetivo é melhorar a forma que são gerados os certificados auto-assinados,
 para prover uma melhor segurança a infraestrutura do Shak, e facilitando a gerência
 desses certificados, de forma que caso seja possível que o usuário possa inserir um certificado
 reconhecido por alguma entidade certificadora.
 
 Além disso prover ao Shak uma forma de realizar testes nas aplicações inseridas,
 com casos de teste e prover uma qualidade maior das aplicações. Também será levantado
-uma lista dos bugs existentes no Shak, para que possam ser solucionados durante
+uma lista dos erros existentes no Shak, para que possam ser solucionados durante
 a fase seguinte, provendo a manutenção e evolução do software. Uma das evoluções
 propostas será o suporte a implantação de aplicações em caminhos diversos no mesmo
 domínio, sendo possível, por exemplo: www.exemplo.com.br/blog para o Wordpress e
@@ -72,7 +72,7 @@ a seguir:
 {\textbf{Atividade}} & {\textbf{Data de Início}} & {\textbf{Data de Término}} \\ \hline
 Levantamento de bugs e soluções de bugs no Shak & 01/03/2016 & 15/03/2016 \\
 Descentralização de receitas & 15/03/2016 & 30/03/2016 \\
-Suporte a novas apliacções & 01/04/2016 & 15/04/2016 \\
+Suporte a novas aplicações & 01/04/2016 & 15/04/2016 \\
 Levantamento de bugs e soluções de bugs no Shak & 15/04/2016 & 30/04/2016 \\
 Evolução da gerência de certificados  & 01/05/2016 & 15/05/2016 \\
 Levantamento de bugs e soluções de bugs no Shak & 15/05/2016 & 30/05/2016 \\

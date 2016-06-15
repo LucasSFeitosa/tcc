@@ -71,7 +71,7 @@ de software são:
   \item  \textbf{Pacote:} Artefato executável que contém o código binário do componente
   . É por meio de um pacote que um serviço pode ser instalado e executado dentro
   de um sistema operacional, e que são característicos dependendo da distribuição
-  do sistema operacional, por exemplo: .deb para debian e .rpm para redhat, ou
+  do sistema operacional, por exemplo: .deb para Debian e .rpm para Redhat, ou
   pacotes independentes de sistema operacional como: jar.
 \end{itemize}
 
@@ -85,7 +85,7 @@ com \cite{omg2006} as fases são:
   \item  \textbf{Preparação:} São os procedimentos necessários para preparar o
   ambiente alvo para que um determinado componente possa ser executado, isso envolve
   configuração do sistema operacional, instalação e configuração de dependências
-  necessárias (por exemplo um servidor web como apache ou nginx) e a transferência
+  necessárias (por exemplo um servidor web como Apache ou Nginx) e a transferência
   do componente para o servidor onde ele será executado.
   \item  \textbf{Instalação:} O implantador transfere o componente para a infraestrutura
   alvo, é quando instalamos um dado componente em um servidor, um exemplo disso
@@ -193,7 +193,7 @@ de implantações utilizadas, como por exemplo o empacotamento de software.
 
 Existem várias maneiras de se automatizar um processo de implantação software,
 de acordo com \cite{leo2014}, podem-se utilizar linguagens de script de propósito
-geral como (Python, shell script), ferramentas gerais voltados para o processo
+geral como (Python, Shellscript), ferramentas gerais voltados para o processo
 de implantação ou sistemas de middleware especializados em determinados tipos de artefatos implantáveis.
 Um processo de implantação automatizado depende bastante da integração de diferentes papéis
 em uma organização, foi dito também na seção \ref{subsec:DevOps} que é importante a
@@ -216,25 +216,25 @@ vêm para facilitar a implantação, evitando erros de instalações manuais e f
 vários ambientes diferentes.
 
 De acordo com \cite{6265084} tais ferramentas permitem-nos controlar e automatizar
-a configuração de todos os elementos que compõem um sistema, são eles: hosts, software a serem instalados,
+a configuração de todos os elementos que compõem um sistema, são eles: Hosts, software a serem instalados,
 usuários do sistema, serviços em execução, arquivos de configuração, tarefas agendadas,
 configuração de rede, armazenamento de arquivos, monitoramento e segurança. Existem
 ferramentas populares como Puppet e Chef, tendo como sua principal função principal
 de automatizar a instalação e configuração de um sistema. Com essas ferramentas é
 possível escrever algumas regras que expressam como um software deve ser configurado,
-e assim a ferramenta configurarará o sistema conforme as especificações.
+e assim a ferramenta configurará o sistema conforme as especificações.
 
 Essas ferramentas funcionam de forma declarativa, especificando a instalação de um sistema de
 através de regras \cite{6265084}. Por exemplo, é possível especificar regras para a configuração do sistema
-a partir de uma infraestrutura básica, no chef essa estrutura é conhecida como livro
-de receitas, em puppet essa estrutura é conhecida como manifesto, esses recursos
+a partir de uma infraestrutura básica, no Chef essa estrutura é conhecida como livro
+de receitas, em Puppet essa estrutura é conhecida como manifesto, esses recursos
 são basicamente arquivos, no qual o implantador define os passos que serão executados,
 cada um podendo executar: um aplicativo, um serviço, papéis de usuários do sistema,
-aruivos de configuração e etc.
+arquivos de configuração e etc.
 
 Cada passo da configuração desejada pode depender de outros passos, ou seja, para
 instalar uma aplicação é preciso instalar previamente um compilador ou interpretador da linguagem,
-um exemplo é que para rodar uma aplicação web é necessário a instalaçã prévia de
+um exemplo é que para rodar uma aplicação web é necessário a instalação prévia de
 um servidor web. Para lidar com estas dependências essas ferramentas descrevem o estado em que a aplicação
 deve estar, ou seja, todos os pacotes, arquivos de configuração diretórios e usuários,
 sendo possível definir a dependência entre as tarefas a serem executadas.
@@ -247,9 +247,9 @@ adicional, o que integra os conceitos de DevOps com implantação de software au
 de software.
 
 Além das ferramentas de automação, é importante também entender o empacotamento de
-programas, tanto chef como puppet utilizam a instalação de pacotes como recurso para
+programas, tanto Chef como Puppet utilizam a instalação de pacotes como recurso para
 poder instalar softwares, ou seja, é possível buscar os softwares desejados a partir
-dos pacotes disponíveis em uma distribuição linux. As distribuições linux que
+dos pacotes disponíveis em uma distribuição Linux. As distribuições Linux que
 optam por disponibilizar pacotes mantém uma infraestrutura de servidores como fonte
 de distribuição de programas \cite{araujo2011apprecommender}, tais servidores são
 chamados de repositórios, e esses pacotes são gerenciados com softwares conhecidos
@@ -271,7 +271,7 @@ aplicativos de um sistema \cite{araujo2011apprecommender}. A estrutura dos pacot
 e também os seus requisitos para que sejam distribuídos oficialmente pelo Debian
 estão especificados no Manual de Políticas do Debian \cite{debian}.
 
-A estrutura de um pacote debian pode ser observado a partir de qualquer pacote
+A estrutura de um pacote Debian pode ser observado a partir de qualquer pacote
 .deb, onde é possível encontrar três estruturas a seguir:
 
 \begin{itemize}
@@ -298,7 +298,7 @@ de uma implantação automatizada que utilize alguma ferramenta para isso. Um ex
 desse tipo de atividade que não é de responsabilidade de um pacote é a configuração
 de hospedagem virtual, que será visto na subseção a seguir.
 
-%TODO quais são as vantangens de utilizar pacotes debian????????????/
+%TODO quais são as vantagens de utilizar pacotes debian????????????/
 
 \subsection{Múltiplas Instâncias de Aplicações Web com Hospedagem Virtual}
 %falar sobre
@@ -308,7 +308,7 @@ será instalada, esse ambiente deve possuir um nó, que é um recurso computacio
 onde se implanta um componente, como por exemplo: uma máquina virtual. Porém pode
 existir a necessidade de implantar várias aplicações no mesmo servidor, e no caso
 de aplicações web isso pode ser um problema, visto que as aplicações estarão em um
-único servidor, assim também em um único IP, que é o número que o servidor recebe
+único servidor, assim também em um único ip, que é o número que o servidor recebe
 ao se conectar na internet.
 
 Uma forma de solucionar esse problema é o uso de Hospedagem Virtual, de acordo com
@@ -322,7 +322,7 @@ solução é importante para economizar recursos, já que não será necessário
 um servidor dedicado apenas a uma aplicação.
 
 Alguns softwares possuem suporte para a implementação de hospedagem virtual, como por
-exemplo o Acpahe e o Nginx, o funcionamento de ambos é a partir de arquivos que
+exemplo o Apache e o Nginx, o funcionamento de ambos é a partir de arquivos que
 especificam a configuração da hospedagem virtual e determina como o servidor
 irá responder às várias requisições de domínio. No apache o arquivo padrão de configuração
 é chamado 000-default.conf que pode ser utilizado como referência, como por exemplo:
@@ -337,7 +337,7 @@ irá responder às várias requisições de domínio. No apache o arquivo padrã
 \end{lstlisting}
 
 Isso quer dizer que as requisições na porta 80 vindas de webmaster@localhost serão
-direcioanadas aos arquivos que estão em /var/www/html. Já no Nginx a configuração
+direcionadas aos arquivos que estão em /var/www/html. Já no Nginx a configuração
 de hospedagem virtual também é feita através de arquivos de configuração, o arquivo
 padrão no Nginx é chamado de default.conf que também pode ser utilizado como
 referência, como por exemplo:
@@ -445,7 +445,7 @@ transmitidos por meio de uma conexão criptografada e que se verifique a autenti
 do servidor e do cliente por meio de certificados digitais. Agora o próximo passo
 é ver o que são os certificados digitais e seu papel dentro da segurança em aplicações web.
 
-\subsubsection{Assinaturas e Ceritificados Digitais}
+\subsubsection{Assinaturas e Certificados Digitais}
 
 As assinaturas e certificados digitais servem para agregar confiança e segurança
 nas trocas de dados pela internet, principalmente quando se trata de troca de informações
@@ -469,14 +469,14 @@ identificação de que é realmente o proprietário daquela chave pública.
 
 Porém essas entidades certificadoras cobram para esse serviço, e os certificados também
 possuem validade. Uma outra maneira de se obter certificados é a partir dos certificados
-autoassinados, que são os certificados gerados por conta própria através de
+auto-assinados, que são os certificados gerados por conta própria através de
 ferramentas, um exemplo de ferramenta é a ferramenta OpenSSL, que permite requisitar,
 assinar, gerar, exportar e converter certificados digitais.
 
-Um problema em utilizar certificados autoassinados é que os clientes, como navegadores,
+Um problema em utilizar certificados auto-assinados é que os clientes, como navegadores,
 precisam apenas dos certificados das entidades certificadores em quem eles confiam, por
-exemplo, um navegador não vai conhecer o certificado que foi autoassinado por
+exemplo, um navegador não vai conhecer o certificado que foi auto-assinado por
 alguém que ele não conhece, e logo vai avisar ao usuário de que ele não está em uma
 conexão segura, por mais que esteja sobre uma conexão HTTPS. Por isso que manter certificados
-autoassinados pode tornar-se mais difícil, porém é uma saída principalmente para
+auto-assinados pode tornar-se mais difícil, porém é uma saída principalmente para
 fins de testes, e melhor do que não utilizar nenhum tipo de segurança.

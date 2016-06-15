@@ -1,8 +1,8 @@
 \chapter{Definição e Preparação dos estudos}
 
 \label{cap-metodologia}
-Este capítulo aborda sobre todo o pĺanejamento para a execução do projeto,
-contendo os procedimentos e técnicas utilizados no trabalho, a fim de
+Este capítulo aborda sobre todo o planejamento para a execução do projeto,
+contendo os procedimentos e técnicas utilizados, a fim de
 explicar como o desenvolvimento foi realizado para atingir os seus objetivos,
 servindo como base para a sua reprodução em trabalhos futuros.
 
@@ -48,14 +48,16 @@ de software está sendo utilizada como solução na academia e nas empresas, e
 quais são os procedimentos e técnicas utilizados.
 
 Para entender o que acontece na comunidade da computação em relação a implantação
-automatizada de aplicações, foi feito uma busca de alguns trabalhos relacionados, o primeiro
+automatizada de aplicações, foi feito uma busca de alguns trabalhos relacionados. O primeiro
 trabalho relacionado é um trabalho acadêmico feito por \cite{leo2014} no qual foi
 desenvolvido um sistema de middleware chamado CHOReOS Enactment Engine que é um
 sistema que possibilita a implantação distribuída e automatizada de composições
 de serviços web em uma estrutura virtualizada, no qual opera no modelo
 computacional conhecido como plataforma como serviço, comparando esse sistema
-com abordagens ad-hoc de implantação levando em consideração a escalabilidade
-em relação ao tempo de implantação das composições dos serviços.
+com abordagens tradicionais de implantação levando em consideração a escalabilidade
+em relação ao tempo de implantação das composições dos serviços. Seu foco maior
+é na automação da implantação automatizada de aplicações aliado com a gerência de recursos
+de hardware.
 
 Existem também ferramentas disponíveis no mercado que também trazem a proposta
 de automação de instalação de aplicações alguns exemplos são: \cite{bitnami}
@@ -67,7 +69,7 @@ processo de compilar e configurar os aplicativos e todas as suas dependências
 usuário comum não se preocupe com questões técnicas. Também temos o \cite{sandstormio}
 Sandstorm é uma plataforma de código aberto para servidores
 pessoais. Sandstorm permite que você execute o seu próprio servidor e instalar
-facilmente as aplicações em que dão suporte, e por fim a ferramenta \cite{juju}
+facilmente as aplicações em que o próprio Sandstorm dá suporte, e por fim a ferramenta \cite{juju}
 Juju que lhe permite implementar, configurar, gerenciar, e manter serviços de forma
 rápida e eficiente automatizando a instalação e configuração de aplicações na nuvem.
 
@@ -76,36 +78,36 @@ já existentes, e como elas são feitas, para compreender as ferramentas que sã
 utilizadas para solucionar problemas semelhantes ao problema deste
 trabalho, por exemplo a ferramenta JuJu utiliza uma abstração conhecida como charm,
 que é basicamente um código, e esse código define um serviço, como por exemplo,
-instale um banco de dados ou instale a aplicação wordpress. Um charm
+instale um banco de dados ou instale a aplicação Wordpress. Um charm
 contém toda a lógica de que você precisa para implementar e integrar uma aplicação,
 contendo todo o processo de download de ferramentas, instalação e configuração de
-aplicações, podendo ser por provisionadores como chef, puppet ou docker \cite{juju},
+aplicações, podendo ser por provisionadores como Chef, Puppet ou Docker \cite{juju},
 é possível reaproveitar os charms feitos pela comunidade do JuJu assim
 reaproveitando os charms prontos ou não precisando escrever um charm do zero.
 
-Já bitnami já trás as aplicações
+Já Bitnami já trás as aplicações
 prontas pra uso, assim o usuário interage no formato clique para instalar, porém
-o usuário só tem a disposição as aplicações disponibilizadas pelo bitnami, isso
-também é a forma em que o sandstorm.io trabalha, com a diferença de que o standstorm é
+o usuário só tem a disposição as aplicações disponibilizadas pelo Bitnami, isso
+também é a forma em que o Sandstorm trabalha, com a diferença de que o Sandstorm é
 software livre, já Bitnami tem o código fechado, o que dificulta a análise da arquitetura
 que é utilizada por eles. Por fim o trabalho feito por \cite{leo2014} é voltado
 para serviços web de grande escala, com foco em implantação de aplicações na
 nuvem e escalar infraestrutura, utilizando o middleware construído em seu trabalho,
  assim podendo gerenciar ambientes de computação em nuvem
- como Amazon EC2 e Openstack, sua engine utiliza o chef solo como seu agente de configuração.
+ como Amazon EC2 e Openstack, sua aplicação utiliza o Chef solo como seu agente de configuração.
 
 Com esse levantamento, as soluções encontradas não resolvem totalmente
 o problema, a grande diferença é que as ferramentas vistas não utilizam os pacotes
 disponibilizados pelo Debian, mas elas servem como motivação para o desenvolvimento
-deste trabalho. Como conclusão deste levantamento, vimos que tais ferramentas buscam
+deste trabalho. Visto que tais ferramentas buscam
 abstrair todo processo de instalação e configuração das ferramentas, para que o
 usuário não tenha dificuldades na instalação de aplicações web, as ferramentas também
 trazem uma interface web para que o usuário também não precise executar tarefas via terminal.
 Outra informação importante é que as ferramentas também utilizam do conceito de
 infraestrutura como código, como visto no capítulo \ref{cap-referencial}, e para
-isso utilizam provisionadores como chef ou puppet, tornando mais simples a
-construção de scripts para a instalação e configuração de aplicações.
-
+isso utilizam provisionadores como Chef ou Puppet, tornando mais simples a
+construção de códigos para a instalação e configuração de aplicações.
+%TODO fazer a seção de infraestrutura como código
 Tendo em vista que pelo levantamento dos trabalhos relacionados, o problema inicialmente
 proposto não foi resolvido, justifica-se a construção de uma solução de engenharia
 de software para implantação automatizada de aplicações em sistemas Debian GNU/Linux.
@@ -113,13 +115,13 @@ de software para implantação automatizada de aplicações em sistemas Debian G
 \section{Construção da solução}
 \label{section:construcao}
 
-A partir da análise econtrada nos trabalhos relacionados, é necessário definir
+A partir da análise encontrada nos trabalhos relacionados, é necessário definir
 como será feito a construção da solução, primeiramente será definido as ferramentas
 de apoio ao desenvolvimento da solução, após isso, a escolha da ferramenta que será
-utilizada para solução do problema, essa será a ferramenta que será evoluida
+utilizada para solução do problema, essa será a ferramenta que será evoluída
 durante este trabalho. Após a escolha das ferramentas, será descrito como será
 feito a validação da solução nos exemplos de uso com aplicações web escolhidas que possuem
-seus pacotes disponibilizados pelos Debian.
+seus pacotes disponibilizados pelo Debian.
 
 \subsection{Ferramentas de apoio}
 
@@ -131,13 +133,13 @@ ferramenta para documentação do software e ferramenta para gerenciar as tarefa
 Os critérios para escolha das ferramentas são:
 
 \begin{itemize}
-  \item \textbf{Forge para sistema de controle de versão git:} Uma ferramenta que
+  \item \textbf{Aplicação para sistema de controle de versão git:} Uma ferramenta que
   possa gerenciar diversas versões do desenvolvimento do código fonte utilizando
   o sistema de controle de versão git, que seja de preferência um software livre
   ou que não cobre o serviço de hospedagem. Algumas ferramentas disponíveis para
-  isso são github, gitlab e bitbucket.
+  isso são Github, Gitlab e Bitbucket.
   \item \textbf{Ferramenta para documentação de código:} Uma ferramenta que possa
-  documentar o projeto, os forges como gitlab e github possuem uma wiki já disponível
+  documentar o projeto, as aplicações como Gitlab e Github possuem uma wiki já disponível
   para o projeto.
   \item \textbf{Ferramenta de gerenciamento de tarefas:} Uma ferramenta que possa
   gerenciar as tarefas que serão executadas, que estão em execução ou que vão ser executadas
@@ -151,26 +153,26 @@ Os critérios para escolha das ferramentas são:
 
 As ferramentas escolhidas para o apoio ao desenvolvimento foram:
 \begin{itemize}
-  \item \textbf{Forge Git:} O Gitlab foi forge escolhido para o armazenar o
-  repositório git, é semelhante ao github, porém é software livre, distribuído pela
-  licensa mit\cite{gitlab}.
+  \item \textbf{Ferramenta Git:} O Gitlab foi a aplicação escolhido para o armazenar o
+  repositório git, é semelhante ao Github, porém é software livre, distribuído pela
+  licença MIT\cite{gitlab}.
   \item \textbf{Documentação de Código:} Toda documentação será disponibilizada
-  na wiki do projeto no gitlab.
+  na wiki do projeto no Gitlab.
   \item \textbf{Gerenciamento de Tarefas:} O gerenciamento de tarefas também será
-  feito pelo projeto do gitlab, onde é possível criar atividades para serem feitas
+  feito pelo projeto do Gitlab, onde é possível criar atividades para serem feitas
   e criar marcos podendo adicionar as atividades a esses marcos. Como o ciclo de
   desenvolvimento será de uma semana, serão criados marcos para cada semana e atividades
   agrupadas em cada marco.
-  \item \textbf{Comunicação:} A comunicação será feita via IRC, é uma ferramenta
+  \item \textbf{Comunicação:} A comunicação será feita via IRC, que é uma ferramenta
   de comunicação no formato de chat com canais e usuários dentro dos canais,
   apesar de ser uma ferramenta antiga ainda é muito usada pelas comunidades de software
-  livre e grandes empresas como facebook \cite{artigofacebook}.
+  livre e grandes empresas como Facebook \cite{artigofacebook}.
 \end{itemize}
 
 \subsection{Ferramenta Shak}
 
-De acordo com a motivação da contribuição em software livre
-e a participação do google summer of code, como dito na seção de motivação
+De acordo com a motivação em contribuir com projetos de software livre
+e a participação do google Summer of Code, como dito na seção de motivação
 \ref{sec:motivacao}, e todo o contexto definido na seção \ref{section:construcao},
 a ferramenta para apoio a implantação de software escolhida
 é a ferramenta Shak (Self Hosting Applications Kit).
@@ -196,9 +198,9 @@ serem resolvidos. Porém, para garantirem uma flexibilidade e suportar diferente
 casos de uso, normalmente os pacotes não realizam a configuração completa do ambiente,
 deixando os detalhes finais para o administrador do sistema.
 
-Além disso, normalmente aplicações são compostas de diversos pacotes, e
-requerem configurações que dizem respeitos a mais de um deles e que por consequencia não poderiam ser
-feitas automaticamente de uma forma sustentável em nenhum dos pacotes.
+Além disso, normalmente as aplicações web são compostas de diversos pacotes, e
+requerem configurações  específicas que dizem respeito a mais de uma aplicação,
+e que por consequência não poderiam ser feitas automaticamente de uma forma sustentável em nenhum dos pacotes.
 
 \textbf{Nova abstração: Aplicação}
 
@@ -210,57 +212,58 @@ Uma vez que o usuário seleciona uma determinada aplicação para
 ser instalada, os pacotes necessários são instalados e as configurações
 necessárias são feitas de forma automática, fornecendo de fato um "instalador
 de um clique" para aplicações suportadas. Todas as configurações são feitas de
-forma consistente utilizando um framework comum, buscando o maior nível de
+forma consistente utilizando uma ferramenta comum, buscando o maior nível de
 segurança possível, e assumindo responsabilidades que não podem ser tomadas por
 um pacote.
 
 \textbf{Diferencial para outras soluções existentes}
 
 Existem outras soluções disponíveis para instalação de aplicações por um clique no
-mercado, como por exemplo \cite{bitnami} e \cite{sandstormio}, mas o shak se
+mercado, como por exemplo \cite{bitnami} e \cite{sandstormio}, mas o Shak se
 diferencia delas nos seguintes aspectos:
 
 \begin{itemize}
-  \item O shak pode ser implantando em um VPS na nuvem ou em servidores físicos
+  \item O Shak pode ser implantando em uma máquina virtual na nuvem ou em servidores físicos
     próprios, a critério do usuário.
 
-  \item O shak reutiliza o trabalho dos mantenedores Debian, que fornecem pacotes
+  \item O Shak reutiliza o trabalho dos mantenedores Debian, que fornecem pacotes
     de alta qualidade.
 
-  \item O shak reutiliza a infraestrutura do projeto Debian.
+  \item O Shak reutiliza a infraestrutura do Debian, que é utilizada por várias
+outras distribuições Linux baseadas no Debian, como por exemplo: Ubuntu e Linux Mint.
 
 \end{itemize}
 
 Por outro lado, apenas software que esteja empacotado no Debian estará
-disponível, mas isso pode ser visto de forma positiva também: o shak
+disponível, mas isso pode ser visto de forma positiva também: o Shak
 fornecerá um incentivo para que ainda mais software esteja disponível no
 Debian, o que é um benefício coletivo para o ecossistema do software livre, e
 para os seus usuários. Logo, quanto mais aplicações disponíveis no Debian,
 mais aplicações serão disponibilizadas para os usuários do Debian e seus derivados,
-como ubuntu e outros.
+como Ubuntu e outros.
 
 O Debian possui espelhos do seu repositório espalhados por todo o mundo,
 fornecendo links para downloads mais rápidos aonde quer que o usuário esteja.
 Atualizações de defeitos e correções de segurança realizadas no Debian estarão
-automaticamente disponíveis para usuários do shak de forma transparente. Além disso,
-o próprio shak estará disponível como um pacote dentro do próprio repositório oficial do Debian.
+automaticamente disponíveis para usuários do Shak de forma transparente. Além disso,
+o próprio Shak estará disponível como um pacote dentro do próprio repositório oficial do Debian.
 
-A arquitetura da ferramenta Shak é compsota de:
+A arquitetura da ferramenta Shak é composta de:
 
 \begin{itemize}
   \item  \textbf{Livro de Receitas Chef:} Shak contém alguns livros de receitas
   para poder organizar a instalação de cada componente, como por, exemplo um livro
   de receitas para cada aplicação que for instalada.
   \item  \textbf{Código Ruby} A arquitetura do Shak foi desenvolvida na linguagem
-  ruby, com programação orientado a objetos.
+  Ruby, com programação orientado a objetos.
   \item  \textbf{Servidor Web} O Shak utiliza o software livre Nginx, que é
   servidor HTTP de alto desempenho \cite{nginx}.
   \item  \textbf{Pacotes Debian} O Shak utiliza pacotes incluídos na distribuição
   oficial do Debian.
-  \item  \textbf{Gems} O shak também utiliza algumas gems para seu funcionamento,
-  uma gem nada mais é do que uma biblioteca, que provê um formato padrão para
+  \item  \textbf{Gems} O Shak também utiliza algumas gems para seu funcionamento,
+  uma gem nada mais é do que uma biblioteca Ruby, que provê um formato padrão para
   a distribuição de programas Ruby \cite{gem}.
-  \item  \textbf{Código Shellscript} O shak também utiliza algumas gems para seu funcionamento,
+  \item  \textbf{Código Shellscript} O Shak também utiliza algumas gems para seu funcionamento,
   uma gem nada mais é do que uma biblioteca, que provê um formato padrão para
   a distribuição de programas Ruby \cite{gem}.
 \end{itemize}
@@ -274,12 +277,12 @@ alguma ferramenta que automatize esse processo, construir ambientes manualmente 
 ser um processo longo e demorado, além disso evitar que ocorra erros por
 desatenção ao executar vários passos manuais, assim para automatizar a implantação
 das aplicações é necessário o uso de uma ferramenta para auxiliar na criação das
-máquinas virtuais onde é possível gerenciá-las de forma automatizada servindo de
-suporte para a criação dos ambientes de desenvolvimento, facilitando a execução e teste da implantação das
+máquinas virtuais, onde é possível gerenciá-las de forma automatizada, servindo de
+suporte para a criação dos ambientes de desenvolvimento e facilitando a execução e teste da implantação das
 aplicações escolhidas.
 
 A ferramenta escolhida para auxiliar a criação de um ambiente de desenvolvimento é
-a ferramenta Vagrant, com o Vagrant pode-se gerenciar a criação de máquinas
+a ferramenta Vagrant, com o Vagrant é possível gerenciar a criação de máquinas
 virtuais para os ambientes de desenvolvimento do projeto, também é possível usar
 ferramentas de automação para criar o servidor de implantação, definindo tudo
 em arquivos que farão parte do repositório git do Shak. Dessa maneira,
@@ -291,9 +294,9 @@ Quando executamos o comando vagrant up o Vagrant cria uma máquina virtual com a
 configurações que estão no arquivo Vagrantfile na raiz do projeto Shak, nele
 estão todas as configurações e definições da máquina virtual em questão. Para o
 Vagrant criar uma máquina virtual era necessário escolher um software que gerencie
-esse procedimento, a ferramenta escolhida foi o virtualbox para poder emular o sistema
+esse procedimento, a ferramenta escolhida foi o Virtualbox para poder emular o sistema
 operacional em uma máquina virtual, assim o Vagrant inicia uma máquina virtual
-utilizando o virtualbox, com a distribuição linux e as configurações que estiverem
+utilizando o Virtualbox, com a distribuição Linux e as configurações que estiverem
 definida no arquivo de configuração Vagrantfile.
 
 Para executar o Vagrant basta instalar o pacote disponível pelo Debian, além disso
@@ -305,7 +308,7 @@ O ambiente de desenvolvimento levantado é um ambiente com Debian na sua versão
 sid 64 bits(que é a versão que contém os pacotes mais atuais, conhecida como versão instável),
 apesar de a versão ser a versão instável isso é importante para que possamos
 utilizar as versões mais novas dos pacotes das ferramentas escolhidas, também
-será importante para reportar algum bug caso seja encontrado.
+será importante para reportar algum erro caso seja encontrado.
 
 Com o ambiente de desenvolvimento definido, agora é possível iniciar a criação dos
 livros de receitas das aplicações, o repositório do Shak possui alguns scripts
@@ -318,7 +321,7 @@ e suas dependências.
 \section{Planejamento das Atividades}
 
 As atividades planejadas são baseadas nas aplicações que foram escolhidas na seção
-\ref{subsection:exemplos} serão as aplicações piloto, que ajudarão na evolução
+\ref{subsection:exemplos} essas aplicações serão as aplicações piloto, que ajudarão na evolução
 da solução proposta, o planejamento inicial é que a ferramenta Shak possa concluir com sucesso
 a instalação do Owncloud e Wordpress de forma automatizada,
 levando em consideração todos os aspectos definidos no capítulo
@@ -328,32 +331,32 @@ levando em consideração todos os aspectos definidos no capítulo
    \item \textbf{Atividade 1} Suporte a instalação automatizada do Wordpress.
    \item \textbf{Atividade 2} Suporte a instalação automatizada do Owncloud.
    \item \textbf{Atividade 3} Forçar as aplicações Wordpress e Owncloud a
-   utilizar o protocolo https.
+   utilizar o protocolo HTTPS.
    \item \textbf{Atividade 4} Suporte a instalação automatizada do servidor de e-mail,
    utilizando os protocolos: IMAPS e SMTPS.
  \end{itemize}
 
-Ao verificar que tanto a ferramenta owncloud como a ferramenta wordpress precisam
+Ao verificar que tanto a ferramenta Owncloud como a ferramenta Wordpress precisam
 de configurações servidor de e-mail para algumas funcionalidades, também foi adicionado
 a atividade de criação de uma receita para a automatizar a configuração de
 servidor de e-mail. Como aspecto de segurança, ficou definido que tanto a aplicação
-owncloud como wordpress deveriam usar sempre https por padrão, isso envolve também
+Owncloud como Wordpress deveriam usar sempre HTTPS por padrão, isso envolve também
 uma estratégia de como serão gerenciados os certificados de segurança para aplicar
-o protocolo https. Além dessas atividades previstas, também foram feitas evoluções
+o protocolo HTTPS. Além dessas atividades previstas, também foram feitas evoluções
 no Shak para que seja possível a implementação dessas atividades. Nas seções a
 seguir serão apresentados os resultados das atividades levantadas, a partir da
-proposta da construção da solução vista no capítudo \ref{cap-metodologia}.
+proposta da construção da solução vista no capítulo \ref{cap-metodologia}.
 
 Dentro da implantação automatizada de software Debian GNU/Linux temos várias
 configurações possíveis, porém neste trabalho alguns aspectos que deverão ser levados em
 consideração, esses aspectos serão importantes para guiar a construção da solução.
 
 \begin{itemize}
-  \item  \textbf{A1:} Uso dos aspectos de segurança na implantação de aplicações web.
-  \item  \textbf{A2:} Uso da implantação automatizada de múltiplas instâncias de
+  \item  \textbf{Aspecto 1:} Uso dos aspectos de segurança na implantação de aplicações web.
+  \item  \textbf{Aspecto 2:} Uso da implantação automatizada de múltiplas instâncias de
    aplicações no mesmo servidor.
-  \item  \textbf{A4:} Uso de aplicações que são empacotadas no debian.
-  \item  \textbf{A5:} Uso de boas práticas de implantação de software.
+  \item  \textbf{Aspecto 3:} Uso de aplicações que são empacotadas no Debian.
+  \item  \textbf{Aspecto 4:} Uso de boas práticas de implantação de software.
 \end{itemize}
 
 Por fim é necessário definir procedimentos que serão
@@ -370,8 +373,8 @@ e a referência dos trabalhos relacionados. Os procedimentos são os seguintes:
   \item  \textbf{Definir os procedimentos de segurança na implantação:} Definir
   quais são os procedimentos de segurança e automatizar os que forem possíveis
   de serem aplicados dentro do contexto da arquitetura proposta. Um exemplo
-  é a configuração das aplicações sempre usarem protocolos seguros, como o https
-  que possui uma camada adicional de segurança que utilizando o protocolo ssl/tls.
+  é a configuração das aplicações sempre usarem protocolos seguros, como o HTTPS
+  que possui uma camada adicional de segurança que utilizando o protocolo SSL/TLS.
 \end{itemize}
 
 \subsection{Fases e Procedimentos para implantação}
@@ -397,7 +400,7 @@ com \cite{omg2006}, e isso será o que o Shak automatizará fases e procedimento
   do servidor web.
   \item  \textbf{Configuração de múltiplas instâncias:} Habilitar a configuração
   de múltiplas instâncias de uma aplicação, permitindo que seja possível que
-  tenha várias instâncias da mesma aplição sem duplicação de recursos, ou seja,
+  tenha várias instâncias da mesma aplicação sem duplicação de recursos, ou seja,
   utilizando os mesmos recursos de um único servidor.
   \item  \textbf{Inicialização/Execução:} Executar a instalação da aplicação pela
   ferramenta Shak e validar os resultados obtidos.
@@ -417,22 +420,22 @@ aplicações piloto, as seguintes características foram levadas em consideraç�
 para a escolha das aplicações:
 
 \begin{itemize}
-  \item  \textbf{Aplicações empacotadas no debian:} Como o intuito do trabalho
+  \item  \textbf{Aplicações empacotadas no Debian:} Como o intuito do trabalho
   é realizar implantações múltiplas a partir de um pacote único, tais aplicações
-  devem estar empacotadas e disponíveis para instalação nos servidores do debian.
+  devem estar empacotadas e disponíveis para instalação nos servidores do Debian.
   Isso impacta na escolha da ferramenta, visto que não será necessário ter o trabalho
-  de empacotar aplicações que ainda não estão empacotadas no debian.
+  de empacotar aplicações que ainda não estão empacotadas no Debian.
   \item  \textbf{Servidor web compatível:} As ferramentas escolhidas devem no
   mínimo possuir o servidor web compatível, por exemplo: as aplicações juntas
-  devem possuir suporte para nginx ou apache ou similares.
+  devem possuir suporte para o servidor Nginx ou Apache ou similares.
   \item  \textbf{Aplicações com comunidades ativas:} Como estamos trabalhando
   com software livre, é importante que os softwares escolhidos possuem comunidades
   ativas, isso pode ajudar na resolução de possíveis problemas, logo aplicações
   em que sejam difíceis de comunicar com sua comunidade devem ser evitadas, e
   aplicações com a comunidade de desenvolvedores e usuários ativa devem ser priorizadas.
   E isso também pode ser um fator importante caso durante os testes sejam descobertos
-  bugs ou melhorias dentro dessas ferramentas e tais bugs e melhorias possam ser
-  reportados para a comunidade, ou até mesmo bugs solucionados e devolvidos aos mantenedores
+  erros ou melhorias dentro dessas ferramentas e tais erros e melhorias possam ser
+  reportados para a comunidade, ou até mesmo problemas solucionados e devolvidos aos mantenedores
   das ferramentas.
   \item  \textbf{Documentação do software:} A documentação do software também deve
   ser levado em consideração, principalmente a documentação da instalação e configuração
@@ -451,9 +454,9 @@ exemplos de uso devem possuir pacotes incluídos na distribuição oficial do De
 Para encontrar as aplicações que possam se encaixar dentro desses parâmetros
 devemos buscar por alguns exemplos de uso, para a escolha das aplicações que
 serão utilizadas como exemplos de uso é necessário fazer uma busca nas aplicações
-web que são empacotadas no debian e que possuem suporte a configuração de múltiplas
+web que são empacotadas no Debian e que possuem suporte a configuração de múltiplas
 instâncias, essa busca deve levar em consideração também a documentação para realizar
-tal configuração. Foram levantados algumas aplicações web empacotadas no debian da
+tal configuração. Foram levantados algumas aplicações web empacotadas no Debian da
 seguinte forma:
 
 \begin{center}
@@ -462,7 +465,7 @@ apt-cache search web | wc -l
 
 O resultado obtido com pacotes que contenham a palavra web recebe o resultado de 3470
 pacotes de diversas aplicações ou módulos de aplicações, como:
-wordpress, owncloud, drupal, mailman, chromium, etc. Logo dentro dessa rápida busca
+Wordpress, Owncloud, Drupal, Mailman, Chromium, etc. Logo dentro dessa rápida busca
 encontramos alguns pacotes de aplicações conhecidas, para facilitar a busca basta
 aplicar para alguns nomes de aplicações conhecidos como:
 
@@ -477,14 +480,14 @@ quando se instala uma aplicação nos arquivos de documentação da aplicação 
 /usr/share/doc/ ou também pode-se utilizar os comandos:
 
 \begin{center}
-man nomeaplicação
+man "nome aplicação"
 
-info nomeaplicação
+info "nome aplicação"
 \end{center}
 
-Analisando a documentação de algumas aplicações como wordpress, redmine,
-owncloud, mailman, wikimédia, foram escolhidas as aplicações wordpress e owncloud por
-comtemplarem as características definidas anteriormente. Primeiro
+Analisando a documentação de algumas aplicações como Wordpress, Redmine,
+Owncloud, Mailman, Wikimédia, foram escolhidas as aplicações Wordpress e Owncloud por
+conter as características definidas anteriormente. Primeiro
 foi feito uma análise da documentação dessas ferramentas para encontrar a
 possibilidade da configuração de múltiplas instâncias no mesmo servidor, além
 disso também foi visto se as aplicações tinham suporte ao servidor Nginx que é
