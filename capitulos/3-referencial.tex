@@ -186,10 +186,41 @@ automatizar a implantação de software, conhecendo algumas ferramentas utilizad
 no mercado para automatizar implantação e suas maneiras de atuação, além das técnicas
 de implantações utilizadas, como por exemplo o empacotamento de software.
 
+\subsubsection{Infraestrutura como código}
+
+Uma das grandes vantagens do uso das práticas DevOps é a automação da implantação
+de software, evitando configurações manuais, uma abordagem saudável é automatizar toda
+a sua infraestrutura, utilizando ferramentas que auxiliam nesse processo. Uma
+prática bem conhecida é a prática denominada infraestrutura como código, 
+que torna toda a infraestrutura do projeto em scripts, essencialmente como um 
+código que o desenvolvedor lida no seu trabalho diário\cite{byhand}. 
+
+Dado que um script de configuração realmente contém código, é mais natural
+para o desenvolvedor tratá-lo como tal, utilizando suas habilidades de codificação,
+e poder utilizar ferramentas que auxiliem a prática do DevOps de colaboração,
+entre a equipe de desenvolvimento e a equipe de infraestrutura\cite{byhand}. Um exemplo disso,
+é que com a infraestrutura sendo tratada como código, é possível utilizar um
+sistema de controle de verão, permitindo que outras pessoas colaborem e trabalhem em
+equipe, com a ajuda do git por exemplo, é possível ter uma documentação completa
+do estado do seu sistema, através do histórico de commits, ainda é possível
+o uso de branchs para fazer alterações pertinentes, definir uma branch estável
+com a última versão do sistema, definir uma branch de desenvolvimento para
+realizar testes, além de outros exemplos possíveis para que para que seja possível
+possam trazer o código da infraestrutura para uma estado desejado a partir de 
+qualquer outro estado.
+
+
+Para realizar essa prática, existem ferramentas como Chef e Puppet, que 
+fornecer aos desenvolvedores várias abstrações para expressar etapas de automação,
+de forma independente, esses recursos podem ser executado várias vezes
+obtendo-se sempre o mesmo resultado, trazendo uma capacidade de atingir um determinado
+estado desejado sob de diferente circunstâncias, com potencial de atingir
+múltiplas iterações, permitindo implantações frequentes de infra-estruturas complexas
+\cite{Hummer2013}. 
+
+
 \subsection{Métodos e ferramentas para implantação automatizada de software}
 \label{subsec:metodoseferramentas}
-
-%empacotamento, instalação via script, tar.gz, exe, jar, etc.
 
 Existem várias maneiras de se automatizar um processo de implantação software,
 de acordo com \cite{leo2014}, podem-se utilizar linguagens de script de propósito
@@ -260,6 +291,7 @@ Existem pacotes que dependem do sistema operacional, como por exemplo, pacotes .
 para a distribuição Debian e pacotes .rpm para a distribuição Fedora, e
 pacotes independentes de sistema operacional, como por exemplo, pacotes jar da
 linguagem java. Neste trabalho trataremos apenas de pacotes Debian.
+
 
 \subsubsection{Pacotes Debian}
 
