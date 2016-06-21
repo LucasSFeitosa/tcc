@@ -1,6 +1,36 @@
-\chapter{Referencial Teórico}
+\chapter{Gestão de configuração de software}
 \label{cap-referencial}
 
+De acordo com \cite{ieegcs} gestão de configuração de software é uma área da 
+engenharia de software cujo objetivo é:
+
+\begin{itemize}
+  \item  \textbf{a)} Identificar e documentar as características funcionais de 
+  um produto.
+  \item  \textbf{b)} Controlar quaisquer alterações a estas características.
+  \item  \textbf{c)} Registrar e relatar cada mudança do seu estágio de implantação
+  \item  \textbf{d)} Apoiar a auditoria dos produtos, resultados, serviços ou 
+componentes para verificar a conformidade com requisitos
+
+\end{itemize}
+
+Gestão de Configuração de Software é uma das capacidades fundamentais que devem 
+estar em qualquer projeto de desenvolvimento de software. Ela é 
+tradicionalmente dividida em  quatro atividades, e são elas: configuração, 
+identificação, configuração e controle, isto é encarado como uma ferramenta de 
+gestão que podem ajudar na orientação de cada projeto, pois ajuda a manter a 
+integridade do produto e manter o qualidade do projeto sob controle.\cite{gcs} 
+Também é essencial para a engenharia de software, pois estabelece e protege a 
+integridade de um produto ao longo da sua vida útil, percorrendo através dos 
+processos de desenvolvimento, teste e entrega do produto, bem como 
+durante a sua instalação, operação, manutenção, e eventual evolução\cite{ieegcs}. 
+
+Gerência de configuração de software fornece a infraestrutura que é a base para 
+qualquer tipo de projeto de software. Isto facilita a coordenação e comunicação 
+entre o vários participantes em uma equipe de desenvolvimento de software\cite{gcs}. 
+Dentro da gerência de configuração de software
+existem várias áreas de atuação, este trabalho aborda especificamente o segundo
+item dos objetivos citados acima, abordando a implantação de software.
 
 \section{Implantação de Software}
 
@@ -15,6 +45,13 @@ para o cliente \cite{5741269}. A implantação de software é composta com vári
 atividades que são essenciais para disponibilizar um produto a alguém, como por exemplo:
 instalação de dependências, arquivos de configuração e instalação da própria aplicação.
 
+Uma grande aliada das equipes de desenvolvimento é a implantação automatizada de
+software, que se refere à prática de implantar o software para os usuários finais
+automaticamente, evitando qualquer tipo de execução de esforço manual, por isso
+a prática de implantação automatizada facilita na rápida entrega de software, tanto
+para implantações de aplicações em servidores na nuvem, como implantação de software
+para usuários em seus computadores.\cite{7284592}.
+
 De acordo com \cite{deployment1998} as aplicações de software não são mais
 sistemas autônomos, são cada vez mais o resultado da integração de coleções de
 componentes, o que pode tornar a implantação de software um processo complicado, e
@@ -24,21 +61,16 @@ com uma maior incerteza no ambiente nos quais seus sistemas vão operar, garanti
 que a implantação do software seja feita da forma correta, evitando quaisquer acontecimentos
 de erros e imprevistos.
 
-Uma grande aliada das equipes de desenvolvimento é a implantação automatizada de
-software, que se refere à prática de implantar o software para os usuários finais
-automaticamente, evitando qualquer tipo de execução de esforço manual, por isso
-a prática de implantação automatizada facilita na rápida entrega de software, tanto
-para implantações de aplicações em servidores na nuvem, como implantação de software
-para usuários em seus computadores.\cite{7284592}.
-
 Todas essas questões devem ser levadas em consideração e a atividade de implantação de
 software deve receber uma atenção especial, visto que os softwares estão ficando
-cada vez mais complexos, podendo ter várias ferramentas integradas em diferentes
-linguagens de programação e diferentes configurações, com todas essas variáveis compondo
+cada vez mais complexos, podendo ter várias ferramentas que são integradas, construídas 
+em diferentes linguagens de programação e diferentes configurações, com todas 
+essas variáveis compondo
 uma implantação automatizada de software. Este capítulo possui uma subseção sobre
-processo de Implantação de Software, para entender melhor como funciona o processo de implantação
+processo de Implantação de Software, para entender melhor como funciona o processo 
+de implantação
 de software, depois uma subseção sobre DevOps, que busca trazer um conceito de implantação
-automatizada de software junto aos métodos ágeis, e por fim, uma subseção sobre
+automatizada de software junto aos métodos ágeis, e por fim, uma seção sobre
 ferramentas e técnicas que buscam facilitar e resolver os problemas da
 implantação automatizada de software, com as características típicas que essas
 ferramentas trazem para tornar a implantação mais rápida e com qualidade.
@@ -106,7 +138,7 @@ time de implantação a encontrar os problemas ocorridos dentro de uma implanta�
 de software, caso ocorram.
 
 Dependendo do tamanho da aplicação essas fases podem se tornar tarefas complicadas,
-com isso existe a necessidade de automatizar o processo de implantação, assim
+e com isso existe a necessidade de automatizar o processo de implantação, assim
 diminuindo a possibilidade de erros comparado a uma tarefa manual e consequentemente
 tornando o trabalho mais ágil, dando adeus aos longos manuais de instalação.
 \cite{humble2010} diz que o objetivo de um processo de implantação automatizado é
@@ -181,26 +213,36 @@ Em \cite{7173368} é abordado as práticas DevOps, que podem ser aplicadas diver
  a organização e eficiência do desenvolvimento de software como um todo \cite{7173368}.
 
 Para a entender melhor a prática de implantação automatizada, que é o coração
-do DevOps, é necessário possuir um conhecimento prévio sobre ferramentas para
+do DevOps, é necessário possuir um conhecimento prévio sobre  a infraestrutura
+como código e as ferramentas que são utilizadas para
 automatizar a implantação de software, conhecendo algumas ferramentas utilizadas
 no mercado para automatizar implantação e suas maneiras de atuação, além das técnicas
 de implantações utilizadas, como por exemplo o empacotamento de software.
 
 \subsubsection{Infraestrutura como código}
 
-Uma das grandes vantagens do uso das práticas DevOps é a automação da implantação
-de software, evitando configurações manuais, uma abordagem saudável é automatizar toda
-a sua infraestrutura, utilizando ferramentas que auxiliam nesse processo. Uma
-prática bem conhecida é a prática denominada infraestrutura como código, 
-que torna toda a infraestrutura do projeto em scripts, essencialmente como um 
+Infraestrutura como código é a prática de especificar configurações de 
+sistema de computação através de código, com o intuito de automatizar a implantação 
+de um software e o seu gerenciamento de configurações. Por exemplo, um sistema
+com diferentes configurações de hardware e diferentes
+requisitos de software podem ser especificados e implantados automaticamente
+sem intervenção humana.\cite{configurationcodesmell} Tal procedimento pode ser
+ainda personalizado conforme as necessidades da implantação, sendo assim, a implantação
+automatizada não só é mais rápida do que o processo manual, mas também é mais
+confiável e reproduzível.
+
+Este conceito se complementa com o uso das práticas DevOps, com o objetivo
+de automatizar toda a sua infraestrutura, utilizando ferramentas que auxiliam nesse 
+processo. Para aplicar a infraestrutura como código em um projeto, é necessário 
+migrar a infraestrutura do projeto em código, essencialmente como um 
 código que o desenvolvedor lida no seu trabalho diário\cite{byhand}. 
 
 Dado que um script de configuração realmente contém código, é mais natural
 para o desenvolvedor tratá-lo como tal, utilizando suas habilidades de codificação,
-e poder utilizar ferramentas que auxiliem a prática do DevOps de colaboração,
+e poder utilizar ferramentas que auxiliem a prática do DevOps e de colaboração,
 entre a equipe de desenvolvimento e a equipe de infraestrutura\cite{byhand}. Um exemplo disso,
 é que com a infraestrutura sendo tratada como código, é possível utilizar um
-sistema de controle de verão, permitindo que outras pessoas colaborem e trabalhem em
+sistema de controle de versão, permitindo que outras pessoas colaborem e trabalhem em
 equipe, com a ajuda do git por exemplo, é possível ter uma documentação completa
 do estado do seu sistema, através do histórico de commits, ainda é possível
 o uso de branchs para fazer alterações pertinentes, definir uma branch estável
@@ -219,12 +261,12 @@ múltiplas iterações, permitindo implantações frequentes de infra-estruturas
 \cite{Hummer2013}. 
 
 
-\subsection{Métodos e ferramentas para implantação automatizada de software}
+\section{Métodos e ferramentas para implantação automatizada de software}
 \label{subsec:metodoseferramentas}
 
 Existem várias maneiras de se automatizar um processo de implantação software,
 de acordo com \cite{leo2014}, podem-se utilizar linguagens de script de propósito
-geral como (Python, Shellscript), ferramentas gerais voltados para o processo
+geral como (Python, Ruby e Shellscript), ferramentas gerais voltados para o processo
 de implantação ou sistemas de middleware especializados em determinados tipos de artefatos implantáveis.
 Um processo de implantação automatizado depende bastante da integração de diferentes papéis
 em uma organização, foi dito também na seção \ref{subsec:DevOps} que é importante a
@@ -303,21 +345,6 @@ aplicativos de um sistema \cite{araujo2011apprecommender}. A estrutura dos pacot
 e também os seus requisitos para que sejam distribuídos oficialmente pelo Debian
 estão especificados no Manual de Políticas do Debian \cite{debian}.
 
-A estrutura de um pacote Debian pode ser observado a partir de qualquer pacote
-.deb, onde é possível encontrar três estruturas a seguir:
-
-\begin{itemize}
-  \item \textbf{debian-binary:} Este arquivo contém a versão da especificação
-  do empacotamento implementado no pacote, em 2015 a versão é a 2.0 nos pacotes.
-  \item \textbf{control.tar.gz:} Este arquivo contém todas as informações
-   disponíveis, como o nome e a versão do pacote. Essas informações servem para
-   que as ferramentas de gerenciamento de pacotes determinarem se é possível
-   instalar e desinstalar o pacote.
-   \item \textbf{data.tar.gz:} Este arquivo contém todos os arquivos para
-   serem extraídos do pacote, ou seja, é onde ficam os arquivos executáveis, a documentação,
-   os devidos diretórios em que tais arquivos devem ser copiados e etc.
-\end{itemize}
-
 Ao instalar um pacote .deb, são feitos todos os procedimentos necessários para a instalação
 de uma aplicação, porém, existem ainda casos em que o usuário precise fazer algumas
 configurações, um exemplo é quando o usuário precisa configurar um banco de dados
@@ -331,7 +358,6 @@ desse tipo de atividade que não é de responsabilidade de um pacote é a config
 de hospedagem virtual, que será visto na subseção a seguir.
 
 \subsection{Múltiplas Instâncias de Aplicações Web com Hospedagem Virtual}
-%falar sobre
 
 Na implantação de software deve-se escolher um ambiente alvo, onde a aplicação
 será instalada, esse ambiente deve possuir um nó, que é um recurso computacional
@@ -390,7 +416,7 @@ além disso é definido example.com para o nome servidor. Além disso existem v�
 outros recursos que essas ferramentas possuem, como por exemplo o recurso de proxy,
 porém para este trabalho será necessário apenas o uso de hospedagem virtual.
 
-\subsection{Segurança na Implantação de Aplicações Web}
+\section{Segurança na Implantação de Aplicações Web}
 \label{sec:seguranca}
 
 Como vimos, um pacote cumpre bem suas responsabilidades dentro de uma implantação de
