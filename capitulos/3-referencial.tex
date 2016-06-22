@@ -523,7 +523,7 @@ entidade certificadora cria um certificado que vincula a chave pública da entid
 a essa verificação, assim o certificado passa a ter a chave pública e a
 identificação de que é realmente o proprietário daquela chave pública.
 
-Porém essas entidades certificadoras cobram para esse serviço, e os certificados também
+Porém essas entidades certificadoras cobram ppr esse serviço, e os certificados também
 possuem validade. Uma outra maneira de se obter certificados é a partir dos certificados
 auto-assinados, que são os certificados gerados por conta própria através de
 ferramentas, um exemplo de ferramenta é a ferramenta OpenSSL, que permite requisitar,
@@ -536,3 +536,12 @@ alguém que ele não conhece, e logo vai avisar ao usuário de que ele não est�
 conexão segura, por mais que esteja sobre uma conexão HTTPS. Por isso que manter certificados
 auto-assinados pode tornar-se mais difícil, porém é uma saída principalmente para
 fins de testes, e melhor do que não utilizar nenhum tipo de segurança.
+
+Entretando, em 2014 a universidade de Michigan, e empresas como a Mozilla, criaram
+uma nova entidade certificadora, que se chama Let's Encrypt, que fornece certificados
+digitais de forma gratuita e que são reconhecidos por todos os navegadores, 
+utilizando o protocolo ACME \cite{ACME}, existe um cliente ACME configurado no 
+servidor do domínio, que será
+consultado pelo servidor da autoridade certificadora, validando assim o domínio
+em questão, em resumo, let's encrypt
+possa automatizar a validação da identidade pela autoridade certificadora.
