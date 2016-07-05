@@ -10,22 +10,22 @@ centralizando toda informação era mais vulnerável a um ataque nuclear do que 
 pontos conectados em rede, pois assim a informação estaria espalhada por inúmeros
 centros computacionais pelo país.
 
-Assim desde a sua origem, a internet foi projetada para ser uma rede
-descentralizada. A grande maioria dos protocolos utilizados na rede não
-dependem de pontos centrais para funcionar. De fato, é de conhecimento geral
+Desde a sua origem, a internet foi projetada para ser uma rede
+descentralizada e flexível \cite{galaxia}. A grande maioria dos protocolos 
+utilizados na rede não dependem de pontos centrais para funcionar. 
+De fato, é de conhecimento geral
 que, por exemplo, usuários com contas de e-mails em provedores diferentes podem
-trocar mensagens entre si sem qualquer problema \cite{shak2015}. Considerando que no
+trocar mensagens entre si sem qualquer problema. Considerando que no
 passado, a maioria dos softwares eram como uma ilha isolada,
 hoje, os softwares são disponibilizados através da Web ou conectado através da Internet,
 como por exemplo: as redes sociais e mercados de compras online \cite{6265084}.
 
-Nos últimos anos a demanda por soluções na internet vem crescendo. Por um lado,
-o acesso à internet aumenta mais e mais, tanto em
-função do aumento da disponibilidade de conexões de banda larga, quanto a
-explosão na utilização de dispositivos móveis \cite{shak2015}.
-
-Os novos serviços de alta sofisticação implicam numa alta complexidade de
-desenvolvimento e manutenção \cite{shak2015}. Esta complexidade faz com que a
+Os novos sistemas voltados para internet estão mais complexos, considerando que,
+no passado, a maioria dos softwares eram
+como uma ilha isolada, hoje espera-se que os softwares estejam disponíveis 
+através da Web ou conectado através da internet \cite{byhand},
+essa alta sofisticação implicam numa alta complexidade de
+desenvolvimento e manutenção, que faz com que a
 implantação de software e a manutenção de serviços exija conhecimento técnico
 especializado. Para organizações, isto implica num maior
 custo para manter sistemas e aplicações. Para indivíduos, isto quase sempre
@@ -37,13 +37,14 @@ que são utilizadas na web, como por exemplo: um blog, uma rede social ou site d
 notícias. Eles podem estar hospedados em qualquer provedor de internet, e mesmo os
 usuários de outros provedores, também terão acesso a elas.
 
-Apesar disso, existe atualmente uma tendência de centralização da internet.
+De acordo com \cite{vaz}, mostra através de uma série de dados empíricos que
+a internet está centralizada, existe atualmente uma tendência de centralização da internet.
 A imensa maioria dos usuários individuais utilizam contas de e-mail em algum
 poucos grandes provedores \cite{shak2015}. O mesmo acontece com utilitários como armazenamento
 de documentos na nuvem, documentos como fotos, vídeos, arquivos, são geralmente
-armazenados em ferramentas conhecidas, como Google Drive ou Dropbox, estes serviços
-são geralmente serviços gratuitos, mas os termos com os quais os usuários concordam, muitas vezes,
-permitem aos provedores fazerem uso de informações pessoais para usos comerciais.
+armazenados em ferramentas conhecidas, como Google Drive ou Dropbox, estes serviços 
+são geralmente serviços gratuitos, mas os termos com os quais os usuários concordam, 
+muitas vezes, permitem aos provedores fazerem uso de informações pessoais para usos comerciais.
 
 De acordo com \cite{shak2015} essa excessiva centralização traz os seguintes
 problemas para a sociedade:
@@ -151,27 +152,37 @@ todo o processo de configuração e instalação de um software, facilitando ass
 tanto usuários como desenvolvedores possam implantar aplicações com apenas uma
 instrução.
 
-%------------------------------------------------------------------------------%
-%\section{Contribuições}
-%
-%As contribuições parciais deste trabalho são:
+\section{Contribuições}
 
-%\begin{description}
-%  \item [Contribuições Tecnológicas]\
-%\end{description}
-%    \begin{enumerate}
-%      \item \textbf{CT1} - Implantação de sistemas Debian GNU/LINUX,
-%        \begin{enumerate}
-%          \item Gerência de certificados digitais autoassinados.
-%          \item Implantação de multiplas aplicações em um mesmo servidor utilizando
-%          hospedagem virtual.
-%          \item Implantação de automatizada de aplicações web utilizando pacotes
-%          distribuídos oficialmente pelo Debian.
-%        \end{enumerate}
-%    \end{enumerate}
-%\begin{description}
+As contribuições deste trabalho são:
 
-%------------------------------------------------------------------------------%
+\begin{description}
+  \item [Contribuições Tecnológicas]\
+\end{description}
+    \begin{enumerate}
+      \item \textbf{CT1} Implantação de sistemas Debian GNU/LINUX,
+        \begin{enumerate}
+          \item Implantação de aplicações web com certificados digitais autoassinados.
+          \item Implantação de múltiplas aplicações web em um mesmo servidor utilizando
+          hospedagem virtual.
+          \item Implantação de automatizada de aplicações web utilizando pacotes
+          distribuídos oficialmente pelo Debian.
+        \end{enumerate}
+    \end{enumerate}
+
+\begin{description}
+  \item [Contribuições Científicas]\
+\end{description}
+    \begin{enumerate}
+      \item \textbf{CC1} Gestão de configuração de software,
+        \begin{enumerate}
+          \item Estudo teórico sobre implantação automatizada de software.
+          \item Aplicação prática do modelo de implantação de software sugerido
+pela OMG.
+        \end{enumerate}
+    \end{enumerate}
+
+
 \section{Motivação}
 \label{sec:motivacao}
 A motivação deste trabalho é a continuidade do projeto iniciado pelo Google Summer
