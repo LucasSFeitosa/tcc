@@ -508,6 +508,131 @@ está barrando as conexões que não utilizem os protocolos criptografados.
 %\subsection{Protótipo de Front-End}
 %\label{sub:prototipo}
 
+\section{MoinMoin}
+\label{sub:owncloud}
+
+De acordo com a documentação oficial \cite{moin} MoinMoin é uma ferramenta de construção
+de wikis, com uma grande comunidade de usuários, podendo criar páginas web 
+facilmente editáveis. MoinMoin é software livre, alguns exemplos
+de wiki que utilizam o MoinMoin são: Wiki do debian, Wiki do python e Wiki do apache,
+contendo várias documentações relacionado aos seus softwares.
+
+Para a implantação automatizada do MoinMon, foram seguidos os mesmos passos 
+feitos em \ref{sub:wordpress}, primeiramente
+foram seguidos os procedimentos para construção da solução definidos em \ref{section:construcao},
+definindo as fases e procedimentos para a implantação automatizada, seguindo as
+fases que compõem o processo de implantação de aplicações e de acordo com \cite{omg2006},
+cada fase desse processo também será tratado como uma subseção. No MoinMoin as
+fases e procedimentos são:
+
+\begin{itemize}
+  \item  \textbf{Planejamento}
+  \item  \textbf{Preparação e Instalação de Pacotes}
+  \item  \textbf{Configuração}
+  \item  \textbf{Configuração de múltiplas instâncias}
+  \item  \textbf{Inicialização}
+\end{itemize}
+
+\subsection{Planejamento}
+
+Primeiramente é necessário definir quais são as dependências
+mínimas para o funcionamento do MoinMoin tais como: banco de dados, pacotes
+pré-instalados e aplicações pré-configuradas. Para o MoinMoin são elas:
+
+\begin{itemize}
+   \item \textbf{Pacote python-moinmoin para o Debian:} Pacote Debian com o MoinMoin.
+   \item \textbf{Pacote nginx para o Debian:} Pacote Debian com o nginx.
+   \item \textbf{Pacote uwsgi para o Debian:} Pacote Debian com o servidor de aplicação web
+uwsgi, com suporte para aplicações escritas em python, utilizando o plugin uwsgi-plugin-python,
+também disponível como um pacote debian.
+   \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
+   necessários para configurar o Uwsgi, o servidor web Nginx e o servidor Web
+uwsgi.
+\end{itemize}
+
+Diferentemente das outras aplicações web, moinmoin não utiliza banco de dados,
+A diferença da escolha do banco de dados, 
+\subsection{Preparação e Instalação de Pacotes}
+
+Para o funcionamento correto do moinmoin é necessário a instalação do python, além
+disso também é necessário que algum servidor web, no caso, utilizaremos o nginx
+junto ao uwsgi, também é necessário a configuração do moinmoin a partir de seus
+arquivos de configuração, mywiki.py e farmconfig.py.
+
+Para solução desse procedimento foi necessário instalar os pacotes uwsgi,
+uwsgi-plugin-python, e o pacote do moinmoin, chamado python-moinmoin
+Para executar essas instalações é preciso criar uma receita no livro de receitas
+do moinmoin, bastando executar novamente o comando rake cookbook que cria a 
+estrutura básica de um livro de receitas que deve ser usado pelo Chef, como por exemplo:
+
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do moinmoin com shak}]
+  rake cookbook
+  Cookbook name: moinmoin
+  knife cookbook create moinmoin -o cookbooks/
+  ** Creating cookbook foo in /home/thiago/Shak/cookbooks
+  ** Creating README for cookbook: moinmoin
+  ** Creating CHANGELOG for cookbook: moinmoin
+  ** Creating metadata for cookbook: moinmoin
+\end{lstlisting}
+
+Assim com a estrutura inicial, é possível declarar as dependências do moinmoin
+dentro do arquivo default.rb dentro da pasta recipes. Nesse arquivo é aonde
+será declarado os pacotes que devem ser instalados, os arquivos de configuração,
+os serviços que precisar executar, as pastas, permissões de usuários, etc.
+
+\subsection{Configuração}
+
+Como levantado no planejamento é necessário a edição de arquivos de configuração
+do moinmoin, arquivos de configuração do uwsgi e arquivo de configuração
+do Nginx.
+
+O primeiro arquivo de configuração é o moin.wsgi, arquivo onde é necessário
+informar, por exemplo, o caminho dos arquivos de configuração do moinmoin, no caso
+de um pacote debian, esse caminho por padrão é  /etc/moin. Ainda relacionado
+ao uwsgi, também é necessário editar o arquivo uwsgi.ini, que é o arquivo de configuração
+do uwsgi para sua aplicação, nele é possível adicionar informações importantes, como
+por exemplo aonde será o arquivo de log do uwsgi, aonde será criado seu socket, 
+e a quantidade máxima de requisições.
+
+Agora os arquivos de configuração da wiki, o primeiro o mywiki.py, onde é necessário
+informar o nome da sua wiki, seu diretório de dados, ou seja, informações básicas.
+Agora o arquivo farmconfig.py é o responsável pelos links da barra de navegação
+e responsável por configurar múltiplas instâncias.
+
+Além disso é necessário criar a pasta de conteúdos do moinmoin, que por
+escolha devem ficar em /var/lib/moin, além disso para que o nginx funcione corretamente
+com o uwsgi é necessário indicar o socket do uwsgi, que foi indicado no uwsgi.ini.
+ 
+\subsection{Múltiplas Instâncias}
+
+MoinMoin possui nativamente a funcionalidade 
+que permite a criação de múltiplas instâncias de wiki no mesmo servidor,
+que é chamado de farmconfig, no qual você adiciona em um arquivo de configuração,
+chamado farmconfig.py, todas as wikis com seus respectivos identificadores e domínios, e assim
+o MoinMoin consegue gerenciar as wikis separadamente. O grande desafio é fazer
+com que o Shak entenda que existem outras wikis já configuradas, já que para 
+utilizar esta funcionalidade,
+é necessário alterar o arquivo de configuração, ou seja, a cada nova instância
+o arquivo deve ser atualizado com as novas informações de wiki, sem remover as
+informações das outras wikis anteriormente inseridas. Para isso, é adicionado
+numa lista de wikis, para que a cada vez que surja uma wiki nova apenas as
+informações novas nessa lista são inseridas no arquivo farmconfig.py.
+
+\subsection{Inicialização}
+
+Após a construção da receita do owncloud é necessário testar a receita construída,
+para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
+que será instalada, e segunda o hostname destino, para executar a instalação
+do owncloud basta:
+
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do owncloud com shak}]
+shak install moinmoin hostname=moinmoin.dev
+\end{lstlisting}
+
+E assim o Chef inicia o processo de instalação dos pacotes, criação dos arquivos
+de configuração, incia os serviços desejados, e ao fim do procedimento a aplicação
+já estará pronta para uso no hostname escolhido.
+
 \section{Segurança}
 \label{sub:seguranca}
 
