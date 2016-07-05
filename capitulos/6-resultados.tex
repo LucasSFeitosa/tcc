@@ -1,15 +1,15 @@
 \chapter{Resultados obtidos}
 \label{cap-resultados}
 
-Este capítulo aborda sobre os resultados encontrados, a partir da proposta de 
+Este capítulo aborda sobre os resultados encontrados, a partir da proposta de
 definição e preparação dos estudos, como dito no capítulo \ref{cap-metodologia}
 as aplicações escolhidas como piloto, para terem sua instalação automatizada foram Owncloud e
 Wordpress como visto em na seção \label{subsection:validacao}
-, seguindo a escolha da ferramenta Shak como arquitetura inicial. Todo 
+, seguindo a escolha da ferramenta Shak como arquitetura inicial. Todo
 o trabalho foi organizado na ferramenta Gitlab
 no projeto Shak disponível no endereço \href{https://gitlab.com/Shak/Shak/} nele
 contém todo o código fonte disponível.
- 
+
 \section{Wordpress}
 \label{sub:wordpress}
 
@@ -115,7 +115,7 @@ login do usuário do banco de dados, senha, o host do banco de dados e o diretó
 onde irá ficar os temas, galeria de mídias e plugins de cada instância do wordpress.
 Por padrão ele deve ficar no diretório /etc/wordpress/ e seu nome deve conter
 a seguinte estrutura: config-nomehost.php, onde o nomehost deve ser o hostname
-desejado. O segundo arquivo é o database.sql que é um pequeno script sql que
+desejado. O segundo arquivo é o database.sql que é um pequeno script \textit{SQL} que
 cria o banco de dados do Wordpress e dá os privilégios ao usuário desejado. Por fim
 o arquivo de configuração do Nginx configuração do servidor web.
 
@@ -166,7 +166,7 @@ possível o acesso entre elas separadamente.
 Após a construção da receita do wordpress é necessário testar a receita construída,
 para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
 que será instalada, e segunda o hostname destino. Como é um ambiente de desenvolvimento
-não é preciso configurar um ip ou configurar um DNS, é preciso apenas adicionar o
+não é preciso configurar um ip ou configurar um \textit{DNS}, é preciso apenas adicionar o
 hostname desejado no arquivo /etc/hosts. Assim mesmo que esteja na sua máquina local
 é possível acessar um endereço mais familiar em seu navegador. Um exemplo da execução
 da instalação via Shak é:
@@ -283,7 +283,7 @@ a recomendação é trocar a senha do administrador.
 
 Além disso é necessário criar a pasta de conteúdos públicos do owncloud, que por
 padrão devem ficar em /etc/owncloud. O segundo arquivo é o postgresql-conf.sql
-que é um pequeno script sql que cria o banco de dados do owncloud e dá os
+que é um pequeno script \textit{SQL} que cria o banco de dados do owncloud e dá os
 privilégios ao usuário desejado. Por fim o arquivo de configuração do Nginx
 configuração do servidor web.
 
@@ -342,25 +342,25 @@ já estará pronta para uso no hostname escolhido.
 \label{sub:e-mail}
 
 Todas as outras aplicações anteriores utilizam o protocolo
-HTTP na camada de aplicação, agora com o servidor de e-mail será trabalhado um
+\textit{HTTP} na camada de aplicação, agora com o servidor de e-mail será trabalhado um
 protocolo diferente, como visto no capítulo \ref{cap-referencial}
 de acordo \cite{kurose2010redes} a camada de aplicação é aonde residem as aplicações
-de rede e seus protocolos, dentre eles o protocolo SMTP que provê mensagens de correio
+de rede e seus protocolos, dentre eles o protocolo \textit{SMTP} que provê mensagens de correio
 eletrônico.
 
-Servidores de e-mail formam a infraestrutura do e-mail, sendo o SMTP o protocolo
+Servidores de e-mail formam a infraestrutura do e-mail, sendo o \textit{SMTP} o protocolo
 mais importante pois é o responsável por transferir as mensagens de servidores
 de e-mail remetentes para servidores de e-mail destinatários, ou seja, transferindo
 arquivos (as mensagens de e-mail) de um servidor para o outro. Porém o protocolo
-SMTP é um protocolo do tipo de envio de informações, diferente do protocolo HTTP
+\textit{SMTP} é um protocolo do tipo de envio de informações, diferente do protocolo \textit{HTTP}
 que é um protocolo que recupera informações, o que acarretaria um problema em que
 o usuário não conseguiria recuperar suas informações como e-mails recebidos, já
-que o SMTP apenas envia informações.
+que o \textit{SMTP} apenas envia informações.
 
 Para solucionar esse problema existem os protocolos de acesso a servidores de
 e-mail, que recuperam as informações do servidor de e-mail até ao usuário final.
 Como visto no capítulo \ref{cap-referencial} existem protocolos de acesso ao correio
-como POP3, IMAP ou usar até mesmo o protocolo HTTP servindo de protocolo para recuperar
+como \textit{POP3}, \textit{IMAP} ou usar até mesmo o protocolo \textit{HTTP} servindo de protocolo para recuperar
 informações.
 
 Dando continuidade na construção da solução, tanto owncloud como wordpress
@@ -389,25 +389,25 @@ as fases e procedimentos são:
 
 Seguindo o mesmo raciocínio das aplicações anteriores, é necessário definir
 quais são as dependências mínimas para o funcionamento do servidor de e-mail,
-como vimos é necessário configurar um servidor que utiliza o procolo IMAP ou POP3,
+como vimos é necessário configurar um servidor que utiliza o procolo \textit{IMAP} ou \textit{POP3},
 também é necessário a configuração de um agente de transferência de e-mails e também
 alguma ferramenta para controle de spam.
 
-Primeiramente ficou definido que o protocolo escolhido seria o protocolo IMAP, já
-que o protocolo IMAP é um protocolo online, ou seja, ele se conecta ao servidor
+Primeiramente ficou definido que o protocolo escolhido seria o protocolo \textit{IMAP}, já
+que o protocolo \textit{IMAP} é um protocolo online, ou seja, ele se conecta ao servidor
 e realiza o download das mensagens, depois ainda  mantém a conexão para que
 as alterações e mensagens novas sejam atualizadas em tempo real, diferentemente do
-protocolo POP3 que é um protocolo offline, onde após o download das mensagens encerra
-a conexão. Outra vantagem do IMAP em relação ao POP3 é que o IMAP mantém uma cópia
+protocolo \textit{POP3} que é um protocolo offline, onde após o download das mensagens encerra
+a conexão. Outra vantagem do \textit{IMAP} em relação ao \textit{POP3} é que o \textit{IMAP} mantém uma cópia
 de mensagens no servidor, ideal para quem precisa acessar os e-mails de mais de um local.
 
-O servidor IMAP escolhido foi o Dovecot que é um servidor de e-mail
-IMAP, além disso dovecot é um software livre simples de configurar, requer nenhuma
+O servidor \textit{IMAP} escolhido foi o Dovecot que é um servidor de e-mail
+\textit{IMAP}, além disso dovecot é um software livre simples de configurar, requer nenhuma
 administração especial e ele usa muito pouca memória \cite{dovecot}. O agente
-de transferência de e-mails (MTA) escolhido foi o Postfix, que é um software
+de transferência de e-mails escolhido foi o Postfix, que é um software
 livre para envio e entrega de e-mails. Sua escolha foi feita pela facilidade de
 integração com o Dovecot, Postfix é quem cuidará do método de entrega de e-mail
-utilizando SMTP como protocolo de transferência de e-mails. Por fim a aplicação
+utilizando \textit{SMTP} como protocolo de transferência de e-mails. Por fim a aplicação
 que servirá como anti-spam será o Apache SpamAssassin que é uma plataforma anti-spam
 que que dá aos administradores de servidor de e-mail, um filtro para classificar
  e-mails e bloquear os e-mails que julgarem como spam \cite{spam}.
@@ -440,7 +440,7 @@ de e-mails.
 Primeiramente, para essa configuração específica do dovecot, foi utilizado 5 arquivos
 de configuração, o primeiro é o 10-mail.conf que é um arquivo de configuração para
 indicar onde será o local no qual os e-mails ficarão. O segundo arquivo é o 10-ssl.conf
-que é o arquivo em que possui os caminhos do certificado ssl e da chave ssl, sendo o
+que é o arquivo em que possui os caminhos do certificado \textit{SSL} e da chave ssl, sendo o
 certificado pode ser lido por todos e o arquivo de chave apenas para um usuário root
 ou que esteja no grupo de usuários ssl-cert, a geração de chaves e de certificados serão
 explicados na seção %TODO qual seção ?
@@ -449,11 +449,11 @@ explicados na seção %TODO qual seção ?
 do postfix. O quarto arquivo é o arquivo 20-imap.conf onde será indicado o tamanho
 máximo de conexões por ip permitidas no servidor. Por fim o arquivo
 20-disable-imap-non-ssl.conf que permitirá que o imap utilize sempre uma conexão
-segura utilizando o IMAPS (IMAP + SSL), assim bloqueando qualquer conexão ou
+segura utilizando o IMAPS (IMAP + \textit{SSL}), assim bloqueando qualquer conexão ou
 tentativa na porta imap comum.
 
 Para o posfix são apenas dois arquivos de configuração, o main.cf e o master.cf,
-o main.cf é aonde se configura os parâmetros mínimos de configuração, lá é aonde fica as configurações que filtram os e-mails com spamassassin e algumas configurações do SMTP, no
+o main.cf é aonde se configura os parâmetros mínimos de configuração, lá é aonde fica as configurações que filtram os e-mails com spamassassin e algumas configurações do \textit{SMTP}, no
 master.cf definimos como um programa cliente se conecta a um serviço, e qual o
 programa que é executado quando um serviço é solicitado. Neste caso habilitamos
 recursos como: smtpd usar TLS e autenticação, caminho dos arquivos de chave e certificados
@@ -501,23 +501,16 @@ Pela configuração do servidor de e-mail não será possível abrir uma conexã
 em imap, porém em imaps será possível, isso serve para testar que o servidor de e-mail
 está barrando as conexões que não utilizem os protocolos criptografados.
 
-
-%TODO ver se no tcc 2 rola de colocar o front end e tal....
-%TODO falar do protótipo de alta fidelidade, o que é, como fiz.
-
-%\subsection{Protótipo de Front-End}
-%\label{sub:prototipo}
-
 \section{MoinMoin}
 \label{sub:owncloud}
 
 De acordo com a documentação oficial \cite{moin} MoinMoin é uma ferramenta de construção
-de wikis, com uma grande comunidade de usuários, podendo criar páginas web 
+de wikis, com uma grande comunidade de usuários, podendo criar páginas web
 facilmente editáveis. MoinMoin é software livre, alguns exemplos
 de wiki que utilizam o MoinMoin são: Wiki do debian, Wiki do python e Wiki do apache,
 contendo várias documentações relacionado aos seus softwares.
 
-Para a implantação automatizada do MoinMon, foram seguidos os mesmos passos 
+Para a implantação automatizada do MoinMon, foram seguidos os mesmos passos
 feitos em \ref{sub:wordpress}, primeiramente
 foram seguidos os procedimentos para construção da solução definidos em \ref{section:construcao},
 definindo as fases e procedimentos para a implantação automatizada, seguindo as
@@ -551,7 +544,7 @@ uwsgi.
 \end{itemize}
 
 Diferentemente das outras aplicações web, moinmoin não utiliza banco de dados,
-A diferença da escolha do banco de dados, 
+A diferença da escolha do banco de dados,
 \subsection{Preparação e Instalação de Pacotes}
 
 Para o funcionamento correto do moinmoin é necessário a instalação do python, além
@@ -562,7 +555,7 @@ arquivos de configuração, mywiki.py e farmconfig.py.
 Para solução desse procedimento foi necessário instalar os pacotes uwsgi,
 uwsgi-plugin-python, e o pacote do moinmoin, chamado python-moinmoin
 Para executar essas instalações é preciso criar uma receita no livro de receitas
-do moinmoin, bastando executar novamente o comando rake cookbook que cria a 
+do moinmoin, bastando executar novamente o comando rake cookbook que cria a
 estrutura básica de um livro de receitas que deve ser usado pelo Chef, como por exemplo:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do moinmoin com shak}]
@@ -591,7 +584,7 @@ informar, por exemplo, o caminho dos arquivos de configuração do moinmoin, no 
 de um pacote debian, esse caminho por padrão é  /etc/moin. Ainda relacionado
 ao uwsgi, também é necessário editar o arquivo uwsgi.ini, que é o arquivo de configuração
 do uwsgi para sua aplicação, nele é possível adicionar informações importantes, como
-por exemplo aonde será o arquivo de log do uwsgi, aonde será criado seu socket, 
+por exemplo aonde será o arquivo de log do uwsgi, aonde será criado seu socket,
 e a quantidade máxima de requisições.
 
 Agora os arquivos de configuração da wiki, o primeiro o mywiki.py, onde é necessário
@@ -602,15 +595,15 @@ e responsável por configurar múltiplas instâncias.
 Além disso é necessário criar a pasta de conteúdos do moinmoin, que por
 escolha devem ficar em /var/lib/moin, além disso para que o nginx funcione corretamente
 com o uwsgi é necessário indicar o socket do uwsgi, que foi indicado no uwsgi.ini.
- 
+
 \subsection{Múltiplas Instâncias}
 
-MoinMoin possui nativamente a funcionalidade 
+MoinMoin possui nativamente a funcionalidade
 que permite a criação de múltiplas instâncias de wiki no mesmo servidor,
 que é chamado de farmconfig, no qual você adiciona em um arquivo de configuração,
 chamado farmconfig.py, todas as wikis com seus respectivos identificadores e domínios, e assim
 o MoinMoin consegue gerenciar as wikis separadamente. O grande desafio é fazer
-com que o Shak entenda que existem outras wikis já configuradas, já que para 
+com que o Shak entenda que existem outras wikis já configuradas, já que para
 utilizar esta funcionalidade,
 é necessário alterar o arquivo de configuração, ou seja, a cada nova instância
 o arquivo deve ser atualizado com as novas informações de wiki, sem remover as
@@ -637,10 +630,10 @@ já estará pronta para uso no hostname escolhido.
 \label{sub:seguranca}
 
 Na implantação das aplicações foram feitos dois procedimentos de segurança, o primeiro
-é forçar as aplicações web a sempre utilizarem o protocolo HTTPS e a segunda foi forçar o
+é forçar as aplicações web a sempre utilizarem o protocolo \textit{HTTP} e a segunda foi forçar o
 servidor de e-mail a não permitir a conexão via protocolos sem criptografia, neste
 caso sendo o protocolo imap utilizando o protocolo imaps. Para que isso fosse possível
-foi necessário gerar um certificado ssl, certificados ssl são necessários para
+foi necessário gerar um certificado \textit{SSL}, certificados \textit{SSL} são necessários para
 que um determinado serviço opere com suporte a conexão segura por meio de criptografia.
 É de conhecimento do autor que a melhor forma é obter um certificado assinado
 por uma certificadora registrada, porém inicialmente foi trabalhado apenas com certificados
@@ -651,9 +644,9 @@ si, além disso o servidor também terá o seu certificado auto-assinado, isso f
 pois a ideia é de as aplicações possam ser instaladas em diferentes servidores, por
 isso é necessário garantir garantir que cada servidor possua o seu certificado. Para adicionar
 esse novo suporte ao Shak foi necessário criar uma receita Chef,
-para que possa gerenciar os certificados ssl. Optou-se por utilizar a ferramenta
+para que possa gerenciar os certificados \textit{SSL}. Optou-se por utilizar a ferramenta
 openssl para geração das chaves e certificados, o openssl é uma ferramenta de
-implementação do Transport Layer Security (TLS) e Secure Sockets Layer (SSL),
+implementação do Transport Layer Security (TLS) e Secure Sockets Layer (\textit{SSL}),
 além de ser uma biblioteca de propósito geral de criptografia \cite{openssl}.
 
 Esse novo componente no Shak é composto basicamente do pacote openssl e da geração
@@ -663,7 +656,7 @@ gerados é etc/ssl/certs/hostname.pem onde hostname é o endereço do servidor
 e o caminho onde as chaves são geradas é etc/ssl/private/hostname.key.
 
 Com as chaves geradas basta configurar as aplicações indicando os caminhos dos certificados
-e das chaves, para forçar as aplicações web a utilizarem o HTTPS foi necessário fazer
+e das chaves, para forçar as aplicações web a utilizarem o \textit{HTTP} foi necessário fazer
 uma configuração específica no servidor web Nginx:
 
 
@@ -688,7 +681,7 @@ uma configuração específica no servidor web Nginx:
 \end{lstlisting}
 
 Com isso todas as requisições serão forçadas a utilizar a porta 443 que é a porta
-TCP padrão para sites que utilizam HTTP + SSL, assim as aplicações utilizarão
+TCP padrão para sites que utilizam \textit{HTTP} e \textit{SSL}, assim as aplicações utilizarão
 um protocolo mais seguro utilizando criptografia dos dados, utilizando o
 certificado auto-assinado que foi gerado para o servidor específico.
 
@@ -701,8 +694,8 @@ os usuários não precisem utilizar um terminal para realizar as ações, també
 feito um protótipo funcional, para ser aplicado no shak. O protótipo foi feito
 na ferramenta chamada Pingendo, que é um software livre utilizado para construir
 protótipos funcionais. Além de ter um protótipo funcional, a ferramenta Pingendo
-também gera o código HTML e CSS, que pode ser aproveitado para a construção
-do layout do Shak. A sugestão inicial foi feita utilizando HTML + CSS utilizando
+também gera o código \textit{HTML} e \textit{CSS}, que pode ser aproveitado para a construção
+do layout do Shak. A sugestão inicial foi feita utilizando \textit{HTML} e \textit{CSS} utilizando
 bootstrap 3, que é um framework para criar aplicações responsivas na web. A versão
 inicial está disponível em \href{https://gitlab.com/Thiagovsk/shak_frontend/tree/master}.
 

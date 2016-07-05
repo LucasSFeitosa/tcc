@@ -1,33 +1,33 @@
 \chapter{Gestão de configuração de software}
 \label{cap-referencial}
 
-De acordo com \cite{ieegcs} gestão de configuração de software é uma área da 
+De acordo com \cite{ieegcs} gestão de configuração de software é uma área da
 engenharia de software cujo objetivo é:
 
 \begin{itemize}
-  \item  \textbf{a)} Identificar e documentar as características funcionais de 
+  \item  \textbf{a)} Identificar e documentar as características funcionais de
   um produto.
   \item  \textbf{b)} Controlar quaisquer alterações a estas características.
   \item  \textbf{c)} Registrar e relatar cada mudança do seu estágio de implantação
-  \item  \textbf{d)} Apoiar a auditoria dos produtos, resultados, serviços ou 
+  \item  \textbf{d)} Apoiar a auditoria dos produtos, resultados, serviços ou
 componentes para verificar a conformidade com requisitos
 
 \end{itemize}
 
-Gestão de Configuração de Software é uma das capacidades fundamentais que devem 
-estar em qualquer projeto de desenvolvimento de software. Ela é 
-tradicionalmente dividida em  quatro atividades, e são elas: configuração, 
-identificação, configuração e controle, isto é encarado como uma ferramenta de 
-gestão que podem ajudar na orientação de cada projeto, pois ajuda a manter a 
-integridade do produto e manter o qualidade do projeto sob controle.\cite{gcs} 
-Também é essencial para a engenharia de software, pois estabelece e protege a 
-integridade de um produto ao longo da sua vida útil, percorrendo através dos 
-processos de desenvolvimento, teste e entrega do produto, bem como 
-durante a sua instalação, operação, manutenção, e eventual evolução\cite{ieegcs}. 
+Gestão de Configuração de Software é uma das capacidades fundamentais que devem
+estar em qualquer projeto de desenvolvimento de software. Ela é
+tradicionalmente dividida em  quatro atividades, e são elas: configuração,
+identificação, configuração e controle, isto é encarado como uma ferramenta de
+gestão que podem ajudar na orientação de cada projeto, pois ajuda a manter a
+integridade do produto e manter o qualidade do projeto sob controle.\cite{gcs}
+Também é essencial para a engenharia de software, pois estabelece e protege a
+integridade de um produto ao longo da sua vida útil, percorrendo através dos
+processos de desenvolvimento, teste e entrega do produto, bem como
+durante a sua instalação, operação, manutenção, e eventual evolução\cite{ieegcs}.
 
-Gerência de configuração de software fornece a infraestrutura que é a base para 
-qualquer tipo de projeto de software. Isto facilita a coordenação e comunicação 
-entre o vários participantes em uma equipe de desenvolvimento de software\cite{gcs}. 
+Gerência de configuração de software fornece a infraestrutura que é a base para
+qualquer tipo de projeto de software. Isto facilita a coordenação e comunicação
+entre o vários participantes em uma equipe de desenvolvimento de software\cite{gcs}.
 Dentro da gerência de configuração de software
 existem várias áreas de atuação, este trabalho aborda especificamente o segundo
 item dos objetivos citados acima, abordando a implantação de software.
@@ -63,13 +63,13 @@ de erros e imprevistos.
 
 Todas essas questões devem ser levadas em consideração e a atividade de implantação de
 software deve receber uma atenção especial, visto que os softwares estão ficando
-cada vez mais complexos, podendo ter várias ferramentas que são integradas, construídas 
-em diferentes linguagens de programação e diferentes configurações, com todas 
+cada vez mais complexos, podendo ter várias ferramentas que são integradas, construídas
+em diferentes linguagens de programação e diferentes configurações, com todas
 essas variáveis compondo
 uma implantação automatizada de software. Este capítulo possui uma subseção sobre
-processo de Implantação de Software, para entender melhor como funciona o processo 
+processo de Implantação de Software, para entender melhor como funciona o processo
 de implantação
-de software, depois uma subseção sobre DevOps, que busca trazer um conceito de implantação
+de software, depois uma subseção sobre \textit{DevOps}, que busca trazer um conceito de implantação
 automatizada de software junto aos métodos ágeis, e por fim, uma seção sobre
 ferramentas e técnicas que buscam facilitar e resolver os problemas da
 implantação automatizada de software, com as características típicas que essas
@@ -82,10 +82,10 @@ até a sua execução \cite{leo2014}. O processo implantação consiste em diver
 atividades que devem ser executadas desde o planejamento da implantação até a
 disponibilidade para uso.
 
-A OMG (Object Management Group) é uma organização internacional sem fins lucrativos
+A \textit{OMG} é uma organização internacional sem fins lucrativos
 que aprova padrões abertos para tecnologias e eles definem uma especificação de
 implantação e configuração de aplicações distribuídas baseadas em componentes \cite{omg2006},
-a OMG também diz que o processo de implantação é um processo que se inicia desde
+a \textit{OMG} também diz que o processo de implantação é um processo que se inicia desde
 a aquisição de um componente até o momento em que esse componente está em plena
 execução, pronto pra uso.
 
@@ -156,7 +156,7 @@ Como resultado ao longo dos anos, o que aconteceu é que as equipes de desenvolv
 são capazes de entregar a um ritmo muito mais rápido, principalmente a adoção
 de métodos ágeis de desenvolvimento de software \cite{7173368}, como podemos
 ver na figura \ref{fig:DevOps}, as equipes desenvolvem de forma acelerada, enquanto
-a equipe de operações consegue implantar de forma sequencial. Sendo assim DevOps
+a equipe de operações consegue implantar de forma sequencial. Sendo assim \textit{DevOps}
 nasceu a partir dessa necessidade de implantar software no mesmo ritmo em que
 as equipes são capazes de entregar novas funcionalidades.
 
@@ -169,7 +169,7 @@ as equipes são capazes de entregar novas funcionalidades.
 \label{fig:DevOps}
 \end{figure}
 
-DevOps pode ser visto como um conjunto de práticas e princípios para a entrega de software, onde a
+\textit{DevOps} pode ser visto como um conjunto de práticas e princípios para a entrega de software, onde a
 chave é o foco e a velocidade de entrega e automação, para pode auxiliar na capacidade
 de reagir a mudanças \cite{7173368}. A automação da implantação de software vem
 principalmente pela necessidade do alinhamento entre o time de desenvolvimento
@@ -178,18 +178,18 @@ equipes em relação ao processo de implantação de software, ferramentas para
 automatizar implantações de software, as atividades de implantação e responsabilidades
 dentro do ciclo de desenvolvimento, o que antes não era visto, o que acontecia é
 que o time de desenvolvimento terminavam suas funcionalidades e seus testes e
-entregavam a uma equipe de implantação. DevOps tenta unir esses dois mundos,
+entregavam a uma equipe de implantação. \textit{DevOps} tenta unir esses dois mundos,
 fazendo com que as duas equipes compartilhem atividades e responsabilidades \cite{6265084}.
 
-De acordo com \cite{httermann2012DevOps} a comunidade DevOps defende a comunicação
+De acordo com \cite{httermann2012DevOps} a comunidade \textit{DevOps} defende a comunicação
 entre a equipe de operações e a equipe de desenvolvimento como um meio de assegurar
 que o os desenvolvedores entendam os problemas associados com as operações. Um dos
 principais benefícios disso é a capacidade de quantificar aspectos do desenvolvimento,
 isto é, levar a melhoria do desenvolvimento do produto, devido a um foco mais nítido
 em agilidade das entregas.
 
-Em \cite{7173368} é abordado as práticas DevOps, que podem ser aplicadas diversas
- vezes dentro de um ciclo de desenvolvimento de software, as praticas DevOps podem ser resumidas em:
+Em \cite{7173368} é abordado as práticas \textit{DevOps}, que podem ser aplicadas diversas
+ vezes dentro de um ciclo de desenvolvimento de software, as praticas \textit{DevOps} podem ser resumidas em:
 
  \begin{itemize}
    \item \textbf{Planejamento Contínuo:} O planejamento deve ser sempre contínuo
@@ -198,7 +198,7 @@ Em \cite{7173368} é abordado as práticas DevOps, que podem ser aplicadas diver
    em conjunto com a equipe de desenvolvimento.
    \item \textbf{Integração Contínua:} Compartilhar as alterações feitas com toda equipe
    evitando que as novas modificações fiquem apenas nas mãos do time de desenvolvimento.
-   \item \textbf{Implantação Contínua:} O coração do DevOps, recomenda-se automatizar
+   \item \textbf{Implantação Contínua:} O coração do \textit{DevOps}, recomenda-se automatizar
    todo o processo de implantação, removendo quaisquer tipo de etapas manuais com auxílio
    de uma ferramenta que possa automatizar a instalação, sendo assim a implantação
    de cada nova versão de software passa a ser de forma mais rápida e eficiente.
@@ -208,12 +208,12 @@ Em \cite{7173368} é abordado as práticas DevOps, que podem ser aplicadas diver
    em tempo hábil.
  \end{itemize}
 
- Os benefícios do uso do DevOps são vários, como por exemplo: economia de tempo,
+ Os benefícios do uso do \textit{DevOps} são vários, como por exemplo: economia de tempo,
  já que implantação de software passa a ser um processo natural, economia de custos, aumentar
  a organização e eficiência do desenvolvimento de software como um todo \cite{7173368}.
 
 Para a entender melhor a prática de implantação automatizada, que é o coração
-do DevOps, é necessário possuir um conhecimento prévio sobre  a infraestrutura
+do \textit{DevOps}, é necessário possuir um conhecimento prévio sobre  a infraestrutura
 como código e as ferramentas que são utilizadas para
 automatizar a implantação de software, conhecendo algumas ferramentas utilizadas
 no mercado para automatizar implantação e suas maneiras de atuação, além das técnicas
@@ -221,8 +221,8 @@ de implantações utilizadas, como por exemplo o empacotamento de software.
 
 \subsubsection{Infraestrutura como código}
 
-Infraestrutura como código é a prática de especificar configurações de 
-sistema de computação através de código, com o intuito de automatizar a implantação 
+Infraestrutura como código é a prática de especificar configurações de
+sistema de computação através de código, com o intuito de automatizar a implantação
 de um software e o seu gerenciamento de configurações. Por exemplo, um sistema
 com diferentes configurações de hardware e diferentes
 requisitos de software podem ser especificados e implantados automaticamente
@@ -231,15 +231,15 @@ ainda personalizado conforme as necessidades da implantação, sendo assim, a im
 automatizada não só é mais rápida do que o processo manual, mas também é mais
 confiável e reproduzível.
 
-Este conceito se complementa com o uso das práticas DevOps, com o objetivo
-de automatizar toda a sua infraestrutura, utilizando ferramentas que auxiliam nesse 
-processo. Para aplicar a infraestrutura como código em um projeto, é necessário 
-migrar a infraestrutura do projeto em código, essencialmente como um 
-código que o desenvolvedor lida no seu trabalho diário\cite{byhand}. 
+Este conceito se complementa com o uso das práticas \textit{DevOps}, com o objetivo
+de automatizar toda a sua infraestrutura, utilizando ferramentas que auxiliam nesse
+processo. Para aplicar a infraestrutura como código em um projeto, é necessário
+migrar a infraestrutura do projeto em código, essencialmente como um
+código que o desenvolvedor lida no seu trabalho diário\cite{byhand}.
 
 Dado que um script de configuração realmente contém código, é mais natural
 para o desenvolvedor tratá-lo como tal, utilizando suas habilidades de codificação,
-e poder utilizar ferramentas que auxiliem a prática do DevOps e de colaboração,
+e poder utilizar ferramentas que auxiliem a prática do \textit{DevOps} e de colaboração,
 entre a equipe de desenvolvimento e a equipe de infraestrutura\cite{byhand}. Um exemplo disso,
 é que com a infraestrutura sendo tratada como código, é possível utilizar um
 sistema de controle de versão, permitindo que outras pessoas colaborem e trabalhem em
@@ -248,17 +248,17 @@ do estado do seu sistema, através do histórico de commits, ainda é possível
 o uso de branchs para fazer alterações pertinentes, definir uma branch estável
 com a última versão do sistema, definir uma branch de desenvolvimento para
 realizar testes, além de outros exemplos possíveis para que para que seja possível
-possam trazer o código da infraestrutura para uma estado desejado a partir de 
+possam trazer o código da infraestrutura para uma estado desejado a partir de
 qualquer outro estado.
 
 
-Para realizar essa prática, existem ferramentas como Chef e Puppet, que 
+Para realizar essa prática, existem ferramentas como Chef e Puppet, que
 fornecer aos desenvolvedores várias abstrações para expressar etapas de automação,
 de forma independente, esses recursos podem ser executado várias vezes
 obtendo-se sempre o mesmo resultado, trazendo uma capacidade de atingir um determinado
 estado desejado sob de diferente circunstâncias, com potencial de atingir
 múltiplas iterações, permitindo implantações frequentes de infra-estruturas complexas
-\cite{Hummer2013}. 
+\cite{Hummer2013}.
 
 
 \section{Métodos e ferramentas para implantação automatizada de software}
@@ -316,7 +316,7 @@ Com essas ferramentas a implantação de um software dentro de uma infraestrutur
 não precisa ser um esforço manual, com elas podemos automatizar toda a implantação
 de um software, desde a preparação do ambiente até a inicialização da aplicação,
 sendo assim possível reduzir o tempo gasto na implantação, sem qualquer esforço
-adicional, o que integra os conceitos de DevOps com implantação de software automatizada
+adicional, o que integra os conceitos de \textit{DevOps} com implantação de software automatizada
 de software.
 
 Além das ferramentas de automação, é importante também entender o empacotamento de
@@ -359,7 +359,7 @@ de hospedagem virtual, que será visto na subseção a seguir.
 
 \subsection{Múltiplas Instâncias de Aplicações Web com Hospedagem Virtual}
 
-Na implantação de software deve-se escolher um ambiente alvo, onde a aplicação
+Na implantação de software é necessário escolher um ambiente alvo, onde a aplicação
 será instalada, esse ambiente deve possuir um nó, que é um recurso computacional
 onde se implanta um componente, como por exemplo: uma máquina virtual. Porém pode
 existir a necessidade de implantar várias aplicações no mesmo servidor, e no caso
@@ -450,8 +450,8 @@ isso Kurose ainda identifica as propriedades desejáveis da comunicação segura
 
 No contexto implantação de aplicações web, tomaremos como objetivo a segurança
 dos dados transmitidos, com isso aplicando criptografia nos protocolos da camada
-de aplicação, que serão utilizados neste trabalho, sendo eles os protocolos HTTP
-e SMTP, assim adicionando uma camada de segurança as aplicações que
+de aplicação, que serão utilizados neste trabalho, sendo eles os protocolos \textit{HTTP}
+e \textit{SMTP}, assim adicionando uma camada de segurança as aplicações que
 serão implantadas.
 
 \subsubsection{Protocolos da Camada de Aplicação e Camada de Segurança}
@@ -459,44 +459,44 @@ serão implantadas.
 As aplicações web utilizam protocolos da camada de aplicação, que é uma das
 cinco camadas do modelo utilizado por Kurose em \cite{kurose2010redes}, a camada
 de aplicação é onde residem as aplicações de rede e seus protocolos, incluindo
-os protocolos HTTP e SMTP, que são protocolos importantes neste trabalho, já que
-aplicações web utilizam o HTTP para transferência de arquivos e o SMTP para
-transferência de mensagens de correio eletrônico. Os protocolos HTTP e SMTP estão especificados em RFCs, a especificação do protocolo
-HTTP está disponível na RFC 2616 e RFC 1945, já o protocolo SMTP está especificado na RFC 5321.
+os protocolos \textit{HTTP} e \textit{SMTP}, que são protocolos importantes neste trabalho, já que
+aplicações web utilizam o \textit{HTTP} para transferência de arquivos e o \textit{SMTP} para
+transferência de mensagens de correio eletrônico. Os protocolos \textit{HTTP} e \textit{SMTP} estão especificados em RFCs, a especificação do protocolo
+\textit{HTTP} está disponível na RFC 2616 e RFC 1945, já o protocolo \textit{SMTP} está especificado na RFC 5321.
 
 A aplicações que serão utilizadas neste trabalho são aplicações web empacotadas no
 Debian, e aplicações Web costumam ser aplicações cliente-servidor, que permitem aos
 usuários obterem documentos de servidores web a partir de requisições \cite{kurose2010redes},
-esses documentos são padronizados, como por exemplo o HTML, para que os navegadores
+esses documentos são padronizados, como por exemplo o \textit{HTML}, para que os navegadores
 possam interpretar e passar a informação ao usuário.
 
-De acordo com \cite{kurose2010redes} o HTTP é um protocolo da camada de aplicação
+De acordo com \cite{kurose2010redes} o \textit{HTML} é um protocolo da camada de aplicação
 da web, e é implementado em dois programas, um cliente e um servidor, conversando
-um com outro a partir de troca de mensagens, o papel do HTTP é definir a estrutura dessas
+um com outro a partir de troca de mensagens, o papel do \textit{HTTP} é definir a estrutura dessas
 mensagens e o modo como o servidor e o cliente as trocam. O principal conteúdo das
 mensagens trocadas entre clientes e servidores são os objetos, um objeto é basicamente
-um arquivo, podendo ser um vídeo, uma imagem ou um arquivo HTML.
+um arquivo, podendo ser um vídeo, uma imagem ou um arquivo \textit{HTML}.
 
-Já o SMTP é protocolo responsável por transferir mensagens de servidores de correio
+Já o \textit{SMTP} é protocolo responsável por transferir mensagens de servidores de correio
 remetentes para servidores de correio destinatários, também transferindo arquivos,
-de um servidor de correio para o outro. Uma diferença entre o HTTP e o SMTP
-é que o protocolo HTTP é um protocolo de recuperação de informações, enquanto
-o protocolo SMTP é um protocolo de envio de informações \cite{kurose2010redes}. Isso implica que para um
+de um servidor de correio para o outro. Uma diferença entre o \textit{HTTP} e o \textit{SMTP}
+é que o protocolo \textit{HTTP} é um protocolo de recuperação de informações, enquanto
+o protocolo \textit{SMTP} é um protocolo de envio de informações \cite{kurose2010redes}. Isso implica que para um
 usuário recuperar as informações de e-mail é necessário o uso de outros componentes,
-já que isso não é possível via SMTP, para resolver isto existem os protocolos
-de acesso ao correio, entre eles o POP3 e IMAP.
+já que isso não é possível via \textit{SMTP}, para resolver isto existem os protocolos
+de acesso ao correio, entre eles o \textit{POP3} e \textit{IMAP}.
 
 Para adicionar uma camada de segurança, com sigilo e integridade de dados é necessário
-o uso de outro protocolo, o protocolo SSL, para complementar os protocolos HTTP
-e SMTP. O protocolo SSL é utilizado por basicamente todos os sites conhecidos, como Google,
+o uso de outro protocolo, o protocolo \textit{SSL}, para complementar os protocolos \textit{HTTP}
+e \textit{SMTP}. O protocolo \textit{SSL} é utilizado por basicamente todos os sites conhecidos, como Google,
 Amazon, eBay, e seu uso é para oferecer segurança em transações, pois ele cria um
 canal criptografado entre um servidor web e um navegador, garantido que todos os
 dados transmitidos sejam sigilosos e seguros \cite{kurose2010redes}. Para poder
-utilizar o SSL é necessário que o seu servidor web possua um certificado, que
+utilizar o \textit{SSL} é necessário que o seu servidor web possua um certificado, que
 possa responder algumas questões sobre a identidade do seu servidor.
 
-Com as devidas configurações, tanto HTTP como SMTP estarão sobre uma camada adicional de segurança,
-que utiliza o protocolo SSL/TLS. Essa camada adicional permite que os dados sejam
+Com as devidas configurações, tanto \textit{HTTP} como \textit{SMTP} estarão sobre uma camada adicional de segurança,
+que utiliza o protocolo \textit{SSL}/TLS. Essa camada adicional permite que os dados sejam
 transmitidos por meio de uma conexão criptografada e que se verifique a autenticidade
 do servidor e do cliente por meio de certificados digitais. Agora o próximo passo
 é ver o que são os certificados digitais e seu papel dentro da segurança em aplicações web.
@@ -514,7 +514,7 @@ assinatura digital é o emprego de criptografia assimétrica ou criptografia de 
 públicas, logo a assinatura digital deve ser algo verificável e não falsificável. Uma
 aplicação importante de assinaturas digitais é a certificação de chaves públicas,
 que certifica que uma chave pública pertence a uma entidade específica\cite{kurose2010redes},
-e a certificação de chaves públicas é utilizada no protocolo SSL, visto anteriormente.
+e a certificação de chaves públicas é utilizada no protocolo \textit{SSL}, visto anteriormente.
 
 Uma maneira de se obter o certificado, é através de uma entidade conhecida como
 entidade certificadora, que é responsável por validar e emitir certificados, e
@@ -526,21 +526,21 @@ identificação de que é realmente o proprietário daquela chave pública.
 Porém essas entidades certificadoras cobram por esse serviço, e os certificados também
 possuem validade. Uma outra maneira de se obter certificados é a partir dos certificados
 auto-assinados, que são os certificados gerados por conta própria através de
-ferramentas, um exemplo de ferramenta é a ferramenta OpenSSL, que permite requisitar,
+ferramentas, um exemplo de ferramenta é a ferramenta Open\textit{SSL}, que permite requisitar,
 assinar, gerar, exportar e converter certificados digitais.
 
 Um problema em utilizar certificados auto-assinados é que os clientes, como navegadores,
 precisam apenas dos certificados das entidades certificadores em quem eles confiam, por
 exemplo, um navegador não vai conhecer o certificado que foi auto-assinado por
 alguém que ele não conhece, e logo vai avisar ao usuário de que ele não está em uma
-conexão segura, por mais que esteja sobre uma conexão HTTPS. Por isso que manter certificados
+conexão segura, por mais que esteja sobre uma conexão \textit{HTTP}. Por isso que manter certificados
 auto-assinados pode tornar-se mais difícil, porém é uma saída principalmente para
 fins de testes, e melhor do que não utilizar nenhum tipo de segurança.
 
 Entretanto, em 2014 a universidade de Michigan, e empresas como a Mozilla, criaram
 uma nova entidade certificadora, que se chama Let's Encrypt, que fornece certificados
-digitais de forma gratuita e que são reconhecidos por todos os navegadores, 
-utilizando o protocolo ACME \cite{ACME}, existe um cliente ACME configurado no 
+digitais de forma gratuita e que são reconhecidos por todos os navegadores,
+utilizando o protocolo \textit{ACME}  \cite{ACME}, existe um cliente ACME configurado no
 servidor do domínio, que será
 consultado pelo servidor da autoridade certificadora, validando assim o domínio
 em questão, em resumo, let's encrypt
