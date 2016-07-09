@@ -3,7 +3,7 @@
 
 Este capítulo aborda sobre os resultados encontrados, a partir da proposta de
 definição e preparação dos estudos, como dito no capítulo \ref{cap-metodologia}
-as aplicações escolhidas como piloto, para terem sua instalação automatizada foram Owncloud e
+as aplicações escolhidas como piloto, para terem a sua instalação automatizada foram Owncloud e
 Wordpress como visto em na seção \label{subsection:validacao}
 , seguindo a escolha da ferramenta Shak como arquitetura inicial. Todo
 o trabalho foi organizado na ferramenta Gitlab
@@ -123,7 +123,7 @@ Esses arquivos de configuração serão criados dentro da pasta template, com o 
 desejado dos arquivos de configuração, seguindo a mesma estrutura
 inicial que foi criada em \ref{wordpress:preparacao}, e a ação de criação é
 declarada dentro do arquivo default.rb, de forma semelhante como foi feito com
-a declaração dos pacotes. Um exemplo de como gerenciar templates em uma receita Chef
+a declaração dos pacotes. Um exemplo de como gerenciar templates numa receita Chef
 é:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de templates com o chef}]
@@ -635,12 +635,12 @@ foi necessário gerar um certificado \textit{SSL}, certificados \textit{SSL} sã
 que um determinado serviço opere com suporte a conexão segura por meio de criptografia.
 É de conhecimento do autor que a melhor forma é obter um certificado assinado
 por uma certificadora registrada, porém inicialmente foi trabalhado apenas com certificados
-auto-assinados.
+autoassinados.
 
 Para suprir a necessidade das aplicações, cada aplicação terá um certificado para
-si, além disso o servidor também terá o seu certificado auto-assinado, isso foi necessário
+si, além disso o servidor também terá o seu certificado autoassinado, isso foi necessário
 pois a ideia é de as aplicações possam ser instaladas em diferentes servidores, por
-isso é necessário garantir garantir que cada servidor possua o seu certificado. Para adicionar
+isso é necessário garantir que cada servidor possua o seu certificado. Para adicionar
 esse novo suporte ao Shak foi necessário criar uma receita Chef,
 para que possa gerenciar os certificados \textit{SSL}. Optou-se por utilizar a ferramenta
 openssl para geração das chaves e certificados, o openssl é uma ferramenta de
@@ -648,7 +648,7 @@ implementação do Transport Layer Security (TLS) e Secure Sockets Layer (\texti
 além de ser uma biblioteca de propósito geral de criptografia \cite{openssl}.
 
 Esse novo componente no Shak é composto basicamente do pacote openssl e da geração
-de certificados auto-assinados utilizando o openssl, são gerados certificados
+de certificados autoassinados utilizando o openssl, são gerados certificados
 para cada aplicação e para o servidor, o padrão do caminho onde os certificados são
 gerados é etc/ssl/certs/hostname.pem onde hostname é o endereço do servidor
 e o caminho onde as chaves são geradas é etc/ssl/private/hostname.key.
@@ -681,7 +681,7 @@ uma configuração específica no servidor web Nginx:
 Com isso todas as requisições serão forçadas a utilizar a porta 443 que é a porta
 TCP padrão para sites que utilizam \textit{HTTP} e \textit{SSL}, assim as aplicações utilizarão
 um protocolo mais seguro utilizando criptografia dos dados, utilizando o
-certificado auto-assinado que foi gerado para o servidor específico.
+certificado autoassinado que foi gerado para o servidor específico.
 
 \section{Protótipo da aplicação web}
 \label{sub:prototipo}

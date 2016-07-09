@@ -2,7 +2,7 @@
 \label{cap-conclusoes}
 
 A gerência de configuração de software é uma importante área da engenharia de software,
-visto que o software precisa estar implantado e disponível para uso, para que ofereça 
+visto que o software precisa estar implantado e disponível para uso, para que ofereça
 valor ao usuário final. Uma atividade importante neste cenário é a implantação
 automatizada de software, que facilita a instalação de ferramentas, principalmente
 para usuários que não possuam conhecimento técnico para realizar instalações complexas.
@@ -10,16 +10,16 @@ para usuários que não possuam conhecimento técnico para realizar instalaçõe
 Observou-se que outros trabalhos já utilizam de conceitos de implantação automatizada,
 porém nenhuma delas voltados a aplicações em sistemas Debian GNU/Linux, que contém
 pacotes de algumas aplicações web livres bastante conhecidas, como wordpress e
-owncloud. Porém, foi visto que a apenas a instalação do pacote não é suficiente, 
+owncloud. Porém, foi visto que a apenas a instalação do pacote não é suficiente,
 existem ainda, algumas atividades a serem feitas, e nem sempre o usuário detém
 o conhecimento necessário para configurar as aplicações, com isso, dado o objetivo
-deste trabalho, e as motivações, foi feito evolução da ferramenta Shak, para 
-que usuários possam instalar aplicações com apenas um clique em um sistema Debian
+deste trabalho, e as motivações, foi feito evolução da ferramenta Shak, para
+que usuários possam instalar aplicações com apenas um clique num sistema Debian
 GNU/Linux.
 
 No decorrer deste trabalho, alguns resultados foram alcançados. Primeiramente, o
 pesquisador estabeleceu o conhecimento sobre implantação automatizada
-de software e tecnologias que permitam tal implementação, como por exemplo o Chef, 
+de software e tecnologias que permitam tal implementação, como por exemplo o Chef,
 sendo possível automatizar todo o processo de implantação de um software,
 desde o planejamento até a execução. Também foi conhecido ferramentas que são
 utilizadas para implantação de aplicações de forma automatizada, como por exemplo
@@ -27,17 +27,17 @@ o JuJu e o Bitnami, que ajudam usuários que não possuem conhecimento a
 instalarem aplicações com facilidade.
 
 Além disso, também foram adquiridos os conhecimentos sobre \textit{DevOps}, que é um conjunto
-de práticas e princípios para a implantação ágil de software, que foram bastante 
-úteis ao trabalho, pois também trata de automação de implantação de software. Também 
+de práticas e princípios para a implantação ágil de software, que foram bastante
+úteis ao trabalho, pois também trata de automação de implantação de software. Também
 foi adquirido conhecimentos sobre hospedagem virtual, que é uma forma de manter
 várias aplicações no mesmo servidor com um único endereço IP e vários domínios diferentes.
 
 Em relação a construção de solução, foram realizadas melhorias na ferramenta Shak,
-provendo quatro novas aplicações, sendo elas Owncloud, Wordpress, MoinMoin e 
-servidor de e-mail, todas sendo implantadas automaticamente e 
-levando em consideração o uso de protocolos seguros como \textit{HTTP} junto ao SSL e SMTP 
+provendo quatro novas aplicações, sendo elas Owncloud, Wordpress, MoinMoin e
+servidor de e-mail, todas sendo implantadas automaticamente e
+levando em consideração o uso de protocolos seguros como \textit{HTTP} junto ao SSL e SMTP
 junto ao SSL. Logo também foi adicionado a
-ferramenta Shak suporte a criação de certificados auto-assinados, permitindo que
+ferramenta Shak suporte a criação de certificados autoassinados, permitindo que
 as aplicações possam usar certificados para configurar tais protocolos. Ainda foi
 adicionado ao Shak o suporte a as aplicações web sempre utilizarem
 o protocolo HTTPS, evitando assim implantações inseguras, independente da ferramenta.
@@ -48,7 +48,7 @@ foi necessário o envio de uma correção para o mantenedor do pacote Debian, vi
 é uma funcionalidade nova no Owncloud, permitindo assim a criação de múltiplas
 instâncias do Owncloud, em ambos os casos foi utilizado a técnica de hospedagem
 virtual, disponibilizada pelo servidor web Nginx. Além disso, foi proposto um protótipo
-da interface web para a ferramenta, que seria a forma dos usuários acessarem a 
+da interface web para a ferramenta, que seria a forma dos usuários acessarem a
 ferramenta sem precisar utilizar um terminal.
 
 Por fim, todos esses resultados são importantes para o objetivo deste trabalho, que vão
@@ -60,9 +60,9 @@ deste trabalho.
 \section{Trabalhos Futuros}
 %
 Algumas melhorias na ferramenta Shak não puderam ser implementadas  no contexto
-deste trabalho, destaca-se o suporte a servidores auto-assinados utilizando
+deste trabalho, destaca-se o suporte a servidores autoassinados utilizando
 let's encrypt, que trariam ganhos para os usuários finais, visto que os certificados
-auto-assinados que utilizam a ferramenta openssl não são reconhecidos automaticamente 
+autoassinados que utilizam a ferramenta openssl não são reconhecidos automaticamente
 pelos navegadores, precisando ainda, de uma autorização do usuário. Já
 com let's encrypt esse problema não aconteceria, visto que os certificados
 gerados a partir desta tecnologia é reconhecido pelos navegadores mais modernos.
@@ -75,4 +75,3 @@ a partir da interface web, facilitando ainda mais o uso da ferramenta para seus 
 até mesmo utilizar a ferramenta Shak como um serviço, sendo assim, disponibilizando uma
 versão do Shak na nuvem, para que qualquer usuário com conexão a internet e um servidor
 disponível pudesse instalar aplicações web em que o Shak dê suporte.
- 

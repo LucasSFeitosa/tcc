@@ -27,7 +27,7 @@ durante a sua instalação, operação, manutenção, e eventual evolução\cite
 
 Gerência de configuração de software fornece a infraestrutura que é a base para
 qualquer tipo de projeto de software. Isto facilita a coordenação e comunicação
-entre o vários participantes em uma equipe de desenvolvimento de software.
+entre o vários participantes numa equipe de desenvolvimento de software.
 Dentro da gerência de configuração de software
 existem várias áreas de atuação, este trabalho aborda especificamente o segundo
 item dos objetivos citados acima, abordando a implantação de software\cite{gcs}.
@@ -265,21 +265,21 @@ múltiplas iterações, permitindo implantações frequentes de infra-estruturas
 \label{subsec:metodoseferramentas}
 
 
-De acordo com \cite{5741269}, existem várias soluções técnicas para melhorar a implantação de software, 
+De acordo com \cite{5741269}, existem várias soluções técnicas para melhorar a implantação de software,
 no entanto, apesar da sua importância para as empresas de software, as atividades
 de implantação de software têm recebido pouca atenção. Em \cite{deployment1998}
 é dito que recentemente, um número de novas tecnologias começaram a emergir para
 resolver o problema de implantação. As características típicas oferecidas por
 estas tecnologias incluem sistemas para automatizar a implantação a partir de
 configurações, pacotes, gerenciamento de rede e instalação de recursos, com
-propósito de entrega das atualizações de forma automática. 
+propósito de entrega das atualizações de forma automática.
 
-Em \cite{leo2014}, é dito que para a implantação automatizada de software é 
+Em \cite{leo2014}, é dito que para a implantação automatizada de software é
 possível utilizar linguagens de script de propósito
 geral como (Python, Ruby e Shellscript), ou ferramentas gerais voltados para o processo
 de implantação ou sistemas de middleware especializados em determinados tipos de artefatos implantáveis.
 Um processo de implantação automatizado depende bastante da integração de diferentes papéis
-em uma organização, foi dito também na seção \ref{subsec:DevOps} que é importante a
+numa organização, foi dito também na seção \ref{subsec:DevOps} que é importante a
 integração entre desenvolvedores e operadores, uma vez que o desenvolvimento desses
 scripts ou utilização das ferramentas precisam de participação de ambos os perfis.
 
@@ -323,7 +323,7 @@ de software.
 Além das ferramentas de automação, é importante também entender o empacotamento de
 programas, tanto Chef como Puppet utilizam a instalação de pacotes como recurso para
 poder instalar softwares, ou seja, é possível buscar os softwares desejados a partir
-dos pacotes disponíveis em uma distribuição Linux. As distribuições Linux que
+dos pacotes disponíveis numa distribuição Linux. As distribuições Linux que
 optam por disponibilizar pacotes mantém uma infraestrutura de servidores como fonte
 de distribuição de programas \cite{araujo2011apprecommender}, tais servidores são
 chamados de repositórios, e esses pacotes são gerenciados com softwares conhecidos
@@ -370,7 +370,7 @@ ao se conectar na internet.
 
 Uma forma de solucionar esse problema é o uso de Hospedagem Virtual, de acordo com
 \cite{apachvh} hospedagem virtual é um termo que se refere à prática de executar
-mais de uma aplicação web em uma única máquina. Com a Hospedagem Virtual é possível
+mais de uma aplicação web numa única máquina. Com a Hospedagem Virtual é possível
 hospedar mais de um nome de domínio no mesmo computador, o que significa que você
 tem vários nomes em execução em um único endereço de ip, possibilitando que em um
 mesmo servidor você possa ter uma aplicação em www.blog.com e www.nuvem.com. O fato
@@ -507,7 +507,7 @@ As assinaturas e certificados digitais servem para agregar confiança e seguran�
 nas trocas de dados pela internet, principalmente quando se trata de troca de informações
 sigilosas e que precisam de uma confiabilidade maior, basta imaginar que ninguém
 gostaria de ter seus dados bancários expostos, ou ter seus dados trafegando sem
-nenhum tipo de segurança em uma rede aberta. De acordo com \cite{kurose2010redes}
+nenhum tipo de segurança numa rede aberta. De acordo com \cite{kurose2010redes}
 assinatura digital é uma técnica criptográfica usada para atestar que você e não
 outra pessoa conhece e ou concorda com tal tipo de documento. O que viabiliza a
 assinatura digital é o emprego de criptografia assimétrica ou criptografia de chaves
@@ -525,17 +525,17 @@ identificação de que é realmente o proprietário daquela chave pública.
 
 Porém essas entidades certificadoras cobram por esse serviço, e os certificados também
 possuem validade. Uma outra maneira de se obter certificados é a partir dos certificados
-auto-assinados, que são os certificados gerados por conta própria através de
+autoassinados, que são os certificados gerados por conta própria através de
 ferramentas, um exemplo de ferramenta é a ferramenta OpenSSL, que permite requisitar,
 assinar, gerar, exportar e converter certificados digitais.
 
-Um problema em utilizar certificados auto-assinados é que os clientes, como navegadores,
+Um problema em utilizar certificados autoassinados é que os clientes, como navegadores,
 precisam apenas dos certificados das entidades certificadores em quem eles confiam, por
-exemplo, um navegador não vai conhecer o certificado que foi auto-assinado por
-alguém que ele não conhece, e logo vai avisar ao usuário de que ele não está em uma
+exemplo, um navegador não vai conhecer o certificado que foi autoassinado por
+alguém que ele não conhece, e logo vai avisar ao usuário de que ele não está numa
 conexão segura, por mais que esteja sobre uma conexão \textit{HTTP}. Por isso que
  manter certificados
-auto-assinados pode tornar-se mais difícil, porém é uma saída principalmente para
+autoassinados pode tornar-se mais difícil, porém é uma saída principalmente para
 fins de testes, e melhor do que não utilizar nenhum tipo de segurança.
 
 Entretanto, em 2014 a universidade de Michigan, e empresas como a Mozilla, criaram
@@ -544,5 +544,5 @@ digitais de forma gratuita e que são reconhecidos por todos os navegadores,
 utilizando o protocolo \textit{ACME}  \cite{ACME}, existe um cliente ACME configurado no
 servidor do domínio, que será
 consultado pelo servidor da autoridade certificadora, validando assim o domínio
-em questão, em resumo, let's encrypt faz o trabalho de automatizar a validação da identidade 
+em questão, em resumo, let's encrypt faz o trabalho de automatizar a validação da identidade
 pela autoridade certificadora.

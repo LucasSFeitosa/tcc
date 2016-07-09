@@ -36,8 +36,8 @@ gerar conhecimentos para aplicação prática \cite{gerhardt2009metodos},
 relacionada a aplicações que auxiliam na implantação automatizada de software.
 
 A partir dessa pesquisa será possível encontrar os trabalhos relacionados, os
-trabalhos encontrados também serão de insumo para auxiliar na construção da 
-solução a partir da análise dos resultados que foram encontrados. As próximas 
+trabalhos encontrados também serão de insumo para auxiliar na construção da
+solução a partir da análise dos resultados que foram encontrados. As próximas
 seções tratam dos trabalhos relacionados encontrados e dos métodos e
 procedimentos para construção da solução, além da validação da solução.
 
@@ -53,7 +53,7 @@ automatizada de aplicações, foi feito uma busca de alguns trabalhos relacionad
 trabalho relacionado é um trabalho acadêmico feito por \cite{leo2014} no qual foi
 desenvolvido um sistema de middleware chamado CHOReOS Enactment Engine que é um
 sistema que possibilita a implantação distribuída e automatizada de composições
-de serviços web em uma estrutura virtualizada, no qual opera no modelo
+de serviços web numa estrutura virtualizada, no qual opera no modelo
 computacional conhecido como plataforma como serviço, comparando esse sistema
 com abordagens tradicionais de implantação levando em consideração a escalabilidade
 em relação ao tempo de implantação das composições dos serviços. Seu foco maior
@@ -75,7 +75,7 @@ Juju que lhe permite implementar, configurar, gerenciar, e manter serviços de f
 rápida e eficiente automatizando a instalação e configuração de aplicações na nuvem.
 
 O estudo dessas aplicações serve como base para entender como funcionam as aplicações
-já existentes, e como elas são feitas, para que assim seja possível identificar 
+já existentes, e como elas são feitas, para que assim seja possível identificar
 as ferramentas que são
 utilizadas para solucionar problemas semelhantes ao problema deste
 trabalho, por exemplo a ferramenta JuJu utiliza uma abstração conhecida como charm,
@@ -95,7 +95,7 @@ que é utilizada por eles. Por fim o trabalho feito por \cite{leo2014} é voltad
 para serviços web de grande escala, com foco em implantação de aplicações na
 nuvem e escalar infraestrutura, utilizando o middleware construído em seu trabalho,
  assim podendo gerenciar ambientes de computação em nuvem
- como Amazon EC2 e Openstack, sua aplicação utiliza o Chef solo como seu agente de configuração.
+ como Amazon EC2 e Openstack, a sua aplicação utiliza o Chef solo como seu agente de configuração.
 
 Com esse levantamento, as soluções encontradas não resolvem totalmente
 o problema, a grande diferença é que as ferramentas encontradas não utilizam os pacotes
@@ -175,11 +175,11 @@ As ferramentas escolhidas para o apoio ao desenvolvimento foram:
 De acordo com a motivação em contribuir com projetos de software livre
 e a participação do google Summer of Code, como dito na seção de motivação
 \ref{sec:motivacao}, e todo o contexto definido na seção \ref{section:construcao},
-a construção da solução proposta neste trabalho será baseada na evolução da ferramenta Shak 
+a construção da solução proposta neste trabalho será baseada na evolução da ferramenta Shak
 (Self Hosting Applications Kit).
 
 A ferramenta Shak tem o objetivo de facilitar ao máximo que usuários sem conhecimento
-técnico possam ter os seus próprios serviços de internet, garantindo sua privacidade
+técnico possam ter os seus próprios serviços de internet, garantindo a sua privacidade
 e segurança. Esta plataforma está concebida de acordo com os seguintes princípios:
 
 \textbf{Base: Pacotes Debian}
@@ -192,7 +192,7 @@ casos de uso, normalmente os pacotes não realizam a configuração completa do 
 deixando os detalhes finais para o administrador do sistema.
 
 Além disso, normalmente as aplicações web são compostas de diversos pacotes, e
-requerem configurações  específicas que dizem respeito a mais de uma aplicação,
+requerem configurações específicas que dizem respeito a mais de uma aplicação,
 e que por consequência não poderiam ser feitas automaticamente de uma forma sustentável em nenhum dos pacotes. Por isso, os pacotes além de serem instalados, precisam ser configurados,
 e isso é feito muitas vezes de forma manual, ou ainda, requer conhecimento técnico
 para executar configurações mais complexas, afastando os possíveis usuários
@@ -216,12 +216,12 @@ da interferência de algum usuário.
 
 \textbf{Diferencial para outras soluções existentes}
 
-Existem outras soluções disponíveis para instalação de aplicações por um clique, 
+Existem outras soluções disponíveis para instalação de aplicações por um clique,
 como por exemplo \cite{bitnami} e \cite{sandstormio}, mas o Shak se
 diferencia delas nos seguintes aspectos:
 
 \begin{itemize}
-  \item O Shak pode ser implantando em uma máquina virtual na nuvem ou em servidores físicos
+  \item O Shak pode ser implantando numa máquina virtual na nuvem ou em servidores físicos
     próprios, a critério do usuário.
 
   \item O Shak reutiliza o trabalho dos mantenedores Debian, que fornecem pacotes
@@ -267,11 +267,11 @@ A arquitetura da ferramenta Shak é composta de:
 
 O Shak é uma ferramenta que põe em prática o conceito de infraestrutura
 como código, buscando velocidade e principalmente qualidade na implantação
-automatizada de aplicações, utilizando-se de codificação simples e objetiva, 
-sem a necessidade mais de diversos passos e processos para se preparar um ambiente, 
+automatizada de aplicações, utilizando-se de codificação simples e objetiva,
+sem a necessidade mais de diversos passos e processos para se preparar um ambiente,
 e sem perder o poder de controle, segurança e qualidade da implantação das aplicações.
 
-Para adicionar no Shak uma aplicação que esteja disponível nos repositórios oficiais 
+Para adicionar no Shak uma aplicação que esteja disponível nos repositórios oficiais
 do Debian, é necessário construir o livro de receitas para a
 aplicação desejada, essa atividade será uma das atividades deste trabalho, sendo assim
 adicionando novas aplicações web a ferramenta Shak.
@@ -281,7 +281,7 @@ adicionando novas aplicações web a ferramenta Shak.
 Uma das necessidades para o desenvolvimento do projeto é ter um ambiente de desenvolvimento
 flexível que possa ser rapidamente construído e destruído, onde possa testar as
 implantações feitas pela ferramenta Shak e verificar os erros caso aconteçam. Para isso é necessário utilizar
-alguma ferramenta que automatize processo de construir ambientes de desenvolvimento, 
+alguma ferramenta que automatize processo de construir ambientes de desenvolvimento,
 construir ambientes manualmente pode
 ser um processo longo e demorado, além disso evitar que ocorra erros por
 desatenção ao executar vários passos manuais, assim para automatizar a implantação
@@ -305,7 +305,7 @@ configurações que estão no arquivo Vagrantfile na raiz do projeto Shak, nele
 estão todas as configurações e definições da máquina virtual em questão. Para o
 Vagrant criar uma máquina virtual era necessário escolher um software que gerencie
 esse procedimento, a ferramenta escolhida foi o Virtualbox para poder emular o sistema
-operacional em uma máquina virtual, assim o Vagrant inicia uma máquina virtual
+operacional uma máquina virtual, assim o Vagrant inicia uma máquina virtual
 utilizando o Virtualbox, com a distribuição Debian GNU/Linux e as configurações que estiverem
 definida no arquivo de configuração Vagrantfile.
 
@@ -325,7 +325,7 @@ livros de receitas das aplicações, o repositório do Shak possui alguns script
 para instalar algumas dependências ao iniciar uma máquina virtual, dentro
 desses scripts contém as instalações das dependências para o Shak funcionar perfeitamente
 e também o próprio Chef, que é utilizado pela ferramenta Shak para instalar aplicações
-e suas dependências, porém todos esses passos ja são executados graças ao Vagrantfile
+e suas dependências, porém todos esses passos já são executados graças ao Vagrantfile
 que está no repositório, facilitando assim a criação de ambientes para o desenvolvimento,
 se a necessidade de execução de nenhum script adicional.
 
@@ -356,7 +356,7 @@ servidor de e-mail. Como aspecto de segurança, ficou definido que tanto a aplic
 Owncloud como Wordpress deveriam usar sempre HTTPS por padrão, isso envolve também
 uma estratégia de como serão gerenciados os certificados de segurança para aplicar
 o protocolo HTTPS. Além dessas atividades previstas, também foram feitas evoluções
-no Shak para que seja possível a implementação dessas atividades. 
+no Shak para que seja possível a implementação dessas atividades.
 
 Dentro da implantação automatizada de software Debian GNU/Linux temos várias
 configurações possíveis, porém neste trabalho existem alguns aspectos que deverão ser levados em
@@ -364,7 +364,7 @@ consideração, esses aspectos serão importantes para guiar a construção da s
 
 \begin{itemize}
   \item  \textbf{Aspecto 1:} Uso dos aspectos de segurança na implantação de aplicações web,
- como por exemplo utilizar protocolos como HTTPS. 
+ como por exemplo utilizar protocolos como HTTPS.
   \item  \textbf{Aspecto 2:} Uso da implantação automatizada de múltiplas instâncias de
    aplicações no mesmo servidor, utilizando hospedagem virtual.
   \item  \textbf{Aspecto 3:} Uso de aplicações que são empacotadas no Debian.
@@ -374,8 +374,8 @@ Por fim é necessário definir procedimentos que serão
 feitos para a execução da implantação automatizada das aplicações, esses procedimentos são
 importantes para a construção da arquitetura inicial, considerando
 o processo de implantação de software visto no capítulo \ref{cap-referencial}
-e a referência dos trabalhos relacionados. É preciso definir as fases e os 
-procedimentos para implantação automatizada, definindo as etapas 
+e a referência dos trabalhos relacionados. É preciso definir as fases e os
+procedimentos para implantação automatizada, definindo as etapas
 da implantação.
 
 \subsection{Fases e Procedimentos para implantação}
@@ -407,14 +407,14 @@ com \cite{omg2006}, e isso será o que o Shak automatizará fases e procedimento
   ferramenta Shak e validar os resultados obtidos.
 \end{itemize}
 
-Também é importante definir os procedimentos de segurança na implantação, e 
-automatizar os que forem possíveis de serem aplicados dentro do contexto da 
-arquitetura proposta. Um exemplo 
-é a configuração das aplicações sempre usarem protocolos seguros, como o HTTPS 
-que possui uma camada adicional de segurança que utilizando o protocolo SSL/TLS. 
+Também é importante definir os procedimentos de segurança na implantação, e
+automatizar os que forem possíveis de serem aplicados dentro do contexto da
+arquitetura proposta. Um exemplo
+é a configuração das aplicações sempre usarem protocolos seguros, como o HTTPS
+que possui uma camada adicional de segurança que utilizando o protocolo SSL/TLS.
 Para as aplicações web é necessário utilizar o protocolo HTTPS, para aplicações
 de e-mail é necessário utilizar os protocolos SMTP e IMAPS.
- 
+
 \section{Validação da solução}
 \label{subsection:validacao}
 
@@ -440,7 +440,7 @@ para a escolha das aplicações:
   \item  \textbf{Aplicações com comunidades ativas:} Como estamos trabalhando
   com software livre, é importante que os softwares escolhidos possuem comunidades
   ativas, isso pode ajudar na resolução de possíveis problemas, logo aplicações
-  em que sejam difíceis de comunicar com sua comunidade devem ser evitadas, e
+  em que sejam difíceis de comunicar com a sua comunidade devem ser evitadas, e
   aplicações com a comunidade de desenvolvedores e usuários ativa devem ser priorizadas.
   E isso também pode ser um fator importante caso durante os testes sejam descobertos
   erros ou melhorias dentro dessas ferramentas e tais erros e melhorias possam ser
@@ -451,11 +451,11 @@ para a escolha das aplicações:
   dentro da ferramenta, ferramentas que não possuem documentação de instalação e
   configuração devem ser evitadas.
   \item  \textbf{Aplicações com suporte a federação:} Aplicações federadas permitem
- utilização de métodos de autenticação única para cada instância da aplicação, 
-mantendo a compatibilidade entre elas, um exemplo é a aplicação Owncloud, 
-que permite compartilhar seus arquivos na nuvem independente do Owncloud que estiver usando, 
+ utilização de métodos de autenticação única para cada instância da aplicação,
+mantendo a compatibilidade entre elas, um exemplo é a aplicação Owncloud,
+que permite compartilhar seus arquivos na nuvem independente do Owncloud que estiver usando,
 isto é possível utilizando apenas um identificador único, chamado ID Federated Cloud, assim
-possibilitando que os arquivos do usuário sejam compartilhados entre quaisquer instância do
+possibilitando que os arquivos do usuário sejam compartilhados entre suas instâncias do
 Owncloud na nuvem.
 \end{itemize}
 
@@ -490,7 +490,7 @@ apt-cache search web | grep wordpress
 
 Para avaliar se as aplicações possuem suporte a múltiplas instâncias é necessário
 analisar a documentação das aplicações, as aplicações costumam disponibilizar a sua
-documentação na sua página ou em uma wiki, também é possível checar a documentação
+documentação na sua página ou numa wiki, também é possível checar a documentação
 quando se instala uma aplicação nos arquivos de documentação da aplicação em
 /usr/share/doc/ ou também pode-se utilizar os comandos:
 
@@ -519,7 +519,7 @@ pode ser testada e validada, com o objetivo de criar múltiplas instâncias
 no mesmo servidor de forma automatizada a partir de um pacote único, logo os
 exemplos de uso também servirão para refinar e evoluir a arquitetura proposta.
 Para realizar tais validações é importante que as instalações e configurações
-sejam em um ambiente limpo, ou seja, os testes devem ser criados de preferência
+sejam num ambiente limpo, ou seja, os testes devem ser criados de preferência
 em máquinas virtuais com a configuração conhecida como minimal, que contém
 instalado apenas as aplicações necessárias para o funcionamento do sistema operacional.
 
