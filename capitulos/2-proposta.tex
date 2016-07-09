@@ -325,7 +325,9 @@ livros de receitas das aplicações, o repositório do Shak possui alguns script
 para instalar algumas dependências ao iniciar uma máquina virtual, dentro
 desses scripts contém as instalações das dependências para o Shak funcionar perfeitamente
 e também o próprio Chef, que é utilizado pela ferramenta Shak para instalar aplicações
-e suas dependências.
+e suas dependências, porém todos esses passos ja são executados graças ao Vagrantfile
+que está no repositório, facilitando assim a criação de ambientes para o desenvolvimento,
+se a necessidade de execução de nenhum script adicional.
 
 
 \section{Planejamento das Atividades}
@@ -333,7 +335,8 @@ e suas dependências.
 As atividades planejadas para a evolução da ferramenta Shak são baseadas nas aplicações que foram escolhidas na seção
 \ref{subsection:exemplos} essas aplicações serão as aplicações piloto, que ajudarão na evolução
 da solução proposta, o planejamento inicial é que a ferramenta Shak possa concluir com sucesso
-a instalação do Owncloud e Wordpress de forma automatizada,
+a instalação do Owncloud e Wordpress de forma automatizada, os critérios
+para a escolha das ferramentas está definido na seção \ref{validacao},
 levando em consideração todos os aspectos definidos no capítulo
 \ref{cap-metodologia}. As atividades iniciais levantadas foram:
 
@@ -360,14 +363,15 @@ configurações possíveis, porém neste trabalho existem alguns aspectos que de
 consideração, esses aspectos serão importantes para guiar a construção da solução.
 
 \begin{itemize}
-  \item  \textbf{Aspecto 1:} Uso dos aspectos de segurança na implantação de aplicações web.
+  \item  \textbf{Aspecto 1:} Uso dos aspectos de segurança na implantação de aplicações web,
+ como por exemplo utilizar protocolos como HTTPS. 
   \item  \textbf{Aspecto 2:} Uso da implantação automatizada de múltiplas instâncias de
-   aplicações no mesmo servidor.
+   aplicações no mesmo servidor, utilizando hospedagem virtual.
   \item  \textbf{Aspecto 3:} Uso de aplicações que são empacotadas no Debian.
 \end{itemize}
 
 Por fim é necessário definir procedimentos que serão
-feitos para que aconteça a implantação automatizada das aplicações, esses procedimentos são
+feitos para a execução da implantação automatizada das aplicações, esses procedimentos são
 importantes para a construção da arquitetura inicial, considerando
 o processo de implantação de software visto no capítulo \ref{cap-referencial}
 e a referência dos trabalhos relacionados. É preciso definir as fases e os 
@@ -403,7 +407,9 @@ com \cite{omg2006}, e isso será o que o Shak automatizará fases e procedimento
   ferramenta Shak e validar os resultados obtidos.
 \end{itemize}
 
-Também é importante definir os procedimentos de segurança na implantação, e automatizar os que forem possíveis de serem aplicados dentro do contexto da arquitetura proposta. Um exemplo 
+Também é importante definir os procedimentos de segurança na implantação, e 
+automatizar os que forem possíveis de serem aplicados dentro do contexto da 
+arquitetura proposta. Um exemplo 
 é a configuração das aplicações sempre usarem protocolos seguros, como o HTTPS 
 que possui uma camada adicional de segurança que utilizando o protocolo SSL/TLS. 
 Para as aplicações web é necessário utilizar o protocolo HTTPS, para aplicações
