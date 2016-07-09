@@ -104,6 +104,7 @@ deste trabalho. As ferramentas encontradas buscam
 abstrair todo processo de instalação e configuração das aplicações, para que o
 usuário não tenha dificuldades na instalação de aplicações web, as ferramentas também
 trazem uma interface web para que o usuário não precise executar tarefas via terminal.
+
 Outra informação importante é que as ferramentas também utilizam do conceito de
 infraestrutura como código, como visto no capítulo \ref{cap-referencial}, e para
 isso utilizam provisionadores como Chef ou Puppet, tornando mais simples a
@@ -342,7 +343,7 @@ levando em consideração todos os aspectos definidos no capítulo
    \item \textbf{Atividade 3} Forçar as aplicações Wordpress e Owncloud a
    utilizar o protocolo HTTPS.
    \item \textbf{Atividade 4} Suporte a instalação automatizada do servidor de e-mail,
-   utilizando os protocolos: IMAPS e SMTPS.
+   \item \textbf{Atividade 5} Suporte a instalação automatizada do outras aplicações.
  \end{itemize}
 
 Ao verificar que tanto a ferramenta Owncloud como a ferramenta Wordpress precisam
@@ -367,16 +368,11 @@ consideração, esses aspectos serão importantes para guiar a construção da s
 
 Por fim é necessário definir procedimentos que serão
 feitos para que aconteça a implantação automatizada das aplicações, esses procedimentos são
-importantes para a construção da arquitetura inicial considerando
+importantes para a construção da arquitetura inicial, considerando
 o processo de implantação de software visto no capítulo \ref{cap-referencial}
-e a referência dos trabalhos relacionados. Os procedimentos são os seguintes:
-
-\begin{itemize}
-  \item  \textbf{Definir as fases e os procedimentos para implantação automatizada:}
-   Definir quais são etapas da implantação, definir a ordem necessária para a execução de
-  cada fase da implantação, dado a importância de definir as fases que compõem o processo de
-  implantação e de acordo com \cite{omg2006}.
-\end{itemize}
+e a referência dos trabalhos relacionados. É preciso definir as fases e os 
+procedimentos para implantação automatizada, definindo as etapas 
+da implantação.
 
 \subsection{Fases e Procedimentos para implantação}
 
@@ -412,7 +408,7 @@ Também é importante definir os procedimentos de segurança na implantação, e
 que possui uma camada adicional de segurança que utilizando o protocolo SSL/TLS. 
 Para as aplicações web é necessário utilizar o protocolo HTTPS, para aplicações
 de e-mail é necessário utilizar os protocolos SMTP e IMAPS.
-
+ 
 \section{Validação da solução}
 \label{subsection:validacao}
 

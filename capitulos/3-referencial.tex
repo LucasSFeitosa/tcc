@@ -27,10 +27,10 @@ durante a sua instalação, operação, manutenção, e eventual evolução\cite
 
 Gerência de configuração de software fornece a infraestrutura que é a base para
 qualquer tipo de projeto de software. Isto facilita a coordenação e comunicação
-entre o vários participantes em uma equipe de desenvolvimento de software\cite{gcs}.
+entre o vários participantes em uma equipe de desenvolvimento de software.
 Dentro da gerência de configuração de software
 existem várias áreas de atuação, este trabalho aborda especificamente o segundo
-item dos objetivos citados acima, abordando a implantação de software.
+item dos objetivos citados acima, abordando a implantação de software\cite{gcs}.
 
 \section{Implantação de Software}
 
@@ -41,7 +41,7 @@ de desenvolvimento disponibilizará o software ou uma atualização com novas fu
 ao usuário. Sendo assim, a Implantação de software é um conjunto de atividade cruciais
 para todos os fornecedores de software, isto começa desde um pedido de um novo requisito
 de software até todas as medidas necessárias para essa nova versão está disponível
-para o cliente \cite{5741269}. A implantação de software é composta com várias
+para o cliente \cite{5741269}. A implantação de software é composta por várias
 atividades que são essenciais para disponibilizar um produto a alguém, como por exemplo:
 instalação de dependências, arquivos de configuração e instalação da própria aplicação.
 
@@ -61,10 +61,10 @@ com uma maior incerteza no ambiente nos quais seus sistemas vão operar, garanti
 que a implantação do software seja feita da forma correta, evitando quaisquer acontecimentos
 de erros e imprevistos.
 
-Todas essas questões devem ser levadas em consideração e a atividade de implantação de
+Todas essas questões devem ser levadas em consideração, e a atividade de implantação de
 software deve receber uma atenção especial, visto que os softwares estão ficando
 cada vez mais complexos, podendo ter várias ferramentas que são integradas, construídas
-em diferentes linguagens de programação e diferentes configurações, com todas
+em diferentes linguagens de programação e com diferentes configurações, com todas
 essas variáveis compondo
 uma implantação automatizada de software. Este capítulo possui uma subseção sobre
 processo de Implantação de Software, para entender melhor como funciona o processo
@@ -264,23 +264,24 @@ múltiplas iterações, permitindo implantações frequentes de infra-estruturas
 \section{Métodos e ferramentas para implantação automatizada de software}
 \label{subsec:metodoseferramentas}
 
-Existem várias maneiras de se automatizar um processo de implantação software,
-de acordo com \cite{leo2014}, podem-se utilizar linguagens de script de propósito
-geral como (Python, Ruby e Shellscript), ferramentas gerais voltados para o processo
-de implantação ou sistemas de middleware especializados em determinados tipos de artefatos implantáveis.
-Um processo de implantação automatizado depende bastante da integração de diferentes papéis
-em uma organização, foi dito também na seção \ref{subsec:DevOps} que é importante a
-integração entre desenvolvedores e operadores, uma vez que o desenvolvimento desses
-scripts ou utilização das ferramentas precisam de participação de ambos os perfis.
 
-Existem várias soluções técnicas  para melhorar a implantação de software \cite{5741269},
+De acordo com \cite{5741269}, existem várias soluções técnicas para melhorar a implantação de software, 
 no entanto, apesar da sua importância para as empresas de software, as atividades
 de implantação de software têm recebido pouca atenção. Em \cite{deployment1998}
 é dito que recentemente, um número de novas tecnologias começaram a emergir para
 resolver o problema de implantação. As características típicas oferecidas por
 estas tecnologias incluem sistemas para automatizar a implantação a partir de
 configurações, pacotes, gerenciamento de rede e instalação de recursos, com
-propósito de entrega das atualizações de forma automática.
+propósito de entrega das atualizações de forma automática. 
+
+Em \cite{leo2014}, é dito que para a implantação automatizada de software é 
+possível utilizar linguagens de script de propósito
+geral como (Python, Ruby e Shellscript), ou ferramentas gerais voltados para o processo
+de implantação ou sistemas de middleware especializados em determinados tipos de artefatos implantáveis.
+Um processo de implantação automatizado depende bastante da integração de diferentes papéis
+em uma organização, foi dito também na seção \ref{subsec:DevOps} que é importante a
+integração entre desenvolvedores e operadores, uma vez que o desenvolvimento desses
+scripts ou utilização das ferramentas precisam de participação de ambos os perfis.
 
 Assim, um grande facilitador da implantação de software são as ferramentas que auxiliam na
 automação das atividades de implantação, pois dependendo do software, a implantação
@@ -302,7 +303,7 @@ através de regras \cite{6265084}. Por exemplo, é possível especificar regras 
 a partir de uma infraestrutura básica, no Chef essa estrutura é conhecida como livro
 de receitas, em Puppet essa estrutura é conhecida como manifesto, esses recursos
 são basicamente arquivos, no qual o implantador define os passos que serão executados,
-cada um podendo executar: um aplicativo, um serviço, papéis de usuários do sistema,
+cada um podendo executar, por exemplo: um aplicativo, um serviço, papéis de usuários do sistema,
 arquivos de configuração e etc.
 
 Cada passo da configuração desejada pode depender de outros passos, ou seja, para
@@ -422,8 +423,7 @@ porém para este trabalho será necessário apenas o uso de hospedagem virtual.
 Como vimos, um pacote cumpre bem suas responsabilidades dentro de uma implantação de
 software, porém outras atividades também são importantes e que fogem da responsabilidade
 de um pacote, outro fator importante é que um pacote também não pode prever é quais são
-os procedimentos de segurança que devem ser tomados numa implantação, como por exemplo a criação de certificados de
-segurança. Para entender quais são esses procedimentos, será abordado quais são
+os procedimentos de segurança que devem ser tomados numa implantação, como por exemplo a criação de certificados digitais. Para entender quais são esses procedimentos, será abordado quais são
 os procedimentos de segurança na implantação de aplicações web utilizando
 pacotes Debian, no qual trata o uso de protocolos que utilizam criptografia para a segurança de dados,
 que também são procedimentos que podem ser feitos manualmente ou utilizando alguma
@@ -470,7 +470,7 @@ usuários obterem documentos de servidores web a partir de requisições \cite{k
 esses documentos são padronizados, como por exemplo o \textit{HTML}, para que os navegadores
 possam interpretar e passar a informação ao usuário.
 
-De acordo com \cite{kurose2010redes} o \textit{HTML} é um protocolo da camada de aplicação
+De acordo com \cite{kurose2010redes} o \textit{HTTP} é um protocolo da camada de aplicação
 da web, e é implementado em dois programas, um cliente e um servidor, conversando
 um com outro a partir de troca de mensagens, o papel do \textit{HTTP} é definir a estrutura dessas
 mensagens e o modo como o servidor e o cliente as trocam. O principal conteúdo das
@@ -526,14 +526,15 @@ identificação de que é realmente o proprietário daquela chave pública.
 Porém essas entidades certificadoras cobram por esse serviço, e os certificados também
 possuem validade. Uma outra maneira de se obter certificados é a partir dos certificados
 auto-assinados, que são os certificados gerados por conta própria através de
-ferramentas, um exemplo de ferramenta é a ferramenta Open\textit{SSL}, que permite requisitar,
+ferramentas, um exemplo de ferramenta é a ferramenta OpenSSL, que permite requisitar,
 assinar, gerar, exportar e converter certificados digitais.
 
 Um problema em utilizar certificados auto-assinados é que os clientes, como navegadores,
 precisam apenas dos certificados das entidades certificadores em quem eles confiam, por
 exemplo, um navegador não vai conhecer o certificado que foi auto-assinado por
 alguém que ele não conhece, e logo vai avisar ao usuário de que ele não está em uma
-conexão segura, por mais que esteja sobre uma conexão \textit{HTTP}. Por isso que manter certificados
+conexão segura, por mais que esteja sobre uma conexão \textit{HTTP}. Por isso que
+ manter certificados
 auto-assinados pode tornar-se mais difícil, porém é uma saída principalmente para
 fins de testes, e melhor do que não utilizar nenhum tipo de segurança.
 
