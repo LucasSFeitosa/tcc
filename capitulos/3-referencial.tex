@@ -1,15 +1,15 @@
 \chapter{Gestão de configuração de software}
 \label{cap-referencial}
 
-De acordo com \cite{ieegcs} gestão de configuração de software é uma área da
-engenharia de software cujo objetivo é:
+De acordo com \citeonline{ieegcs} gestão de configuração de software \textit{GCS} 
+é uma área da engenharia de software cujo objetivo é:
 
 \begin{itemize}
-  \item  \textbf{a)} Identificar e documentar as características funcionais de
+  \item Identificar e documentar as características funcionais de
   um produto.
-  \item  \textbf{b)} Controlar quaisquer alterações a estas características.
-  \item  \textbf{c)} Registrar e relatar cada mudança do seu estágio de implantação
-  \item  \textbf{d)} Apoiar a auditoria dos produtos, resultados, serviços ou
+  \item Controlar quaisquer alterações a estas características.
+  \item Registrar e relatar cada mudança do seu estágio de implantação
+  \item Apoiar a auditoria dos produtos, resultados, serviços ou
 componentes para verificar a conformidade com requisitos
 
 \end{itemize}
@@ -17,18 +17,19 @@ componentes para verificar a conformidade com requisitos
 Gestão de Configuração de Software é uma das capacidades fundamentais que devem
 estar em qualquer projeto de desenvolvimento de software. Ela é
 tradicionalmente dividida em  quatro atividades, e são elas: configuração,
-identificação, configuração e controle, isto é encarado como uma ferramenta de
+identificação e controle, isto é encarado como uma ferramenta de
 gestão que podem ajudar na orientação de cada projeto, pois ajuda a manter a
-integridade do produto e manter o qualidade do projeto sob controle.\cite{gcs}
-Também é essencial para a engenharia de software, pois estabelece e protege a
+integridade do produto e manter o qualidade do projeto sob controle \cite{gcs}. 
+
+Ela também é essencial para a engenharia de software, pois estabelece e protege a
 integridade de um produto ao longo da sua vida útil, percorrendo através dos
 processos de desenvolvimento, teste e entrega do produto, bem como
-durante a sua instalação, operação, manutenção, e eventual evolução\cite{ieegcs}.
+durante a sua instalação, operação, manutenção e eventual evolução\cite{ieegcs}.
 
-Gerência de configuração de software fornece a infraestrutura que é a base para
+Gestão de configuração de software também fornece a infraestrutura que é a base para
 qualquer tipo de projeto de software. Isto facilita a coordenação e comunicação
 entre o vários participantes numa equipe de desenvolvimento de software.
-Dentro da gerência de configuração de software
+Dentro da gestão de configuração de software
 existem várias áreas de atuação, este trabalho aborda especificamente o segundo
 item dos objetivos citados acima, abordando a implantação de software\cite{gcs}.
 
@@ -38,35 +39,39 @@ Software só oferece valor para os clientes quando eles estão implantados em pr
 e assim possam proporcionar as funcionalidades necessárias ao usuário final,
 por isso a importância da fase de implantação de software, pois é nela em que a equipe
 de desenvolvimento disponibilizará o software ou uma atualização com novas funcionalidades
-ao usuário. Sendo assim, a Implantação de software é um conjunto de atividade cruciais
+ao usuário. 
+
+Sendo assim, a Implantação de software é um conjunto de atividade cruciais
 para todos os fornecedores de software, isto começa desde um pedido de um novo requisito
-de software até todas as medidas necessárias para essa nova versão está disponível
+de software até todas as medidas necessárias para essa nova versão fique disponível
 para o cliente \cite{5741269}. A implantação de software é composta por várias
 atividades que são essenciais para disponibilizar um produto a alguém, como por exemplo:
 instalação de dependências, arquivos de configuração e instalação da própria aplicação.
 
 Uma grande aliada das equipes de desenvolvimento é a implantação automatizada de
 software, que se refere à prática de implantar o software para os usuários finais
-automaticamente, evitando qualquer tipo de execução de esforço manual, por isso
+automaticamente, evitando qualquer tipo de execução de esforço manual, por isso,
 a prática de implantação automatizada facilita na rápida entrega de software, tanto
 para implantações de aplicações em servidores na nuvem, como implantação de software
-para usuários em seus computadores.\cite{7284592}.
+para usuários em seus computadores \cite{7284592}.
 
-De acordo com \cite{deployment1998} as aplicações de software não são mais
-sistemas autônomos, são cada vez mais o resultado da integração de coleções de
+As aplicações de software não são mais sistemas autônomos, 
+são cada vez mais o resultado da integração de coleções de
 componentes, o que pode tornar a implantação de software um processo complicado, e
 nem sempre existir a garantia de que cada componente será implantado corretamente.
 Portanto, a equipe de desenvolvimento deve encontrar uma maneira de lidar
 com uma maior incerteza no ambiente nos quais seus sistemas vão operar, garantindo
 que a implantação do software seja feita da forma correta, evitando quaisquer acontecimentos
-de erros e imprevistos.
+de erros e imprevistos \cite{deployment1998}.
 
 Todas essas questões devem ser levadas em consideração, e a atividade de implantação de
 software deve receber uma atenção especial, visto que os softwares estão ficando
 cada vez mais complexos, podendo ter várias ferramentas que são integradas, construídas
 em diferentes linguagens de programação e com diferentes configurações, com todas
 essas variáveis compondo
-uma implantação automatizada de software. Este capítulo possui uma subseção sobre
+uma implantação automatizada de software. 
+
+Este capítulo possui uma subseção sobre
 processo de Implantação de Software, para entender melhor como funciona o processo
 de implantação
 de software, depois uma subseção sobre \textit{DevOps}, que busca trazer um conceito de implantação
@@ -84,12 +89,12 @@ disponibilidade para uso.
 
 A \textit{OMG} é uma organização internacional sem fins lucrativos
 que aprova padrões abertos para tecnologias e eles definem uma especificação de
-implantação e configuração de aplicações distribuídas baseadas em componentes \cite{omg2006},
-a \textit{OMG} também diz que o processo de implantação é um processo que se inicia desde
+implantação e configuração de aplicações distribuídas baseadas em componentes \cite{omg2006}. 
+A \textit{OMG} também diz que o processo de implantação é um processo que se inicia desde
 a aquisição de um componente até o momento em que esse componente está em plena
 execução, pronto pra uso.
 
-Segundo \cite{omg2006} os principais termos definidos dentro de uma implantação
+Segundo \citeonline{omg2006} os principais termos definidos dentro de uma implantação
 de software são:
 
 \begin{itemize}
@@ -104,11 +109,11 @@ de software são:
   . É por meio de um pacote que um serviço pode ser instalado e executado dentro
   de um sistema operacional, e que são característicos dependendo da distribuição
   do sistema operacional, por exemplo: .deb para Debian e .rpm para Redhat, ou
-  pacotes independentes de sistema operacional como: jar.
+  pacotes independentes de sistema operacional como por exemplo pacotes jar.
 \end{itemize}
 
 Além disso, é definido as fases que compõem o processo de implantação e de acordo
-com \cite{omg2006} as fases são:
+com \citeonline{omg2006} as fases são:
 
 \begin{itemize}
   \item  \textbf{Planejamento:} O planejamento da implantação é uma fase
@@ -140,60 +145,53 @@ de software, caso ocorram.
 Dependendo do tamanho da aplicação essas fases podem se tornar tarefas complicadas,
 e com isso existe a necessidade de automatizar o processo de implantação, assim
 diminuindo a possibilidade de erros comparado a uma tarefa manual e consequentemente
-tornando o trabalho mais ágil, dando adeus aos longos manuais de instalação.
-\cite{humble2010} diz que o objetivo de um processo de implantação automatizado é
-proporcionar um processo de implantação reprodutível, confiável e fácil de ser
-executado.
+tornando o trabalho mais ágil, dando adeus aos longos manuais de instalação. 
+O objetivo de um processo de implantação automatizado é proporcionar um processo
+ de implantação reprodutível, confiável e fácil de ser executado \cite{humble2010}.
 
 Para que a implantação automatizada de software seja possível, é necessário o uso
 de ferramentas para poder automatizar todo o processo de implantação,
 mas é necessário que o implantador compreenda cada fase do processo para que possa ser
 feito um bom planejamento e execução da implantação.
 
-\subsection{Introdução ao DevOps}
+\subsection{Desenvolvimento e Operações (DevOps)}
 \label{subsec:DevOps}
 Como resultado ao longo dos anos, o que aconteceu é que as equipes de desenvolvimento de software
 são capazes de entregar a um ritmo muito mais rápido, principalmente a adoção
-de métodos ágeis de desenvolvimento de software \cite{7173368}, como podemos
-ver na figura \ref{fig:DevOps}, as equipes desenvolvem de forma acelerada, enquanto
-a equipe de operações consegue implantar de forma sequencial. Sendo assim \textit{DevOps}
+de métodos ágeis de desenvolvimento de software \cite{7173368}, as 
+equipes desenvolvem de forma acelerada, enquanto a equipe de operações consegue 
+implantar de forma sequencial. Sendo assim \textit{DevOps}
 nasceu a partir dessa necessidade de implantar software no mesmo ritmo em que
 as equipes são capazes de entregar novas funcionalidades.
-
-\begin{figure}[h]
-  \centering
-  \caption{Fluxo de desenvolvimento de software em relação a implantação}
-  \includegraphics[width=1.0\textwidth]
-      {figuras/devops.eps}
-    Fonte: \cite{7173368}
-\label{fig:DevOps}
-\end{figure}
 
 \textit{DevOps} pode ser visto como um conjunto de práticas e princípios para a entrega de software, onde a
 chave é o foco e a velocidade de entrega e automação, para pode auxiliar na capacidade
 de reagir a mudanças \cite{7173368}. A automação da implantação de software vem
 principalmente pela necessidade do alinhamento entre o time de desenvolvimento
 com o time de operações. Essa necessidade vem em relação a ligação entre as duas
-equipes em relação ao processo de implantação de software, ferramentas para
+equipes e ao processo de implantação de software, ferramentas para
 automatizar implantações de software, as atividades de implantação e responsabilidades
-dentro do ciclo de desenvolvimento, o que antes não era visto, o que acontecia é
-que o time de desenvolvimento terminavam suas funcionalidades e seus testes e
-entregavam a uma equipe de implantação. \textit{DevOps} tenta unir esses dois mundos,
-fazendo com que as duas equipes compartilhem atividades e responsabilidades \cite{6265084}.
+dentro do ciclo de desenvolvimento. 
 
-De acordo com \cite{httermann2012DevOps} a comunidade \textit{DevOps} defende a comunicação
+O que acontecia é que o time de desenvolvimento terminavam suas funcionalidades e seus testes e
+entregavam a uma equipe de implantação, e a equipe de implantação precisava
+lidar com os problemas sem a ajuda do time de desenvolvimento. Por isso \textit{DevOps} 
+tenta unir esses dois mundos, fazendo com que as duas equipes compartilhem atividades
+ e responsabilidades \cite{6265084}.
+
+A comunidade \textit{DevOps} defende a comunicação
 entre a equipe de operações e a equipe de desenvolvimento como um meio de assegurar
 que o os desenvolvedores entendam os problemas associados com as operações. Um dos
-principais benefícios disso é a capacidade de quantificar aspectos do desenvolvimento,
-isto é, levar a melhoria do desenvolvimento do produto, devido a um foco mais nítido
-em agilidade das entregas.
+principais benefícios disso é a capacidade de quantificar os problemas dos dois mundos,
+para que possa levar a melhoria do desenvolvimento do produto \cite{httermann2012DevOps}.
 
-Em \cite{7173368} é abordado as práticas \textit{DevOps}, que podem ser aplicadas diversas
+Em \citeonline{7173368} é abordado as práticas \textit{DevOps}, que podem ser aplicadas diversas
  vezes dentro de um ciclo de desenvolvimento de software, as praticas \textit{DevOps} podem ser resumidas em:
 
  \begin{itemize}
-   \item \textbf{Planejamento Contínuo:} O planejamento deve ser sempre contínuo
-   e evoluindo junto ao planejamento da equipe de desenvolvimento, com tarefas
+   \item \textbf{Planejamento Contínuo:} O planejamento da equipe de operações 
+deve ser sempre contínuo
+   e evoluído junto ao planejamento da equipe de desenvolvimento, com tarefas
    sendo priorizadas o tempo todo e sempre alinhadas de acordo com as decisões tomadas
    em conjunto com a equipe de desenvolvimento.
    \item \textbf{Integração Contínua:} Compartilhar as alterações feitas com toda equipe
@@ -226,80 +224,82 @@ sistema de computação através de código, com o intuito de automatizar a impl
 de um software e o seu gerenciamento de configurações. Por exemplo, um sistema
 com diferentes configurações de hardware e diferentes
 requisitos de software podem ser especificados e implantados automaticamente
-sem intervenção humana.\cite{configurationcodesmell} Tal procedimento pode ser
+sem intervenção humana \cite{configurationcodesmell}. Tal procedimento pode ser
 ainda personalizado conforme as necessidades da implantação, sendo assim, a implantação
 automatizada não só é mais rápida do que o processo manual, mas também é mais
 confiável e reproduzível.
 
-Este conceito se complementa com o uso das práticas \textit{DevOps}, com o objetivo
+Esse conceito se complementa com o uso das práticas \textit{DevOps}, com o objetivo
 de automatizar toda a sua infraestrutura, utilizando ferramentas que auxiliam nesse
 processo. Para aplicar a infraestrutura como código em um projeto, é necessário
 migrar a infraestrutura do projeto em código, essencialmente como um
-código que o desenvolvedor lida no seu trabalho diário\cite{byhand}.
+código que o desenvolvedor lida no seu trabalho diário \cite{byhand}.
 
 Dado que um script de configuração realmente contém código, é mais natural
 para o desenvolvedor tratá-lo como tal, utilizando suas habilidades de codificação,
 e poder utilizar ferramentas que auxiliem a prática do \textit{DevOps} e de colaboração,
-entre a equipe de desenvolvimento e a equipe de infraestrutura\cite{byhand}. Um exemplo disso,
-é que com a infraestrutura sendo tratada como código, é possível utilizar um
+entre a equipe de desenvolvimento e a equipe de infraestrutura \cite{byhand}. 
+
+Com a infraestrutura sendo tratada como código, é possível utilizar um
 sistema de controle de versão, permitindo que outras pessoas colaborem e trabalhem em
-equipe, com a ajuda do git por exemplo, é possível ter uma documentação completa
-do estado do seu sistema, através do histórico de commits, ainda é possível
-o uso de branchs para fazer alterações pertinentes, definir uma branch estável
-com a última versão do sistema, definir uma branch de desenvolvimento para
-realizar testes, além de outros exemplos possíveis para que para que seja possível
-possam trazer o código da infraestrutura para uma estado desejado a partir de
+equipe. Com a ajuda de um sistema de controle de versão  por exemplo, é possível 
+ter uma documentação completa do estado do seu sistema, 
+através do histórico de alterações, para que para que seja possível
+trazer o código da infraestrutura para um estado desejado a partir de
 qualquer outro estado.
 
-
-Para realizar essa prática, existem ferramentas como Chef e Puppet, que
+Para realizar essa prática, existem ferramentas como Chef \footnote{https://www.chef.io/chef/} e 
+Puppet \footnote{https://puppet.com/}, que
 fornecer aos desenvolvedores várias abstrações para expressar etapas de automação,
 de forma independente, esses recursos podem ser executado várias vezes
 obtendo-se sempre o mesmo resultado, trazendo uma capacidade de atingir um determinado
 estado desejado sob de diferente circunstâncias, com potencial de atingir
-múltiplas iterações, permitindo implantações frequentes de infra-estruturas complexas
+múltiplas iterações, permitindo implantações frequentes de infraestruturas complexas
 \cite{Hummer2013}.
-
 
 \section{Métodos e ferramentas para implantação automatizada de software}
 \label{subsec:metodoseferramentas}
 
 
-De acordo com \cite{5741269}, existem várias soluções técnicas para melhorar a implantação de software,
+Existem várias soluções técnicas para melhorar a implantação de software,
 no entanto, apesar da sua importância para as empresas de software, as atividades
-de implantação de software têm recebido pouca atenção. Em \cite{deployment1998}
-é dito que recentemente, um número de novas tecnologias começaram a emergir para
+de implantação de software têm recebido pouca atenção \cite{5741269}. Recentemente 
+um número de novas tecnologias começaram a emergir para
 resolver o problema de implantação. As características típicas oferecidas por
 estas tecnologias incluem sistemas para automatizar a implantação a partir de
 configurações, pacotes, gerenciamento de rede e instalação de recursos, com
-propósito de entrega das atualizações de forma automática.
+propósito de entrega das atualizações de forma automática \cite{deployment1998}.
 
-Em \cite{leo2014}, é dito que para a implantação automatizada de software é
+Para a implantação automatizada de software é
 possível utilizar linguagens de script de propósito
-geral como (Python, Ruby e Shellscript), ou ferramentas gerais voltados para o processo
-de implantação ou sistemas de middleware especializados em determinados tipos de artefatos implantáveis.
+geral como: Python, Ruby e Shellscript. Também existem ferramentas gerais 
+voltados para o processo de implantação, como sistemas de middleware 
+especializados em determinados tipos de artefatos implantáveis \cite{leo2014}.
+
 Um processo de implantação automatizado depende bastante da integração de diferentes papéis
-numa organização, foi dito também na seção \ref{subsec:DevOps} que é importante a
+numa organização. Foi dito também na seção \ref{subsec:DevOps} que é importante a
 integração entre desenvolvedores e operadores, uma vez que o desenvolvimento desses
 scripts ou utilização das ferramentas precisam de participação de ambos os perfis.
 
 Assim, um grande facilitador da implantação de software são as ferramentas que auxiliam na
 automação das atividades de implantação, pois dependendo do software, a implantação
 pode se tornar um processo com muitas atividades ou bastante longo, e a automação
-vêm para facilitar a implantação, evitando erros de instalações manuais e facilitando a replicação em
-vários ambientes diferentes.
+busca simplificar a implantação, para evitar erros de instalações manuais e 
+facilitar a replicação em vários ambientes diferentes.
 
-De acordo com \cite{6265084} tais ferramentas permitem-nos controlar e automatizar
-a configuração de todos os elementos que compõem um sistema, são eles: Hosts, software a serem instalados,
+Tais ferramentas permitem-nos controlar e automatizar a configuração de todos os 
+elementos que compõem um sistema, são eles: Hosts, software a serem instalados,
 usuários do sistema, serviços em execução, arquivos de configuração, tarefas agendadas,
-configuração de rede, armazenamento de arquivos, monitoramento e segurança. Existem
-ferramentas populares como Puppet e Chef, tendo como sua principal função principal
-de automatizar a instalação e configuração de um sistema. Com essas ferramentas é
-possível escrever algumas regras que expressam como um software deve ser configurado,
-e assim a ferramenta configurará o sistema conforme as especificações.
+configuração de rede, armazenamento de arquivos, monitoramento e segurança, com 
+sua função principal de automatizar a instalação e configuração de um 
+sistema. 
 
-Essas ferramentas funcionam de forma declarativa, especificando a instalação de um sistema de
-através de regras \cite{6265084}. Por exemplo, é possível especificar regras para a configuração do sistema
+Assim é possível escrever algumas regras, que expressam como um software deve 
+ser configurado, e assim a ferramenta configurará o sistema conforme as 
+especificações \cite{6265084}. Essas ferramentas funcionam de forma declarativa, 
+especificando a instalação de um sistema de através de regras \cite{6265084}. i
+
+Por exemplo, é possível especificar regras para a configuração do sistema
 a partir de uma infraestrutura básica, no Chef essa estrutura é conhecida como livro
 de receitas, em Puppet essa estrutura é conhecida como manifesto, esses recursos
 são basicamente arquivos, no qual o implantador define os passos que serão executados,
@@ -307,21 +307,22 @@ cada um podendo executar, por exemplo: um aplicativo, um serviço, papéis de us
 arquivos de configuração e etc.
 
 Cada passo da configuração desejada pode depender de outros passos, ou seja, para
-instalar uma aplicação é preciso instalar previamente um compilador ou interpretador da linguagem,
-um exemplo é que para rodar uma aplicação web é necessário a instalação prévia de
-um servidor web. Para lidar com estas dependências essas ferramentas descrevem o estado em que a aplicação
-deve estar, ou seja, todos os pacotes, arquivos de configuração diretórios e usuários,
-sendo possível definir a dependência entre as tarefas a serem executadas.
+instalar uma aplicação é preciso instalar previamente um compilador ou interpretador
+ da linguagem, um exemplo é que para rodar uma aplicação web é necessário a 
+instalação prévia de um servidor web. Para lidar com as dependências essas 
+ferramentas descrevem o estado em que a aplicação deve estar, ou seja, 
+todos os pacotes, arquivos de configuração diretórios e usuários, sendo possível 
+definir a dependência entre as tarefas a serem executadas.
 
-Com essas ferramentas a implantação de um software dentro de uma infraestrutura
-não precisa ser um esforço manual, com elas podemos automatizar toda a implantação
+Com essas ferramentas, a implantação de um software dentro de uma infraestrutura
+não precisa de  esforço manual, com elas podemos automatizar toda a implantação
 de um software, desde a preparação do ambiente até a inicialização da aplicação,
 sendo assim possível reduzir o tempo gasto na implantação, sem qualquer esforço
-adicional, o que integra os conceitos de \textit{DevOps} com implantação de software automatizada
-de software.
+adicional, o que integra os conceitos de \textit{DevOps} com implantação de 
+software automatizada.
 
 Além das ferramentas de automação, é importante também entender o empacotamento de
-programas, tanto Chef como Puppet utilizam a instalação de pacotes como recurso para
+programas. Tanto Chef como Puppet utilizam a instalação de pacotes como recurso para
 poder instalar softwares, ou seja, é possível buscar os softwares desejados a partir
 dos pacotes disponíveis numa distribuição Linux. As distribuições Linux que
 optam por disponibilizar pacotes mantém uma infraestrutura de servidores como fonte
@@ -336,52 +337,54 @@ pacotes independentes de sistema operacional, como por exemplo, pacotes jar da
 linguagem java. Neste trabalho trataremos apenas de pacotes Debian.
 
 
-\subsubsection{Pacotes Debian}
+\subsection{Pacotes Debian}
 
-O formato utilizado pelo Debian GNU/LINUX e seus derivados é o formato de pacotes
+O formato utilizado pelo Debian GNU/Linux e seus derivados é o formato de pacotes
 binários conhecido como .deb, um pacote .deb é composto de arquivos executáveis,
 bibliotecas e documentação associada a um programa ou a um conjunto de programas,
 além de todos os dados e procedimentos necessários para instalar, configurar e remover
-aplicativos de um sistema \cite{araujo2011apprecommender}. A estrutura dos pacotes
-e também os seus requisitos para que sejam distribuídos oficialmente pelo Debian
+aplicativos de um sistema \cite{araujo2011apprecommender}. A estrutura dos pacotes 
+.deb e seus requisitos para que sejam distribuídos oficialmente pelo Debian,
 estão especificados no Manual de Políticas do Debian \cite{debian}.
 
 Ao instalar um pacote .deb, são feitos todos os procedimentos necessários para a instalação
 de uma aplicação, porém, existem ainda casos em que o usuário precise fazer algumas
 configurações, um exemplo é quando o usuário precisa configurar um banco de dados
 ou fazer uma configuração específica de uma aplicação a partir de arquivos de configuração.
+
 Essas tarefas não são de responsabilidade dos pacotes e sim do usuário que deseja utilizar esse
 software, já que o pacote não poderia prever qual é a estrutura e a configuração
 que o usuário pretende utilizar, logo a execução desses passos são feitas de
 acordo com a preferência do usuário, podendo ser feita manualmente ou a partir
 de uma implantação automatizada que utilize alguma ferramenta para isso. Um exemplo
-desse tipo de atividade que não é de responsabilidade de um pacote é a configuração
+desse tipo de atividade, que não é de responsabilidade de um pacote, é a configuração
 de hospedagem virtual, que será visto na subseção a seguir.
 
 \subsection{Múltiplas Instâncias de Aplicações Web com Hospedagem Virtual}
 
 Na implantação de software é necessário escolher um ambiente alvo, onde a aplicação
-será instalada, esse ambiente deve possuir um nó, que é um recurso computacional
-onde se implanta um componente, como por exemplo: uma máquina virtual. Porém pode
+será instalada. Esse ambiente deve possuir um nó, que é um recurso computacional
+onde se implanta um componente. Porém pode
 existir a necessidade de implantar várias aplicações no mesmo servidor, e no caso
 de aplicações web isso pode ser um problema, visto que as aplicações estarão em um
-único servidor, assim também em um único ip, que é o número que o servidor recebe
-ao se conectar na internet.
+único servidor, assim também em um único endereço de \textit{IP}.
 
-Uma forma de solucionar esse problema é o uso de Hospedagem Virtual, de acordo com
-\cite{apachvh} hospedagem virtual é um termo que se refere à prática de executar
-mais de uma aplicação web numa única máquina. Com a Hospedagem Virtual é possível
-hospedar mais de um nome de domínio no mesmo computador, o que significa que você
-tem vários nomes em execução em um único endereço de ip, possibilitando que em um
-mesmo servidor você possa ter uma aplicação em www.blog.com e www.nuvem.com. O fato
-de que eles estão em execução no mesmo servidor físico não é aparente para o usuário final. Essa
-solução é importante para economizar recursos, já que não será necessário possuir
-um servidor dedicado apenas a uma aplicação.
+Uma forma de solucionar esse problema é o uso de hospedagem virtual, que é um 
+termo que se refere à prática de executar mais de uma aplicação web numa única 
+máquina \cite{apachvh}. Com a hospedagem virtual é possível
+hospedar mais de um nome de domínio no mesmo computador, o que possibilita ter
+vários nomes de domínio em execução, num único endereço de \textit{IP}. Isso
+possibilita que, num mesmo servidor, tenha uma aplicação com o endereço
+ www.blog.com e outra com o endereço www.nuvem.com. 
+
+O fato de que eles estão em execução no mesmo servidor físico não é aparente 
+para o usuário final. Essa solução é importante para economizar recursos, 
+já que não será necessário possuir um servidor dedicado apenas a uma aplicação.
 
 Alguns softwares possuem suporte para a implementação de hospedagem virtual, como por
-exemplo o Apache e o Nginx, o funcionamento de ambos é a partir de arquivos que
+exemplo o Apache e o Nginx. O funcionamento de ambos é a partir de arquivos que
 especificam a configuração da hospedagem virtual e determina como o servidor
-irá responder às várias requisições de domínio. No apache o arquivo padrão de configuração
+irá responder às várias requisições de domínio. No apache, o arquivo padrão de configuração
 é chamado 000-default.conf que pode ser utilizado como referência, como por exemplo:
 
 \begin{lstlisting}[language=Xml,label=dice_index,caption={ Exemplo de arquivo de configuração de hospedagem virtual no apache}]
@@ -394,8 +397,8 @@ irá responder às várias requisições de domínio. No apache o arquivo padrã
 \end{lstlisting}
 
 Isso quer dizer que as requisições na porta 80 vindas de webmaster@localhost serão
-direcionadas aos arquivos que estão em /var/www/html. Já no Nginx a configuração
-de hospedagem virtual também é feita através de arquivos de configuração, o arquivo
+direcionadas aos arquivos que estão em /var/www/html. Já no Nginx, a configuração
+de hospedagem virtual também é feita através de arquivos de configuração. O arquivo
 padrão no Nginx é chamado de default.conf que também pode ser utilizado como
 referência, como por exemplo:
 
@@ -405,7 +408,6 @@ referência, como por exemplo:
          root /var/www/example.com/public_html;
          index index.html index.htm;
 
-         # Make site accessible from http://localhost/
          server_name example.com;
   }
 \end{lstlisting}
@@ -413,27 +415,31 @@ referência, como por exemplo:
 Isso quer dizer que as requisições que são ouvidas da porta 80 serão direcionadas
 aos arquivos que estão em /var/www/example.com/public\_html, também é indicado o
 arquivo index que será o arquivo da página inicial do nome do servidor na porta 80,
-além disso é definido example.com para o nome servidor. Além disso existem vários
+além disso é definido example.com para o nome servidor. Além disso, existem vários
 outros recursos que essas ferramentas possuem, como por exemplo o recurso de proxy,
 porém para este trabalho será necessário apenas o uso de hospedagem virtual.
 
 \section{Segurança na Implantação de Aplicações Web}
 \label{sec:seguranca}
 
-Como vimos, um pacote cumpre bem suas responsabilidades dentro de uma implantação de
-software, porém outras atividades também são importantes e que fogem da responsabilidade
-de um pacote, outro fator importante é que um pacote também não pode prever é quais são
-os procedimentos de segurança que devem ser tomados numa implantação, como por exemplo a criação de certificados digitais. Para entender quais são esses procedimentos, será abordado quais são
-os procedimentos de segurança na implantação de aplicações web utilizando
-pacotes Debian, no qual trata o uso de protocolos que utilizam criptografia para a segurança de dados,
-que também são procedimentos que podem ser feitos manualmente ou utilizando alguma
-ferramentas para automatizar o processo.
+Um pacote cumpre bem suas responsabilidades dentro de uma implantação de
+software, porém outras atividades também são importantes e fogem da responsabilidade 
+de um pacote. Outro fator importante é que um pacote também não pode prever é quais são
+os procedimentos de segurança que devem ser tomados numa implantação, como por 
+exemplo, a criação de certificados digitais. 
 
-De acordo com \cite{kurose2010redes} existem algumas categorias predominantes e prejudiciais
-de ataques na internet, são eles: ataques via malware, recusa de serviços, analisador
+Esses procedimentos estão relacionados a segurança na implantação de aplicações web 
+utilizando pacotes Debian, no qual trata o uso de protocolos que utilizam criptografia
+para  a segurança de dados.
+
+Existem algumas categorias predominantes e prejudiciais de ataques na internet, 
+são eles: ataques via malware, recusa de serviços, analisador
 de pacotes, disfarce na fonte e modificação e exclusão de mensagem, e para proteger
-desses ataques é importante o uso de comunicação segura, protegendo as aplicações. Para
-isso Kurose ainda identifica as propriedades desejáveis da comunicação segura, são elas:
+desses ataques é importante o uso de comunicação segura, protegendo as aplicações 
+\cite{kurose2010redes} 
+
+Para isso, \citeonline{kurose2010redes} ainda identifica as propriedades 
+desejáveis da comunicação segura, são elas:
 
 \begin{itemize}
   \item \textbf{Confidencialidade:} Diz respeito a somente o remetente e o destinatário
@@ -448,72 +454,81 @@ isso Kurose ainda identifica as propriedades desejáveis da comunicação segura
   de invasão.
 \end{itemize}
 
-No contexto implantação de aplicações web, tomaremos como objetivo a segurança
-dos dados transmitidos, com isso aplicando criptografia nos protocolos da camada
-de aplicação, que serão utilizados neste trabalho, sendo eles os protocolos \textit{HTTP}
-e \textit{SMTP}, assim adicionando uma camada de segurança as aplicações que
-serão implantadas.
+No contexto de implantação de aplicações web, tomaremos como objetivo a segurança
+dos dados transmitidos. Com isso, aplicando criptografia nos protocolos da camada
+de aplicação, que serão utilizados neste trabalho, sendo eles os protocolos 
+Hypertext Transfer Protocol \textit{HTTP} e Simple Mail Transfer Protocol 
+\textit{SMTP}, assim adicionando uma camada de segurança as aplicações que serão implantadas.
 
-\subsubsection{Protocolos da Camada de Aplicação e Camada de Segurança}
+\subsection{Protocolos da Camada de Aplicação e Camada de Segurança}
 
 As aplicações web utilizam protocolos da camada de aplicação, que é uma das
-cinco camadas do modelo utilizado por Kurose em \cite{kurose2010redes}, a camada
-de aplicação é onde residem as aplicações de rede e seus protocolos, incluindo
-os protocolos \textit{HTTP} e \textit{SMTP}, que são protocolos importantes neste trabalho, já que
+cinco camadas \cite{kurose2010redes}. A camada de aplicação é onde residem as 
+aplicações de rede e seus protocolos, incluindo os protocolos \textit{HTTP} e 
+\textit{SMTP}, que são protocolos importantes neste trabalho, já que 
 aplicações web utilizam o \textit{HTTP} para transferência de arquivos e o \textit{SMTP} para
-transferência de mensagens de correio eletrônico. Os protocolos \textit{HTTP} e \textit{SMTP} estão especificados em RFCs, a especificação do protocolo
-\textit{HTTP} está disponível na RFC 2616 e RFC 1945, já o protocolo \textit{SMTP} está especificado na RFC 5321.
+transferência de mensagens de correio eletrônico. 
+
+Os protocolos \textit{HTTP} e \textit{SMTP} estão especificados em \textit{RFCs}, a 
+especificação do protocolo \textit{HTTP} está disponível na \textit{RFC} 2616 
+\footnote{https://www.ietf.org/rfc/rfc2616.txt}, já o protocolo \textit{SMTP} 
+está especificado na \textit{RFC} 5321 \footnote{https://www.ietf.org/rfc/rfc5321.txt}.
 
 A aplicações que serão utilizadas neste trabalho são aplicações web empacotadas no
-Debian, e aplicações Web costumam ser aplicações cliente-servidor, que permitem aos
-usuários obterem documentos de servidores web a partir de requisições \cite{kurose2010redes},
-esses documentos são padronizados, como por exemplo o \textit{HTML}, para que os navegadores
-possam interpretar e passar a informação ao usuário.
+Debian. Aplicações web costumam ser aplicações cliente-servidor, que permitem aos
+usuários obterem documentos de servidores web a partir de requisições, 
+esses documentos são padronizados, como por exemplo o \textit{HTML}, 
+para que os navegadores possam interpretar e passar a informação ao usuário 
+\cite{kurose2010redes}.
 
-De acordo com \cite{kurose2010redes} o \textit{HTTP} é um protocolo da camada de aplicação
-da web, e é implementado em dois programas, um cliente e um servidor, conversando
-um com outro a partir de troca de mensagens, o papel do \textit{HTTP} é definir a estrutura dessas
-mensagens e o modo como o servidor e o cliente as trocam. O principal conteúdo das
-mensagens trocadas entre clientes e servidores são os objetos, um objeto é basicamente
-um arquivo, podendo ser um vídeo, uma imagem ou um arquivo \textit{HTML}.
+O \textit{HTTP} é um protocolo da camada de aplicação da web, ele é 
+implementado em dois programas, um cliente e um servidor, conversando um 
+com outro a partir de troca de mensagens. O papel do \textit{HTTP} é definir a 
+estrutura dessas mensagens e o modo como o servidor e o cliente as trocam. O 
+principal conteúdo das mensagens trocadas entre clientes e servidores são os 
+objetos. Um objeto é basicamente um arquivo, podendo ser um vídeo, uma imagem 
+ou um arquivo \textit{HTML} \cite{kurose2010redes}.
 
 Já o \textit{SMTP} é protocolo responsável por transferir mensagens de servidores de correio
 remetentes para servidores de correio destinatários, também transferindo arquivos,
 de um servidor de correio para o outro. Uma diferença entre o \textit{HTTP} e o \textit{SMTP}
 é que o protocolo \textit{HTTP} é um protocolo de recuperação de informações, enquanto
-o protocolo \textit{SMTP} é um protocolo de envio de informações \cite{kurose2010redes}. Isso implica que para um
-usuário recuperar as informações de e-mail é necessário o uso de outros componentes,
-já que isso não é possível via \textit{SMTP}, para resolver isto existem os protocolos
-de acesso ao correio, entre eles o \textit{POP3} e \textit{IMAP}.
+o protocolo \textit{SMTP} é um protocolo de envio de informações \cite{kurose2010redes}. 
 
-Para adicionar uma camada de segurança, com sigilo e integridade de dados é necessário
-o uso de outro protocolo, o protocolo \textit{SSL}, para complementar os protocolos \textit{HTTP}
-e \textit{SMTP}. O protocolo \textit{SSL} é utilizado por basicamente todos os sites conhecidos, como Google,
+Isso implica que, para um usuário recuperar as informações de e-mail é necessário 
+o uso de outros componentes. Já que isso não é possível via \textit{SMTP}, para 
+resolver isto existem os protocolos de acesso ao correio, entre eles o 
+Post Office Protocol \textit{POP3} e Internet Message Access Protocol \textit{IMAP}.
+
+Para adicionar uma camada de segurança, com sigilo e integridade de dados, é necessário
+o uso de outro protocolo, o protocolo Secure Socket Layer \textit{SSL}, para 
+complementar os protocolos \textit{HTTP} e \textit{SMTP}. O protocolo \textit{SSL} 
+é utilizado por basicamente todos os sites conhecidos, como Google,
 Amazon, eBay, e seu uso é para oferecer segurança em transações, pois ele cria um
 canal criptografado entre um servidor web e um navegador, garantido que todos os
-dados transmitidos sejam sigilosos e seguros \cite{kurose2010redes}. Para poder
-utilizar o \textit{SSL} é necessário que o seu servidor web possua um certificado, que
-possa responder algumas questões sobre a identidade do seu servidor.
+dados transmitidos sejam sigilosos e seguros \cite{kurose2010redes}. 
 
-Com as devidas configurações, tanto \textit{HTTP} como \textit{SMTP} estarão sobre uma camada adicional de segurança,
-que utiliza o protocolo \textit{SSL}/TLS. Essa camada adicional permite que os dados sejam
+Para poder utilizar o \textit{SSL} é necessário que o servidor web 
+possua um certificado, que possa responder algumas questões sobre a 
+identidade do seu servidor. Com as devidas configurações, tanto \textit{HTTP} como 
+\textit{SMTP} estarão sobre uma camada adicional de segurança, que utiliza o 
+protocolo \textit{SSL}. Essa camada adicional permite que os dados sejam 
 transmitidos por meio de uma conexão criptografada e que se verifique a autenticidade
-do servidor e do cliente por meio de certificados digitais. Agora o próximo passo
-é ver o que são os certificados digitais e seu papel dentro da segurança em aplicações web.
+do servidor e do cliente por meio de certificados digitais. 
 
-\subsubsection{Assinaturas e Certificados Digitais}
+\subsection{Assinaturas e Certificados Digitais}
 
 As assinaturas e certificados digitais servem para agregar confiança e segurança
 nas trocas de dados pela internet, principalmente quando se trata de troca de informações
-sigilosas e que precisam de uma confiabilidade maior, basta imaginar que ninguém
+sigilosas e que precisam de uma confiabilidade maior. Basta imaginar que ninguém
 gostaria de ter seus dados bancários expostos, ou ter seus dados trafegando sem
-nenhum tipo de segurança numa rede aberta. De acordo com \cite{kurose2010redes}
-assinatura digital é uma técnica criptográfica usada para atestar que você e não
-outra pessoa conhece e ou concorda com tal tipo de documento. O que viabiliza a
-assinatura digital é o emprego de criptografia assimétrica ou criptografia de chaves
-públicas, logo a assinatura digital deve ser algo verificável e não falsificável. Uma
+nenhum tipo de segurança numa rede aberta. 
+
+O que viabiliza a assinatura digital é o emprego de criptografia assimétrica 
+ou criptografia de chaves
+públicas. Logo a assinatura digital deve ser algo verificável e não falsificável. Uma
 aplicação importante de assinaturas digitais é a certificação de chaves públicas,
-que certifica que uma chave pública pertence a uma entidade específica\cite{kurose2010redes},
+que certifica que uma chave pública pertence a uma entidade específica \cite{kurose2010redes},
 e a certificação de chaves públicas é utilizada no protocolo \textit{SSL}, visto anteriormente.
 
 Uma maneira de se obter o certificado, é através de uma entidade conhecida como
@@ -523,26 +538,23 @@ entidade certificadora cria um certificado que vincula a chave pública da entid
 a essa verificação, assim o certificado passa a ter a chave pública e a
 identificação de que é realmente o proprietário daquela chave pública.
 
-Porém essas entidades certificadoras cobram por esse serviço, e os certificados também
+Porém, essas entidades certificadoras cobram por esse serviço, e os certificados também
 possuem validade. Uma outra maneira de se obter certificados é a partir dos certificados
 autoassinados, que são os certificados gerados por conta própria através de
 ferramentas, um exemplo de ferramenta é a ferramenta OpenSSL, que permite requisitar,
 assinar, gerar, exportar e converter certificados digitais.
 
 Um problema em utilizar certificados autoassinados é que os clientes, como navegadores,
-precisam apenas dos certificados das entidades certificadores em quem eles confiam, por
+precisam apenas dos certificados das entidades certificadores em quem eles confiam. Por
 exemplo, um navegador não vai conhecer o certificado que foi autoassinado por
 alguém que ele não conhece, e logo vai avisar ao usuário de que ele não está numa
 conexão segura, por mais que esteja sobre uma conexão \textit{HTTP}. Por isso que
  manter certificados
-autoassinados pode tornar-se mais difícil, porém é uma saída principalmente para
+autoassinados pode tornar-se mais difícil, porém é uma saída, principalmente para
 fins de testes, e melhor do que não utilizar nenhum tipo de segurança.
 
-Entretanto, em 2014 a universidade de Michigan, e empresas como a Mozilla, criaram
-uma nova entidade certificadora, que se chama Let's Encrypt, que fornece certificados
-digitais de forma gratuita e que são reconhecidos por todos os navegadores,
-utilizando o protocolo \textit{ACME}  \cite{ACME}, existe um cliente ACME configurado no
-servidor do domínio, que será
-consultado pelo servidor da autoridade certificadora, validando assim o domínio
-em questão, em resumo, let's encrypt faz o trabalho de automatizar a validação da identidade
-pela autoridade certificadora.
+Entretanto, em 2014, a Universidade de Michigan e a fundação Mozilla, entre outras 
+instituições e empresas, criaram uma nova entidade certificadora, que se chama 
+Let's Encrypt, que fornece certificados digitais de forma gratuita e que são 
+reconhecidos por todos os navegadores. Let's Encrypt utiliza o protocolo \textit{ACME} \cite{ACME}, que faz o trabalho de automatizar a validação da identidade pela autoridade 
+certificadora, facilitando a configuração de aplicações web com \textit{HTTPS}. 
