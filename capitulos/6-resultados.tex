@@ -2,39 +2,31 @@
 \label{cap-resultados}
 
 Este capítulo aborda sobre os resultados encontrados, a partir da proposta de
-definição e preparação dos estudos, como dito no capítulo \ref{cap-metodologia}
-as aplicações escolhidas como piloto, para terem a sua instalação automatizada foram Owncloud e
-Wordpress como visto em na seção \label{subsection:validacao}
-, seguindo a escolha da ferramenta Shak como arquitetura inicial. Todo
-o trabalho foi organizado na ferramenta Gitlab
-no projeto Shak disponível no endereço \href{https://gitlab.com/Shak/Shak/} nele
-contém todo o código fonte disponível.
+definição e preparação dos estudos. 
+
+Como dito no capítulo \ref{cap-metodologia}
+as aplicações piloto foram Owncloud e
+Wordpress, como visto em na seção \label{subsection:validacao}. Cada fase da implantação
+será tratado como uma subseção, seguindo a 
+escolha da ferramenta Shak como arquitetura inicial. Todo o trabalho foi 
+organizado na ferramenta Gitlab no projeto Shak disponível no endereço 
+\href{https://gitlab.com/Shak/Shak/} nele contém todo o código fonte disponível.
 
 \section{Wordpress}
 \label{sub:wordpress}
 
 De acordo com a documentação oficial \cite{wordpress} Wordpress é uma plataforma
 semântica de vanguarda para publicação pessoal, com foco na estética, nos
-Padrões web e na usabilidade e ao mesmo tempo é um software livre. Wordpress é
-um dos maiores software de publicação de conteúdo, sendo hoje a maior
-plataforma de Gerenciamento de Conteúdo do mundo, com quase 70\% do mercado. O
+Padrões web e na usabilidade, ao mesmo tempo é um software livre. Wordpress é
+um dos maiores software de publicação de conteúdo. O
 wordpress foi a primeira ferramenta escolhida para automatizar a instalação, partindo
 dessa decisão deu início a construção da solução.
 
-Primeiramente foram seguido os procedimentos para construção da solução definidos na seção \ref{section:construcao}, é
+Primeiramente foram seguido os procedimentos para construção da solução definidos 
+na seção \ref{section:construcao}, é
 necessário definir as fases e procedimentos para a implantação automatizada,
 seguindo as fases que compõem o processo de implantação de aplicações e de acordo
-com \cite{omg2006}, e isso será o que o Shak automatizará, cada fase desse processo
- será tratada como uma subseção. No wordpress as fases e procedimentos são:
-
-\begin{itemize}
-  \item  \textbf{Planejamento}
-  \item  \textbf{Preparação e Instalação de Pacotes}
-  \item  \textbf{Configuração}
-  \item  \textbf{Configuração de múltiplas instâncias}
-  \item  \textbf{Inicialização}
-\end{itemize}
-
+com a seção \ref{sec:fases}.
 
 \subsection{Planejamento}
 
@@ -182,27 +174,18 @@ já estará pronta para uso no hostname escolhido.
 \section{Owncloud}
 \label{sub:owncloud}
 
-De acordo com a documentação oficial \cite{owncloud} Owncloud é uma ferramenta
-para compartilhamento de arquivos, é um software livre em que é possível compartilhar
+Owncloud é uma ferramenta para compartilhamento de arquivos, é um software 
+livre em que é possível compartilhar
 um ou mais arquivos e pastas do seu computador na nuvem, e sincronizá-los com o seu
 servidor Owncloud, esses arquivos são imediatamente sincronizados com o servidor
 e disponibilizados para outros dispositivos que utilizam o ambiente de trabalho
-Owncloud ou app Android ou app IOS.
+Owncloud ou app Android ou app IOS \cite{owncloud} .
 
 Também foram seguidos os mesmos passos feitos em \ref{sub:wordpress}, primeiramente
 foram seguidos os procedimentos para construção da solução definidos em \ref{section:construcao},
 definindo as fases e procedimentos para a implantação automatizada, seguindo as
-fases que compõem o processo de implantação de aplicações e de acordo com \cite{omg2006},
-cada fase desse processo também será tratado como uma subseção. No Owncloud as
-fases e procedimentos são:
-
-\begin{itemize}
-  \item  \textbf{Planejamento}
-  \item  \textbf{Preparação e Instalação de Pacotes}
-  \item  \textbf{Configuração}
-  \item  \textbf{Configuração de múltiplas instâncias}
-  \item  \textbf{Inicialização}
-\end{itemize}
+fases que compõem o processo de implantação de aplicações definidos na seção
+\ref{sec:fases}.
 
 \subsection{Planejamento}
 
@@ -341,18 +324,14 @@ já estará pronta para uso no hostname escolhido.
 \section{Servidor de e-mail}
 \label{sub:e-mail}
 
-Todas as outras aplicações anteriores utilizam o protocolo
-\textit{HTTP} na camada de aplicação, agora com o servidor de e-mail será trabalhado um
-protocolo diferente, como visto no capítulo \ref{cap-referencial}
-de acordo \cite{kurose2010redes} a camada de aplicação é aonde residem as aplicações
-de rede e seus protocolos, dentre eles o protocolo \textit{SMTP} que provê mensagens de correio
-eletrônico.
-
 Servidores de e-mail formam a infraestrutura do e-mail, sendo o \textit{SMTP} o protocolo
 mais importante pois é o responsável por transferir as mensagens de servidores
-de e-mail remetentes para servidores de e-mail destinatários, ou seja, transferindo
-arquivos (as mensagens de e-mail) de um servidor para o outro. Porém o protocolo
-\textit{SMTP} é um protocolo do tipo de envio de informações, diferente do protocolo \textit{HTTP}
+de e-mail remetentes para servidores de e-mail destinatários \cite{kurose2010redes}, 
+ou seja, transferindo
+arquivos (as mensagens de e-mail) de um servidor para o outro. 
+
+Porém o protocolo\textit{SMTP} é um protocolo do tipo de envio de informações, 
+diferente do protocolo \textit{HTTP}
 que é um protocolo que recupera informações, o que acarretaria um problema em que
 o usuário não conseguiria recuperar suas informações como e-mails recebidos, já
 que o \textit{SMTP} apenas envia informações.
@@ -360,37 +339,25 @@ que o \textit{SMTP} apenas envia informações.
 Para solucionar esse problema existem os protocolos de acesso a servidores de
 e-mail, que recuperam as informações do servidor de e-mail até ao usuário final.
 Como visto no capítulo \ref{cap-referencial} existem protocolos de acesso ao correio
-como \textit{POP3}, \textit{IMAP} ou usar até mesmo o protocolo \textit{HTTP} servindo de protocolo para recuperar
-informações.
+como \textit{POP3}, \textit{IMAP} ou usar até mesmo o protocolo \textit{HTTP} 
+servindo de protocolo para recuperar informações.
 
-Dando continuidade na construção da solução, tanto owncloud como wordpress
-possuem funcionalidades que dependem de serviços de e-mail funcionando, portanto
+Tanto owncloud como wordpress possuem funcionalidades que utilizam serviços 
+de e-mail, portanto
 é necessário uma configuração mínima de e-mail para que funcione tais funcionalidades.
-Portanto a construção de um servidor de e-mail possui bastante relevância pois
-assim qualquer aplicação que precisar de um servidor de e-mail já poderá utilizar
+Assim, a construção de um servidor de e-mail possui bastante relevância, para que
+ qualquer aplicação que precisar de um servidor de e-mail, possa utilizar 
 o servidor de e-mail que o Shak fornece.
 
 Para a construção do servidor de e-mail também foram seguidos os mesmos passos
-feitos em \ref{sub:wordpress} e \ref{sub:owncloud}, primeiramente foram seguidos os
-procedimentos para construção da solução definidos em \ref{section:construcao},
-definindo as fases e procedimentos para a implantação automatizada, seguindo as
-fases que compõem o processo de implantação de aplicações e de acordo com \cite{omg2006},
-cada fase desse processo também será tratado como uma subseção. No servidor de e-mail
-as fases e procedimentos são:
-
- \begin{itemize}
-   \item  \textbf{Planejamento}
-   \item  \textbf{Preparação e Instalação de Pacotes}
-   \item  \textbf{Configuração}
-   \item  \textbf{Inicialização}
- \end{itemize}
+feitos no wordpress na seção  \ref{sub:wordpress} e no owncloud na seção\ref{sub:owncloud}. 
 
 \subsection{Planejamento}
 
-Seguindo o mesmo raciocínio das aplicações anteriores, é necessário definir
-quais são as dependências mínimas para o funcionamento do servidor de e-mail,
-como vimos é necessário configurar um servidor que utiliza o procolo \textit{IMAP} ou \textit{POP3},
-também é necessário a configuração de um agente de transferência de e-mails e também
+No planejamento é necessário definir
+quais são as dependências mínimas para o funcionamento do servidor de e-mail, é 
+necessário configurar um servidor que utiliza o procolo \textit{IMAP} ou \textit{POP3},
+também é necessário a configuração de um agente de transferência de e-mails, e também
 alguma ferramenta para controle de spam.
 
 Primeiramente ficou definido que o protocolo escolhido seria o protocolo \textit{IMAP}, já
@@ -398,19 +365,23 @@ que o protocolo \textit{IMAP} é um protocolo online, ou seja, ele se conecta ao
 e realiza o download das mensagens, depois ainda  mantém a conexão para que
 as alterações e mensagens novas sejam atualizadas em tempo real, diferentemente do
 protocolo \textit{POP3} que é um protocolo offline, onde após o download das mensagens encerra
-a conexão. Outra vantagem do \textit{IMAP} em relação ao \textit{POP3} é que o \textit{IMAP} mantém uma cópia
-de mensagens no servidor, ideal para quem precisa acessar os e-mails de mais de um local.
+a conexão. Outra vantagem do \textit{IMAP} em relação ao \textit{POP3} é que o 
+\textit{IMAP} mantém uma cópia de mensagens no servidor, ideal para quem precisa 
+acessar os e-mails de mais de um local.
 
 O servidor \textit{IMAP} escolhido foi o Dovecot que é um servidor de e-mail
-\textit{IMAP}, além disso dovecot é um software livre simples de configurar, requer nenhuma
-administração especial e ele usa muito pouca memória \cite{dovecot}. O agente
-de transferência de e-mails escolhido foi o Postfix, que é um software
+\textit{IMAP}, além disso, dovecot é um software livre simples de configurar, requer nenhuma
+administração especial e ele usa muito pouca memória \cite{dovecot}. 
+
+O agente de transferência de e-mails escolhido foi o Postfix, que é um software
 livre para envio e entrega de e-mails. Sua escolha foi feita pela facilidade de
-integração com o Dovecot, Postfix é quem cuidará do método de entrega de e-mail
-utilizando \textit{SMTP} como protocolo de transferência de e-mails. Por fim a aplicação
-que servirá como anti-spam será o Apache SpamAssassin que é uma plataforma anti-spam
-que que dá aos administradores de servidor de e-mail, um filtro para classificar
- e-mails e bloquear os e-mails que julgarem como spam \cite{spam}.
+integração com o Dovecot. Postfix é quem cuidará do método de entrega de e-mail
+utilizando \textit{SMTP} como protocolo de transferência de e-mails. 
+
+Por fim a aplicação que servirá como anti-spam será o Apache SpamAssassin que 
+é uma plataforma anti-spam que que dá aos administradores de servidor de e-mail, 
+um filtro para classificar e-mails e bloquear os e-mails que julgarem como spam \cite{spam}. 
+As aplicações são:
 
 \begin{itemize}
    \item \textbf{Pacote dovecot para o Debian:} Pacote Debian com o dovecot.
@@ -509,20 +480,7 @@ de wiki que utilizam o MoinMoin são: Wiki do debian, Wiki do python e Wiki do a
 contendo várias documentações relacionado aos seus softwares.
 
 Para a implantação automatizada do MoinMon, foram seguidos os mesmos passos
-feitos em \ref{sub:wordpress}, primeiramente
-foram seguidos os procedimentos para construção da solução definidos em \ref{section:construcao},
-definindo as fases e procedimentos para a implantação automatizada, seguindo as
-fases que compõem o processo de implantação de aplicações e de acordo com \cite{omg2006},
-cada fase desse processo também será tratado como uma subseção. No MoinMoin as
-fases e procedimentos são:
-
-\begin{itemize}
-  \item  \textbf{Planejamento}
-  \item  \textbf{Preparação e Instalação de Pacotes}
-  \item  \textbf{Configuração}
-  \item  \textbf{Configuração de múltiplas instâncias}
-  \item  \textbf{Inicialização}
-\end{itemize}
+feitos em wordpress \ref{sub:wordpress} e owncloud \ref{sub:owncloud}.
 
 \subsection{Planejamento}
 
@@ -627,7 +585,7 @@ já estará pronta para uso no hostname escolhido.
 \section{Segurança}
 \label{sub:seguranca}
 
-Na implantação das aplicações foram feitos dois procedimentos de segurança, o primeiro
+Na implantação das aplicações web foram feitos dois procedimentos de segurança, o primeiro
 é forçar as aplicações web a sempre utilizarem o protocolo \textit{HTTP} e a segunda foi forçar o
 servidor de e-mail a não permitir a conexão via protocolos sem criptografia, neste
 caso sendo o protocolo imap utilizando o protocolo imaps. Para que isso fosse possível
