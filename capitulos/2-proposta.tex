@@ -165,8 +165,8 @@ A solução proposta neste trabalho será baseada na evolução da ferramenta Sh
 ao máximo que usuários sem conhecimento técnico possam ter os seus próprios 
 serviços de internet, garantindo a sua privacidade e segurança. 
 
-Durante Google Summer of Code 2015 \footnote{https://www.google-melange.com/gsoc/project/details/google/gsoc2015/thiagovsk/5757334940811264}, foram feitos várias atividades relacionadas na 
-evolução da ferramenta Shak, pelo autor deste trabalho. Tonando a ferramenta uma
+Durante Google Summer of Code 2015 \footnote{https://www.google-melange.com/gsoc/project/details/google/gsoc2015/thiagovsk/5757334940811264}, o autor deste trabalho realizou 
+várias atividades relacionadas na evolução da ferramenta Shak. Tornando a ferramenta uma
  solução para implantação automatizada de aplicações web em sistemas Debian, 
 justificando assim a sua escolha.
 
@@ -274,7 +274,7 @@ adicionando novas aplicações web a ferramenta Shak.
 
 Uma das necessidades para o desenvolvimento do projeto é ter um ambiente de desenvolvimento
 flexível, que possa ser rapidamente construído e destruído, onde seja possível 
-testar as implantações feitas pela ferramenta Shak e verificar os erros caso 
+testar as implantações feitas pela ferramenta Shak e verificar os erros, caso 
 aconteçam. 
 
 Para isso, é necessário utilizar alguma ferramenta que automatize processo de 
@@ -343,14 +343,14 @@ Os critérios para a escolha das ferramentas está definido na Seção \ref{vali
 levando em consideração todos os aspectos definidos no Capítulo
 \ref{cap-metodologia}. As atividades iniciais levantadas foram:
 
- \begin{itemize}
-   \item \textbf{Atividade 1} Suporte a instalação automatizada do Wordpress.
-   \item \textbf{Atividade 2} Suporte a instalação automatizada do Owncloud.
-   \item \textbf{Atividade 3} Forçar as aplicações Wordpress e Owncloud a
+ \begin{enumerate}
+   \item  Suporte a instalação automatizada do Wordpress.
+   \item  Suporte a instalação automatizada do Owncloud.
+   \item  Forçar as aplicações Wordpress e Owncloud a
    utilizar o protocolo HTTPS.
-   \item \textbf{Atividade 4} Suporte a instalação automatizada do servidor de e-mail,
-   \item \textbf{Atividade 5} Suporte a instalação automatizada do outras aplicações.
- \end{itemize}
+   \item  Suporte a instalação automatizada do servidor de e-mail,
+   \item  Suporte a instalação automatizada do outras aplicações.
+ \end{enumerate}
 
 Ao verificar que tanto a ferramenta Owncloud como a ferramenta Wordpress precisam
 de configurações servidor de e-mail para algumas funcionalidades, também foi adicionado
@@ -366,13 +366,13 @@ configurações possíveis. Neste trabalho existem alguns aspectos que
 deverão ser levados em consideração, esses aspectos serão importantes para 
 guiar a proposta da solução.
 
-\begin{itemize}
-  \item  \textbf{Aspecto 1:} Uso dos aspectos de segurança na implantação de aplicações web,
+\begin{enumerate}
+  \item  Uso dos aspectos de segurança na implantação de aplicações web,
    como por exemplo utilizar protocolos como \textit{HTTPS}.
-  \item  \textbf{Aspecto 2:} Configuração de múltiplas instâncias de
+  \item  Configuração de múltiplas instâncias de
    aplicações, utilizando hospedagem virtual.
-  \item  \textbf{Aspecto 3:} Uso de aplicações que são empacotadas no Debian.
-\end{itemize}
+  \item  Uso de aplicações que são empacotadas no Debian.
+\end{enumerate}
 
 Por fim é necessário definir procedimentos que serão
 feitos para a execução da implantação automatizada das aplicações. Esses procedimentos são
@@ -385,14 +385,16 @@ da implantação.
 \subsection{Fases e Procedimentos para implantação}
 \label{sec:fases}
 
-Primeiramente é necessário definir as fases e os procedimentos para a implantação automatizada,
-seguindo as fases que compõem o processo de implantação de aplicações e de acordo
+%TODO pontunar/quebrar em 2 sentenças aqui:
+Primeiramente, é necessário definir as fases e os procedimentos para a implantação automatizada,
+seguindo as fases que compõem o processo de implantação de aplicações, e de acordo
 com o Capítulo \ref{cap-referencial}, adicionando a fase de configuração de múltiplas
 instâncias, que é a fase responsável por habilitar a implantação de múltiplas 
 instâncias de uma aplicação, permitindo que seja possível que 
 tenha várias instâncias da mesma aplicação sem duplicação de recursos. As fases 
 definidas são:
 
+%TODO ilustrar:
 \begin{itemize}
   \item  \textbf{Planejamento} 
   \item  \textbf{Preparação e Instalação de Pacotes}   
@@ -401,7 +403,7 @@ definidas são:
   \item  \textbf{Inicialização/Execução} 
 \end{itemize}
 
-Também é importante definir quais as caraterísticas de segurança na implantação, e
+Também, é importante definir quais as caraterísticas de segurança na implantação, e
 automatizar os que forem possíveis de serem aplicados dentro do contexto da
 arquitetura proposta. Um exemplo
 é a configuração das aplicações sempre usarem protocolos seguros, como o \textit{HTTPS}. 
@@ -418,20 +420,24 @@ fim de refinar e evoluir a solução conforme problemas forem surgindo. A escolh
 desses exemplos de uso devem ser feitas a partir de aplicações reais e
 conhecidas na comunidade de software livre. 
 
-Outros aspectos também são importantes e devem ser levados em consideração para 
-a escolha das aplicações piloto, as seguintes características foram levadas em consideração
+%TODO colocar depois da primeira etapa exploratoria
+
+Depois da fase exploratória com os projetos wordpress e owncloud, observou-se 
+outros aspectos importantes que devem ser levados em consideração para 
+a escolha das aplicações piloto. As seguintes características foram levadas em consideração
 para a escolha das aplicações:
 
-\begin{itemize}
-  \item  \textbf{Aplicações empacotadas no Debian:} Como o intuito do trabalho
+%TODO definir se vai usar primeira ou terceira pessoa
+\begin{description}
+  \item  [Aplicações empacotadas no Debian:] Como o intuito do trabalho
   é realizar implantações múltiplas a partir de um pacote único, tais aplicações
   devem estar empacotadas e disponíveis para instalação nos servidores do Debian.
   Isso impacta na escolha da ferramenta, visto que não será necessário ter o trabalho
   de empacotar aplicações que ainda não estão empacotadas no Debian.
-  \item  \textbf{Servidor web compatível:} As ferramentas escolhidas devem no
+  \item  [Servidor web compatível:] As ferramentas escolhidas devem no
   mínimo possuir o servidor web compatível, por exemplo: as aplicações juntas
   devem possuir suporte para o servidor Nginx ou Apache ou similares.
-  \item  \textbf{Aplicações com comunidades ativas:} Como estamos trabalhando
+  \item  [Aplicações com comunidades ativas:] Como estamos trabalhando
   com software livre, é importante que os softwares escolhidos possuem comunidades
   ativas, isso pode ajudar na resolução de possíveis problemas, logo aplicações
   em que sejam difíceis de comunicar com a sua comunidade devem ser evitadas, e
@@ -440,24 +446,24 @@ para a escolha das aplicações:
   erros ou melhorias dentro dessas ferramentas e tais erros e melhorias possam ser
   reportados para a comunidade, ou até mesmo problemas solucionados e devolvidos aos mantenedores
   das ferramentas.
-  \item  \textbf{Documentação do software:} A documentação do software também deve
+  \item  [Documentação do software:] A documentação do software também deve
   ser levado em consideração, principalmente a documentação da instalação e configuração
   dentro da ferramenta, ferramentas que não possuem documentação de instalação e
   configuração devem ser evitadas.
-  \item  \textbf{Aplicações com suporte a federação:} Aplicações federadas permitem
+  \item  [Aplicações com suporte a federação:] Aplicações federadas permitem
  utilização de métodos de autenticação única para cada instância da aplicação,
 mantendo a compatibilidade entre elas, um exemplo é a aplicação Owncloud,
 que permite compartilhar seus arquivos na nuvem independente do Owncloud que estiver usando,
 isto é possível utilizando apenas um identificador único, chamado ID Federated Cloud, assim
 possibilitando que os arquivos do usuário sejam compartilhados entre suas instâncias do
 Owncloud na nuvem.
-\end{itemize}
+\end{description}
 
 A partir dessas características definidas, é necessário encontrar os exemplos de uso
 que possam servir para a execução da solução, todos as aplicações que servirão como
 exemplos de uso devem possuir pacotes incluídos na distribuição oficial do Debian.
 
-\subsection{Exemplos de uso}
+\subsection{Exemplos de uso: busca dos pacotes das aplicações}
 \label{subsection:exemplos}
 
 Para encontrar as aplicações que possam se encaixar dentro desses parâmetros
@@ -498,19 +504,20 @@ Analisando a documentação de algumas aplicações como Wordpress, Redmine,
 Owncloud, Mailman, Wikimédia, foram escolhidas as aplicações Wordpress e Owncloud por
 conter as características definidas anteriormente. 
 
-Primeiro foi feito uma análise da documentação dessas ferramentas para encontrar a
+Primeiro, foi feito uma análise da documentação dessas ferramentas para encontrar a
 possibilidade da configuração de múltiplas instâncias no mesmo servidor, além
 disso também foi visto se as aplicações tinham suporte ao servidor Nginx que é
 o servidor utilizado pelo Shak, por fim as duas aplicações também foram escolhidas
 pela grande comunidade de usuários ativa e as duas aplicações também possuírem
 canais de \textit{IRC} para tirar dúvidas com desenvolvedores e usuários. 
 
-Também foi levado em consideração o fato da  aplicação Owncloud dar suporte a federação,
+Também, foi levado em consideração o fato da  aplicação Owncloud dar suporte a federação,
 com  o objetivo de compartilhar arquivos em servidores na nuvem de forma simples,
 como por exemplo: enviar um e-mail de um servidor para outro, sendo assim,
 também é possível migrar os seus arquivos pessoais de um servidor Owncloud a outro.
 
-Com as aplicações que serão exemplos de uso escolhidas, a proposta de arquitetura
+%TODO ilustrar a arquitetura
+Com as aplicações que serão exemplos de uso, a proposta de arquitetura
 pode ser testada e validada, com o objetivo de criar múltiplas instâncias
 no mesmo servidor de forma automatizada a partir de um pacote único. Logo os
 exemplos de uso também servirão para refinar e evoluir a arquitetura proposta.
@@ -529,4 +536,5 @@ Após a execução da implantação, o testador deverá verificar o perfeito
 funcionamento de algumas funcionalidades básicas da aplicação escolhida,
 e principalmente verificar a implantação de várias instâncias da mesma
 aplicação no mesmo servidor destino, observando o perfeito funcionamento de todas as
-instâncias implantadas, assim validando a implantação de múltiplas instâncias.
+instâncias implantadas, assim validando a implantação de múltiplas instâncias, conforme
+apresentado nos resultados do próximo capítulo.
