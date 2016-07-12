@@ -19,10 +19,12 @@ O objetivo deste trabalho é resolver a seguinte questão:
 \end{center}
 
 Dado objetivo e a questão problema, este trabalho consiste em contribuir
-com a construção de uma solução de engenharia de software que permita implantar
+com a construção de uma solução de engenharia de software, que permita implantar
 aplicações web em sistemas Debian GNU/Linux de forma automatizada e segura. Essa
 construção será feita a partir dos conhecimentos adquiridos durante
-o curso de engenharia de software. Além disso a solução proposta deverá passar
+o curso de engenharia de software. 
+
+Além disso a solução proposta deverá passar
 por uma validação dos resultados, baseada na observação
 da execução da solução em exemplos de uso, onde cada exemplo conterá uma aplicação
 real que deverá ser implantada com sucesso. Essa validação tem seus procedimentos
@@ -35,7 +37,7 @@ de aplicações web. Essa pesquisa é uma pesquisa aplicada pois tem como objeti
 gerar conhecimentos para aplicação prática \cite{gerhardt2009metodos},
 relacionada a aplicações que auxiliam na implantação automatizada de software.
 
-A partir dessa pesquisa será possível encontrar os trabalhos relacionados. Os
+A partir dessa pesquisa, será possível encontrar os trabalhos relacionados. Os
 trabalhos encontrados também serão de insumo para auxiliar na construção da
 solução a partir da análise dos resultados que foram encontrados. As próximas
 seções tratam dos trabalhos relacionados encontrados e dos métodos e
@@ -43,47 +45,53 @@ procedimentos para construção da solução, além da validação da solução.
 
 \section{Trabalhos Relacionados}
 \label{section:trabalhos_relacionados}
-Para responder a questão problema primeiramente deve ser feito um levantamento
+Para responder a questão problema, primeiramente deve ser feito um levantamento
 de trabalhos relacionados, para compreender como a automação da implantação
-de software está sendo utilizada como solução na academia e nas empresas, e
-quais são os procedimentos e técnicas utilizados.
+de software está sendo utilizada como solução no contexto acadêmica e nas empresas, e
+quais são os procedimentos e técnicas utilizados para implantação automatizada de
+aplicações web.
 
 Para entender o que acontece na comunidade da computação em relação a implantação
 automatizada de aplicações, foi feito uma busca de alguns trabalhos relacionados. O primeiro
-trabalho relacionado é um trabalho acadêmico feito por \cite{leo2014} no qual foi
+trabalho relacionado é um trabalho acadêmico, no qual foi
 desenvolvido um sistema de middleware chamado CHOReOS Enactment Engine, que é um
 sistema que possibilita a implantação distribuída e automatizada de composições
 de serviços web numa estrutura virtualizada, no qual opera no modelo
 computacional conhecido como plataforma como serviço. Seu foco maior é na automação da 
-implantação automatizada de aplicações aliado com a gerência de recursos de hardware.
+implantação automatizada de aplicações aliado com a gerência de recursos de 
+hardware \cite{leo2014} .
 
 Existem também ferramentas disponíveis no mercado que também trazem a proposta
-de automação de instalação de aplicações alguns exemplos são: \cite{bitnami}
-BitNami que é uma biblioteca de aplicativos populares e ambientes de
-desenvolvimento que podem ser instalados com apenas um clique, através de uma interface web
-amigável. BitNami automatiza todo o processo de compilar e configurar os aplicativos, 
+de automação de instalação de aplicações, um exemplo é BitNami \footnote{https://bitnami.com/} 
+que é uma biblioteca de aplicativos populares e ambientes de desenvolvimento, 
+que podem ser instalados com apenas um clique, 
+através de uma interface web amigável \cite{bitnami}.
+
+BitNami automatiza todo o processo de compilar e configurar os aplicativos, 
 e todas as suas dependências (bibliotecas de terceiros, linguagem de programação, 
 bases de dados) para que o usuário comum não se preocupe com questões técnicas. 
 
-Também temos o \cite{sandstormio}
-Sandstorm é uma plataforma de código aberto para servidores
+Outro exemplo é o Sandstorm \footnote{https://sandstorm.io/}, que é uma plataforma de código aberto para servidores
 pessoais. Sandstorm permite que você execute o seu próprio servidor e instalar
-facilmente as aplicações em que o próprio Sandstorm dá suporte, e por fim a 
-ferramenta \cite{juju} Juju que lhe permite implementar, configurar, gerenciar, 
+facilmente as aplicações em que o próprio Sandstorm suporta \cite{sandstormio}.
+
+E por fim a ferramenta Juju \footnote{https://jujucharms.com/} que lhe permite 
+implementar, configurar, gerenciar, 
 e manter serviços de forma rápida e eficiente automatizando a instalação e 
-configuração de aplicações na nuvem.
+configuração de aplicações na nuvem \cite{juju}.
 
 O estudo dessas aplicações serve como base para entender como funcionam as aplicações
 já existentes, e como elas são feitas, para que assim seja possível identificar
 as ferramentas que são utilizadas para solucionar problemas semelhantes ao problema deste
 trabalho. 
 
-Por exemplo, a ferramenta JuJu utiliza uma abstração conhecida como charm,
-que é basicamente um arquivo com trechos de código, esse código define um serviço, como por exemplo: instale um banco de dados ou instale a aplicação Wordpress. Um charm
+A ferramenta JuJu utiliza uma abstração conhecida como charm,
+que é basicamente um arquivo com trechos de código. Esse código define um serviço, 
+como por exemplo: instale um banco de dados ou instale a aplicação Wordpress. Um charm
 contém toda a lógica de que você precisa para implementar e integrar uma aplicação,
 contendo todo o processo de download de ferramentas, instalação e configuração de
-aplicações, podendo ser por provisionadores como Chef, Puppet ou Docker \cite{juju},
-é possível reaproveitar os charms feitos pela comunidade do JuJu assim
+aplicações, podendo ser por provisionadores como Chef, Puppet ou Docker \cite{juju}. 
+É possível reaproveitar os charms feitos pela comunidade do JuJu assim
 reaproveitando os charms prontos ou não precisando escrever um charm do zero.
 
 Já Bitnami, já trás as aplicações prontas pra uso. Assim o usuário interage com 
@@ -95,12 +103,12 @@ que é utilizada por eles.
 
 Por último, o trabalho feito por \cite{leo2014} é voltado
 para serviços web de grande escala, com foco em implantação de aplicações na
-nuvem e escalar infraestrutura, utilizando o middleware construído em seu trabalho, 
+nuvem, além  de escalar infraestrutura, utilizando o middleware construído em seu trabalho, 
 assim podendo gerenciar ambientes de computação em nuvem como Amazon EC2 e 
 Openstack, a sua aplicação utiliza o Chef solo como seu agente de configuração.
 
 Com esse levantamento, as soluções encontradas não resolvem totalmente
-o problema, a grande diferença é que as ferramentas encontradas não utilizam os pacotes
+o problema. A grande diferença é que as ferramentas encontradas não utilizam os pacotes
 disponibilizados pelo Debian, mas elas servem como motivação para o desenvolvimento
 deste trabalho. As ferramentas encontradas buscam
 abstrair todo processo de instalação e configuração das aplicações, para que o
@@ -108,7 +116,7 @@ usuário não tenha dificuldades na instalação de aplicações web, as ferrame
 trazem uma interface web para que o usuário não precise executar tarefas via terminal.
 
 Outra informação importante, é que as ferramentas também utilizam do conceito de
-infraestrutura como código, como visto no capítulo \ref{cap-referencial}, e para
+infraestrutura como código, como visto no capítulo \ref{cap-referencial}. Para
 isso utilizam os provisionadores Chef ou Puppet, tornando mais simples a
 construção de códigos para a instalação e configuração de aplicações.
 
@@ -221,7 +229,7 @@ da interferência de algum usuário.
 \textbf{Diferencial para outras soluções existentes}
 
 Existem outras soluções disponíveis para instalação de aplicações por um clique,
-como por exemplo \cite{bitnami} e \cite{sandstormio}, mas o Shak se
+como Bitnami e Sandstorm, mas o Shak se
 diferencia delas nos seguintes aspectos:
 
 \begin{itemize}
@@ -276,7 +284,7 @@ sem a necessidade mais de diversos passos e processos para se preparar um ambien
 e sem perder o poder de controle, segurança e qualidade da implantação das aplicações.
 
 Para adicionar no Shak uma aplicação que esteja disponível nos repositórios oficiais
-do Debian, é necessário construir o livro de receitas para a
+do Debian, é necessário construir o livro de receitas, utilizando chef, para a
 aplicação desejada, essa atividade será uma das atividades deste trabalho, sendo assim
 adicionando novas aplicações web a ferramenta Shak.
 
@@ -293,7 +301,7 @@ ser um processo longo e demorado, além disso, é possível que ocorra erros por
 desatenção ao executar vários passos manuais. 
 
 Por isso é necessário o uso de uma ferramenta para auxiliar na criação das máquinas
-virtuais, que serão nó alvo das implantações, e que seja possível gerenciá-las 
+virtuais, que serão os nós alvo das implantações, para que seja possível gerenciá-las 
 de forma automatizada, servindo de suporte para a criação dos a
 mbientes de desenvolvimento e facilitando a execução e teste da implantação das
 aplicações escolhidas.
@@ -312,15 +320,15 @@ que forem criar uma máquina virtual, reduzindo ao máximo os problemas que surg
 por causa das diferenças entre sistemas operacionais e configurações de sistema.
 
 Quando executamos o comando vagrant up o Vagrant cria uma máquina virtual com as
-configurações que estão no arquivo Vagrantfile na raiz do projeto Shak, nele
+configurações que estão no arquivo Vagrantfile na raiz do projeto Shak. Nele
 estão todas as configurações e definições da máquina virtual em questão. Para o
 Vagrant criar uma máquina virtual é preciso escolher um software que gerencie
 esse procedimento, a ferramenta escolhida foi o Virtualbox para poder emular o sistema
 operacional uma máquina virtual, assim o Vagrant inicia uma máquina virtual
 utilizando o Virtualbox, com a distribuição Debian GNU/Linux e as configurações que estiverem
-definida no arquivo de configuração Vagrantfile.
+definida no arquivo de configuração no arquivo Vagrantfile.
 
-Para executar o Vagrant basta instalar o pacote disponível pelo Debian, além disso
+Para executar o Vagrant basta instalar o pacote vagrant, disponível pelo Debian. Além disso
 o repositório do projeto Shak já possui um Vagrantfile padrão para que todos os
 desenvolvedores tenham o mesmo ambiente, passa acessar a máquina virtual criada
 basta acessá-la via ssh, o Vagrant já gerencia as chaves ssh, portanto basta
@@ -336,10 +344,10 @@ Com o ambiente de desenvolvimento definido, agora é possível iniciar a criaç�
 livros de receitas das aplicações. O repositório do Shak possui alguns scripts
 para instalar algumas dependências. Nesses scripts contém as instalações das 
 dependências para o Shak funcionar perfeitamente
-e também o próprio Chef, que é utilizado pela ferramenta Shak para instalar aplicações
-e suas dependências, porém todos esses passos já são executados graças ao Vagrantfile
+e também o próprio Chef, que é utilizado pela ferramenta Shak para instalar aplicações, 
+porém todos esses passos já são executados graças ao Vagrantfile
 que está no repositório, facilitando assim a criação de ambientes para o desenvolvimento,
-se a necessidade de execução de nenhum script adicional.
+sem a necessidade de execução de nenhum script adicional.
 
 
 \section{Planejamento das Atividades}
@@ -380,9 +388,9 @@ guiar a construção da solução.
 
 \begin{itemize}
   \item  \textbf{Aspecto 1:} Uso dos aspectos de segurança na implantação de aplicações web,
- como por exemplo utilizar protocolos como HTTPS.
-  \item  \textbf{Aspecto 2:} Uso da implantação automatizada de múltiplas instâncias de
-   aplicações no mesmo servidor, utilizando hospedagem virtual.
+   como por exemplo utilizar protocolos como \textit{HTTPS}.
+  \item  \textbf{Aspecto 2:} Configuração de múltiplas instâncias de
+   aplicações, utilizando hospedagem virtual.
   \item  \textbf{Aspecto 3:} Uso de aplicações que são empacotadas no Debian.
 \end{itemize}
 
@@ -396,12 +404,12 @@ da implantação.
 
 \subsection{Fases e Procedimentos para implantação}
 \label{sec:fases}
+
 Primeiramente é necessário definir as fases e os procedimentos para a implantação automatizada,
 seguindo as fases que compõem o processo de implantação de aplicações e de acordo
-com \cite{omg2006}, As fases utilizadas enstre trabalho são as fases definidas no 
-capítulo \ref{cap-referencial} com o acréssimo da fase de configuração de múltiplas
-instâncias, que é a fase responsável por habilitar a configuração 
-de múltiplas instâncias de uma aplicação, permitindo que seja possível que 
+com o capítulo \ref{cap-referencial}, com o acréssimo da fase de configuração de múltiplas
+instâncias, que é a fase responsável por habilitar a implantação de múltiplas 
+instâncias de uma aplicação, permitindo que seja possível que 
 tenha várias instâncias da mesma aplicação sem duplicação de recursos. As fases 
 definidas são:
 
@@ -413,8 +421,7 @@ definidas são:
   \item  \textbf{Inicialização/Execução} 
 \end{itemize}
 
-
-Também é importante definir os procedimentos de segurança na implantação, e
+Também é importante definir quais as caraterísticas de segurança na implantação, e
 automatizar os que forem possíveis de serem aplicados dentro do contexto da
 arquitetura proposta. Um exemplo
 é a configuração das aplicações sempre usarem protocolos seguros, como o \textit{HTTPS}. 
@@ -429,9 +436,10 @@ com aplicações que possam servir para a execução da arquitetura construída,
 aplicações que tenham todo o seu processo de instalação e configuração automatizado, a
 fim de refinar e evoluir a solução conforme problemas forem surgindo. A escolha
 desses exemplos de uso devem ser feitas a partir de aplicações reais e
-conhecidas na comunidade de software livre. Outros aspectos também são importantes e
-devem ser levados em consideração para a escolha das
-aplicações piloto, as seguintes características foram levadas em consideração
+conhecidas na comunidade de software livre. 
+
+Outros aspectos também são importantes e devem ser levados em consideração para 
+a escolha das aplicações piloto, as seguintes características foram levadas em consideração
 para a escolha das aplicações:
 
 \begin{itemize}
@@ -522,22 +530,23 @@ com  o objetivo de compartilhar arquivos em servidores na nuvem de forma simples
 como por exemplo: enviar um e-mail de um servidor para outro, sendo assim,
 também é possível migrar os seus arquivos pessoais de um servidor Owncloud a outro.
 
-Com as aplicações que serão exemplos de uso escolhidas a proposta de arquitetura
+Com as aplicações que serão exemplos de uso escolhidas, a proposta de arquitetura
 pode ser testada e validada, com o objetivo de criar múltiplas instâncias
 no mesmo servidor de forma automatizada a partir de um pacote único. Logo os
 exemplos de uso também servirão para refinar e evoluir a arquitetura proposta.
 
-Para realizar tais validações é importante que as instalações e configurações
-sejam executadas num ambiente limpo, ou seja, os testes devem ser criados de preferência
+Para realizar tais validações, é importante que as instalações e configurações
+sejam executadas num ambiente limpo, os testes devem ser criados de preferência
 em máquinas virtuais com a configuração conhecida como minimal, que contém
 instalado apenas as aplicações necessárias para o funcionamento do sistema operacional.
 
 A partir da execução dos exemplos de uso será possível a coleta de informações
-necessárias para a validação da implantação correta das aplicações, essa
-validação a princípio será feita a partir da execução da implantação e
-verificação das funcionalidades da aplicação implantada, ou seja,
-após a execução da implantação o testador deverá verificar o perfeito
+necessárias para a validação da implantação correta das aplicações. Essa
+validação a princípio, será feita a partir da execução da implantação e
+verificação das funcionalidades da aplicação implantada.
+
+Após a execução da implantação, o testador deverá verificar o perfeito
 funcionamento de algumas funcionalidades básicas da aplicação escolhida,
 e principalmente verificar a implantação de várias instâncias da mesma
 aplicação no mesmo servidor destino, observando o perfeito funcionamento de todas as
-instâncias implantadas assim validando a implantação de múltiplas instâncias.
+instâncias implantadas, assim validando a implantação de múltiplas instâncias.
