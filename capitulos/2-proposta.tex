@@ -295,16 +295,14 @@ flexível, que possa ser rapidamente construído e destruído, onde seja possív
 testar as implantações feitas pela ferramenta Shak e verificar os erros caso 
 aconteçam. 
 
-Para isso é necessário utilizar alguma ferramenta que automatize processo de 
+Para isso, é necessário utilizar alguma ferramenta que automatize processo de 
 construir ambientes de desenvolvimento. Construir ambientes manualmente pode
 ser um processo longo e demorado, além disso, é possível que ocorra erros por
-desatenção ao executar vários passos manuais. 
-
-Por isso é necessário o uso de uma ferramenta para auxiliar na criação das máquinas
-virtuais, que serão os nós alvo das implantações, para que seja possível gerenciá-las 
-de forma automatizada, servindo de suporte para a criação dos a
-mbientes de desenvolvimento e facilitando a execução e teste da implantação das
-aplicações escolhidas.
+desatenção ao executar vários passos manuais. A ferramenta escolhida deverá auxiliar
+ na criação das máquinas virtuais, que serão os nós alvo 
+das implantações, para que seja possível gerenciá-las de forma automatizada, 
+servindo de suporte para a criação dos ambientes de desenvolvimento e 
+facilitando a execução e teste da implantação das aplicações escolhidas.
 
 A ferramenta escolhida para auxiliar a criação de um ambiente de desenvolvimento é
 a ferramenta Vagrant \footnote{https://www.vagrantup.com/}. Com o Vagrant é 
@@ -407,7 +405,7 @@ da implantação.
 
 Primeiramente é necessário definir as fases e os procedimentos para a implantação automatizada,
 seguindo as fases que compõem o processo de implantação de aplicações e de acordo
-com o capítulo \ref{cap-referencial}, com o acréssimo da fase de configuração de múltiplas
+com o capítulo \ref{cap-referencial}, adicionando a fase de configuração de múltiplas
 instâncias, que é a fase responsável por habilitar a implantação de múltiplas 
 instâncias de uma aplicação, permitindo que seja possível que 
 tenha várias instâncias da mesma aplicação sem duplicação de recursos. As fases 
