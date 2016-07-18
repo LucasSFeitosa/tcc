@@ -1,7 +1,7 @@
 \chapter{Definição e Preparação dos Estudos}
 
 \label{cap-metodologia}
-Este capítulo aborda sobre todo o planejamento para a execução do projeto,
+Este capítulo aborda o planejamento para a execução do projeto,
 contendo os procedimentos e técnicas utilizados, a fim de
 explicar como o desenvolvimento foi realizado para atingir os seus objetivos,
 servindo como base para a sua reprodução em trabalhos futuros.
@@ -30,14 +30,14 @@ real que deverá ser implantada com sucesso. Essa validação tem seus procedime
 definidos na Seção \ref{subsection:validacao} e as definições dos exemplos de uso
 estão na Seção \ref{subsection:exemplos}.
 
-Inicialmente, será feito uma pesquisa dos trabalhos relacionados, para compreender
-quais são as soluções na engenharia de software que buscam a automação da implantação
-de aplicações web. Esta pesquisa é uma pesquisa aplicada, pois tem como objetivo
+Inicialmente, foi realizado uma pesquisa dos trabalhos relacionados, para compreender
+quais eram as soluções na engenharia de software que buscam a automação da implantação
+de aplicações web. Esta pesquisa foi uma pesquisa aplicada, pois tem como objetivo
 gerar conhecimentos para aplicação prática \cite{gerhardt2009metodos},
 relacionada a aplicações que auxiliam na implantação automatizada de software.
 
-Os trabalhos encontrados também serão insumos para auxiliar na proposta da
-solução, a partir da análise dos resultados que serão encontrados. As próximas
+Os trabalhos encontrados serviram de insumos para auxiliar na proposta da
+solução, a partir da análise dos resultados que foram encontrados. As próximas
 seções tratam dos trabalhos relacionados encontrados e dos métodos e
 procedimentos para a propsota da solução e para sua validação da solução.
 
@@ -45,36 +45,31 @@ procedimentos para a propsota da solução e para sua validação da solução.
 \label{section:trabalhos_relacionados}
 
 Para entender o que acontece na área relacionada com a implantação
-automatizada de aplicações, foi feito uma busca de alguns trabalhos relacionados recentes. 
-O primeiro
-trabalho relacionado é um trabalho acadêmico, \citeonline{leo2014} em seu mestrado,
-desenvolveu um sistema de middleware chamado CHOReOS Enactment Engine, que é um
-sistema que possibilita a implantação distribuída e automatizada de composições
+automatizada de aplicações, foi feito uma busca de alguns trabalhos relacionados recentes. \citeonline{leo2014} em seu mestrado,
+desenvolveu um sistema de middleware chamado CHOReOS Enactment Engine, que possibilita a implantação distribuída e automatizada de composições
 de serviços web numa estrutura virtualizada, no qual opera no modelo
-computacional conhecido como plataforma como serviço. Seu foco maior é na automação da 
+computacional conhecido como plataforma como serviço. Seu foco é na automação da 
 implantação automatizada de aplicações aliado com a gerência de recursos de 
 hardware.
 
-Existem também ferramentas disponíveis no mercado que também trazem a proposta
-de automação de instalação de aplicações, \citeonline{bitnami} é uma 
+Existem ferramentas disponíveis no mercado que também trazem a proposta
+de automação de instalação de aplicações, BitNami \footnote{https://bitnami.com/} é uma 
 uma biblioteca de aplicativos populares e ambientes de desenvolvimento, 
 que podem ser instalados com apenas um clique, 
-através de uma interface web amigável 
-
-BitNami \footnote{https://bitnami.com/}, automatiza todo o processo de 
+através de uma interface web amigável. Ela automatiza todo o processo de 
 compilar e configurar os aplicativos, 
 e todas as suas dependências (bibliotecas de terceiros, linguagem de programação, 
-bases de dados) para que o usuário comum não se preocupe com questões técnicas. 
+bases de dados) para que o usuário comum não se preocupe com questões técnicas \citeonline{bitnami}. 
 
-\citeonline{sandstormio}  que é uma plataforma de código aberto para servidores
+Sandstom.io \footnote{https://sandstorm.io/} é uma plataforma de código aberto para servidores
 pessoais. Sandstorm permite que você execute o seu próprio servidor e instalar
-facilmente as aplicações em que o próprio Sandstorm \footnote{https://sandstorm.io/} 
-suporta. 
+facilmente as aplicações em que o próprio Sandstorm 
+suporta \citeonline{sandstormio}. Sandstorm trás aplciações prontas para uso, em que o usuário escolhe por meio de uma interface web e a aplicação já está disponível.
 
-\cite{juju} é uma ferramenta que lhe permite 
+JuJu \footnote{https://jujucharms.com/} é uma ferramenta que lhe permite 
 implementar, configurar, gerenciar, 
 e manter serviços de forma rápida e eficiente automatizando a instalação e 
-configuração de aplicações na nuvem, JuJu \footnote{https://jujucharms.com/} 
+configuração de aplicações na nuvem cite{juju}. É 
 é uma ferramenta mantida pela canonical. 
 
 O estudo dessas aplicações serve como base para entender como funcionam as aplicações
@@ -83,17 +78,16 @@ as ferramentas que são utilizadas para solucionar problemas semelhantes ao prob
 trabalho. 
 
 A ferramenta \citeonline{juju} utiliza uma abstração conhecida como charm,
-que é basicamente um arquivo com trechos de código. Esse código define um serviço, 
-como por exemplo: instale um banco de dados ou instale a aplicação Wordpress. Um charm
+que é basicamente um arquivo com trechos de código. Um charm
 contém toda a lógica de que você precisa para implementar e integrar uma aplicação,
 contendo todo o processo de download de ferramentas, instalação e configuração de
 aplicações, podendo ser por provisionadores como Chef, Puppet ou Docker. 
-É possível reaproveitar os charms feitos pela comunidade do JuJu assim
+É possível reaproveitar os charms feitos pela comunidade do JuJu. Assim
 reaproveitando os charms prontos ou não precisando escrever um charm do zero.
 
 Já \citeonline{bitnami} trás as aplicações prontas pra uso. Assim o usuário interage com 
 uma interface web, no formato clique para instalar, porém
-o usuário só tem a disposição as aplicações disponibilizadas pelo Bitnami, isso
+o usuário só tem a disposição as aplicações disponibilizadas pelo Bitnami. Isso
 também é a forma em que o Sandstorm trabalha, com a diferença de que o Sandstorm é
 software livre, já Bitnami tem o código fechado, o que dificulta a análise da arquitetura
 que é utilizada por eles. 
@@ -104,10 +98,9 @@ nuvem, além  de escalar infraestrutura, utilizando o middleware construído em 
 assim podendo gerenciar ambientes de computação em nuvem como Amazon EC2 e 
 Openstack, a sua aplicação utiliza o Chef solo como seu agente de configuração.
 
-Com esse levantamento, as soluções encontradas não resolvem totalmente
+Com esse levantamento de trabalhos recentes, as soluções encontradas não resolvem totalmente
 o problema. A grande diferença é que as ferramentas encontradas não utilizam os pacotes
-disponibilizados pelo Debian, mas elas servem como motivação para o desenvolvimento
-deste trabalho. As ferramentas encontradas buscam
+disponibilizados pelo Debian. De toda forma, as ferramentas encontradas buscam
 abstrair todo processo de instalação e configuração das aplicações, para que o
 usuário não tenha dificuldades na instalação de aplicações web, as ferramentas também
 trazem uma interface web para que o usuário não precise executar tarefas via terminal.
@@ -117,8 +110,7 @@ infraestrutura como código, como visto no Capítulo \ref{cap-referencial}. Para
 isso, utilizam os provisionadores Chef ou Puppet, tornando mais simples a
 construção de códigos para a instalação e configuração de aplicações. Por outro lado, 
 observa-se que o problema tratado neste trabalho não está totalmente resolvido. Assim, 
-a proposta de solução de implantação automatizada de software em sistemas debian, 
-é o objetivo deste trabalho, 
+a proposta de solução de implantação automatizada de software em sistemas debian, que é o objetivo deste trabalho, 
 o diferenciando dos demais.
 
 \section{Proposta da solução}
@@ -165,8 +157,8 @@ A solução proposta neste trabalho será baseada na evolução da ferramenta Sh
 ao máximo que usuários sem conhecimento técnico possam ter os seus próprios 
 serviços de internet, garantindo a sua privacidade e segurança. 
 
-Durante Google Summer of Code 2015 \footnote{https://www.google-melange.com/gsoc/project/details/google/gsoc2015/thiagovsk/5757334940811264}, o autor deste trabalho realizou 
-várias atividades relacionadas na evolução da ferramenta Shak. Tornando a ferramenta uma
+Durante o Google Summer of Code 2015 \footnote{https://www.google-melange.com/gsoc/project/details/google/gsoc2015/thiagovsk/5757334940811264}, o autor deste trabalho realizou 
+várias atividades relacionadas à evolução da ferramenta Shak. Tornando a ferramenta uma
  solução para implantação automatizada de aplicações web em sistemas Debian, 
 justificando assim a sua escolha.
 
@@ -175,23 +167,10 @@ com os seguintes princípios:
 
 \textbf{Base: Pacotes Debian}
 
-A plataforma Shak é baseada no sistema de pacotes do Debian, uma das distribuições 
-GNU/Linux mais consolidadas e com maior comunidade internacional. Os
-pacotes do Debian fornecem atualizações consistentes de correção e de segurança,
+A plataforma Shak utiliza aplicações que são distribuídas oficialmente pelo sistema de pacotes do Debian. Essas aplicações utilizam os
+pacotes do Debian, que fornecem atualizações consistentes de correção e de segurança,
 e são utilizados por uma grande quantidade de usuários que reportam problemas a
-serem resolvidos. Porém, para garantirem uma flexibilidade e suportar diferentes
-casos de uso, normalmente os pacotes não realizam a configuração completa do ambiente,
-deixando os detalhes finais para o administrador do sistema.
-
-Além disso, normalmente as aplicações web são compostas de diversos pacotes, e
-requerem configurações específicas que dizem respeito a mais de uma aplicação,
-e que por consequência não poderiam ser feitas automaticamente de uma forma sustentável, 
-em nenhum dos pacotes. Por isso, os pacotes além de serem instalados, precisam ser configurados.
-
-Isso é feito muitas vezes de forma manual, ou ainda, requer conhecimento técnico
-para executar configurações mais complexas, afastando os possíveis usuários
-que queiram utilizar alguma aplicação fornecida pelo Debian, mas não possuem
-conhecimento técnico para a configuração das aplicações.
+serem resolvidos. 
 
 \textbf{Nova abstração: Aplicação}
 
@@ -202,7 +181,9 @@ contém mais de um pacote, inclusive necessita de configurações em vários pac
 Uma vez que o usuário seleciona uma determinada aplicação para
 ser instalada, os pacotes necessários são instalados e as configurações
 necessárias são feitas de forma automática, fornecendo de fato um "instalador
-de um clique" para aplicações suportadas. Todas as configurações são feitas de
+de um clique" para aplicações suportadas. 
+
+Todas as configurações são feitas de
 forma consistente utilizando uma ferramenta comum, buscando o maior nível de
 segurança possível, e assumindo responsabilidades que não podem ser tomadas por
 um pacote, e realizando tarefas complexas de forma automatizada, sem a necessidade
@@ -410,7 +391,7 @@ arquitetura proposta. Um exemplo
 Para as aplicações web é necessário utilizar o protocolo HTTPS, para aplicações
 de e-mail é necessário utilizar os protocolos \textit{SMTP} e \textit{IMAPS}.
 
-\section{Validação da solução}
+\subsection{Validação da solução}
 \label{subsection:validacao}
 
 Para validar a arquitetura proposta no trabalho serão feitos exemplos de uso,
