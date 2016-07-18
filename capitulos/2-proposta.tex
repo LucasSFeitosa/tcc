@@ -39,7 +39,7 @@ relacionada a aplicações que auxiliam na implantação automatizada de softwar
 Os trabalhos encontrados serviram de insumos para auxiliar na proposta da
 solução, a partir da análise dos resultados que foram encontrados. As próximas
 seções tratam dos trabalhos relacionados encontrados e dos métodos e
-procedimentos para a propsota da solução e para sua validação da solução.
+procedimentos para a proposta da solução e para sua validação da solução.
 
 \section{Trabalhos Relacionados}
 \label{section:trabalhos_relacionados}
@@ -64,7 +64,7 @@ bases de dados) para que o usuário comum não se preocupe com questões técnic
 Sandstom.io \footnote{https://sandstorm.io/} é uma plataforma de código aberto para servidores
 pessoais. Sandstorm permite que você execute o seu próprio servidor e instalar
 facilmente as aplicações em que o próprio Sandstorm 
-suporta \citeonline{sandstormio}. Sandstorm trás aplciações prontas para uso, em que o usuário escolhe por meio de uma interface web e a aplicação já está disponível.
+suporta \citeonline{sandstormio}. Sandstorm trás aplicações prontas para uso, em que o usuário escolhe por meio de uma interface web e a aplicação já está disponível.
 
 JuJu \footnote{https://jujucharms.com/} é uma ferramenta que lhe permite 
 implementar, configurar, gerenciar, 
@@ -137,7 +137,6 @@ Os critérios para escolha das ferramentas são:
   ou que não cobre o serviço de hospedagem. A ferramenta escolhida foi o Gitlab \footnote{http://gitlab.com/}, por ser um software livre.
   \item \textbf{Ferramenta para documentação de código:} Uma ferramenta que possa
   documentar o projeto, o gitlab já possui uma wiki disponível para cada projeto.
-  para o projeto.
   \item \textbf{Ferramenta de gerenciamento de tarefas:} Uma ferramenta que possa
   gerenciar as tarefas que serão executadas, que estão em execução ou que vão ser executadas
   durante o desenvolvimento do projeto. O gerenciamento de tarefas também pode ser
@@ -193,7 +192,7 @@ da interferência de algum usuário.
 
 Existem outras soluções disponíveis para instalação de aplicações por um clique,
 como Bitnami e Sandstorm, mas o Shak se
-diferencia delas nos seguintes aspectos:
+diferencia delas nas seguintes características:
 
 \begin{itemize}
   \item O Shak pode ser implantando numa máquina virtual na nuvem ou em servidores físicos
@@ -316,13 +315,24 @@ sem a necessidade de execução de nenhum script adicional.
 As atividades planejadas para a evolução da ferramenta Shak são baseadas nas 
 aplicações que foram escolhidas na Seção
 \ref{subsection:exemplos}. Essas aplicações serão as aplicações piloto, que 
-ajudarão na evolução da solução proposta, o planejamento inicial é que a ferramenta 
-Shak, possa concluir inicialmente com sucesso, a instalação do Owncloud e Wordpress de forma 
-automatizada. 
+ajudarão na evolução da solução proposta. 
 
-Os critérios para a escolha das ferramentas está definido na Seção \ref{validacao},
-levando em consideração todos os aspectos definidos no Capítulo
-\ref{cap-metodologia}. As atividades iniciais levantadas foram:
+Inicialmente, foi feito uma fase exploratória, no qual o planejamento inicial foi
+suportar a instalação do Owncloud e Wordpress de forma 
+automatizada. A escolha das duas ferramentas foi feita pelo autor e pelo co-orientador
+deste trabalho, levando em consideração a popularidade das duas ferramentas nas 
+comunidades de software livre. 
+
+Essa fase exploratória inicial foi necessária para evoluir a ferramenta
+, visto que a ferramenta Shak só suportava aplicações estáticas, ou seja, apenas 
+aplicações que contenham 
+código \textbf{HTML}, \textbf{CSS} e \textbf{Javascript}. 
+
+A fase exploratória foi importante para apoiar na definição das fases e procedimentos para implantação
+automatizada. Além de que, a partir dela, foram definidos características importantes 
+que devem ser levados em consideração para a escolha das próximas aplicações .
+
+As atividades iniciais levantadas foram:
 
  \begin{enumerate}
    \item  Suporte a instalação automatizada do Wordpress.
@@ -342,13 +352,13 @@ uma estratégia de como serão gerenciados os certificados de segurança para ap
 o protocolo HTTPS. Além dessas atividades previstas, também foram feitas evoluções
 no Shak para que seja possível a implementação dessas atividades.
 
-Dentro da implantação automatizada de software Debian GNU/Linux temos várias
-configurações possíveis. Neste trabalho existem alguns aspectos que 
-deverão ser levados em consideração, esses aspectos serão importantes para 
+Dentro da implantação automatizada de software Debian GNU/Linux existem várias
+configurações possíveis. Neste trabalho existem algumas características que 
+deverão ser levados em consideração, essas características serão importantes para 
 guiar a proposta da solução.
 
 \begin{enumerate}
-  \item  Uso dos aspectos de segurança na implantação de aplicações web,
+  \item  Segurança na implantação de aplicações web,
    como por exemplo utilizar protocolos como \textit{HTTPS}.
   \item  Configuração de múltiplas instâncias de
    aplicações, utilizando hospedagem virtual.
@@ -366,22 +376,29 @@ da implantação.
 \subsection{Fases e Procedimentos para implantação}
 \label{sec:fases}
 
-%TODO pontunar/quebrar em 2 sentenças aqui:
-Primeiramente, é necessário definir as fases e os procedimentos para a implantação automatizada,
-seguindo as fases que compõem o processo de implantação de aplicações, e de acordo
-com o Capítulo \ref{cap-referencial}, adicionando a fase de configuração de múltiplas
+%TODO: defini mas não listei
+Primeiramente, é necessário definir as fases e os procedimentos para a implantação 
+automatizada. Para isso, é necessário seguir as fases que compõem o processo de 
+implantação de aplicações, e de acordo com o Capítulo \ref{cap-referencial}. 
+
+Neste trabalho, foi adicionado a fase de configuração de múltiplas
 instâncias, que é a fase responsável por habilitar a implantação de múltiplas 
-instâncias de uma aplicação, permitindo que seja possível que 
-tenha várias instâncias da mesma aplicação sem duplicação de recursos. As fases 
+instâncias de uma aplicação. Isso possibilita a configuração 
+de várias instâncias da mesma aplicação sem duplicação de recursos. As fases 
 definidas são:
 
 %TODO ilustrar:
 \begin{itemize}
-  \item  \textbf{Planejamento} 
-  \item  \textbf{Preparação e Instalação de Pacotes}   
-  \item  \textbf{Configuração}   
-  \item  \textbf{Configuração de múltiplas instâncias}   
-  \item  \textbf{Inicialização/Execução} 
+  \item  \textbf{Planejamento}: Identificar os componentes mínimos necessários na implantação
+ da aplicação.  
+  \item  \textbf{Preparação e Instalação de Pacotes}: Preparar o ambiente alvo, 
+isso envolve configuração do sistema operacional e instalação de dependências necessárias.
+  \item  \textbf{Configuração}: Editar os arquivos de configuração necessários, tanto 
+da aplicação como de suas dependências.
+  \item  \textbf{Configuração de múltiplas instâncias}: Configurar o suporte de múltiplas instâncias
+da aplicação.   
+  \item  \textbf{Inicialização/Execução}: Testar as receitas construídas, utilizando
+a ferramenta Shak. 
 \end{itemize}
 
 Também, é importante definir quais as caraterísticas de segurança na implantação, e
@@ -401,12 +418,9 @@ fim de refinar e evoluir a solução conforme problemas forem surgindo. A escolh
 desses exemplos de uso devem ser feitas a partir de aplicações reais e
 conhecidas na comunidade de software livre. 
 
-%TODO colocar depois da primeira etapa exploratoria
-
-Depois da fase exploratória com os projetos wordpress e owncloud, observou-se 
-outros aspectos importantes que devem ser levados em consideração para 
-a escolha das aplicações piloto. As seguintes características foram levadas em consideração
-para a escolha das aplicações:
+Depois da fase exploratória, observou-se outras características importantes que 
+devem ser levados em consideração para a escolha das aplicações. As seguintes 
+características foram levadas em consideração para a escolha das aplicações:
 
 %TODO definir se vai usar primeira ou terceira pessoa
 \begin{description}
