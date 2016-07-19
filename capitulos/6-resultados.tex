@@ -15,7 +15,7 @@ via issues, no repositório do próprio projeto Shak
 
 Wordpress é uma plataforma semântica de vanguarda para publicação pessoal, 
 com foco na estética, nos padrões web e na usabilidade, ao mesmo tempo é 
-um software livre. Além disso, wordpress é um dos maiores softwares de 
+um software livre. Além disso, Wordpress é um dos maiores softwares de 
 publicação de conteúdo \cite{wordpress}. 
 
 Primeiramente, foram seguido os procedimentos para a proposta da solução, que foram
@@ -28,16 +28,16 @@ seguindo as fases que compõem o processo proposto descrito na Seção \ref{sec:
 O planejamento da implantação é uma fase para identificar os componentes
 necessários na implantação da aplicação. Definir quais são as dependências mínimas
 para o funcionamento de uma aplicação, tais como: banco de dados, pacotes
-pré-instalados e aplicações pré-configuradas. Para o wordpress foram escolhidas:
+pré-instalados e aplicações pré-configuradas. Para o Wordpress foram escolhidas:
 
 \begin{itemize}
-   \item \textbf{Pacote wordpress para o Debian:} Pacote Debian com o wordpress.
+   \item \textbf{Pacote Wordpress para o Debian:} Pacote Debian com o Wordpress.
    \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o Nginx.
-   \item \textbf{Pacote mysql para o Debian:} Pacote Debian com o banco de dados mysql
-   que será usado pelo wordpress.
+   \item \textbf{Pacote MySQL para o Debian:} Pacote Debian com o banco de dados MySQL
+   que será usado pelo Wordpress.
    \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
-   necessários para configurar o wordpress, o servidor web Nginx e o banco de dados
-   mysql.
+   necessários para configurar o Wordpress, o servidor web Nginx e o banco de dados
+   MySQL.
 \end{itemize}
 
 A instalação e execução desses recursos serão feitas nas fases seguintes.
@@ -45,23 +45,23 @@ A instalação e execução desses recursos serão feitas nas fases seguintes.
 \subsection{Preparação e Instalação de Pacotes}
 \label{wordpress:preparacao}
 
-São os procedimentos necessários para preparar o ambiente alvo para que o wordpress
+São os procedimentos necessários para preparar o ambiente alvo para que o Wordpress
 possa ser executado. Isso envolve a configuração do sistema operacional; instalação
 e configuração de dependências necessárias; e a transferência do componente
 para o servidor onde ele será executado.
 
-Para o funcionamento correto do wordpress é necessário a instalação do PHP5. Além
+Para o funcionamento correto do Wordpress é necessário a instalação do PHP5. Além
 disso, também é necessário algum servidor web: no caso do Shak o servidor
 web padrão é o Nginx e o banco de dados escolhido foi o MySQL.
 
 Para solução desse procedimento, foi necessário instalar os pacotes php5-fpm; o pacote
-do banco de dados mysql; e o pacote nginx. Além disso, habilitar o serviço do
-php5-fpm. Todos esses passos são feitos antes da instalação do wordpress,
+do banco de dados MySQL; e o pacote Nginx. Além disso, habilitar o serviço do
+php5-fpm. Todos esses passos são feitos antes da instalação do Wordpress,
 pois, por padrão, ele instala o servidor
 Apache2.
 
 Para executar essas instalações é preciso criar uma receita no livro de receitas
-do wordpress. Primeiramente, é necessário criar o próprio livro de receitas no Shak.
+do Wordpress. Primeiramente, é necessário criar o próprio livro de receitas no Shak.
 Para isso existe o comando \textit{rake cookbook}, que cria a estrutura básica
 de um livro de receitas que deve ser usado pelo Chef, como exempleficado no trecho
 de código abaixo:
@@ -76,7 +76,7 @@ de código abaixo:
   ** Creating metadata for cookbook: wordpress
 \end{lstlisting}
 
-Assim com a estrutura gerada pelo rake, é possível declarar as dependências do wordpress
+Assim com a estrutura gerada pelo rake, é possível declarar as dependências do Wordpress
 dentro do arquivo default.rb, dentro da pasta recipes. Nesse arquivo são declarados
 os pacotes que devem ser instalados; os arquivos de configuração;
 os serviços que precisar executar; as pastas; permissões de usuários etc. Um exemplo
@@ -94,14 +94,14 @@ de como declarar pacotes e serviços dentro de uma receita Chef é:
 \label{wordpress:preparacao}
 
 Como levantado no planejamento, é necessário a edição de arquivos de configuração
-do wordpress; arquivos de configuração do banco de dados; e arquivo de configuração
-do nginx.
+do Wordpress; arquivos de configuração do banco de dados; e arquivo de configuração
+do Nginx.
 
 O primeiro arquivo de configuração é o config.php. É nesse arquivo de
 configuração onde ficam as informações de banco de dados como nome do banco de dados,
 login do usuário do banco de dados, senha, o endereço do banco de dados e o diretório
 onde irá ficar os arquivos estáticos, como temas, galeria de mídias e plugins 
-de cada instância do wordpress.
+de cada instância do Wordpress.
 
 Por padrão, ele deve ficar no diretório /etc/wordpress/ e seu nome deve conter
 a seguinte estrutura: config-nomehost.php, onde o nomehost deve ser o hostname
@@ -126,11 +126,11 @@ a declaração dos pacotes. Um exemplo de como gerenciar templates numa receita 
 
 \subsection{Múltiplas Instâncias}
 
-O uso de múltiplas instâncias do wordpress pode ser feito de duas maneiras, e servem
-para que o usuário possa ter várias instâncias de wordpress no mesmo servidor. No 
-wordpress é possível ter múltiplos sites e múltiplas
+O uso de múltiplas instâncias do Wordpress pode ser feito de duas maneiras, e servem
+para que o usuário possa ter várias instâncias de Wordpress no mesmo servidor. No 
+Wordpress é possível ter múltiplos sites e múltiplas
 instâncias, no caso do Shak é desejado que seja múltiplas instâncias, a partir da
-repetição da instalação. O wordpress recomenda que se for necessário o uso de múltiplas
+repetição da instalação. O Wordpress recomenda que se for necessário o uso de múltiplas
 instâncias é necessário realmente instalar cada Wordpress, um por vez.
 
 A arquitetura para isso não é muito complicada, porém algumas pastas do sistema
@@ -155,7 +155,7 @@ possível o acesso entre elas separadamente.
 
 \subsection{Inicialização}
 
-Após a construção da receita do wordpress é necessário testar a receita construída. 
+Após a construção da receita do Wordpress é necessário testar a receita construída. 
 Para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
 que será instalada, e segunda o hostname destino. Como é um ambiente de desenvolvimento
 não é preciso configurar um ip ou configurar um \textit{DNS}, é preciso apenas adicionar o
@@ -189,26 +189,26 @@ fases que compõem o processo de implantação de aplicações definidos na Seç
 
 \subsection{Planejamento}
 
-Seguindo a mesma linha do wordpress, é necessário definir quais são as dependências
+Seguindo a mesma linha do Wordpress, é necessário definir quais são as dependências
 mínimas para o funcionamento do Owncloud tais como: banco de dados, pacotes
 pré-instalados e aplicações pré-configuradas. Para o Owncloud foram escolhidas:
 
 \begin{itemize}
    \item \textbf{Pacote Owncloud para o Debian:} Pacote Debian com o Owncloud.
-   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o nginx.
-   \item \textbf{Pacote Postgresql para o Debian:} Pacote Debian com o banco de dados postgresql
+   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o Nginx.
+   \item \textbf{Pacote Postgresql para o Debian:} Pacote Debian com o banco de dados Postgresql
    que será usado pelo Owncloud.
    \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
    necessários para configurar o Owncloud, o servidor web Nginx e o banco de dados
-   postgresql.
+   Postgresql.
 \end{itemize}
 
-A diferença da escolha do banco de dados em relação ao wordpress é poder aumentar
-o suporte a diferentes bancos de dados, na documentação do wordpress é recomendado
-o uso do banco de dados mysql, porém no Owncloud fica a escolha do desenvolvedor.
-A escolha do postgresql vêm com a possibilidade de trabalhar com dois bancos de
+A diferença da escolha do banco de dados em relação ao Wordpress é poder aumentar
+o suporte a diferentes bancos de dados, na documentação do Wordpress é recomendado
+o uso do banco de dados MySQL, porém no Owncloud fica a escolha do desenvolvedor.
+A escolha do Postgresql vêm com a possibilidade de trabalhar com dois bancos de
 dados diferentes, aumentando o suporte do Shak, assim quando existirem aplicações
-que suportam apenas o postgresql o Shak já terá uma estrutura básica pronta.
+que suportam apenas o Postgresql o Shak já terá uma estrutura básica pronta.
 A instalação e execução desses recursos serão feitas nas fases seguintes.
 
 \subsection{Preparação e Instalação de Pacotes}
@@ -218,16 +218,16 @@ disso também é necessário que algum servidor web, na arquitetura do Shak o se
 web padrão é o Nginx, e o banco de dados Postgresql.
 
 Para solução desse procedimento foi necessário instalar os pacotes php5-fpm, o banco
-de dados postgresql e o pacote nginx, além disso habilitar o serviço do php5-fpm,
+de dados Postgresql e o pacote Nginx, além disso habilitar o serviço do php5-fpm,
 também foi necessário instalar o pacote php5-pgsql que é um módulo para
-conexões de banco de dados postgresql, necessário para o funcionamento de
-aplicações php com o postgresql.
+conexões de banco de dados Postgresql, necessário para o funcionamento de
+aplicações php com o Postgresql.
 
 Para executar essas instalações é preciso criar uma receita no livro de receitas
-do owncloud, bastando executar novamente o comando rake cookbook que cria a estrutura básica
+do Owncloud, bastando executar novamente o comando rake cookbook que cria a estrutura básica
 de um livro de receitas que deve ser usado pelo Chef, como por exemplo:
 
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do owncloud com shak}]
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do Owncloud com Shak}]
   rake cookbook
   Cookbook name: owncloud
   knife cookbook create owncloud -o cookbooks/
@@ -237,7 +237,7 @@ de um livro de receitas que deve ser usado pelo Chef, como por exemplo:
   ** Creating metadata for cookbook: owncloud
 \end{lstlisting}
 
-Assim com a estrutura inicial, é possível declarar as dependências do owncloud
+Assim com a estrutura inicial, é possível declarar as dependências do Owncloud
 dentro do arquivo default.rb dentro da pasta recipes. Nesse arquivo é 
 declarado os pacotes que devem ser instalados, os arquivos de configuração,
 os serviços que precisar executar, as pastas, permissões de usuários, etc. Um exemplo
@@ -253,70 +253,70 @@ de como declarar pacotes e serviços dentro de uma receita Chef é:
 \subsection{Configuração}
 
 Como levantado no planejamento é necessário a edição de arquivos de configuração
-do owncloud, arquivos de configuração do banco de dados e arquivo de configuração
+do Owncloud, arquivos de configuração do banco de dados e arquivo de configuração
 do Nginx.
 
 O primeiro arquivo de configuração é o autoconfig.php, é nesse arquivo de
 configuração onde ficam as informações, como nome do banco de dados,
 login do usuário do banco de dados, senha, o host do banco de dados e o diretório
-onde irá ficar os arquivos de configuração do owncloud, o login e senha
+onde irá ficar os arquivos de configuração do Owncloud, o login e senha
 do administrador. Isso é necessário apenas para o primeiro acesso, ou seja, o usuário
-fará o login automaticamente quando o owncloud terminar a instalação, após isso
+fará o login automaticamente quando o Owncloud terminar a instalação, após isso
 a recomendação é trocar a senha do administrador.
 
-Além disso é necessário criar a pasta de conteúdos públicos do owncloud, que por
+Além disso é necessário criar a pasta de conteúdos públicos do Owncloud, que por
 padrão devem ficar em /etc/owncloud. O segundo arquivo é o postgresql-conf.sql
-que é um pequeno script \textit{SQL} que cria o banco de dados do owncloud e dá os
+que é um pequeno script \textit{SQL} que cria o banco de dados do Owncloud e dá os
 privilégios ao usuário desejado. Por fim o arquivo de configuração do Nginx
 configuração do servidor web.
 
 \subsection{Múltiplas Instâncias}
 
-Diferentemente do wordpress o owncloud não suporta múltiplas instâncias, porém isso
+Diferentemente do Wordpress o Owncloud não suporta múltiplas instâncias, porém isso
 não foi um impeditivo na execução do trabalho, com uma busca encontrou-se uma 
-discussão no repositório oficial do owncloud relacionado a implementação dessa 
+discussão no repositório oficial do Owncloud relacionado a implementação dessa 
 funcionalidade. 
 
 A discussão está disponibilizada em 
 \href{https://github.com/owncloud/core/pull/16424}, nela existia
 uma proposta de solução ao fato de não existir a opção de múltiplas instâncias. O
-resultado desta discussão foi que os desenvolvedores do owncloud não acharam relevante
+resultado desta discussão foi que os desenvolvedores do Owncloud não acharam relevante
 a funcionalidade, mas caso o desenvolvedor ache necessário, ele poderia fazer essa
 alteração diretamente no código fonte.
 
 Porém manter isso no Shak seria enviável, uma solução a esse problema seria enviar
-uma contribuição ao pacote do owncloud no Debian, onde assim a contribuição feita
+uma contribuição ao pacote do Owncloud no Debian, onde assim a contribuição feita
 poderia ser facilmente utilizada por mais pessoas que queiram essa funcionalidade,
 bastando utilizar a versão disponibilizada nos servidores do Debian. 
 
 Com isso, foi feito a contribuição que adicionaria a funcionalidade de múltiplas 
-instâncias para o owncloud, e enviado ao mantenedor do pacote do owncloud no Debian. 
+instâncias para o Owncloud, e enviado ao mantenedor do pacote do Owncloud no Debian. 
 A discussão está disponível em \href{https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=789726},
 a contribuição foi bem vista pelo mantenedor do pacote, e será incorporada na nova
-versão do owncloud no Debian.
+versão do Owncloud no Debian.
 
 Em paralelo ao processo da contribuição estar disponível no novo pacote Debian,
-foi necessário utilizar apenas instâncias únicas do owncloud, porém também foi
-adicionado na receita do owncloud o suporte a múltiplas instâncias, portanto
-assim que o owncloud suportar múltiplas instâncias via pacote Debian, será possível
-também criar múltiplas instâncias do owncloud.
+foi necessário utilizar apenas instâncias únicas do Owncloud, porém também foi
+adicionado na receita do Owncloud o suporte a múltiplas instâncias, portanto
+assim que o Owncloud suportar múltiplas instâncias via pacote Debian, será possível
+também criar múltiplas instâncias do Owncloud.
 
-A solução feita na receita do owncloud foi baseada na contribuição enviada, portanto
-os testes foram feitos gerando um novo pacote Debian do owncloud porém incorporando
+A solução feita na receita do Owncloud foi baseada na contribuição enviada, portanto
+os testes foram feitos gerando um novo pacote Debian do Owncloud porém incorporando
 a contribuição feita ao Debian. Os procedimentos feitos para suportar múltiplas instâncias
-no owncloud são bem semelhantes aos do wordpress, criando um diretório de dados
+no Owncloud são bem semelhantes aos do Wordpress, criando um diretório de dados
 para cada aplicação, um arquivo de configuração para cada aplicação e um banco de
-dados para cada aplicação. Seguindo também a mesma abordagem do wordpress também
-será criado uma hospedagem virtual para cada instância do owncloud.
+dados para cada aplicação. Seguindo também a mesma abordagem do Wordpress também
+será criado uma hospedagem virtual para cada instância do Owncloud.
 
 \subsection{Inicialização}
 
-Após a construção da receita do owncloud é necessário testar a receita construída,
+Após a construção da receita do Owncloud é necessário testar a receita construída,
 para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
 que será instalada, e segunda o hostname destino, para executar a instalação
-do owncloud basta:
+do Owncloud basta:
 
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do owncloud com shak}]
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do Owncloud com shak}]
 shak install owncloud hostname=owncloud.dev
 \end{lstlisting}
 
@@ -344,7 +344,7 @@ Como visto no Capítulo \ref{cap-referencial} existem protocolos de acesso ao co
 como \textit{POP3}, \textit{IMAP} ou usar até mesmo o protocolo \textit{HTTP} 
 servindo de protocolo para recuperar informações.
 
-Tanto owncloud como wordpress possuem funcionalidades que utilizam serviços 
+Tanto Owncloud como Wordpress possuem funcionalidades que utilizam serviços 
 de e-mail, portanto
 é necessário uma configuração mínima de e-mail para que funcione tais funcionalidades.
 Assim, a construção de um servidor de e-mail possui bastante relevância, para que
@@ -352,7 +352,7 @@ Assim, a construção de um servidor de e-mail possui bastante relevância, para
 o servidor de e-mail que o Shak fornece.
 
 Para adicionar o suporte a servidor de e-mail, também foram seguidos os mesmos passos
-feitos no wordpress na Seção \ref{sub:wordpress} e no owncloud na Seção\ref{sub:owncloud}. 
+feitos no Wordpress na Seção \ref{sub:wordpress} e no Owncloud na Seção\ref{sub:owncloud}. 
 
 \subsection{Planejamento}
 
@@ -488,7 +488,7 @@ de wiki que utilizam o MoinMoin são: Wiki do debian, Wiki do python e Wiki do a
 contendo várias documentações relacionado aos seus softwares \cite{moin}. 
 
 Para a implantação automatizada do MoinMon, foram seguidos os mesmos passos
-feitos em wordpress \ref{sub:wordpress} e owncloud \ref{sub:owncloud}.
+feitos em Wordpress \ref{sub:wordpress} e Owncloud \ref{sub:owncloud}.
 
 \subsection{Planejamento}
 
@@ -498,7 +498,7 @@ pré-instalados e aplicações pré-configuradas. Para o MoinMoin são elas:
 
 \begin{itemize}
    \item \textbf{Pacote python-moinmoin para o Debian:} Pacote Debian com o MoinMoin.
-   \item \textbf{Pacote nginx para o Debian:} Pacote Debian com o nginx.
+   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o Nginx.
    \item \textbf{Pacote uwsgi para o Debian:} Pacote Debian com o servidor de aplicação web
 uwsgi, com suporte para aplicações escritas em python, utilizando o plugin uwsgi-plugin-python,
 também disponível como um pacote debian.
@@ -512,7 +512,7 @@ Diferentemente das outras aplicações web, moinmoin não utiliza banco de dados
 \subsection{Preparação e Instalação de Pacotes}
 
 Para o funcionamento correto do moinmoin é necessário a instalação do python, além
-disso também é necessário que algum servidor web, no caso, utilizaremos o nginx
+disso também é necessário que algum servidor web, no caso, utilizaremos o Nginx
 junto ao uwsgi, também é necessário a configuração do moinmoin a partir de seus
 arquivos de configuração, mywiki.py e farmconfig.py.
 
@@ -557,7 +557,7 @@ O segundo arquivo de configuração é o farmconfig.py, que é o responsável pe
 links da barra de navegação e responsável por configurar múltiplas instâncias.
 
 Além disso é necessário criar a pasta de conteúdos do moinmoin, que por
-escolha devem ficar em /var/lib/moin, além disso para que o nginx funcione corretamente
+escolha devem ficar em /var/lib/moin, além disso para que o Nginx funcione corretamente
 com o uwsgi é necessário indicar o socket do uwsgi, que foi indicado no uwsgi.ini.
 
 \subsection{Múltiplas Instâncias}
@@ -580,10 +580,10 @@ informações novas nessa lista são inseridas no arquivo farmconfig.py.
 
 \subsection{Inicialização}
 
-Após a construção da receita do owncloud, é necessário testar a receita construída,
+Após a construção da receita do Owncloud, é necessário testar a receita construída,
 para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
 que será instalada, e segunda o hostname destino, para executar a instalação
-do owncloud basta:
+do Owncloud basta:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do owncloud com shak}]
 shak install moinmoin hostname=moinmoin.dev
