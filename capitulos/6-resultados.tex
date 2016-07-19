@@ -4,12 +4,11 @@
 Este capítulo aborda os resultados encontrados, a partir da proposta de
 definição e preparação dos estudos. 
 
-Como dito no Capítulo \ref{cap-metodologia}
-as aplicações piloto foram Owncloud e Wordpress, como visto na Seção 
-\label{subsection:validacao}. Cada fase da implantação será tratado como uma 
-subseção, seguindo a escolha da ferramenta Shak como arquitetura inicial. Todo 
-o trabalho foi organizado na ferramenta Gitlab no projeto Shak disponível no endereço 
-\href{https://gitlab.com/Shak/Shak/} nele contém todo o código fonte disponível.
+Como dito no Capítulo \ref{cap-metodologia}, as aplicações piloto foram Owncloud e Wordpress. 
+Cada fase da implantação será tratado como uma 
+subseção na descrição de cada exemplo de uso. Todas as atividades foram organziadas,
+via issues, no repositório do próprio projeto Shak 
+\footnote{https://gitlab.com/shak/shak/issues}.
 
 \section{Wordpress}
 \label{sub:wordpress}
@@ -19,12 +18,10 @@ com foco na estética, nos padrões web e na usabilidade, ao mesmo tempo é
 um software livre. Além disso, wordpress é um dos maiores softwares de 
 publicação de conteúdo \cite{wordpress}. 
 
-Primeiramente foram seguido os procedimentos para a proposta da solução, que foram
- definidos 
-na Seção \ref{section:construcao}, é
-necessário definir as fases e procedimentos para a implantação automatizada,
-seguindo as fases que compõem o processo de implantação de aplicações e de acordo
-com a Seção \ref{sec:fases}.
+Primeiramente, foram seguido os procedimentos para a proposta da solução, que foram
+ definidos na Seção \ref{section:construcao}. Para isso, é
+necessário definir as fases e procedimentos da implantação automatizada,
+seguindo as fases que compõem o processo proposto descrito na Seção \ref{sec:fases}.
 
 \subsection{Planejamento}
 
@@ -49,24 +46,25 @@ A instalação e execução desses recursos serão feitas nas fases seguintes.
 \label{wordpress:preparacao}
 
 São os procedimentos necessários para preparar o ambiente alvo para que o wordpress
-possa ser executado, isso envolve configuração do sistema operacional, instalação
-e configuração de dependências necessárias, e a transferência do componente
+possa ser executado. Isso envolve a configuração do sistema operacional; instalação
+e configuração de dependências necessárias; e a transferência do componente
 para o servidor onde ele será executado.
 
-Para o funcionamento correto do wordpress é necessário a instalação do php5, além
-disso também é necessário algum servidor web, na arquitetura do Shak o servidor
-web padrão é o Nginx, e o banco de dados escolhido foi o mysql.
+Para o funcionamento correto do wordpress é necessário a instalação do PHP5. Além
+disso, também é necessário algum servidor web: no caso do Shak o servidor
+web padrão é o Nginx e o banco de dados escolhido foi o MySQL.
 
-Para solução desse procedimento bastou apenas instalar os pacotes php5-fpm, o pacote
-do banco de dados mysql e o pacote nginx, além disso habilitar o serviço do
-php5-fpm, todos esses passos são feitos antes da instalação do wordpress,
-pois por default se ele não encontrar essas dependências ele instala o servidor
-apache2.
+Para solução desse procedimento, foi necessário instalar os pacotes php5-fpm; o pacote
+do banco de dados mysql; e o pacote nginx. Além disso, habilitar o serviço do
+php5-fpm. Todos esses passos são feitos antes da instalação do wordpress,
+pois, por padrão, ele instala o servidor
+Apache2.
 
 Para executar essas instalações é preciso criar uma receita no livro de receitas
-do wordpress. Primeiramente é necessário criar o próprio livro de receitas no Shak,
-para isso existe o comando rake cookbook que cria a estrutura básica
-de um livro de receitas que deve ser usado pelo Chef, como por exemplo:
+do wordpress. Primeiramente, é necessário criar o próprio livro de receitas no Shak.
+Para isso existe o comando \textit{rake cookbook}, que cria a estrutura básica
+de um livro de receitas que deve ser usado pelo Chef, como exempleficado no trecho
+de código abaixo:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do wordpress com shak}]
   rake cookbook
@@ -78,10 +76,10 @@ de um livro de receitas que deve ser usado pelo Chef, como por exemplo:
   ** Creating metadata for cookbook: wordpress
 \end{lstlisting}
 
-Assim com a estrutura inicial, é possível declarar as dependências do wordpress
-dentro do arquivo default.rb dentro da pasta recipes. Nesse arquivo é aonde
-será declarado os pacotes que devem ser instalados, os arquivos de configuração,
-os serviços que precisar executar, as pastas, permissões de usuários, etc. Um exemplo
+Assim com a estrutura gerada pelo rake, é possível declarar as dependências do wordpress
+dentro do arquivo default.rb, dentro da pasta recipes. Nesse arquivo são declarados
+os pacotes que devem ser instalados; os arquivos de configuração;
+os serviços que precisar executar; as pastas; permissões de usuários etc. Um exemplo
 de como declarar pacotes e serviços dentro de uma receita Chef é:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de serviço do mysql com o chef}]
@@ -95,8 +93,8 @@ de como declarar pacotes e serviços dentro de uma receita Chef é:
 \subsection{Configuração}
 \label{wordpress:preparacao}
 
-Como levantado no planejamento é necessário a edição de arquivos de configuração
-do wordpress, arquivos de configuração do banco de dados e arquivo de configuração
+Como levantado no planejamento, é necessário a edição de arquivos de configuração
+do wordpress; arquivos de configuração do banco de dados; e arquivo de configuração
 do nginx.
 
 O primeiro arquivo de configuração é o config.php. É nesse arquivo de
@@ -105,7 +103,7 @@ login do usuário do banco de dados, senha, o endereço do banco de dados e o di
 onde irá ficar os arquivos estáticos, como temas, galeria de mídias e plugins 
 de cada instância do wordpress.
 
-Por padrão ele deve ficar no diretório /etc/wordpress/ e seu nome deve conter
+Por padrão, ele deve ficar no diretório /etc/wordpress/ e seu nome deve conter
 a seguinte estrutura: config-nomehost.php, onde o nomehost deve ser o hostname
 desejado. O segundo arquivo é o database.sql que é um pequeno script \textit{SQL} que
 cria o banco de dados do Wordpress e dá os privilégios ao usuário desejado. Por fim
