@@ -7,7 +7,7 @@ Como dito no Capítulo \ref{cap-metodologia}, as aplicações piloto foram Owncl
 Cada fase da implantação será tratado como uma 
 subseção na descrição de cada exemplo de uso. Todas as atividades foram organziadas,
 via issues, no repositório do próprio projeto Shak 
-\footnote{https://gitlab.com/shak/shak/issues}.
+\url{https://gitlab.com/shak/shak/issues}.
 
 \section{Wordpress}
 \label{sub:wordpress}
@@ -62,9 +62,9 @@ Para executar essas instalações, é preciso criar uma receita no livro de rece
 do Wordpress. Primeiramente, é necessário criar o próprio livro de receitas no Shak.
 Para isso, existe o comando \textit{rake cookbook}, que cria a estrutura básica
 de um livro de receitas que deve ser usado pelo Chef, como exempleficado no trecho
-de código abaixo:
+de código \ref{codigo1}:
 
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do wordpress com shak}]
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do wordpress com shak}, label=codigo1]
   rake cookbook
   Cookbook name: wordpress
   knife cookbook create wordpress -o cookbooks/
@@ -77,10 +77,10 @@ de código abaixo:
 Assim com a estrutura gerada pelo rake, é possível declarar as dependências do Wordpress
 dentro do arquivo \textit{default.rb}, dentro da pasta \textit{recipes}. Nesse 
 arquivo são declarados os pacotes que devem ser instalados; os arquivos de configuração;
-os serviços que precisar executar; as pastas; e permissões de usuários. Um exemplo
-de como declarar pacotes e serviços dentro de uma receita Chef é:
+os serviços que precisar executar; as pastas; e permissões de usuários. O código \ref{codigo998}
+é um exemplo de como declarar pacotes e serviços dentro de uma receita Chef.
 
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de serviço do mysql com o chef}]
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de serviço do mysql com o chef}, label=codigo998]
   package "mysql-server"
   service "mysql" do
     action :start
@@ -111,10 +111,10 @@ Na receita chef, esses arquivos de configuração serão criados dentro da pasta
 \textit{template}, com o conteúdo
 desejado dos arquivos de configuração. A ação que cria o arquivo na receita chef é 
 declarada dentro do arquivo \textit{default.rb}, de forma semelhante como foi feito com
-a declaração dos pacotes. Um exemplo de como gerenciar templates numa receita Chef
-é:
+a declaração dos pacotes. O código \ref{codigo997} é um exemplo de como 
+gerenciar templates numa receita Chef.
 
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de templates com o chef}]
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de templates com o chef}, label=codigo997]
   template "text\_file.txt" do
   source "text\_file.txt"
   mode "0755"
@@ -163,7 +163,7 @@ hostname desejado no arquivo /etc/hosts. Assim, mesmo que esteja na sua máquina
 da instalação via Shak é:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de exexução de instalação do wordpress com shak}]
-shak install wordpress hostname=wordpress.dev
+\$ shak install wordpress hostname=wordpress.dev
 \end{lstlisting}
 
 Dessa forma, o Chef inicia o processo de instalação dos pacotes; criação dos arquivos
@@ -221,9 +221,9 @@ aplicações na linguagem Php com o banco de dados Postgresql.
 Para executar essas instalações, é preciso criar uma receita no livro de receitas
 do Owncloud. Para isso, é necessário executar novamente o comando \textit{rake cookbook}, 
 que cria a estrutura básica de um livro de receitas que deve ser usado pelo Chef, 
-como exemplificado no trecho de código abaixo:
+como exemplificado no trecho de código \ref{codigo2}
 
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do Owncloud com Shak}]
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do Owncloud com Shak}, label=codigo2]
   rake cookbook
   Cookbook name: owncloud
   knife cookbook create owncloud -o cookbooks/
@@ -237,10 +237,11 @@ Com a estrutura inicial, é possível declarar as dependências do Owncloud
 dentro do arquivo \textit{default.rb}, que se encontra dentro da pasta 
 \textit{recipes}. Nesse arquivo é 
 declarado os pacotes que devem ser instalados; os arquivos de configuração;
-os serviços que precisar executar; as pastas; permissões de usuários, etc. Um exemplo
-de como declarar pacotes e serviços dentro de uma receita Chef é:
+os serviços que precisar executar; as pastas; permissões de usuários, etc. O código
+\ref{codigo995} é um exemplo
+de como declarar pacotes e serviços dentro de uma receita Chef.
 
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de como habilitar serviço do postgresql com chef}]
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de como habilitar serviço do postgresql com chef}, label=codigo995]
   package "postgresql"
   service "postgresql" do
     action :start
@@ -277,7 +278,7 @@ discussão no repositório oficial do Owncloud relacionado a implementação des
 funcionalidade. 
 
 A discussão está disponibilizada em 
-\href{https://github.com/owncloud/core/pull/16424}, nela existia
+\url{https://github.com/owncloud/core/pull/16424}, nela existia
 uma proposta de solução ao fato de não existir a opção de múltiplas instâncias. O
 resultado desta discussão foi que, os desenvolvedores do Owncloud não acharam relevante
 a funcionalidade, mas caso o desenvolvedor ache necessário, ele poderia fazer essa
@@ -290,7 +291,7 @@ bastando utilizar a versão disponibilizada nos servidores do Debian.
 
 Com isso, foi feito a contribuição que adicionaria a funcionalidade de múltiplas 
 instâncias para o Owncloud, e enviado ao mantenedor do pacote do Owncloud no Debian. 
-A discussão está disponível em \href{https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=789726},
+A discussão está disponível em \url{https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=789726},
 a contribuição foi bem vista pelo mantenedor do pacote, e será incorporada na nova
 versão do Owncloud no Debian.
 
@@ -316,7 +317,7 @@ que será instalada, e segunda o endereço destino, para executar a instalação
 do Owncloud basta:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do Owncloud com shak}]
-shak install owncloud hostname=owncloud.dev
+\$ shak install owncloud hostname=owncloud.dev
 \end{lstlisting}
 
 E assim, o Chef inicia o processo de instalação dos pacotes; criação dos arquivos
@@ -390,10 +391,10 @@ de habilitar o serviço do spamassassin.
 
 Na receita do servidor de e-mail, cada aplicação possui sua receita específica,
 e o arquivo \textit{default.rb}, que contêm a receita do servidor de e-mail, esse arquivo
-contém apenas a chamada dessas receitas, como no exemplo abaixo:
+contém apenas a chamada dessas receitas, como no código \ref{codigo999}:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo da receita de email
-composta por outras receitas}]
+composta por outras receitas}, label=codigo999]
 include_recipe 'email::dovecot'
 include_recipe 'email::postfix'
 include_recipe 'email::spamassasin'
@@ -471,8 +472,8 @@ suas funções básicas de enviar e receber e-mails. O segundo passo, foi realiz
 com o servidor de e-mail via telnet, com os seguintes comandos:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de teste de conexão telnet no servidor imap}]
-  telnet localhost imap
-  telnet localhost imaps
+  \$ telnet localhost imap
+  \$ telnet localhost imaps
 \end{lstlisting}
 
 Pela configuração do servidor de e-mail, não foi possível abrir uma conexão telnet
@@ -522,10 +523,10 @@ Para esse procedimento, foi necessário instalar os pacotes uwsgi,
 uwsgi-plugin-python, e o pacote do moinmoin, chamado python-moinmoin.
 Para executar essas instalações, é preciso criar uma receita no livro de receitas
 do moinmoin, bastando executar o comando \textit{rake cookbook}, que cria a
-estrutura básica de um livro de receitas que deve ser usado pelo Chef, como no exemplo
-abaixo:
+estrutura básica de um livro de receitas que deve ser usado pelo Chef, como no código
+\ref{codigo3}:
 
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do moinmoin com shak}]
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do moinmoin com shak}, label=codigo3]
   rake cookbook
   Cookbook name: moinmoin
   knife cookbook create moinmoin -o cookbooks/
@@ -587,7 +588,7 @@ que será instalada, e segunda o hostname destino, para executar a instalação
 do Owncloud basta:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do owncloud com shak}]
-shak install moinmoin hostname=moinmoin.dev
+\$ shak install moinmoin hostname=moinmoin.dev
 \end{lstlisting}
 
 E assim, o Chef inicia o processo de instalação dos pacotes; criação dos arquivos
@@ -627,9 +628,9 @@ e o caminho onde as chaves são geradas é /etc/ssl/private/hostname.key.
 
 Com as chaves geradas, basta configurar as aplicações indicando os caminhos dos certificados
 e das chaves, para forçar as aplicações web a utilizarem o \textit{HTTP} foi necessário fazer
-uma configuração específica no servidor web Nginx:
+uma configuração específica no servidor web Nginx, como no código \ref{codigo994}.
 
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de arquivo de configuração do Nginx para aplicações web no shak}]
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de arquivo de configuração do Nginx para aplicações web no shak}, label=codigo994]
   server {
       server_name <%= @hostname %>;
       rewrite     \^https://\$server\_name\$request\_uri? permanent;
@@ -670,14 +671,14 @@ protótipos funcionais. Além de ter um protótipo funcional, a ferramenta Pinge
 também gera o código \textit{HTML} e \textit{CSS}, que pode ser aproveitado para 
 a construção do layout do Shak. A sugestão inicial foi feita utilizando \textit{HTML} e \textit{CSS} utilizando
 bootstrap 3, que é um framework para criar aplicações responsivas na web. A versão
-inicial está disponível em \href{https://gitlab.com/Thiagovsk/shak_frontend/tree/master}.
+inicial está disponível em \url{https://gitlab.com/Thiagovsk/shak_frontend/tree/master}.
 
 %TODO
 \section{Aplicações não encerradas}
 \label{sub:appnencerradas}
 
-Até o fim deste trabalho as aplicações Noosfero e Roundcube não foram finalizadas,
-porém, é importante reportar o estado atual do que foi feito neste trabalho,
+Até o fim deste trabalho as aplicações Noosfero e Roundcube não foram finalizadas. 
+Porém, é importante reportar o estado atual do que foi feito neste trabalho,
 com essas duas aplicações.
 
 \subsubsection{Noosfero}
@@ -690,12 +691,15 @@ economia solidária no mesmo sistema.
 
 O estado atual da aplicação Noosfero no Shak econtra-se
 na fase do planejamento. No planejamento, já era de conhecimento do autor que o
-Noosfero não estava nos repositórios oficiais do Debian, mas que seria possível, 
+Noosfero não estava nos repositórios oficiais do Debian, mas que seria possível estar, 
 desde que todas as dependências do Noosfero também estivessem no Debian.
 
 O Noosfero já possui um repositório \footnote{http://download.noosfero.org/debian/jessie/}
-com suas dependências empacotadas, porém, algumas delas não se encontram nos repositórios
-oficiais do Debian. Um exemplo é a biblioteca \textit{ruby-selenium-webdriver}, que
+, com suas dependências empacotadas. Porém, algumas delas não se encontram nos repositórios
+oficiais do Debian, dificultando assim, que o pacote do Noosfero fique disponível
+nos repositórios oficiais do Debian. 
+
+Um exemplo é a biblioteca \textit{ruby-selenium-webdriver}, que
 está no repositório do Noosfero, porém não está disponível no repositório oficial
 do Debian. Outro problema que foi encontrado, é que algumas dependências do noosfero
 estão em versões diferentes das dependências que estão no repositório Debian.
@@ -704,7 +708,8 @@ Para resolver esse problema, seria necessário empacotar todas as dependências
 do Noosfero que ainda não estão no Debian. Além disso, sincronizar as versões
 que já estão no Debian, com as versões que são utilizadas pelo Noosfero.
 
-Abaixo, encontra-se uma lista das dependências que estão no repositório do Noosfero,
+%TODO colcoar em anexo?
+Na tabela \ref{tabela1} abaixo, encontra-se uma lista das dependências que estão no repositório do Noosfero,
 com suas versões, e as dependências que estão no Debian Jessie.
 
 \begin{table}[H]
@@ -784,6 +789,7 @@ com suas versões, e as dependências que estão no Debian Jessie.
         \hline
     \end{tabular}
 \caption{Diferença das versões dos pacotes do Noosfero, no repositório do Debian e no repositório do Noofero}
+\label{tabela1}
 \end{table}
 
 %TODO corrigir a mencao a tabela
@@ -792,13 +798,14 @@ Como visto na tabela acima, grande parte das dependências do Noosfero econtram-
 a implantação automatizada, seria necessário discutir alguma solução 
 com a comunidade do software. Como sugestão, uma das soluções viáveis seria, 
 sincronizar as versões das dependências do Noosfero, com as versões que são 
-disponibilizadas pelo Debian \textit{testing}, com isso, o 
+disponibilizadas pelo Debian \textit{testing}. Com isso, o 
 Noosfero passa a ter boa parte de suas dependências suportadas pelo Debian. Além disso, 
 também seria necessário empacotar as bibliotecas que o Noosfero precisa, mas 
 que o Debian não possui. 
 
-Porém, essa decisão fica a cargo da comunidade da aplicação, e com essa questão 
-resolvida, o Shak poderá dar suporte ao Noosfero, em trabalhos futuros.
+Porém, essa decisão fica a cargo da comunidade da aplicação, e com o noosfero disponível
+nos repositórios oficiais do Debian, o Shak poderá dar suporte ao Noosfero, 
+em trabalhos futuros.
 
  \subsection{Roundcube}
 \label{sub:owncloud}
@@ -830,7 +837,7 @@ Wordpress e Owncloud. Foram identifcados:
 
 \subsection{Preparação e Instalação de Pacotes}
 
-Para o funcionamento do ROundcube, é necessário a instalação do Php5. Além
+Para o funcionamento do Roundcube, é necessário a instalação do Php5. Além
 disso, também foi utilizado o servidor web Nginx, e o 
 banco de dados Postgresql.
 
@@ -852,15 +859,16 @@ dentro do arquivo \textit{default.rb}, que se encontra dentro da pasta
 
 \subsection{Configuração}
 
-O estado atual da aplicação Roundcube no Shak, econtra-se na fase de configuração. A pendência
+O estado atual da aplicação Roundcube no Shak, econtra-se na fase de configuração. A pendência,
 é a configuração do servidor de email, que será utilizado pelo roundcube. Por ser
 uma configuração pessoal do usuário, ou seja, ele deve inserir o seu serviço
 de email preferido, essa configuração ainda não foi automatizada. 
 
-Como sugestão de trabalhos futuros, é necessário evoluir a receita do Roundcube para receber os dados do serviço de email, fornecidos pelo usuário, durante sua instalação. Com 
-isso, ao finalizar a instalação, o Roundcube já estará disponível ao usuário, 
+Como sugestão de trabalhos futuros, é necessário evoluir a receita do Roundcube, 
+para que possa receber os dados do serviço de email, fornecidos pelo usuário, 
+durante sua instalação. Com isso, ao finalizar a instalação, o Roundcube já estará disponível ao usuário, 
 com a conta de email que foi informada.
 
 Atualmente, a receita do Roduncube ja automatiza a instalação da sua aplicação web. 
-O tralho atual está disponível no repositório oficial do Shak \footnote{https://gitlab.com/shak/shak/branches}, na branch roundcube.
+O tralho atual está disponível no repositório oficial do Shak \url{https://gitlab.com/shak/shak/branches}, na branch roundcube.
 
