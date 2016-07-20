@@ -45,7 +45,8 @@ procedimentos para a proposta da solução e para sua validação da solução.
 \label{section:trabalhos_relacionados}
 
 Para entender o que acontece na área relacionada com a implantação
-automatizada de aplicações, foi feito uma busca de alguns trabalhos relacionados recentes. \citeonline{leo2014} em seu mestrado,
+automatizada de aplicações, foi feito uma busca de alguns trabalhos relacionados 
+recentes. \citeonline{leo2014} em seu mestrado,
 desenvolveu um sistema de middleware chamado CHOReOS Enactment Engine, que possibilita a implantação distribuída e automatizada de composições
 de serviços web numa estrutura virtualizada, no qual opera no modelo
 computacional conhecido como plataforma como serviço. Seu foco é na automação da 
@@ -62,9 +63,11 @@ e todas as suas dependências (bibliotecas de terceiros, linguagem de programaç
 bases de dados) para que o usuário comum não se preocupe com questões técnicas \citeonline{bitnami}. 
 
 Sandstom.io \footnote{https://sandstorm.io/} é uma plataforma de código aberto para servidores
-pessoais. Sandstorm permite que você execute o seu próprio servidor e instalar
-facilmente as aplicações em que o próprio Sandstorm 
-suporta \citeonline{sandstormio}. Sandstorm trás aplicações prontas para uso, em que o usuário escolhe por meio de uma interface web e a aplicação já está disponível.
+pessoais. Sandstorm permite que você execute o seu próprio servidor, e instalar
+facilmente as aplicações em que o Sandstorm 
+suporta \citeonline{sandstormio}. Sandstorm trás aplicações prontas para uso, 
+em que o usuário escolhe a aplicação desejada  por meio de uma interface web, 
+e logo após isso, a aplicação já está disponível para uso.
 
 JuJu \footnote{https://jujucharms.com/} é uma ferramenta que lhe permite 
 implementar, configurar, gerenciar, 
@@ -82,10 +85,10 @@ que é basicamente um arquivo com trechos de código. Um charm
 contém toda a lógica de que você precisa para implementar e integrar uma aplicação,
 contendo todo o processo de download de ferramentas, instalação e configuração de
 aplicações, podendo ser por provisionadores como Chef, Puppet ou Docker. 
-É possível reaproveitar os charms feitos pela comunidade do JuJu. Assim
+É possível reaproveitar os charms feitos pela comunidade do JuJu. Assim,
 reaproveitando os charms prontos ou não precisando escrever um charm do zero.
 
-Já \citeonline{bitnami} trás as aplicações prontas pra uso. Assim o usuário interage com 
+Já \citeonline{bitnami} trás as aplicações prontas pra uso. Assim, o usuário interage com 
 uma interface web, no formato clique para instalar, porém
 o usuário só tem a disposição as aplicações disponibilizadas pelo Bitnami. Isso
 também é a forma em que o Sandstorm trabalha, com a diferença de que o Sandstorm é
@@ -94,15 +97,15 @@ que é utilizada por eles.
 
 Por último, o trabalho feito por \citeonline{leo2014} é voltado
 para serviços web de grande escala, com foco em implantação de aplicações na
-nuvem, além  de escalar infraestrutura, utilizando o middleware construído em seu trabalho, 
-assim podendo gerenciar ambientes de computação em nuvem como Amazon EC2 e 
-Openstack, a sua aplicação utiliza o Chef solo como seu agente de configuração.
+nuvem. Também é possível escalar infraestrutura, utilizando o middleware construído 
+em seu trabalho, podendo gerenciar ambientes de computação em nuvem como Amazon EC2 e 
+Openstack. A sua aplicação utiliza o Chef solo como seu agente de configuração.
 
 Com esse levantamento de trabalhos recentes, as soluções encontradas não resolvem totalmente
 o problema. A grande diferença é que as ferramentas encontradas não utilizam os pacotes
 disponibilizados pelo Debian. De toda forma, as ferramentas encontradas buscam
 abstrair todo processo de instalação e configuração das aplicações, para que o
-usuário não tenha dificuldades na instalação de aplicações web, as ferramentas também
+usuário não tenha dificuldades na instalação de aplicações web. As ferramentas também
 trazem uma interface web para que o usuário não precise executar tarefas via terminal.
 
 Em resumo, por um lado, as ferramentas também utilizam do conceito de
@@ -126,9 +129,7 @@ neste trabalho.
 As ferramentas de apoio ao desenvolvimento de software são importantes para a
 organização do trabalho, auxiliando nas atividades típicas dentro de um projeto
 de engenharia de software. Algumas ferramentas são importantes, pois tornam mais fácil
-a execução de algumas atividades, como por exemplo: o controle de versão do software,
-ferramenta para documentação do software e ferramenta para gerenciar as tarefas.
-Os critérios para escolha das ferramentas são:
+a execução de algumas atividades. Os critérios para escolha das ferramentas são:
 
 \begin{itemize}
   \item \textbf{Aplicação para sistema de controle de versão git:} Uma ferramenta que
@@ -166,7 +167,8 @@ com os seguintes princípios:
 
 \textbf{Base: Pacotes Debian}
 
-A plataforma Shak utiliza aplicações que são distribuídas oficialmente pelo sistema de pacotes do Debian. Essas aplicações utilizam os
+A plataforma Shak utiliza aplicações que são distribuídas oficialmente pelo 
+sistema de pacotes do Debian. Essas aplicações utilizam os
 pacotes do Debian, que fornecem atualizações consistentes de correção e de segurança,
 e são utilizados por uma grande quantidade de usuários que reportam problemas a
 serem resolvidos. 
@@ -183,7 +185,7 @@ necessárias são feitas de forma automática, fornecendo de fato um "instalador
 de um clique" para aplicações suportadas. 
 
 Todas as configurações são feitas de
-forma consistente utilizando uma ferramenta comum, buscando o maior nível de
+forma consistente, utilizando uma ferramenta comum, buscando o maior nível de
 segurança possível, e assumindo responsabilidades que não podem ser tomadas por
 um pacote, e realizando tarefas complexas de forma automatizada, sem a necessidade
 da interferência de algum usuário.
@@ -279,22 +281,20 @@ instância desse servidor, que será exatamente idêntico para todos os usuário
 que forem criar uma máquina virtual, reduzindo ao máximo os problemas que surgem 
 por causa das diferenças entre sistemas operacionais e configurações de sistema.
 
-Quando executamos o comando vagrant up, o Vagrant cria uma máquina virtual com as
-configurações que estão no arquivo Vagrantfile na raiz do projeto Shak. Nele
+Quando executamos o comando \textit{vagrant up}, o Vagrant cria uma máquina virtual com as
+configurações que estão no arquivo Vagrantfile na raiz do projeto Shak. Nele,
 estão todas as configurações e definições da máquina virtual em questão. Para o
 Vagrant criar uma máquina virtual é preciso escolher um software que gerencie
-esse procedimento, a ferramenta escolhida foi o Virtualbox para poder emular o sistema
-operacional uma máquina virtual, assim o Vagrant inicia uma máquina virtual
+esse procedimento, a ferramenta escolhida foi o Virtualbox, para poder emular o sistema
+operacional uma máquina virtual. Assim, o Vagrant inicia uma máquina virtual
 utilizando o Virtualbox, com a distribuição Debian GNU/Linux e as configurações que estiverem
 definida no arquivo de configuração no arquivo Vagrantfile.
 
 Para executar o Vagrant basta instalar o pacote vagrant, disponível pelo Debian. Além disso
 o repositório do projeto Shak já possui um Vagrantfile padrão para que todos os
-desenvolvedores tenham o mesmo ambiente, passa acessar a máquina virtual criada
-basta acessá-la via ssh, o Vagrant já gerencia as chaves ssh, portanto basta
-dar o comando vagrant ssh que estará conectado a máquia virtual via ssh.
+desenvolvedores tenham o mesmo ambiente. 
 
-O ambiente de desenvolvimento levantado é um ambiente com o sistema Debian na sua versão
+O ambiente de desenvolvimento é um ambiente com o sistema Debian na sua versão
 sid 64 bits(que é a versão que contém os pacotes mais atuais, conhecida como versão instável),
 apesar de a versão ser a versão instável isso é importante para que possamos
 utilizar as versões mais novas dos pacotes das ferramentas escolhidas, também
@@ -314,23 +314,24 @@ sem a necessidade de execução de nenhum script adicional.
 
 As atividades planejadas para a evolução da ferramenta Shak são baseadas nas 
 aplicações que foram escolhidas na Seção
-\ref{subsection:exemplos}. Essas aplicações serão as aplicações piloto, que 
-ajudarão na evolução da solução proposta. 
+\ref{subsection:exemplos}. Essas aplicações serão as aplicações que deverão
+ter sua implantação automatizadas pela ferramenta. 
 
-Inicialmente, foi feito uma fase exploratória, no qual o planejamento inicial foi
+No trabalho, foi feito uma fase exploratória, no qual o planejamento foi
 suportar a instalação do Owncloud e Wordpress de forma 
 automatizada. A escolha das duas ferramentas foi feita pelo autor e pelo co-orientador
 deste trabalho, levando em consideração a popularidade das duas ferramentas nas 
 comunidades de software livre. 
 
-Essa fase exploratória inicial foi necessária para evoluir a ferramenta
+Essa fase exploratória foi necessária para evoluir a ferramenta
 , visto que a ferramenta Shak só suportava aplicações estáticas, ou seja, apenas 
 aplicações que contenham 
 código \textbf{HTML}, \textbf{CSS} e \textbf{Javascript}. 
 
-A fase exploratória foi importante para apoiar na definição das fases e procedimentos para implantação
+A fase exploratória foi importante para apoiar na definição das fases e 
+procedimentos para implantação
 automatizada. Além de que, a partir dela, foram definidos características importantes 
-que devem ser levados em consideração para a escolha das próximas aplicações .
+que devem ser levados em consideração para a escolha das próximas aplicações.
 
 As atividades iniciais levantadas foram:
 
@@ -340,7 +341,9 @@ As atividades iniciais levantadas foram:
    \item  Forçar as aplicações Wordpress e Owncloud a
    utilizar o protocolo HTTPS.
    \item  Suporte a instalação automatizada do servidor de e-mail,
-   \item  Suporte a instalação automatizada do outras aplicações.
+   \item  Suporte a instalação automatizada do MoinMoin.
+   \item  Suporte a instalação automatizada do Roundcube.
+   \item  Suporte a instalação automatizada do Noosfero.
  \end{enumerate}
 
 Ao verificar que tanto a ferramenta Owncloud como a ferramenta Wordpress precisam
@@ -351,6 +354,10 @@ Owncloud como Wordpress deveriam usar sempre HTTPS por padrão, isso envolve tam
 uma estratégia de como serão gerenciados os certificados de segurança para aplicar
 o protocolo HTTPS. Além dessas atividades previstas, também foram feitas evoluções
 no Shak para que seja possível a implementação dessas atividades.
+
+Após a fase exploraoria, outras aplicações foram escolhidas, são elas o MoinMoin, 
+Roundcube e Noosfero, de acordo com as características desejadas, 
+definidas na Seção \ref{subsection:validacao}
 
 Dentro da implantação automatizada de software Debian GNU/Linux existem várias
 configurações possíveis. Neste trabalho existem algumas características que 
@@ -378,7 +385,7 @@ da implantação.
 
 Primeiramente, é necessário definir as fases e os procedimentos para a implantação 
 automatizada. Para isso, é necessário seguir as fases que compõem o processo de 
-implantação de aplicações, e de acordo com o Capítulo \ref{cap-referencial}. 
+implantação de aplicações, e de acordo com a Seção \ref{sub:processoimplantaaco}. 
 
 Neste trabalho, foi adicionado a fase de configuração de múltiplas
 instâncias, que é a fase responsável por habilitar a implantação de múltiplas 
@@ -425,10 +432,10 @@ características foram levadas em consideração para a escolha das aplicações
 \begin{description}
   \item  [Aplicações empacotadas no Debian:] Como o intuito do trabalho
   é realizar implantações múltiplas a partir de um pacote único, tais aplicações
-  devem estar empacotadas e disponíveis para instalação nos servidores do Debian.
-  Isso impacta na escolha da ferramenta, visto que não será necessário ter o trabalho
-  de empacotar aplicações que ainda não estão empacotadas no Debian.
-  \item  [Servidor web compatível:] As ferramentas escolhidas devem no
+  devem estar empacotadas e disponíveis para instalação nos servidores do Debian. Caso
+a aplicação não esteja disponível no Debian, é necessário empacotá-la e distribuir
+nos servidores oficiais do Debian.
+ \item  [Servidor web compatível:] As ferramentas escolhidas devem no
   mínimo possuir o servidor web compatível, por exemplo: as aplicações juntas
   devem possuir suporte para o servidor Nginx ou Apache ou similares.
   \item  [Aplicações com comunidades ativas:] Como estamos trabalhando
@@ -454,8 +461,7 @@ Owncloud na nuvem.
 \end{description}
 
 A partir dessas características definidas, é necessário encontrar os exemplos de uso
-que possam servir para a execução da solução, todos as aplicações que servirão como
-exemplos de uso devem possuir pacotes incluídos na distribuição oficial do Debian.
+que possam servir para a execução da solução.
 
 \subsection{Exemplos de uso: busca dos pacotes das aplicações}
 \label{subsection:exemplos}
@@ -463,18 +469,17 @@ exemplos de uso devem possuir pacotes incluídos na distribuição oficial do De
 Para encontrar as aplicações que possam se encaixar dentro desses parâmetros
 devemos buscar por alguns exemplos de uso. Para a escolha das aplicações que
 serão utilizadas como exemplos de uso é necessário fazer uma busca nas aplicações
-web que são empacotadas no Debian e que possuem suporte a configuração de múltiplas
+web  que possuem suporte a configuração de múltiplas
 instâncias, essa busca deve levar em consideração também a documentação para realizar
-tal configuração. Foram levantados algumas aplicações web empacotadas no Debian da
-seguinte forma:
+tal configuração. Foram levantados algumas aplicações web da seguinte forma:
 
 \begin{center}
 apt-cache search web | wc -l
 \end{center}
 
 O resultado obtido com pacotes que contenham a palavra web recebe o resultado de 3470
-pacotes de diversas aplicações ou módulos de aplicações, como:
-Wordpress, Owncloud, Drupal, Mailman e Chromium. Logo dentro dessa rápida busca
+pacotes de diversas aplicações ou módulos de aplicações, como
+Wordpress; Owncloud; Drupal; Mailman e Chromium. Logo, dentro dessa busca
 encontramos alguns pacotes de aplicações conhecidas, para facilitar a busca basta
 aplicar para alguns nomes de aplicações conhecidos como:
 
@@ -495,8 +500,11 @@ info "nome aplicação"
 \end{center}
 
 Analisando a documentação de algumas aplicações como Wordpress, Redmine,
-Owncloud, Mailman, Wikimédia, foram escolhidas as aplicações Wordpress e Owncloud por
-conter as características definidas anteriormente. 
+Owncloud, Mailman, Wikimédia, foram escolhidas as aplicações Wordpress, Owncloud, MoinMoin
+e Roundcube, por conter as características definidas anteriormente. Além disso,
+também foi escolhido a aplicação Noosfero, que é uma aplicação que ainda não
+está no Debian, porém neste trabalho será feito um esforço inicial para que isso
+seja possível.
 
 Primeiro, foi feito uma análise da documentação dessas ferramentas para encontrar a
 possibilidade da configuração de múltiplas instâncias no mesmo servidor, além
@@ -509,6 +517,9 @@ Também, foi levado em consideração o fato da  aplicação Owncloud dar suport
 com  o objetivo de compartilhar arquivos em servidores na nuvem de forma simples,
 como por exemplo: enviar um e-mail de um servidor para outro, sendo assim,
 também é possível migrar os seus arquivos pessoais de um servidor Owncloud a outro.
+
+Até esta fase do trabalho, a aplicação Noosfero também está com suporte a 
+federação em desenvolvimento.
 
 %TODO ilustrar a arquitetura
 Com as aplicações que serão exemplos de uso, a proposta de arquitetura
