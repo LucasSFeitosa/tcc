@@ -701,7 +701,7 @@ nos repositórios oficiais do Debian.
 
 Um exemplo é a biblioteca \textit{ruby-selenium-webdriver}, que
 está no repositório do Noosfero, porém não está disponível no repositório oficial
-do Debian. Outro problema que foi encontrado, é que algumas dependências do noosfero
+do Debian. Outro problema que foi encontrado, é que algumas dependências do Noosfero
 estão em versões diferentes das dependências que estão no repositório Debian.
 
 Para resolver esse problema, seria necessário empacotar todas as dependências
@@ -793,7 +793,7 @@ com suas versões, e as dependências que estão no Debian Jessie.
 \end{table}
 
 %TODO corrigir a mencao a tabela
-Como visto na tabela acima, grande parte das dependências do Noosfero econtram-se
+Como visto na tabela acima, grande parte das dependências do Noosfero encontram-se
  apenas nas versões \textit{testing} e \textit{unstable} no Debian. Para a continuar com
 a implantação automatizada, seria necessário discutir alguma solução 
 com a comunidade do software. Como sugestão, uma das soluções viáveis seria, 
@@ -812,7 +812,7 @@ em trabalhos futuros.
 
 Roundcube \citeonline{roundcube} é uma solução de webmail gratuita, de código 
 aberto. Possui uma interface funcional e personalizável. Com ele, é possível
-ler seus emails a partir de um cliente web. 
+ler seus e-mails a partir de um cliente web. 
 
 Para a ferramenta Roundcube, foram seguidos os mesmos passos feitos em 
 \ref{sub:wordpress} e \ref{sub:owncloud}.
@@ -823,7 +823,7 @@ Inicialmente, é necessário definir quais são as dependências
 mínimas para o funcionamento do Roundcube, tais como: banco de dados; pacotes
 pré-instalados; e aplicações pré-configuradas. Roundcube é uma aplicação escrita
 na linguagem Php, logo, suas dependências são bem semelhantes entre as aplicações
-Wordpress e Owncloud. Foram identifcados:
+Wordpress e Owncloud. As dependências identificadas foram:
 
 \begin{itemize}
    \item \textbf{Pacote Roundcube para o Debian:} Pacote Debian com o Owncloud.
@@ -841,7 +841,7 @@ Para o funcionamento do Roundcube, é necessário a instalação do Php5. Além
 disso, também foi utilizado o servidor web Nginx, e o 
 banco de dados Postgresql.
 
-Para faciltiar a configuração de aplicações Php, foi feito uma receita genérica,
+Para facilitar a configuração de aplicações Php, foi feito uma receita genérica,
 que instala dependências básicas para qualquer aplicação Php que for usada pelo
 Shak. Essa receita instala e habilita o Php5, além de instalar o nginx. A partir
 disto, as aplicações Owncloud e Wordpress também passaram a usar esta receita
@@ -859,16 +859,16 @@ dentro do arquivo \textit{default.rb}, que se encontra dentro da pasta
 
 \subsection{Configuração}
 
-O estado atual da aplicação Roundcube no Shak, econtra-se na fase de configuração. A pendência,
-é a configuração do servidor de email, que será utilizado pelo roundcube. Por ser
+O estado atual da aplicação Roundcube no Shak, encontra-se na fase de configuração. A pendência,
+é a configuração do servidor de e-mail, que será utilizado pelo roundcube. Por ser
 uma configuração pessoal do usuário, ou seja, ele deve inserir o seu serviço
-de email preferido, essa configuração ainda não foi automatizada. 
+de e-mail preferido, essa configuração ainda não foi automatizada. 
 
 Como sugestão de trabalhos futuros, é necessário evoluir a receita do Roundcube, 
-para que possa receber os dados do serviço de email, fornecidos pelo usuário, 
+para que possa receber os dados do serviço de e-mail, fornecidos pelo usuário, 
 durante sua instalação. Com isso, ao finalizar a instalação, o Roundcube já estará disponível ao usuário, 
-com a conta de email que foi informada.
+com a conta de e-mail que foi informada.
 
-Atualmente, a receita do Roduncube ja automatiza a instalação da sua aplicação web. 
+Atualmente, a receita do Roduncube já automatiza a instalação da aplicação web. 
 O tralho atual está disponível no repositório oficial do Shak \url{https://gitlab.com/shak/shak/branches}, na branch roundcube.
 
