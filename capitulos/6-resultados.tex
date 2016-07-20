@@ -5,10 +5,10 @@ definição e preparação dos estudos.
 
 Como dito no Capítulo \ref{cap-metodologia}, as aplicações escolhidas foram 
 Owncloud; Wordpress; MoinMoin; Roundcube; e Noosfero. Além da aplicação de serviço
-de email.
+de e-mail.
  
 Cada fase da implantação será tratado como uma 
-subseção na descrição de cada exemplo de uso. Todas as atividades foram organziadas,
+subseção na descrição de cada exemplo de uso. Todas as atividades foram organizadas,
 via issues, no repositório do próprio projeto Shak 
 \url{https://gitlab.com/shak/shak/issues}.
 
@@ -64,7 +64,7 @@ Apache2.
 Para executar essas instalações, é preciso criar uma receita no livro de receitas
 do Wordpress. Primeiramente, é necessário criar o próprio livro de receitas no Shak.
 Para isso, existe o comando \textit{rake cookbook}, que cria a estrutura básica
-de um livro de receitas que deve ser usado pelo Chef, como exempleficado no trecho
+de um livro de receitas que deve ser usado pelo Chef, como exemplificado no trecho
 de código \ref{codigo1}:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do wordpress com shak}, label=codigo1]
@@ -153,7 +153,7 @@ Por fim, é necessário um arquivo de configuração Nginx para cada aplicação
 como visto no Capítulo \ref{cap-referencial}, todo arquivo de configuração
 do Nginx possui um bloco server, e cada bloco server equivale a uma hospedagem virtual. 
 Por isso as aplicações também se tornam independentes, podendo ser acessadas pelo 
-mesmo sevidor, mas com endereços diferentes.
+mesmo servidor, mas com endereços diferentes.
 
 \subsection{Inicialização}
 
@@ -258,7 +258,7 @@ do Owncloud; arquivos de configuração do banco de dados; e arquivo de configur
 do Nginx.
 
 O primeiro arquivo de configuração é o \textit{autoconfig.php}, esse arquivo
-contém informações iportantes, como nome do banco de dados;
+contém informações importantes, como nome do banco de dados;
 login do usuário do banco de dados; senha do usuário do banco de dados; o endereço 
 do banco de dados; o diretório
 onde irá ficar os arquivos de configuração do Owncloud; e o login e senha
@@ -373,7 +373,7 @@ Por fim a aplicação que servirá como anti-spam será o Apache SpamAssassin, q
 é uma plataforma anti-spam que que dá aos administradores de servidor de e-mail, 
 um filtro para classificar e-mails e bloquear os e-mails que julgarem como spam \cite{spam}. 
 
-Em resumo, o servidor de email é composto de:
+Em resumo, o servidor de e-mail é composto de:
 
 \begin{itemize}
    \item \textbf{Pacote dovecot para o Debian:} Pacote Debian com o dovecot.
@@ -437,7 +437,7 @@ também contém as configurações que filtram os e-mails com spamassassin e
 algumas configurações do \textit{SMTP}. 
 
 No \textit{master.cf}, é definido como um programa cliente se conecta a um serviço, e qual o
-programa que é executado quando um serviço é solicitado. Neste caso, é necesário
+programa que é executado quando um serviço é solicitado. Neste caso, é necessário
 indicar que o servidor de e-mail utilize \textit{SSL}, com autenticação segura, 
 apontando o caminho dos arquivos de chave e certificados.
 
@@ -608,12 +608,12 @@ com essas duas aplicações.
 \subsection{Noosfero}
 \label{subsub:noosfero}
 
-Noosfero \citeonline{noosfero} é uma plataforma web para redes sociais e 
+\citeonline{noosfero} é uma plataforma web para redes sociais e 
 de economia social e solidária. Ela possui funcionalidades como blog; e-Porfolios; 
 CMS; RSS; discussão temática; agenda de eventos; e inteligência coletiva para a 
 economia solidária no mesmo sistema.
 
-O estado atual da aplicação Noosfero no Shak econtra-se
+O estado atual da aplicação Noosfero no Shak encontra-se
 na fase do planejamento. No planejamento, já era de conhecimento do autor que o
 Noosfero não estava nos repositórios oficiais do Debian, mas que seria possível estar, 
 desde que todas as dependências do Noosfero também estivessem no Debian.
@@ -632,11 +632,10 @@ Para resolver esse problema, seria necessário empacotar todas as dependências
 do Noosfero que ainda não estão no Debian. Além disso, sincronizar as versões
 que já estão no Debian, com as versões que são utilizadas pelo Noosfero.
 
-%TODO colcoar em anexo?
-Na tabela \ref{tabela1} em anexo, encontra-se uma lista das dependências que estão no repositório do Noosfero,
+Na tabela \ref{tabela1} em anexo, encontra-se uma lista das dependências 
+que estão no repositório do Noosfero,
 com suas versões, e as dependências que estão no Debian Jessie.
 
-%TODO corrigir a mencao a tabela
 Como visto na tabela acima, grande parte das dependências do Noosfero encontram-se
  apenas nas versões \textit{testing} e \textit{unstable} no Debian. Para a continuar com
 a implantação automatizada, seria necessário discutir alguma solução 
@@ -704,14 +703,14 @@ dentro do arquivo \textit{default.rb}, que se encontra dentro da pasta
 \subsubsection{Configuração}
 
 O estado atual da aplicação Roundcube no Shak, encontra-se na fase de configuração. A pendência,
-é a configuração do servidor de e-mail, que será utilizado pelo roundcube. Por ser
+é a configuração do servidor de e-mail, que será utilizado pelo Roundcube. Por ser
 uma configuração pessoal do usuário, ou seja, ele deve inserir o seu serviço
 de e-mail preferido, essa configuração ainda não foi automatizada. 
 
 Como sugestão de trabalhos futuros, é necessário evoluir a receita do Roundcube, 
 para que possa receber os dados do serviço de e-mail, fornecidos pelo usuário, 
-durante sua instalação. Com isso, ao finalizar a instalação, o Roundcube já estará disponível ao usuário, 
-com a conta de e-mail que foi informada.
+durante sua instalação. Com isso, ao finalizar a instalação, a aplicação já 
+estará disponível ao usuário, com a conta de e-mail que foi informada.
 
 Atualmente, a receita do Roduncube já automatiza a instalação da aplicação web. 
 O tralho atual está disponível no repositório oficial do Shak \url{https://gitlab.com/shak/shak/branches}, na branch roundcube.
