@@ -598,6 +598,124 @@ E assim, o Chef inicia o processo de instalação dos pacotes; criação dos arq
 de configuração; incia os serviços desejados; e ao fim do procedimento a aplicação
 já estará pronta para uso no hostname escolhido.
 
+\section{Outras Aplicações}
+\label{sub:appnencerradas}
+
+Até o fim deste trabalho as aplicações Noosfero e Roundcube não foram finalizadas. 
+Porém, é importante reportar o estado atual do que foi feito neste trabalho,
+com essas duas aplicações.
+
+\subsection{Noosfero}
+\label{subsub:noosfero}
+
+Noosfero \citeonline{noosfero} é uma plataforma web para redes sociais e 
+de economia social e solidária. Ela possui funcionalidades como blog; e-Porfolios; 
+CMS; RSS; discussão temática; agenda de eventos; e inteligência coletiva para a 
+economia solidária no mesmo sistema.
+
+O estado atual da aplicação Noosfero no Shak econtra-se
+na fase do planejamento. No planejamento, já era de conhecimento do autor que o
+Noosfero não estava nos repositórios oficiais do Debian, mas que seria possível estar, 
+desde que todas as dependências do Noosfero também estivessem no Debian.
+
+O Noosfero já possui um repositório \footnote{http://download.noosfero.org/debian/jessie/}
+, com suas dependências empacotadas. Porém, algumas delas não se encontram nos repositórios
+oficiais do Debian, dificultando assim, que o pacote do Noosfero fique disponível
+nos repositórios oficiais do Debian. 
+
+Um exemplo é a biblioteca \textit{ruby-selenium-webdriver}, que
+está no repositório do Noosfero, porém não está disponível no repositório oficial
+do Debian. Outro problema que foi encontrado, é que algumas dependências do Noosfero
+estão em versões diferentes das dependências que estão no repositório Debian.
+
+Para resolver esse problema, seria necessário empacotar todas as dependências
+do Noosfero que ainda não estão no Debian. Além disso, sincronizar as versões
+que já estão no Debian, com as versões que são utilizadas pelo Noosfero.
+
+%TODO colcoar em anexo?
+Na tabela \ref{tabela1} em anexo, encontra-se uma lista das dependências que estão no repositório do Noosfero,
+com suas versões, e as dependências que estão no Debian Jessie.
+
+%TODO corrigir a mencao a tabela
+Como visto na tabela acima, grande parte das dependências do Noosfero encontram-se
+ apenas nas versões \textit{testing} e \textit{unstable} no Debian. Para a continuar com
+a implantação automatizada, seria necessário discutir alguma solução 
+com a comunidade do software. Como sugestão, uma das soluções viáveis seria, 
+sincronizar as versões das dependências do Noosfero, com as versões que são 
+disponibilizadas pelo Debian \textit{testing}. Com isso, o 
+Noosfero passa a ter boa parte de suas dependências suportadas pelo Debian. Além disso, 
+também seria necessário empacotar as bibliotecas que o Noosfero precisa, mas 
+que o Debian não possui. 
+
+Porém, essa decisão fica a cargo da comunidade da aplicação, e com o noosfero disponível
+nos repositórios oficiais do Debian, o Shak poderá dar suporte ao Noosfero, 
+em trabalhos futuros.
+
+ \subsection{Roundcube}
+\label{sub:owncloud}
+
+Roundcube \citeonline{roundcube} é uma solução de webmail gratuita, de código 
+aberto. Possui uma interface funcional e personalizável. Com ele, é possível
+ler seus e-mails a partir de um cliente web. 
+
+Para a ferramenta Roundcube, foram seguidos os mesmos passos feitos em 
+\ref{sub:wordpress} e \ref{sub:owncloud}.
+
+\subsubsection{Planejamento}
+
+Inicialmente, é necessário definir quais são as dependências
+mínimas para o funcionamento do Roundcube, tais como: banco de dados; pacotes
+pré-instalados; e aplicações pré-configuradas. Roundcube é uma aplicação escrita
+na linguagem Php, logo, suas dependências são bem semelhantes entre as aplicações
+Wordpress e Owncloud. As dependências identificadas foram:
+
+\begin{itemize}
+   \item \textbf{Pacote Roundcube para o Debian:} Pacote Debian com o Owncloud.
+   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o Nginx.
+   \item \textbf{Pacote Postgresql para o Debian:} Pacote Debian com o banco de dados Postgresql
+   que será usado pelo Roundcube.
+   \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
+   necessários para configurar o Roundcube, o servidor web Nginx e o banco de dados
+   Postgresql.
+\end{itemize}
+
+\subsubsection{Preparação e Instalação de Pacotes}
+
+Para o funcionamento do Roundcube, é necessário a instalação do Php5. Além
+disso, também foi utilizado o servidor web Nginx, e o 
+banco de dados Postgresql.
+
+Para facilitar a configuração de aplicações Php, foi feito uma receita genérica,
+que instala dependências básicas para qualquer aplicação Php que for usada pelo
+Shak. Essa receita instala e habilita o Php5, além de instalar o nginx. A partir
+disto, as aplicações Owncloud e Wordpress também passaram a usar esta receita
+genérica, removendo duplicações de suas receitas.
+
+Por fim, também foi necessário instalar o pacote roundcube-pgsql, que é um módulo 
+necessário para que Roundcube funcione com o banco de dados PostgeSQL.
+ 
+Para executar essas instalações, é preciso criar uma receita no livro de receitas
+do Roundcube, com o comando \textit{rake cookbook}, da mesma forma com as outras aplicações.
+ 
+Com a estrutura inicial, é possível declarar as dependências do Roundcube
+dentro do arquivo \textit{default.rb}, que se encontra dentro da pasta 
+\textit{recipes}. 
+
+\subsubsection{Configuração}
+
+O estado atual da aplicação Roundcube no Shak, encontra-se na fase de configuração. A pendência,
+é a configuração do servidor de e-mail, que será utilizado pelo roundcube. Por ser
+uma configuração pessoal do usuário, ou seja, ele deve inserir o seu serviço
+de e-mail preferido, essa configuração ainda não foi automatizada. 
+
+Como sugestão de trabalhos futuros, é necessário evoluir a receita do Roundcube, 
+para que possa receber os dados do serviço de e-mail, fornecidos pelo usuário, 
+durante sua instalação. Com isso, ao finalizar a instalação, o Roundcube já estará disponível ao usuário, 
+com a conta de e-mail que foi informada.
+
+Atualmente, a receita do Roduncube já automatiza a instalação da aplicação web. 
+O tralho atual está disponível no repositório oficial do Shak \url{https://gitlab.com/shak/shak/branches}, na branch roundcube.
+
 \section{Segurança}
 \label{sub:seguranca}
 
@@ -676,122 +794,4 @@ a construção do layout do Shak. A sugestão inicial foi feita utilizando \text
 bootstrap 3, que é um framework para criar aplicações responsivas na web. A versão
 inicial está disponível em \url{https://gitlab.com/Thiagovsk/shak_frontend/tree/master}.
 
-%TODO
-\section{Aplicações não encerradas}
-\label{sub:appnencerradas}
-
-Até o fim deste trabalho as aplicações Noosfero e Roundcube não foram finalizadas. 
-Porém, é importante reportar o estado atual do que foi feito neste trabalho,
-com essas duas aplicações.
-
-\subsubsection{Noosfero}
-\label{subsub:noosfero}
-
-Noosfero \citeonline{noosfero} é uma plataforma web para redes sociais e 
-de economia social e solidária. Ela possui funcionalidades como blog; e-Porfolios; 
-CMS; RSS; discussão temática; agenda de eventos; e inteligência coletiva para a 
-economia solidária no mesmo sistema.
-
-O estado atual da aplicação Noosfero no Shak econtra-se
-na fase do planejamento. No planejamento, já era de conhecimento do autor que o
-Noosfero não estava nos repositórios oficiais do Debian, mas que seria possível estar, 
-desde que todas as dependências do Noosfero também estivessem no Debian.
-
-O Noosfero já possui um repositório \footnote{http://download.noosfero.org/debian/jessie/}
-, com suas dependências empacotadas. Porém, algumas delas não se encontram nos repositórios
-oficiais do Debian, dificultando assim, que o pacote do Noosfero fique disponível
-nos repositórios oficiais do Debian. 
-
-Um exemplo é a biblioteca \textit{ruby-selenium-webdriver}, que
-está no repositório do Noosfero, porém não está disponível no repositório oficial
-do Debian. Outro problema que foi encontrado, é que algumas dependências do Noosfero
-estão em versões diferentes das dependências que estão no repositório Debian.
-
-Para resolver esse problema, seria necessário empacotar todas as dependências
-do Noosfero que ainda não estão no Debian. Além disso, sincronizar as versões
-que já estão no Debian, com as versões que são utilizadas pelo Noosfero.
-
-%TODO colcoar em anexo?
-Na tabela \ref{tabela1} em anexo, encontra-se uma lista das dependências que estão no repositório do Noosfero,
-com suas versões, e as dependências que estão no Debian Jessie.
-
-%TODO corrigir a mencao a tabela
-Como visto na tabela acima, grande parte das dependências do Noosfero encontram-se
- apenas nas versões \textit{testing} e \textit{unstable} no Debian. Para a continuar com
-a implantação automatizada, seria necessário discutir alguma solução 
-com a comunidade do software. Como sugestão, uma das soluções viáveis seria, 
-sincronizar as versões das dependências do Noosfero, com as versões que são 
-disponibilizadas pelo Debian \textit{testing}. Com isso, o 
-Noosfero passa a ter boa parte de suas dependências suportadas pelo Debian. Além disso, 
-também seria necessário empacotar as bibliotecas que o Noosfero precisa, mas 
-que o Debian não possui. 
-
-Porém, essa decisão fica a cargo da comunidade da aplicação, e com o noosfero disponível
-nos repositórios oficiais do Debian, o Shak poderá dar suporte ao Noosfero, 
-em trabalhos futuros.
-
- \subsection{Roundcube}
-\label{sub:owncloud}
-
-Roundcube \citeonline{roundcube} é uma solução de webmail gratuita, de código 
-aberto. Possui uma interface funcional e personalizável. Com ele, é possível
-ler seus e-mails a partir de um cliente web. 
-
-Para a ferramenta Roundcube, foram seguidos os mesmos passos feitos em 
-\ref{sub:wordpress} e \ref{sub:owncloud}.
-
-\subsection{Planejamento}
-
-Inicialmente, é necessário definir quais são as dependências
-mínimas para o funcionamento do Roundcube, tais como: banco de dados; pacotes
-pré-instalados; e aplicações pré-configuradas. Roundcube é uma aplicação escrita
-na linguagem Php, logo, suas dependências são bem semelhantes entre as aplicações
-Wordpress e Owncloud. As dependências identificadas foram:
-
-\begin{itemize}
-   \item \textbf{Pacote Roundcube para o Debian:} Pacote Debian com o Owncloud.
-   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o Nginx.
-   \item \textbf{Pacote Postgresql para o Debian:} Pacote Debian com o banco de dados Postgresql
-   que será usado pelo Roundcube.
-   \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
-   necessários para configurar o Roundcube, o servidor web Nginx e o banco de dados
-   Postgresql.
-\end{itemize}
-
-\subsection{Preparação e Instalação de Pacotes}
-
-Para o funcionamento do Roundcube, é necessário a instalação do Php5. Além
-disso, também foi utilizado o servidor web Nginx, e o 
-banco de dados Postgresql.
-
-Para facilitar a configuração de aplicações Php, foi feito uma receita genérica,
-que instala dependências básicas para qualquer aplicação Php que for usada pelo
-Shak. Essa receita instala e habilita o Php5, além de instalar o nginx. A partir
-disto, as aplicações Owncloud e Wordpress também passaram a usar esta receita
-genérica, removendo duplicações de suas receitas.
-
-Por fim, também foi necessário instalar o pacote roundcube-pgsql, que é um módulo 
-necessário para que Roundcube funcione com o banco de dados PostgeSQL.
- 
-Para executar essas instalações, é preciso criar uma receita no livro de receitas
-do Roundcube, com o comando \textit{rake cookbook}, da mesma forma com as outras aplicações.
- 
-Com a estrutura inicial, é possível declarar as dependências do Roundcube
-dentro do arquivo \textit{default.rb}, que se encontra dentro da pasta 
-\textit{recipes}. 
-
-\subsection{Configuração}
-
-O estado atual da aplicação Roundcube no Shak, encontra-se na fase de configuração. A pendência,
-é a configuração do servidor de e-mail, que será utilizado pelo roundcube. Por ser
-uma configuração pessoal do usuário, ou seja, ele deve inserir o seu serviço
-de e-mail preferido, essa configuração ainda não foi automatizada. 
-
-Como sugestão de trabalhos futuros, é necessário evoluir a receita do Roundcube, 
-para que possa receber os dados do serviço de e-mail, fornecidos pelo usuário, 
-durante sua instalação. Com isso, ao finalizar a instalação, o Roundcube já estará disponível ao usuário, 
-com a conta de e-mail que foi informada.
-
-Atualmente, a receita do Roduncube já automatiza a instalação da aplicação web. 
-O tralho atual está disponível no repositório oficial do Shak \url{https://gitlab.com/shak/shak/branches}, na branch roundcube.
 
