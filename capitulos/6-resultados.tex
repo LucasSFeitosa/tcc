@@ -63,7 +63,7 @@ Para esse procedimento, foi necessário instalar os pacotes php5-fpm; o pacote
 do banco de dados MySQL; e o pacote Nginx. Além disso, habilitar o serviço do
 php5-fpm.
  
-Para executar essas instalações, é preciso criar uma receita no livro de receitas
+Para executar essas instalações, foi preciso criar uma receita no livro de receitas
 do Wordpress. Foi necessário criar o próprio livro de receitas no Shak.
 Para isso, existe o comando \textit{rake cookbook}, que cria a estrutura básica
 de um livro de receitas que deve ser usado pelo Chef, como exemplificado no trecho
@@ -95,7 +95,7 @@ os serviços que precisam executar; as pastas; e permissões de usuários. O có
 \subsection{Configuração}
 \label{wordpress:preparacao}
 
-Como levantado no planejamento, é necessário a edição de arquivos de configuração. Os
+Como levantado no planejamento, foi necessário a edição de arquivos de configuração. Os
 arquivos de configuração necessários são: os arquivos de configuração do Wordpress; 
 o arquivo de configuração do banco de dados; e arquivo de configuração do servidor Nginx.
 
@@ -107,7 +107,7 @@ onde fica os arquivos estáticos, como: temas; galeria de mídias; e plugins
 de cada instância do Wordpress.
 
 Esse arquivo deve ficar no diretório \textit{/etc/wordpress/} e seu nome deve conter
-a seguinte estrutura: \textit{config-nomehost.php}, onde o nomehost deve ser o hostname
+a seguinte estrutura: \textit{config-nomehost.php}, onde o nomehost deve ser o endereço
 desejado, como por exemplo config-fga.unb.br.php. O segundo arquivo é o \textit{database.sql}, que é um pequeno script \textit{SQL} que
 cria o banco de dados do Wordpress e dá os privilégios ao usuário desejado. Por fim,
 o arquivo de configuração do Nginx, com a configuração do servidor web.
@@ -162,8 +162,8 @@ do Nginx, que utiliza o bloco server, pode ser visto no Código \ref{codigo994}.
 \subsection{Inicialização}
 
 Após a construção da receita do Wordpress, foi necessário testar a receita construída. 
-Para isso, o Shak precisa de duas informações importantes. A primeira é a aplicação
-que será instalada, e segunda o endereço destino. Como é um ambiente de desenvolvimento,
+Para isso, o Shak precisa de duas informações importantes. A primeira, é a aplicação
+que será instalada, e segunda, o endereço destino. Como a implantação foi um ambiente de desenvolvimento,
 não é preciso configurar um ip ou configurar um \textit{DNS}. Foi preciso adicionar o
 endereço desejado no arquivo \textit{/etc/hosts}. Assim, mesmo que esteja na sua máquina local, 
 era possível acessar um endereço mais familiar em seu navegador. Um exemplo da execução
@@ -175,7 +175,7 @@ shak install wordpress hostname=wordpress.dev
 
 Dessa forma, o Chef inicia: o processo de instalação dos pacotes; criação dos arquivos
 de configuração; incia os serviços desejados; e ao fim do procedimento, a aplicação
-já estará pronta para uso no hostname escolhido.
+já estará pronta para uso no endereço escolhido.
 
 \section{Owncloud}
 \label{sub:owncloud}
@@ -231,8 +231,8 @@ Também foi necessário instalar o pacote php5-pgsql, que é um módulo para
 conexões de banco de dados Postgresql, necessário para o funcionamento de
 aplicações na linguagem Php com o banco de dados Postgresql.
 
-Para executar essas instalações, é preciso criar uma receita no livro de receitas
-do Owncloud. Para isso, é necessário executar novamente o comando \textit{rake cookbook}, 
+Para executar essas instalações, foi preciso criar uma receita no livro de receitas
+do Owncloud. Para isso, foi necessário executar novamente o comando \textit{rake cookbook}, 
 que cria a estrutura básica de um livro de receitas que deve ser usado pelo Chef, 
 como exemplificado no trecho de código \ref{codigo2}
 
@@ -417,14 +417,14 @@ include_recipe 'email::spamassasin'
 
 A função de \textit{include\_recipe} do Chef permite que, aplicações que são compostas
 por outras aplicações menores, possam ter suas receitas separadas em diferentes arquivos,
-sendo uma receita para cada aplicação menor, que compõe o todo. Com isso, é possível 
+sendo uma receita para cada aplicação menor, que compõe o todo. Com isso, foi possível 
 incluir esses arquivos na receita que será executada. No caso do Shak, a receita
 que sempre será executada é a receita que está no arquivo \textit{default.rb} na
 pasta \textit{recipe}.
 
 \subsection{Configuração}
 
-Como levantado no planejamento, é necessário a edição de arquivos de configuração
+Como levantado no planejamento, foi necessário a edição de arquivos de configuração
 de todas as ferramentas. Existem arquivos de configuração para cada uma delas, inclusive
 o dovecot, que precisa ser integrado com o postfix, como agência de transferência
 de e-mails.
@@ -449,13 +449,13 @@ também contém as configurações que filtram os e-mails com spamassassin e
 algumas configurações do \textit{SMTP}. 
 
 No \textit{master.cf}, é definido como um programa cliente se conecta a um serviço, e qual o
-programa é executado quando um serviço é solicitado. Neste caso, é necessário
+programa é executado quando um serviço é solicitado. Neste caso, foi necessário
 indicar que o servidor de e-mail utilize \textit{SSL}, com autenticação segura, 
 apontando o caminho dos arquivos de chave e certificados.
 
 Por fim, a configuração do spamassasin. São necessários dois arquivos de configuração.
 O arquivo \textit{spamassassin}, que é o arquivo de configurações padrão para o spamassasin e o
-\textit{local.cf} que são as configurações locais. No spamassassin, é preciso habilitar 
+\textit{local.cf} que são as configurações locais. No spamassassin, foi preciso habilitar 
 o serviço do spamassasin e configurar o caminho dos arquivo de log.
 
 Já o arquivo \textit{local.cf}, possui o parâmetro required\_score. Esse parâmetro 
@@ -469,7 +469,7 @@ ou seja, e-mails que não são spam porém foram interpretados como spam.
 
 Após a construção da receita do servidor de e-mail, foi necessário testar a receita construída,
 para isso, o Shak precisa de duas informações importantes. A primeira é a aplicação
-que será instalada, e segunda o hostname destino, para executar a instalação
+que será instalada, e segunda o endereço destino, para executar a instalação
 do servidor de e-mail basta:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do servidor de e-mailcom shak}]
@@ -479,7 +479,7 @@ Shak install e-mail hostname=owncloud.dev
 
 E assim, o Chef inicia: o processo de instalação dos pacotes; criação dos arquivos
 de configuração; incia os serviços desejados; e ao fim do procedimento a aplicação
-já estará pronta para uso no hostname escolhido.
+já estará pronta para uso no endereço escolhido.
 
 Para testar o funcionamento, foram feitos dois procedimentos. O primeiro, era utilizar
 um cliente de e-mail para testes. O cliente de e-mail escolhido foi o mutt, utilizando
@@ -537,7 +537,7 @@ arquivos de configuração, mywiki.py e farmconfig.py.
 
 Para esse procedimento, foi necessário instalar os pacotes uwsgi,
 uwsgi-plugin-python, e o pacote do moinmoin, chamado python-moinmoin.
-Para executar essas instalações, é preciso criar uma receita no livro de receitas
+Para executar essas instalações, foi preciso criar uma receita no livro de receitas
 do moinmoin, bastando executar o comando \textit{rake cookbook}, que cria a
 estrutura básica de um livro de receitas que deve ser usado pelo Chef, como no código
 \ref{codigo3}:
@@ -565,9 +565,9 @@ do Nginx.
 
 O primeiro arquivo de configuração é o \textit{moin.wsgi}, arquivo onde é necessário
 informar, por exemplo, o caminho dos arquivos de configuração do moinmoin. No caso
-de um pacote debian, esse caminho por padrão é  \textit{/etc/moin}. Também é necessário 
+de um pacote debian, esse caminho por padrão é  \textit{/etc/moin}. Também foi necessário 
 editar o arquivo \textit{uwsgi.ini}, que é o arquivo de configuração
-do uwsgi para sua aplicação. Nele, é possível adicionar informações importantes, como
+do uwsgi para sua aplicação. Nele, foi possível adicionar informações importantes, como
 por exemplo: caminho do arquivo de log do uwsgi; caminho do socket;
 e a quantidade máxima de requisições.
 
@@ -579,12 +579,12 @@ links da barra de navegação e responsável por configurar múltiplas instânci
 %TODO confirmar essa pasta aqui
 Além disso, foi necessário criar a pasta de conteúdos do moinmoin, que por
 escolha devem ficar em /var/lib/moin. Após isso, para que o Nginx funcione corretamente
-com o uwsgi, é necessário indicar o socket do uwsgi, que foi indicado no uwsgi.ini.
+com o uwsgi, foi necessário indicar o socket do uwsgi, que foi indicado no uwsgi.ini.
 
 \subsection{Múltiplas Instâncias}
 
 MoinMoin possui nativamente a funcionalidade que permite a criação de múltiplas 
-instâncias de wiki no mesmo servidor. Para isso, é necessário editar um arquivo,
+instâncias de wiki no mesmo servidor. Para isso, foi necessário editar um arquivo,
 que é chamado de \textit{farmconfig.py}, com todas as wikis, e com seus 
 respectivos identificadores e domínios. Assim, o MoinMoin consegue gerenciar as 
 wikis separadamente. 
@@ -601,7 +601,7 @@ informações novas são inseridas no arquivo \textit{farmconfig.py}.
 
 Após a construção da receita do MoinMoin, foi necessário testar a receita construída. Para 
 isso, o Shak precisa de duas informações importantes, a primeira é a aplicação
-que será instalada, e segunda o hostname destino, para executar a instalação
+que será instalada, e segunda o endereço destino, para executar a instalação
 do Owncloud basta:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do owncloud com shak}]
@@ -610,7 +610,7 @@ do Owncloud basta:
 
 E assim, o Chef inicia: o processo de instalação dos pacotes; criação dos arquivos
 de configuração; incia os serviços desejados; e ao fim do procedimento a aplicação
-já estará pronta para uso no hostname escolhido.
+já estará pronta para uso no endereço escolhido.
 
 \section{Outras Aplicações}
 \label{sub:appnencerradas}
