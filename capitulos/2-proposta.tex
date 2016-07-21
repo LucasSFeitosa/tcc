@@ -209,7 +209,40 @@ Debian, o que é um benefício coletivo para o ecossistema do software livre, e
 para os seus usuários. Logo, quanto mais aplicações disponíveis no Debian,
 mais aplicações serão disponibilizadas para os usuários do Debian e seus derivados.
 
-A arquitetura da ferramenta Shak é composta de:
+A arquitetura simplificada do Shak, na figura \ref{fig:shak}, mostra quatro
+componentes importantes. Os dois primeiros são a interface web e a interface
+por linha de comando, essas duas interfaces são responsáveis por coletar os
+dados do usuário, como por exemplo, a aplicação que se deseja instalar.
+
+Os dados vindos dessas interfaces são gerenciados pela aplicação Shak, e mantidos
+na base de dados chamada repositório. O repositório do Shak contém as aplicações
+que foram adicionadas, e suas informações.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]
+      {figuras/shak}
+      \caption{Arquitetura simplificada da ferramenta Shak}
+  \label{fig:shak}
+\end{figure}
+
+No Shak, uma aplicação possui uma abstração exemplfiicada na figura \ref{fig:shak2},
+onde uma aplicação é uma classe Ruby, e cada aplicação possui um livro de receitas
+Chef associado. Além disso, cada livro de receitas pode definir quais são as entradas que
+a aplicação necessita, como por exemplo, o endereço da aplicação. E essas entradas
+são informadas, ou pela aplicação web, ou pela interface de linha de comando. As entradas 
+também serão processadas pela aplicação Shak, que guarda essas informações no
+seu repositório de aplicações. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.7\textwidth]
+      {figuras/data-model}
+      \caption{Modelo de dados do Shak}
+  \label{fig:shak2}
+\end{figure}
+
+Em resumo, a estrutura do Shak possui os seguintes componentes:
 
 \begin{itemize}
   \item  \textbf{Livro de Receitas Chef:} Shak contém livros de receitas chef
@@ -340,10 +373,17 @@ implantação de aplicações, e de acordo com a Subseção \ref{sub:processoimp
 Neste trabalho, foi adicionado a fase de configuração de múltiplas
 instâncias, que é a fase responsável por habilitar a implantação de múltiplas 
 instâncias de uma aplicação. Isso possibilita a configuração 
-de várias instâncias da mesma aplicação sem duplicação de recursos. As fases 
-definidas são:
+de várias instâncias da mesma aplicação sem duplicação de recursos. A sequência
+das fases estão na figura \ref{fig:1}:
 
-%TODO ilustrar:
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]
+      {figuras/atividades}
+      \caption{Sequência de fases para implantação automatizada de aplicações}
+  \label{fig:1}
+\end{figure}
+
 \begin{itemize}
   \item  \textbf{Planejamento}: Identificar os componentes mínimos necessários na implantação
  da aplicação.  
@@ -467,7 +507,6 @@ Também foi levado em consideração o fato da  aplicação Owncloud dar suporte
 até esta fase do trabalho, a aplicação Noosfero também está com suporte a 
 federação, porém ainda em desenvolvimento.
 
-%TODO ilustrar a arquitetura
 Para realizar a implantação das aplicações, foi importante que as 
 instalações e configurações
 fossem executadas num ambiente limpo, os testes foram criados
