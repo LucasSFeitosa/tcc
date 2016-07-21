@@ -1,34 +1,37 @@
 \chapter{Resultados obtidos}
 \label{cap-resultados}
 Este capítulo aborda os resultados encontrados, a partir da proposta de
-definição e preparação dos estudos. 
+definição e preparação dos estudos, no Capítulo \ref{metodologia}.  
 
+%TODO verificar as separações por ;
 Como dito no Capítulo \ref{cap-metodologia}, as aplicações escolhidas foram 
 Owncloud; Wordpress; MoinMoin; Roundcube; e Noosfero. Além da aplicação de serviço
 de e-mail.
  
 Cada fase da implantação será tratado como uma 
-subseção na descrição de cada exemplo de uso. Todas as atividades foram organizadas,
+subseção na descrição de cada aplicação que foi escolhida para exemplo de uso. 
+Todas as atividades foram organizadas,
 via issues, no repositório do próprio projeto Shak 
 \url{https://gitlab.com/shak/shak/issues}.
 
 \section{Wordpress}
 \label{sub:wordpress}
 
-Wordpress é uma plataforma semântica de vanguarda para publicação pessoal, 
+\citeonline{wordpress} é uma plataforma semântica de vanguarda para publicação pessoal, 
 com foco na estética, nos padrões web e na usabilidade, ao mesmo tempo é 
 um software livre. Além disso, Wordpress é um dos maiores softwares de 
-publicação de conteúdo \cite{wordpress}. 
+publicação de conteúdo . 
 
-Primeiramente, foram seguido os procedimentos para a proposta da solução, que foram
- definidos na Seção \ref{section:construcao}. Para isso, é
+Primeiramente, foram seguido os procedimentos definidos na Seção 
+\ref{section:construcao}. Para isso, era
 necessário definir as fases e procedimentos da implantação automatizada,
 seguindo as fases que compõem o processo proposto descrito na Seção \ref{sec:fases}.
 
 \subsection{Planejamento}
 
-Nesta fase é preciso definir quais são as dependências mínimas
-para o funcionamento de uma aplicação, tais como: banco de dados; pacotes
+%TODO ver os ;
+Nesta fase foi preciso definir quais são as dependências mínimas
+para o funcionamento da aplicação, tais como: banco de dados; pacotes
 pré-instalados; e aplicações pré-configuradas. Para o Wordpress foram escolhidas:
 
 \begin{itemize}
@@ -41,28 +44,27 @@ pré-instalados; e aplicações pré-configuradas. Para o Wordpress foram escolh
    MySQL.
 \end{itemize}
 
-A instalação e execução desses recursos serão feitas nas fases seguintes.
+A instalação e execução desses recursos foram feitas nas fases seguintes.
 
 \subsection{Preparação e Instalação de Pacotes}
 \label{wordpress:preparacao}
 
-São os procedimentos necessários para preparar o ambiente alvo para que o Wordpress
-possa ser executado. Isso envolve a configuração do sistema operacional; instalação
+Nesta fase, foram definidos os procedimentos necessários para 
+preparar o ambiente alvo, para que o Wordpress
+possa ser executado. Isso envolveu a configuração do sistema operacional; instalação
 e configuração de dependências necessárias; e a transferência do componente
 para o servidor onde ele será executado.
 
-Para o funcionamento correto do Wordpress é necessário a instalação do Php5. Além
-disso, também é necessário algum servidor web. Na ferramenta Shak o servidor
+Para o funcionamento correto do Wordpress, foi necessário a instalação do Php5. Além
+disso, também é necessário um servidor web. Na ferramenta Shak, o servidor
 web padrão é o Nginx e o banco de dados escolhido foi o MySQL.
 
 Para esse procedimento, foi necessário instalar os pacotes php5-fpm; o pacote
 do banco de dados MySQL; e o pacote Nginx. Além disso, habilitar o serviço do
-php5-fpm. Todos esses passos são feitos antes da instalação do Wordpress,
-pois, por padrão, ele instala o servidor
-Apache2.
-
+php5-fpm.
+ 
 Para executar essas instalações, é preciso criar uma receita no livro de receitas
-do Wordpress. Primeiramente, é necessário criar o próprio livro de receitas no Shak.
+do Wordpress. Foi necessário criar o próprio livro de receitas no Shak.
 Para isso, existe o comando \textit{rake cookbook}, que cria a estrutura básica
 de um livro de receitas que deve ser usado pelo Chef, como exemplificado no trecho
 de código \ref{codigo1}:
@@ -77,10 +79,10 @@ de código \ref{codigo1}:
   ** Creating metadata for cookbook: wordpress
 \end{lstlisting}
 
-Assim com a estrutura gerada pelo rake, é possível declarar as dependências do Wordpress
+Assim, com a estrutura gerada pelo rake, é possível declarar as dependências do Wordpress
 dentro do arquivo \textit{default.rb}, dentro da pasta \textit{recipes}. Nesse 
-arquivo são declarados os pacotes que devem ser instalados; os arquivos de configuração;
-os serviços que precisar executar; as pastas; e permissões de usuários. O código \ref{codigo998}
+arquivo, são declarados: os pacotes que devem ser instalados; os arquivos de configuração;
+os serviços que precisam executar; as pastas; e permissões de usuários. O código \ref{codigo998}
 é um exemplo de como declarar pacotes e serviços dentro de uma receita Chef.
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de serviço do mysql com o chef}, label=codigo998]
@@ -90,39 +92,40 @@ os serviços que precisar executar; as pastas; e permissões de usuários. O có
   end
 \end{lstlisting}
 
-
 \subsection{Configuração}
 \label{wordpress:preparacao}
 
 Como levantado no planejamento, é necessário a edição de arquivos de configuração. Os
-arquivos de configuração necessários são os arquivos de configuração do Wordpress; 
+arquivos de configuração necessários são: os arquivos de configuração do Wordpress; 
 o arquivo de configuração do banco de dados; e arquivo de configuração do servidor Nginx.
 
 O primeiro arquivo de configuração é o \textit{config.php}. Esse arquivo contém a
 configuração onde ficam as informações de banco de dados, como nome do banco de dados;
-login do usuário do banco de dados; senha; o endereço do banco de dados; e o diretório
-onde irá ficar os arquivos estáticos, como temas; galeria de mídias; e plugins 
+login do usuário do banco de dados; senha; o endereço do banco de dados. Além disso,
+cada aplicação deve possuir um diretório
+onde fica os arquivos estáticos, como: temas; galeria de mídias; e plugins 
 de cada instância do Wordpress.
 
 Esse arquivo deve ficar no diretório \textit{/etc/wordpress/} e seu nome deve conter
 a seguinte estrutura: \textit{config-nomehost.php}, onde o nomehost deve ser o hostname
-desejado. O segundo arquivo é o \textit{database.sql}, que é um pequeno script \textit{SQL} que
-cria o banco de dados do Wordpress e dá os privilégios ao usuário desejado. Por fim
+desejado, como por exemplo config-fga.unb.br.php. O segundo arquivo é o \textit{database.sql}, que é um pequeno script \textit{SQL} que
+cria o banco de dados do Wordpress e dá os privilégios ao usuário desejado. Por fim,
 o arquivo de configuração do Nginx, com a configuração do servidor web.
 
 Na receita chef, esses arquivos de configuração serão criados dentro da pasta 
-\textit{template}, com o conteúdo
-desejado dos arquivos de configuração. A ação que cria o arquivo na receita chef é 
+\textit{template}, com o conteúdo dos arquivos de configuração. A ação que cria 
+um arquivo na receita chef é 
 declarada dentro do arquivo \textit{default.rb}, de forma semelhante como foi feito com
 a declaração dos pacotes. O código \ref{codigo997} é um exemplo de como 
 gerenciar templates numa receita Chef.
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de templates com o chef}, label=codigo997]
-  template "text\_file.txt" do
+template "text\_file.txt" do
   source "text\_file.txt"
   mode "0755"
   owner "root"
   group "root"
+end
 \end{lstlisting}
 
 \subsection{Múltiplas Instâncias}
@@ -133,62 +136,69 @@ Wordpress, é possível ter múltiplos sites e múltiplas
 instâncias. No caso do Shak, é desejado que seja múltiplas instâncias, a partir da
 repetição da instalação, porém isolando as aplicações.
  
-Para isso, é necessário que algumas pastas do sistema
-precisam ser divididas, sendo uma para cada aplicação. Cada instância precisa
+Para isso, foi necessário que algumas pastas do Wordpress
+fossem isoladas, sendo uma para cada aplicação. Cada instância precisa
 ter seus diretórios isolados, o diretório \textit{wp-content} é o diretório 
-que contém os uploads; os temas; os plugins, e etc. Portanto, para não
+que contém: os uploads; os temas; os plugins; etc. Portanto, para não
 existir conflito entre as instâncias, essas pastas devem estar devidamente separadas
 com seus caminhos referenciados em cada arquivo \textit{config.php}, o arquivo 
 \textit{config.php} também
 deve ser único para cada instância. 
 
-Outro fator importante é que cada instância
-tenha seu banco de dados, para evitar os conflitos. Para
-solucionar esse problema o Shak possui um recurso interessante, onde cada aplicação
+Outro fator importante é que, cada instância
+tenha seu banco de dados. Para
+solucionar esse problema, o Shak possui um recurso interessante, onde cada aplicação
 possui um atributo \textit{id}, que é um atributo único para cada instância executada pelo
-Shak. Com isso, é possível criar pastas personalizadas com o id de cada aplicação, 
+Shak. Com isso, foi possível criar pastas personalizadas com o id de cada aplicação, 
 e também bancos de dados específicos e arquivos \textit{config.php} específicos.
 
-Por fim, é necessário um arquivo de configuração Nginx para cada aplicação,
-como visto no Capítulo \ref{cap-referencial}, todo arquivo de configuração
+Por fim, era necessário um arquivo de configuração Nginx para cada aplicação,
+como visto no Capítulo \ref{cap-referencial}. Todo arquivo de configuração
 do Nginx possui um bloco server, e cada bloco server equivale a uma hospedagem virtual. 
-Por isso as aplicações também se tornam independentes, podendo ser acessadas pelo 
-mesmo servidor, mas com endereços diferentes.
+Por isso, as aplicações também se tornam independentes, podendo ser acessadas pelo 
+mesmo servidor, mas com endereços diferentes. Um exemplo de arquivo de configuração
+do Nginx, que utiliza o bloco server, pode ser visto no Código \ref{codigo994}.
 
 \subsection{Inicialização}
 
-Após a construção da receita do Wordpress, é necessário testar a receita construída. 
-Para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
-que será instalada, e segunda o hostname destino. Como é um ambiente de desenvolvimento,
-não é preciso configurar um ip ou configurar um \textit{DNS}. É preciso adicionar o
-hostname desejado no arquivo /etc/hosts. Assim, mesmo que esteja na sua máquina local
-é possível acessar um endereço mais familiar em seu navegador. Um exemplo da execução
+Após a construção da receita do Wordpress, foi necessário testar a receita construída. 
+Para isso, o Shak precisa de duas informações importantes. A primeira é a aplicação
+que será instalada, e segunda o endereço destino. Como é um ambiente de desenvolvimento,
+não é preciso configurar um ip ou configurar um \textit{DNS}. Foi preciso adicionar o
+endereço desejado no arquivo \textit{/etc/hosts}. Assim, mesmo que esteja na sua máquina local, 
+era possível acessar um endereço mais familiar em seu navegador. Um exemplo da execução
 da instalação via Shak é:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de exexução de instalação do wordpress com shak}]
-\$ shak install wordpress hostname=wordpress.dev
+shak install wordpress hostname=wordpress.dev
 \end{lstlisting}
 
-Dessa forma, o Chef inicia o processo de instalação dos pacotes; criação dos arquivos
-de configuração; incia os serviços desejados; e ao fim do procedimento a aplicação
+Dessa forma, o Chef inicia: o processo de instalação dos pacotes; criação dos arquivos
+de configuração; incia os serviços desejados; e ao fim do procedimento, a aplicação
 já estará pronta para uso no hostname escolhido.
 
 \section{Owncloud}
 \label{sub:owncloud}
 
-Owncloud é uma ferramenta para compartilhamento de arquivos, é um software 
+\citeonline{owncloud} é uma ferramenta para compartilhamento de arquivos, é um software 
 livre em que é possível compartilhar
 um ou mais arquivos e pastas do seu computador na nuvem, e sincronizá-los com o seu
 servidor Owncloud. Esses arquivos são imediatamente sincronizados com o servidor
 e disponibilizados para outros dispositivos que utilizam o ambiente de trabalho
-Owncloud ou app Android ou app IOS \cite{owncloud} .
+Owncloud ou app Android ou app IOS.
 
-Para a ferramenta Owncloud, foram seguidos os mesmos passos feitos em 
+Owncloud é uma ferramenta que se assemelha a aplicações conhecidas, como Dropbox
+\footnote{https://www.dropbox.com/pt\_BR/} e Google Drive \footnote{https://www.google.com/intl/pt-BR/drive/}, porém, por ser software livre, é possível instalar Owncloud em servidores
+que o usuário preferir. Em alguns casos, usuários criam nuvens privadas com 
+owncloud, em pequenos servidores montados em casa.
+
+Para a ferramenta Owncloud, foram seguidos os mesmos passos feitos na aplicação
+Wordpress na Seção 
 \ref{sub:wordpress}.
 
 \subsection{Planejamento}
 
-Inicialmente, é necessário definir quais são as dependências
+Inicialmente, foi necessário definir quais são as dependências
 mínimas para o funcionamento do Owncloud, tais como: banco de dados; pacotes
 pré-instalados; e aplicações pré-configuradas. Para o Owncloud foram escolhidas:
 
@@ -205,13 +215,13 @@ pré-instalados; e aplicações pré-configuradas. Para o Owncloud foram escolhi
 Diferentemente da aplicação Wordpress, na aplicação Owncloud o 
 banco de dados escolhido foi o postgresql. Na documentação do Wordpress é recomendado
 o uso do banco de dados MySQL, porém no Owncloud fica a escolha do desenvolvedor.
-A escolha do Postgresql vêm com a possibilidade de trabalhar com dois bancos de
+A escolha do Postgresql teve como motivação, a possibilidade de trabalhar com dois bancos de
 dados diferentes, aumentando o suporte do Shak. Assim, quando existirem aplicações
 que suportam apenas o Postgresql, o Shak já terá uma estrutura pronta.
 
 \subsection{Preparação e Instalação de Pacotes}
 
-Para o funcionamento do Owncloud, é necessário a instalação do Php5. Além
+Para o funcionamento do Owncloud, era necessário a instalação do Php5. Além
 disso, também foi utilizado o servidor web Nginx, e o 
 banco de dados Postgresql.
 
@@ -236,10 +246,10 @@ como exemplificado no trecho de código \ref{codigo2}
   ** Creating metadata for cookbook: owncloud
 \end{lstlisting}
 
-Com a estrutura inicial, é possível declarar as dependências do Owncloud
+Com a estrutura inicial, foi possível declarar as dependências do Owncloud
 dentro do arquivo \textit{default.rb}, que se encontra dentro da pasta 
-\textit{recipes}. Nesse arquivo é 
-declarado os pacotes que devem ser instalados; os arquivos de configuração;
+\textit{recipes}. Nesse arquivo, foi 
+declarado: os pacotes que devem ser instalados; os arquivos de configuração;
 os serviços que precisar executar; as pastas; permissões de usuários, etc. O código
 \ref{codigo995} é um exemplo
 de como declarar pacotes e serviços dentro de uma receita Chef.
@@ -253,12 +263,12 @@ de como declarar pacotes e serviços dentro de uma receita Chef.
 
 \subsection{Configuração}
 
-Como levantado no planejamento, é necessário a edição de arquivos de configuração
+Como levantado no planejamento, foi necessário: a edição de arquivos de configuração
 do Owncloud; arquivos de configuração do banco de dados; e arquivo de configuração
 do Nginx.
 
 O primeiro arquivo de configuração é o \textit{autoconfig.php}, esse arquivo
-contém informações importantes, como nome do banco de dados;
+contém informações importantes, como: nome do banco de dados;
 login do usuário do banco de dados; senha do usuário do banco de dados; o endereço 
 do banco de dados; o diretório
 onde irá ficar os arquivos de configuração do Owncloud; e o login e senha
@@ -266,7 +276,7 @@ do administrador. Isso é necessário apenas para o primeiro acesso, ou seja, o 
 fará o login automaticamente quando o Owncloud terminar a instalação. Após isso,
 a recomendação é trocar a senha do administrador.
 
-Além disso, é necessário criar a pasta de conteúdos públicos do Owncloud, que por
+Além disso, foi necessário criar a pasta de conteúdos públicos do Owncloud, que por
 padrão devem ficar em \textit{/etc/owncloud}. O segundo arquivo é o 
 \textit{postgresql-conf.sql}, que é um pequeno script \textit{SQL} que cria o 
 banco de dados do Owncloud, e configura os
@@ -275,14 +285,14 @@ através de templates, da mesma forma que a aplicação Wordpress.
 
 \subsection{Múltiplas Instâncias}
 
-Diferentemente do Wordpress, o Owncloud não suporta múltiplas instâncias. Porém isso
+Diferentemente do Wordpress, o Owncloud não suporta nativamente múltiplas instâncias. Porém isso
 não foi um impeditivo na execução do trabalho, com uma busca, encontrou-se uma 
 discussão no repositório oficial do Owncloud relacionado a implementação dessa 
 funcionalidade. 
 
 A discussão está disponibilizada em 
 \url{https://github.com/owncloud/core/pull/16424}, nela existia
-uma proposta de solução ao fato de não existir a opção de múltiplas instâncias. O
+uma proposta de solução que permitiria a configuração de múltiplas instâncias. O
 resultado desta discussão foi que, os desenvolvedores do Owncloud não acharam relevante
 a funcionalidade, mas caso o desenvolvedor ache necessário, ele poderia fazer essa
 alteração diretamente no código fonte.
@@ -304,23 +314,25 @@ adicionado na receita do Owncloud o suporte a múltiplas instâncias. Portanto,
 assim que o Owncloud suportar múltiplas instâncias via pacote Debian, será possível
 também criar múltiplas instâncias do Owncloud.
 
-A solução feita na receita do Owncloud foi baseada na contribuição enviada, portanto
-os testes foram feitos gerando um novo pacote Debian do Owncloud, porém, incorporando
-a contribuição feita ao Debian. Os procedimentos feitos para suportar múltiplas instâncias
+A solução feita na receita do Owncloud foi baseada na contribuição enviada, portanto,
+os testes foram feitos gerando um novo pacote Debian do Owncloud, incorporando
+a contribuição feita ao Debian. 
+
+Os procedimentos feitos para suportar múltiplas instâncias
 no Owncloud são bem semelhantes aos do Wordpress, criando um diretório de dados
 para cada aplicação; um arquivo de configuração para cada aplicação; e um banco de
 dados para cada aplicação. Seguindo a mesma abordagem do Wordpress, também
-será criado uma hospedagem virtual para cada instância do Owncloud.
+foi criado uma hospedagem virtual para cada instância do Owncloud.
 
 \subsection{Inicialização}
 
-Após a construção da receita do Owncloud, é necessário testar a receita construída. 
+Após a construção da receita do Owncloud, foi necessário testar a receita construída. 
 Para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
 que será instalada, e segunda o endereço destino, para executar a instalação
 do Owncloud basta:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do Owncloud com shak}]
-\$ shak install owncloud hostname=owncloud.dev
+shak install owncloud hostname=owncloud.dev
 \end{lstlisting}
 
 E assim, o Chef inicia o processo de instalação dos pacotes; criação dos arquivos
@@ -335,7 +347,7 @@ mais importante, pois é o responsável por transferir as mensagens de servidore
 de e-mail remetentes para servidores de e-mail destinatários \cite{kurose2010redes}, 
 
 Tanto Owncloud como Wordpress, possuem funcionalidades que utilizam serviços 
-de e-mail. Logo, é necessário uma configuração mínima de e-mail para que funcione 
+de e-mail. Logo, era necessário uma configuração mínima de e-mail para utilizar 
 tais funcionalidades. Assim, a construção de um servidor de e-mail 
 possui bastante relevância, para que qualquer aplicação que precisar de um 
 servidor de e-mail, possa utilizar o servidor de e-mail que o Shak possa fornecer.
@@ -345,18 +357,18 @@ feitos no Wordpress na Seção \ref{sub:wordpress} e no Owncloud na Seção\ref{
 
 \subsection{Planejamento}
 
-No planejamento, é necessário definir
-quais são as dependências mínimas para o funcionamento do servidor de e-mail, é 
+No planejamento, foi necessário definir
+quais são as dependências mínimas para o funcionamento do servidor de e-mail, era 
 necessário configurar um servidor que utiliza o procolo \textit{IMAP} ou \textit{POP3};
-também é necessário a configuração de um agente de transferência de e-mails; e também
+também era necessário a configuração de um agente de transferência de e-mails; e também
 alguma ferramenta para controle de spam.
 
-Primeiramente, ficou definido que o protocolo escolhido seria o protocolo \textit{IMAP}, já
+Primeiramente, ficou definido que o protocolo escolhido fosse o protocolo \textit{IMAP}, já
 que o protocolo \textit{IMAP} é um protocolo online, ou seja, ele se conecta ao servidor
 e realiza o download das mensagens, depois ainda  mantém a conexão para que
 as alterações e mensagens novas sejam atualizadas em tempo real. Diferentemente do
 protocolo \textit{POP3} que é um protocolo offline, onde após o download das mensagens encerra
-a conexão. Outra vantagem do \textit{IMAP} em relação ao \textit{POP3} é que o 
+a conexão. Outra vantagem do \textit{IMAP} em relação ao \textit{POP3}, que é que o 
 \textit{IMAP} mantém uma cópia de mensagens no servidor, ideal para quem precisa 
 acessar os e-mails de mais de um local.
 
@@ -369,7 +381,7 @@ livre para envio e entrega de e-mails. Sua escolha foi feita pela facilidade de
 integração com o Dovecot. Postfix é o software responsável pelo método de entrega de e-mail
 utilizando \textit{SMTP}, como protocolo de transferência de e-mails. 
 
-Por fim a aplicação que servirá como anti-spam será o Apache SpamAssassin, que 
+Por fim, a aplicação que servirá como anti-spam será o Apache SpamAssassin, que 
 é uma plataforma anti-spam que que dá aos administradores de servidor de e-mail, 
 um filtro para classificar e-mails e bloquear os e-mails que julgarem como spam \cite{spam}. 
 
@@ -385,19 +397,19 @@ Em resumo, o servidor de e-mail é composto de:
 
 \subsection{Preparação e Instalação de Pacotes }
 
-É necessário separar as dependências dos pacotes para cada ferramenta
+Nesta fase, foi necessário separar as dependências dos pacotes para cada ferramenta
 escolhida, para compor o servidor de e-mail. Primeiramente, para o postfix, são necessários
 os pacotes postfix e bsd-mailx, além de habilitar o serviço do postfix. Para o dovecot,
-é necessário instalar o pacote dovecot-imadp além de habilitar o serviço do dovecot. 
-Para o spamassassin, são necessários os pacotes spamassassin e o pacote spamc, além 
+foi necessário instalar o pacote dovecot-imadp além de habilitar o serviço do dovecot. 
+Para o spamassassin, eram necessários os pacotes spamassassin e o pacote spamc, além 
 de habilitar o serviço do spamassassin.
 
 Na receita do servidor de e-mail, cada aplicação possui sua receita específica,
-e o arquivo \textit{default.rb}, que contêm a receita do servidor de e-mail, esse arquivo
-contém apenas a chamada dessas receitas, como no código \ref{codigo999}:
+e o arquivo \textit{default.rb}, que contêm a receita do servidor de e-mail. Esse arquivo
+contém apenas a chamada das receitas das aplicações, como no código \ref{codigo999}:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo da receita de email
-composta por outras receitas}, label=codigo999]
+composta pelas receitas das outras aplicações}, label=codigo999]
 include_recipe 'email::dovecot'
 include_recipe 'email::postfix'
 include_recipe 'email::spamassasin'
@@ -405,7 +417,7 @@ include_recipe 'email::spamassasin'
 
 A função de \textit{include\_recipe} do Chef permite que, aplicações que são compostas
 por outras aplicações menores, possam ter suas receitas separadas em diferentes arquivos,
-sendo um arquivo para cada aplicação menor, que compõe o todo. Com isso, é possível 
+sendo uma receita para cada aplicação menor, que compõe o todo. Com isso, é possível 
 incluir esses arquivos na receita que será executada. No caso do Shak, a receita
 que sempre será executada é a receita que está no arquivo \textit{default.rb} na
 pasta \textit{recipe}.
@@ -425,10 +437,10 @@ que é o arquivo em que possui os caminhos do certificado \textit{SSL} e da chav
 O terceiro arquivo é o arquivo \textit{11-postfix-auth.conf}, arquivo responsável por 
 indicar o caminho do arquivo de autenticação
 do postfix. O quarto arquivo é o arquivo \textit{20-imap.conf}, onde é indicado o tamanho
-máximo de conexões por ip permitidas no servidor. Por fim o arquivo
+máximo de conexões por ip permitidas no servidor. Por fim, o arquivo
 \textit{20-disable-imap-non-ssl.conf}, que permitirá que o imap utilize sempre uma conexão
-segura utilizando o \textit{IMAPS} (\textit{IMAP} + \textit{SSL}), assim bloqueando 
-qualquer conexão ou tentativa de conexão insegura.
+segura utilizando o protocolo \textit{IMAPS} (\textit{IMAP} + \textit{SSL}), assim bloqueando 
+qualquer conexão segura ou tentativa de conexão insegura.
 
 Para o posfix, são apenas dois arquivos de configuração, o \textit{main.cf} e o 
 \textit{master.cf}.
@@ -437,7 +449,7 @@ também contém as configurações que filtram os e-mails com spamassassin e
 algumas configurações do \textit{SMTP}. 
 
 No \textit{master.cf}, é definido como um programa cliente se conecta a um serviço, e qual o
-programa que é executado quando um serviço é solicitado. Neste caso, é necessário
+programa é executado quando um serviço é solicitado. Neste caso, é necessário
 indicar que o servidor de e-mail utilize \textit{SSL}, com autenticação segura, 
 apontando o caminho dos arquivos de chave e certificados.
 
@@ -446,16 +458,16 @@ O arquivo \textit{spamassassin}, que é o arquivo de configurações padrão par
 \textit{local.cf} que são as configurações locais. No spamassassin, é preciso habilitar 
 o serviço do spamassasin e configurar o caminho dos arquivo de log.
 
-Já o arquivo \textit{local.cf} possui o parâmetro required\_score. Esse parâmetro 
+Já o arquivo \textit{local.cf}, possui o parâmetro required\_score. Esse parâmetro 
 possui um nível de 0 a 10, em que 
-são classificados os e-mails como spam. Por padrão esse valor é cinco, porém se 
-o usuário quiser aumentar o filtro pode aumentar para valores como seis ou sete, 
+são classificados os e-mails como spam. Por padrão, esse valor é cinco. Porém, se 
+o usuário quiser aumentar o filtro, é necessário aumentar para valores como seis ou sete, 
 até chegar em um nível de confiança em que o spamassasin cuide dos casos falsos-positivos, 
 ou seja, e-mails que não são spam porém foram interpretados como spam.
 
 \subsection{Inicialização}
 
-Após a construção da receita do servidor de e-mail, é necessário testar a receita construída,
+Após a construção da receita do servidor de e-mail, foi necessário testar a receita construída,
 para isso, o Shak precisa de duas informações importantes. A primeira é a aplicação
 que será instalada, e segunda o hostname destino, para executar a instalação
 do servidor de e-mail basta:
@@ -465,18 +477,18 @@ Shak install e-mail hostname=owncloud.dev
 \end{lstlisting}
 
 
-E assim o Chef inicia o processo de instalação dos pacotes; criação dos arquivos
+E assim, o Chef inicia: o processo de instalação dos pacotes; criação dos arquivos
 de configuração; incia os serviços desejados; e ao fim do procedimento a aplicação
 já estará pronta para uso no hostname escolhido.
 
-Para testar o funcionamento foram feitos dois procedimentos, o primeiro, era utilizar
-um cliente de e-mail para testes, o cliente de e-mail escolhido foi o mutt, utilizando
+Para testar o funcionamento, foram feitos dois procedimentos. O primeiro, era utilizar
+um cliente de e-mail para testes. O cliente de e-mail escolhido foi o mutt, utilizando
 suas funções básicas de enviar e receber e-mails. O segundo passo, foi realizar conexões
 com o servidor de e-mail via telnet, com os seguintes comandos:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de teste de conexão telnet no servidor imap}]
-  \$ telnet localhost imap
-  \$ telnet localhost imaps
+   telnet localhost imap
+   telnet localhost imaps
 \end{lstlisting}
 
 Pela configuração do servidor de e-mail, não foi possível abrir uma conexão telnet
@@ -487,19 +499,19 @@ utilizem os protocolos criptografados.
 \section{MoinMoin}
 \label{sub:moinmoin}
 
-MoinMoin é uma ferramenta de construção
+\cite{moin} é uma ferramenta de construção
 de wikis, com uma grande comunidade de usuários, podendo criar páginas web
 facilmente editáveis. MoinMoin é software livre, alguns exemplos
 de wiki que utilizam o MoinMoin são: Wiki do debian, Wiki do python e Wiki do apache,
-contendo várias documentações relacionado aos seus softwares \cite{moin}. 
+contendo várias documentações relacionado aos seus softwares. 
 
 Para a implantação automatizada do MoinMon, foram seguidos os mesmos passos
 feitos em Wordpress \ref{sub:wordpress} e Owncloud \ref{sub:owncloud}.
 
 \subsection{Planejamento}
 
-Primeiramente, é necessário definir quais são as dependências
-mínimas para o funcionamento do MoinMoin, tais como banco de dados; pacotes
+Primeiramente, foi necessário definir quais são as dependências
+mínimas para o funcionamento do MoinMoin, tais como: banco de dados; pacotes
 pré-instalados; e aplicações pré-configuradas. Para o MoinMoin são elas:
 
 \begin{itemize}
@@ -517,9 +529,10 @@ Diferentemente das outras aplicações web, moinmoin não utiliza banco de dados
 
 \subsection{Preparação e Instalação de Pacotes}
 
-Para o funcionamento correto do moinmoin, é necessário a instalação do python, além
-disso, também é necessário o uso de algum servidor web. No caso, utilizaremos o Nginx
-junto ao uwsgi, também é necessário a configuração do moinmoin a partir de seus
+Para o funcionamento correto do moinmoin, era necessário a instalação do python, além
+disso, também era necessário o uso de algum servidor web. No caso, utilizaremos o Nginx
+junto ao servidor de aplicação Uwsgi, também era necessário a configuração do 
+moinmoin a partir de seus
 arquivos de configuração, mywiki.py e farmconfig.py.
 
 Para esse procedimento, foi necessário instalar os pacotes uwsgi,
@@ -539,31 +552,32 @@ estrutura básica de um livro de receitas que deve ser usado pelo Chef, como no 
   ** Creating metadata for cookbook: moinmoin
 \end{lstlisting}
 
-Assim, com a estrutura inicial, é possível declarar as dependências do moinmoin
+Assim, com a estrutura inicial, foi possível declarar as dependências do moinmoin
 dentro do arquivo \textit{default.rb} dentro da pasta \textit{recipes}.Esse arquivo 
 é aonde se declara os pacotes que devem ser instalados; os arquivos de configuração;
 os serviços que precisar executar; as pastas; permissões de usuários; dentre outros.
 
 \subsection{Configuração}
 
-Como levantado no planejamento, é necessário a edição de arquivos de configuração
+Como levantado no planejamento, foi necessário: a edição de arquivos de configuração
 do moinmoin; arquivos de configuração do uwsgi; e arquivo de configuração
 do Nginx.
 
-O primeiro arquivo de configuração é o moin.wsgi, arquivo onde é necessário
+O primeiro arquivo de configuração é o \textit{moin.wsgi}, arquivo onde é necessário
 informar, por exemplo, o caminho dos arquivos de configuração do moinmoin. No caso
-de um pacote debian, esse caminho por padrão é  /etc/moin. Também é necessário 
-editar o arquivo uwsgi.ini, que é o arquivo de configuração
+de um pacote debian, esse caminho por padrão é  \textit{/etc/moin}. Também é necessário 
+editar o arquivo \textit{uwsgi.ini}, que é o arquivo de configuração
 do uwsgi para sua aplicação. Nele, é possível adicionar informações importantes, como
-por exemplo aonde será o arquivo de log do uwsgi; aonde será criado seu socket;
+por exemplo: caminho do arquivo de log do uwsgi; caminho do socket;
 e a quantidade máxima de requisições.
 
-O primeiro arquivo de configuração é o mywiki.py, onde é necessário
-informar informações básicas de sua wiki, como o nome da sua wiki e seu diretório de dados. 
-O segundo arquivo de configuração é o farmconfig.py, que é o responsável pelos 
+O terceiro arquivo de configuração é o \textit{mywiki.py}, onde foi necessário
+informar informações básicas da wiki, como o nome da wiki e seu diretório de dados. 
+O último arquivo de configuração é o \textit{farmconfig.py}, que é o responsável pelos 
 links da barra de navegação e responsável por configurar múltiplas instâncias.
 
-Além disso, é necessário criar a pasta de conteúdos do moinmoin, que por
+%TODO confirmar essa pasta aqui
+Além disso, foi necessário criar a pasta de conteúdos do moinmoin, que por
 escolha devem ficar em /var/lib/moin. Após isso, para que o Nginx funcione corretamente
 com o uwsgi, é necessário indicar o socket do uwsgi, que foi indicado no uwsgi.ini.
 
@@ -572,21 +586,21 @@ com o uwsgi, é necessário indicar o socket do uwsgi, que foi indicado no uwsgi
 MoinMoin possui nativamente a funcionalidade que permite a criação de múltiplas 
 instâncias de wiki no mesmo servidor. Para isso, é necessário editar um arquivo,
 que é chamado de \textit{farmconfig.py}, com todas as wikis, e com seus 
-respectivos identificadores e domínios. Assim o MoinMoin consegue gerenciar as 
+respectivos identificadores e domínios. Assim, o MoinMoin consegue gerenciar as 
 wikis separadamente. 
 
-Uma outra etapa, é fazer com que o Shak entenda que existem outras wikis já 
+Uma outra etapa, era fazer com que o Shak entenda que existem outras wikis já 
 configuradas. A cada nova instância
 o arquivo \textit{farmconfig.py} deve ser atualizado com as novas 
 informações de wiki, sem remover as
-informações das outras wikis anteriormente inseridas. Para isso, é adicionado
+informações das outras wikis anteriormente inseridas. Para isso, foi adicionado
 numa lista de wikis, para que a cada vez que surja uma wiki nova, apenas as
-informações novas são inseridas no arquivo farmconfig.py.
+informações novas são inseridas no arquivo \textit{farmconfig.py}.
 
 \subsection{Inicialização}
 
-Após a construção da receita do MoinMoin, é necessário testar a receita construída,
-para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
+Após a construção da receita do MoinMoin, foi necessário testar a receita construída. Para 
+isso, o Shak precisa de duas informações importantes, a primeira é a aplicação
 que será instalada, e segunda o hostname destino, para executar a instalação
 do Owncloud basta:
 
@@ -594,15 +608,15 @@ do Owncloud basta:
 \$ shak install moinmoin hostname=moinmoin.dev
 \end{lstlisting}
 
-E assim, o Chef inicia o processo de instalação dos pacotes; criação dos arquivos
+E assim, o Chef inicia: o processo de instalação dos pacotes; criação dos arquivos
 de configuração; incia os serviços desejados; e ao fim do procedimento a aplicação
 já estará pronta para uso no hostname escolhido.
 
 \section{Outras Aplicações}
 \label{sub:appnencerradas}
 
-Até o fim deste trabalho as aplicações Noosfero e Roundcube não foram finalizadas. 
-Porém, é importante reportar o estado atual do que foi feito neste trabalho,
+Até o fim deste trabalho, as aplicações Noosfero e Roundcube não foram finalizadas. 
+Porém, é importante reportar o estado atual do que foi feito até o momento,
 com essas duas aplicações.
 
 \subsection{Noosfero}
@@ -624,7 +638,7 @@ oficiais do Debian, dificultando assim, que o pacote do Noosfero fique disponív
 nos repositórios oficiais do Debian. 
 
 Um exemplo é a biblioteca \textit{ruby-selenium-webdriver}, que
-está no repositório do Noosfero, porém não está disponível no repositório oficial
+está no repositório do Noosfero, porém, ela não está disponível no repositório oficial
 do Debian. Outro problema que foi encontrado, é que algumas dependências do Noosfero
 estão em versões diferentes das dependências que estão no repositório Debian.
 
@@ -643,17 +657,17 @@ com a comunidade do software. Como sugestão, uma das soluções viáveis seria,
 sincronizar as versões das dependências do Noosfero, com as versões que são 
 disponibilizadas pelo Debian \textit{testing}. Com isso, o 
 Noosfero passa a ter boa parte de suas dependências suportadas pelo Debian. Além disso, 
-também seria necessário empacotar as bibliotecas que o Noosfero precisa, mas 
+também seria necessário empacotar as bibliotecas que o Noosfero precise, mas 
 que o Debian não possui. 
 
-Porém, essa decisão fica a cargo da comunidade da aplicação, e com o noosfero disponível
+Porém, essa decisão fica a cargo da comunidade da aplicação, e com o Noosfero disponível
 nos repositórios oficiais do Debian, o Shak poderá dar suporte ao Noosfero, 
 em trabalhos futuros.
 
  \subsection{Roundcube}
 \label{sub:owncloud}
 
-Roundcube \citeonline{roundcube} é uma solução de webmail gratuita, de código 
+\citeonline{roundcube} é uma solução de webmail gratuita, de código 
 aberto. Possui uma interface funcional e personalizável. Com ele, é possível
 ler seus e-mails a partir de um cliente web. 
 
@@ -662,7 +676,7 @@ Para a ferramenta Roundcube, foram seguidos os mesmos passos feitos em
 
 \subsubsection{Planejamento}
 
-Inicialmente, é necessário definir quais são as dependências
+Inicialmente, foi necessário definir quais são as dependências
 mínimas para o funcionamento do Roundcube, tais como: banco de dados; pacotes
 pré-instalados; e aplicações pré-configuradas. Roundcube é uma aplicação escrita
 na linguagem Php, logo, suas dependências são bem semelhantes entre as aplicações
@@ -680,7 +694,7 @@ Wordpress e Owncloud. As dependências identificadas foram:
 
 \subsubsection{Preparação e Instalação de Pacotes}
 
-Para o funcionamento do Roundcube, é necessário a instalação do Php5. Além
+Para o funcionamento do Roundcube, foi necessário a instalação do Php5. Além
 disso, também foi utilizado o servidor web Nginx, e o 
 banco de dados Postgresql.
 
@@ -696,7 +710,7 @@ necessário para que Roundcube funcione com o banco de dados PostgeSQL.
 Para executar essas instalações, é preciso criar uma receita no livro de receitas
 do Roundcube, com o comando \textit{rake cookbook}, da mesma forma com as outras aplicações.
  
-Com a estrutura inicial, é possível declarar as dependências do Roundcube
+Com a estrutura inicial, foi possível declarar as dependências do Roundcube
 dentro do arquivo \textit{default.rb}, que se encontra dentro da pasta 
 \textit{recipes}. 
 
@@ -713,41 +727,36 @@ durante sua instalação. Com isso, ao finalizar a instalação, a aplicação j
 estará disponível ao usuário, com a conta de e-mail que foi informada.
 
 Atualmente, a receita do Roduncube já automatiza a instalação da aplicação web. 
-O tralho atual está disponível no repositório oficial do Shak \url{https://gitlab.com/shak/shak/branches}, na branch roundcube.
+O trabalho atual está disponível no repositório oficial do Shak \url{https://gitlab.com/shak/shak/branches}, na branch roundcube.
 
 \section{Segurança}
 \label{sub:seguranca}
 
-Na implantação das aplicações web foram feitos dois procedimentos de segurança, o primeiro
-é forçar as aplicações web a sempre utilizarem o protocolo \textit{HTTP} e a segunda foi forçar o
-servidor de e-mail a não permitir a conexão via protocolos sem criptografia. Neste
-caso, sendo o protocolo imap utilizando o protocolo \textit{imaps}. Para que 
+Na implantação das aplicações web, foram feitos dois procedimentos de segurança, o primeiro
+foi forçar as aplicações web a sempre utilizarem o protocolo \textit{HTTP} e a segunda foi forçar o
+servidor de e-mail a não permitir a conexão via protocolos sem criptografia. Para que 
 isso fosse possível, foi necessário gerar um certificado \textit{SSL}. Certificados 
 \textit{SSL} são necessários para que um determinado serviço opere com suporte 
 a conexão segura por meio de criptografia.
 É de conhecimento do autor que a melhor forma é obter um certificado assinado
-por uma certificadora registrada, porém inicialmente foi trabalhado apenas com certificados
+por uma certificadora registrada, porém inicialmente foram gerados apenas certificados
 autoassinados.
-
-Para suprir a necessidade das aplicações, cada aplicação terá um certificado para
-si, além disso o servidor também terá o seu certificado autoassinado. Isso foi necessário
-para que as aplicações possam ser instaladas em diferentes servidores, por
-isso, é necessário garantir que cada servidor possua o seu certificado. 
 
 Para adicionar esse novo suporte ao Shak, foi necessário criar uma receita Chef,
 para que possa gerenciar os certificados \textit{SSL}. Optou-se por utilizar a ferramenta
-openssl para geração das chaves e certificados, o openssl é uma ferramenta de
+openssl para geração das chaves e certificados, openssl é uma ferramenta de
 implementação do Transport Layer Security \textit{TLS} e Secure Sockets Layer \textit{SSL},
 além de ser uma biblioteca de propósito geral de criptografia \cite{openssl}.
 
-Esse novo componente no Shak é composto basicamente do pacote openssl, além da criação
+Esse novo componente no Shak é composto do pacote openssl, além da criação
 de certificados autoassinados utilizando o openssl. Os certificados são gerados 
-para cada aplicação e para o servidor. O caminho dos arquivos dos certificados que 
-são gerados é /etc/ssl/certs/hostname.pem, onde hostname é o endereço do servidor
-e o caminho onde as chaves são geradas é /etc/ssl/private/hostname.key.
+para cada aplicação. O caminho dos arquivos dos certificados que 
+são gerados foi \textit{/etc/ssl/certs/hostname.pem}, onde hostname é o endereço 
+do servidor,
+e o caminho onde as chaves são geradas é \textit{/etc/ssl/private/hostname.key}.
 
-Com as chaves geradas, basta configurar as aplicações indicando os caminhos dos certificados
-e das chaves, para forçar as aplicações web a utilizarem o \textit{HTTP} foi necessário fazer
+Com as chaves geradas, bastou configurar as aplicações indicando os caminhos dos certificados
+e das chaves. Para forçar as aplicações web a utilizarem o \textit{HTTP}, foi necessário fazer
 uma configuração específica no servidor web Nginx, como no código \ref{codigo994}.
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de arquivo de configuração do Nginx para aplicações web no shak}, label=codigo994]
@@ -770,10 +779,10 @@ uma configuração específica no servidor web Nginx, como no código \ref{codig
   }
 \end{lstlisting}
 
-Com isso, todas as requisições serão forçadas a utilizar a porta 443 que é a porta
+Com isso, todas as requisições foram forçadas a utilizar a porta 443 que é a porta
 \textit{TCP} padrão para sites que utilizam \textit{HTTP} e \textit{SSL}. Assim, 
 as aplicações utilizarão um protocolo mais seguro, utilizando criptografia dos dados
-, utilizando o certificado autoassinado que foi gerado para o servidor específico.
+, utilizando o certificado autoassinado que foi gerado para o aplicação.
 
 \section{Protótipo da aplicação web}
 \label{sub:prototipo}
@@ -783,14 +792,17 @@ as aplicações utilizarão um protocolo mais seguro, utilizando criptografia do
 %TODO mostrar os passos na ferramenta
 %TODO ver se sobe essa parte da interface no começo dos resultados.
 Outro resultado obtido neste trabalho foi a proposta de um protótipo para a interface
-web da aplicação, como um dos objetivos do Shak é possuir uma interface web para que
+web da aplicação. Como um dos objetivos do Shak é possuir uma interface web para que
 os usuários não precisem utilizar um terminal para realizar as ações, também foi
-feito um protótipo funcional, para ser aplicado no shak. O protótipo foi feito
-na ferramenta chamada Pingendo, que é um software livre utilizado para construir
-protótipos funcionais. Além de ter um protótipo funcional, a ferramenta Pingendo
+feito um protótipo funcional, para ser aplicado no shak. 
+
+O protótipo foi feito
+na ferramenta Pingendo, que é um software livre utilizado para construir
+protótipos funcionais de aplicações web. Além de ter um protótipo funcional, a 
+ferramenta Pingendo
 também gera o código \textit{HTML} e \textit{CSS}, que pode ser aproveitado para 
-a construção do layout do Shak. A sugestão inicial foi feita utilizando \textit{HTML} e \textit{CSS} utilizando
-bootstrap 3, que é um framework para criar aplicações responsivas na web. A versão
-inicial está disponível em \url{https://gitlab.com/Thiagovsk/shak_frontend/tree/master}.
+a construção do layout do Shak. A sugestão inicial foi feita utilizando \textit{HTML} e \textit{CSS} utilizando bootstrap 3, que é um framework para criar aplicações responsivas 
+na web. A versão inicial está disponível em 
+\url{https://gitlab.com/Thiagovsk/shak_frontend/tree/master}.
 
 
