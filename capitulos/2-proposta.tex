@@ -32,11 +32,11 @@ estão na Seção \ref{subsection:exemplos}.
 
 Inicialmente, foi realizado uma pesquisa dos trabalhos relacionados, para compreender
 quais eram as soluções na engenharia de software que buscam a automação da implantação
-de aplicações web. Esta pesquisa foi uma pesquisa aplicada, pois tem como objetivo
-gerar conhecimentos para aplicação prática \cite{gerhardt2009metodos},
+de aplicações web, a pesqusia tem como objetivo
+gerar conhecimentos para aplicação prática,
 relacionada a aplicações que auxiliam na implantação automatizada de software.
 
-Os trabalhos encontrados serviram de insumos para auxiliar na construção do trabalho, 
+Os trabalhos encontrados serviram de insumo para auxiliar na construção do trabalho, 
 a partir da análise dos resultados que foram encontrados. 
 
 \section{Trabalhos Relacionados}
@@ -48,7 +48,7 @@ recentes. \citeonline{leo2014} em seu mestrado,
 desenvolveu um sistema de middleware chamado CHOReOS Enactment Engine, que possibilita a implantação distribuída e automatizada de composições
 de serviços web numa estrutura virtualizada, no qual opera no modelo
 computacional conhecido como plataforma como serviço. Seu foco é na automação da 
-implantação automatizada de aplicações aliado com a gerência de recursos de 
+implantação aliado com a gerência de recursos de 
 hardware.
 
 Existem ferramentas disponíveis no mercado que também trazem a proposta
@@ -58,7 +58,7 @@ que podem ser instalados com apenas um clique,
 através de uma interface web amigável. Ela automatiza todo o processo de 
 compilar e configurar os aplicativos, 
 e todas as suas dependências (bibliotecas de terceiros, linguagem de programação, 
-bases de dados) para que o usuário comum não se preocupe com questões técnicas \citeonline{bitnami}. 
+bases de dados) para que o usuário comum não se preocupe com questões técnicas \cite{bitnami}. 
 
 Sandstom.io \footnote{https://sandstorm.io/} é uma plataforma de código aberto para servidores
 pessoais. Sandstorm permite instalar
@@ -90,7 +90,7 @@ web, como por exemplo a MediaWiki \footnote{https://www.mediawiki.org/wiki/Media
 vários charms já criados pela comunidade, para que os usuários possam reaproveitar
 os charms já existentes.
  
-Já \citeonline{bitnami} trás as aplicações prontas pra uso. Assim, o usuário interage com 
+Já \citeonline{bitnami} trás as aplicações prontas para uso. Assim, o usuário interage com 
 uma interface web, no formato clique para instalar. Porém,
 o usuário só tem a disposição as aplicações disponibilizadas pelo Bitnami. Isso
 também é a forma em que o Sandstorm trabalha, com a diferença de que o Sandstorm é
@@ -120,7 +120,7 @@ infraestrutura como código, como visto no Capítulo \ref{cap-referencial}. Para
 isso, utilizam os provisionadores Chef ou Puppet, tornando mais simples a
 construção de códigos para a instalação e configuração de aplicações. Por outro lado, 
 observa-se que o problema tratado neste trabalho não está totalmente resolvido. Assim, 
-a proposta de solução de implantação automatizada de software em sistemas debian, é válida
+a proposta de solução de implantação automatizada de software em sistemas Debian, é válida
 , já que se diferencia das demais ferramentas encontradas.
 
 \section{Proposta da solução}
@@ -138,18 +138,18 @@ de engenharia de software. Algumas ferramentas são importantes, pois tornam mai
 a execução de algumas atividades. Os critérios para escolha das ferramentas são:
 
 \begin{itemize}
-  \item \textbf{ Sistema de controle de versão git:} Uma ferramenta que
+  \item \textbf{Gerenciador de repositórios de código:} Uma ferramenta que
   possa gerenciar diversas versões do desenvolvimento do código fonte, utilizando
   o sistema de controle de versão git, e que seja de preferência um software livre
   ou que não cobre o serviço de hospedagem. A ferramenta escolhida foi o Gitlab 
   \footnote{http://gitlab.com/}, por ser um software livre.
   \item \textbf{Ferramenta para documentação do projeto:} Uma ferramenta que possa
-  documentar o projeto, o gitlab já possui uma wiki disponível para documentar 
+  documentar o projeto, o Gitlab já possui uma wiki disponível para documentar 
   cada projeto.
   \item \textbf{Ferramenta de gerenciamento de tarefas:} Uma ferramenta que possa
   gerenciar as tarefas que serão executadas, que estão em execução ou que vão ser executadas
   durante o desenvolvimento do projeto. O gerenciamento de tarefas também pode ser
-  feito no gitlab, onde é possível criar atividades para serem feitas, e criar marcos
+  feito no Gitlab, onde é possível criar atividades para serem feitas, e criar marcos
   com datas de início e fim das atividades.
   \item \textbf{Ferramenta de comunicação:} A ferramenta de comunicação será
   importante para tirar dúvidas rápidas em relação a dificuldades e desafios do trabalho, 
@@ -164,7 +164,7 @@ a execução de algumas atividades. Os critérios para escolha das ferramentas s
 A solução proposta neste trabalho será baseada na evolução da ferramenta Shak
 (Self Hosting Applications Kit). Ela tem o objetivo de facilitar 
 ao máximo que usuários sem conhecimento técnico possam ter os seus próprios 
-serviços de internet, garantindo a sua privacidade e segurança. 
+serviços de Internet, garantindo a sua privacidade e segurança. 
 
 Durante o Google Summer of Code 2015 \footnote{https://www.google-melange.com/gsoc/project/details/google/gsoc2015/thiagovsk/5757334940811264}, o autor deste trabalho realizou 
 várias atividades relacionadas à evolução da ferramenta Shak. Tornando a ferramenta, uma
@@ -252,19 +252,19 @@ seu repositório de aplicações.
 Em resumo, a estrutura do Shak utiliza:
 
 \begin{itemize}
-  \item  \textbf{Livro de Receitas Chef:} Shak contém livros de receitas Chef
+  \item  \textbf{Livro de Receitas Chef:} Uso de livros de receitas
   para poder organizar a instalação de cada componente, contendo um livro
   de receitas para cada aplicação que for instalada.
-  \item  \textbf{Código Ruby} A arquitetura do Shak foi desenvolvida na linguagem
+  \item  \textbf{Código Ruby:} Arquitetura desenvolvida na linguagem
   Ruby, com programação orientado a objetos.
-  \item  \textbf{Servidor web} O Shak utiliza o software livre Nginx, que é
+  \item  \textbf{Servidor web:} O servidor web é o Nginx, que é um
   servidor \textit{HTTP} de alto desempenho \cite{nginx}.
-  \item  \textbf{Pacotes Debian} O Shak utiliza pacotes incluídos na distribuição
+  \item  \textbf{Pacotes Debian:} As bibliotecas utilizadas estão incluídos na distribuição
   oficial do Debian.
-  \item  \textbf{Gems} O Shak também utiliza algumas gems para seu funcionamento,
+  \item  \textbf{Gems:} Uso de gems para a aplicação,
   uma gem nada mais é do que uma biblioteca Ruby, que provê um formato padrão para
   a distribuição de programas Ruby \cite{gem}.
-  \item  \textbf{Código Shellscript} O Shak também utiliza códigos ShellScript,
+  \item  \textbf{Código Shellscript:} Os códigos ShellScript são utilizados
   principalmente para configurações de ambiente de desenvolvimento. 
 \end{itemize}
 
@@ -375,8 +375,8 @@ código \textit{HTML}, \textit{CSS} e \textit{Javascript}.
 
 A fase exploratória foi importante para apoiar na definição das fases e 
 procedimentos para implantação
-automatizada. Além de que, a partir dela, foram definidos características importantes 
-que devem ser levados em consideração para a escolha das próximas aplicações.
+automatizada. Além de que, a partir dela, foram definidas características importantes 
+que devem ser levadas em consideração para a escolha das próximas aplicações.
 
 As atividades levantadas foram:
 
@@ -392,7 +392,7 @@ As atividades levantadas foram:
  \end{enumerate}
 
 Ao verificar que tanto a ferramenta Owncloud como a ferramenta Wordpress precisam
-de configurações servidor de e-mail para algumas funcionalidades, também foi adicionado
+de configurações de servidor de e-mail para algumas funcionalidades, também foi adicionado
 a atividade de criação de uma receita para a automatizar a configuração de
 servidor de e-mail. Como aspecto de segurança, ficou definido que tanto a aplicação
 Owncloud como Wordpress deveriam usar sempre HTTPS por padrão, isso envolve também
@@ -453,7 +453,7 @@ da aplicação.
 a ferramenta Shak. 
 \end{enumerate}
 
-Também foi definido as caraterísticas de segurança na implantação, e
+Também foram definidos as caraterísticas de segurança na implantação, e
 automatizar os que forem possíveis de serem aplicados dentro do contexto da
 arquitetura proposta. Foi definido que as aplicações sempre usem protocolos 
 seguros, como o \textit{HTTPS}. 
@@ -485,7 +485,7 @@ nos servidores oficiais do Debian.
   mínimo, o servidor web compatível. Por exemplo, todas as aplicações devem 
 possuir suporte ao servidor Nginx ou Apache.
   \item  [Aplicações com comunidades ativas:] É importante que os softwares 
-escolhidos possuem comunidades ativas, isso pode ajudar na resolução de possíveis 
+escolhidos possuam comunidades ativas, isso pode ajudar na resolução de possíveis 
 problemas. Logo, aplicações abandonadas pela sua comunidade foram evitadas, e
   aplicações com comunidade de desenvolvedores e usuários ativas foram priorizadas.
   Por utilizar a distribuição instável, é possível que sejam descobertos
@@ -534,7 +534,7 @@ seja possível.
 Para realizar a implantação das aplicações, foi importante que as 
 instalações e configurações
 fossem executadas num ambiente limpo. Os testes foram criados
-em máquinas virtuais com a configuração conhecida como minimal, que contém
+em máquinas virtuais com a configuração conhecida como mínima, que contém
 instalado apenas as aplicações necessárias para o funcionamento do sistema operacional.
 
 Após a execução da implantação, o testador verificou o perfeito

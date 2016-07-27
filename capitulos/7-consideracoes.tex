@@ -10,72 +10,57 @@ para usuários que não possuam conhecimento técnico para realizar instalaçõe
 Observou-se que outros trabalhos já utilizam de conceitos de implantação automatizada,
 porém nenhuma delas voltados a aplicações em sistemas Debian GNU/Linux, que contém
 pacotes de algumas aplicações web livres bastante conhecidas, como wordpress e
-owncloud. Porém, foi visto que a apenas a instalação do pacote não é suficiente,
-existem ainda, algumas atividades a serem feitas, e nem sempre o usuário detém
-o conhecimento necessário para configurar as aplicações, com isso, dado o objetivo
-deste trabalho, e as motivações, foi feito evolução da ferramenta Shak, para
+Owncloud. 
+
+Também foi visto que apenas a instalação dos pacotes não são suficientes,
+existem outras atividades a serem feitas e nem sempre o usuário detém
+o conhecimento necessário para configurar as aplicações. Com isso, dado o objetivo
+deste trabalho e as motivações, foi feito a evolução da ferramenta Shak, para
 que usuários possam instalar aplicações com apenas um clique num sistema Debian
 GNU/Linux.
 
 No decorrer deste trabalho, alguns resultados foram alcançados. Primeiramente, o
 pesquisador estabeleceu o conhecimento sobre implantação automatizada
-de software e tecnologias que permitam tal implementação, como por exemplo o Chef,
-sendo possível automatizar todo o processo de implantação de um software,
-desde o planejamento até a execução. Também foi conhecido ferramentas que são
+de software e tecnologias que permitam tal implementação, como por exemplo o Chef.
+
+Também foi conhecido ferramentas que são
 utilizadas para implantação de aplicações de forma automatizada, como por exemplo
 o JuJu e o Bitnami, que ajudam usuários que não possuem conhecimento a
 instalarem aplicações com facilidade.
 
 Além disso, também foram adquiridos os conhecimentos sobre \textit{DevOps}, que é um conjunto
 de práticas e princípios para a implantação ágil de software, que foram bastante
-úteis ao trabalho, pois também trata de automação de implantação de software. Também
-foi adquirido conhecimentos sobre hospedagem virtual, que é uma forma de manter
-várias aplicações no mesmo servidor com um único endereço IP e vários domínios diferentes.
+úteis ao trabalho, pois também trata de automação de implantação de software.
+ 
+Em relação a evolução da ferramenta, foram realizadas melhorias na ferramenta Shak
+provendo quatro novas aplicações, sendo elas: Owncloud, Wordpress, MoinMoin e
+servidor de e-mail, além de iniciar a implantação das aplicações Noosfero e Roundcube. 
 
-Em relação a proposta da solução, foram realizadas melhorias na ferramenta Shak,
-provendo quatro novas aplicações, sendo elas Owncloud, Wordpress, MoinMoin e
-servidor de e-mail, além de iniciar a implantação das aplicações Noosfero e Roundcube. As 
-aplicações foram implantadas automaticamente e
-levando em consideração o uso de protocolos seguros como \textit{HTTP} junto ao SSL e SMTP
-junto ao SSL. Logo também foi adicionado a
-ferramenta Shak suporte a criação de certificados autoassinados, permitindo que
-as aplicações possam usar certificados para configurar tais protocolos. Ainda foi
-adicionado ao Shak o suporte a as aplicações web sempre utilizarem
-o protocolo HTTPS, evitando assim implantações inseguras, independente da ferramenta.
+Também foi adicionado à ferramenta Shak, o suporte a criação de certificados autoassinados, 
+permitindo que as aplicações possam usar certificados para configurar tais protocolos. 
 
-Também foi configurado o suporte a múltiplas instâncias nas aplicações disponíveis
-no shak, o Wordpress e MoinMoin já previa tal suporte, bastando configurá-lo, porém no Owncloud
-foi necessário o envio de uma correção para o mantenedor do pacote Debian, visto que
-é uma funcionalidade nova no Owncloud, permitindo assim a criação de múltiplas
-instâncias do Owncloud, em ambos os casos foi utilizado a técnica de hospedagem
-virtual, disponibilizada pelo servidor web Nginx. Além disso, foi proposto um protótipo
+Além disso, foi configurado o suporte a múltiplas instâncias nas aplicações disponíveis
+no Shak, também foi proposto um protótipo
 da interface web para a ferramenta, que seria a forma dos usuários acessarem a
 ferramenta sem precisar utilizar um terminal.
 
 Por fim, todos esses resultados são importantes para o objetivo deste trabalho, que vão
 desde compreender como é o processo de implantação de um software, a evolução
 da ferramenta Shak, e até os cuidados
-a se tomar ao implantar uma aplicação, sendo assim, contribuindo para o resultado
-deste trabalho.
-
+a se tomar ao implantar uma aplicação.
+ 
 \section{Trabalhos Futuros}
 %
-Algumas melhorias na ferramenta Shak não puderam ser implementadas  no contexto
+Algumas melhorias na ferramenta Shak não puderam ser implementadas no contexto
 deste trabalho, destaca-se o suporte a servidores autoassinados utilizando
-let's encrypt, que trariam ganhos para os usuários finais, visto que os certificados
-autoassinados que utilizam a ferramenta openssl não são reconhecidos automaticamente
-pelos navegadores, precisando ainda, de uma autorização do usuário. Já
-com let's encrypt esse problema não aconteceria, visto que os certificados
-gerados a partir desta tecnologia é reconhecido pelos navegadores mais modernos.
+Let's encrypt, que trariam ganhos para os usuários finais, visto que os certificados
+autoassinados que utilizam a ferramenta Openssl não são reconhecidos automaticamente
+pelos navegadores. 
 
 Outra melhoria seria o suporte a criação de máquinas virtuais de forma automatizada, visto
-que ainda é necessário que o usuário instale a ferramenta no servidor destino, uma
-solução viável é que o usuário possa instalar a partir de seu computador pessoal,
- apontando apenas o endereço do servidor destino, tanto a partir do terminal, como
-a partir da interface web, facilitando ainda mais o uso da ferramenta para seus usuários, ou
-até mesmo utilizar a ferramenta Shak como um serviço, sendo assim, disponibilizando uma
-versão do Shak na nuvem, para que qualquer usuário com conexão a internet e um servidor
-disponível pudesse instalar aplicações web em que o Shak dê suporte.
-
+que é necessário que o usuário instale a ferramenta no servidor destino. Uma sugestão
+seria integrar com ferramentas que disponibilizam servidores na nuvem, como
+a DigitalOcean \footenote{https://www.digitalocean.com/}. 
+ 
 Também como trabalhos futuros, finalizar as aplicações Noosfero e Roundcube, além
 de suportar novas aplicações no Shak.

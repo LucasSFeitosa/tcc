@@ -28,7 +28,7 @@ durante a sua instalação, operação, manutenção e eventual evolução\cite{
 
 Gestão de configuração de software também fornece a infraestrutura que é a base para
 qualquer tipo de projeto de software. Isto facilita a coordenação e comunicação
-entre o vários participantes numa equipe de desenvolvimento de software.
+entre os vários participantes numa equipe de desenvolvimento de software.
 Dentro da gestão de configuração de software
 existem várias áreas de atuação \cite{gcs}. Este trabalho aborda especificamente a 
 implantação de software.
@@ -205,7 +205,7 @@ deve ser sempre contínuo
 Nesse trabalho, foi utilizado a prática \textit{DevOps} de implantação contínua,
 automatizando todo o processo de implantação de aplicações web. 
 
-Para a entender melhor a prática de implantação automatizada, que é o coração
+Para entender melhor a prática de implantação automatizada, que é o coração
 do \textit{DevOps}, na Subseção \ref{subsub:infracode} será abordado a infraestrutura
 como código, que é uma prática bastante difundida nas comunidades \textit{DevOps}.
 
@@ -385,7 +385,7 @@ Esses procedimentos estão relacionados a segurança na implantação de aplica�
 utilizando pacotes Debian, no qual trata o uso de protocolos que utilizam criptografia
 para a segurança de dados.
 
-Existem algumas categorias predominantes e prejudiciais de ataques na internet. São elas: 
+Existem algumas categorias predominantes e prejudiciais de ataques na Internet. São elas: 
 ataques via malware, recusa de serviços, analisador
 de pacotes, disfarce na fonte e modificação e exclusão de mensagem. Para proteger
 desses ataques é importante o uso de comunicação segura, protegendo as aplicações 
@@ -410,8 +410,8 @@ desejáveis da comunicação segura, são elas:
 No contexto de implantação de aplicações web, foi tomado como objetivo a segurança
 dos dados transmitidos. Com isso, aplicando criptografia nos protocolos da camada
 de aplicação, que serão utilizados neste trabalho, sendo eles os protocolos 
-Hypertext Transfer Protocol \textit{HTTP} e Simple Mail Transfer Protocol 
-\textit{SMTP}, assim adicionando uma camada de segurança as aplicações que serão implantadas.
+Hypertext Transfer Protocol \textit{(HTTP)} e Simple Mail Transfer Protocol 
+\textit{(SMTP)}, assim adicionando uma camada de segurança as aplicações que serão implantadas.
 
 \subsection{Protocolos da Camada de Aplicação e Camada de Segurança}
 
@@ -450,7 +450,7 @@ o protocolo \textit{SMTP} é um protocolo de envio de informações \cite{kurose
 Isso implica que, para um usuário recuperar as informações de e-mail, é necessário 
 o uso de outros componentes. Já que isso não é possível via \textit{SMTP}, para 
 resolver isto existem os protocolos de acesso ao correio, entre eles o 
-Post Office Protocol \textit{POP3} e Internet Message Access Protocol \textit{IMAP}.
+Post Office Protocol \textit{(POP3)} e Internet Message Access Protocol \textit{(IMAP)}.
 
 Para adicionar uma camada de segurança, com sigilo e integridade de dados, é necessário
 o uso de outro protocolo, o protocolo Secure Socket Layer \textit{(SSL)}, para 
@@ -471,7 +471,7 @@ do servidor e do cliente por meio de certificados digitais.
 \subsection{Assinaturas e Certificados Digitais}
 
 As assinaturas e certificados digitais servem para agregar confiança e segurança
-nas trocas de dados pela internet, principalmente quando se trata de troca de informações
+nas trocas de dados pela Internet, principalmente quando se trata de troca de informações
 sigilosas que precisam de uma confiabilidade maior. O que viabiliza a assinatura 
 digital é o emprego de criptografia assimétrica ou criptografia de chaves públicas. 
 
@@ -494,7 +494,7 @@ ferramentas, um exemplo de ferramenta é a ferramenta OpenSSL, que permite requi
 assinar, gerar, exportar e converter certificados digitais.
 
 Um problema em utilizar certificados autoassinados é que os clientes, como navegadores,
-aceitam apenas dos certificados das entidades certificadores em quem eles confiam. Por
+aceitam apenas os certificados das entidades certificadores em quem eles confiam. Por
 exemplo, um navegador não vai conhecer o certificado que foi autoassinado por
 alguém que ele não conhece, e logo vai avisar ao usuário de que ele não está numa
 conexão segura, por mais que esteja sobre uma conexão \textit{HTTPS}. Por isso, 
