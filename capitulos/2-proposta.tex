@@ -366,34 +366,32 @@ Primeiramente, era necessário definir as fases e os procedimentos para a implan
 automatizada, de acordo com as fases que compõem o processo de 
 implantação de aplicações, e de acordo com a Subseção \ref{sub:processoimplantacao}. 
 
-Neste trabalho, foi adicionado a fase de configuração de múltiplas
+Neste trabalho, foi adicionado na fase de configuração, a atividade de configuração de múltiplas
 instâncias, que é a fase responsável por habilitar a implantação de múltiplas 
-instâncias de uma aplicação. Isso possibilita a configuração 
-de várias instâncias da mesma aplicação sem duplicação de recursos. A sequência
+instâncias de uma aplicação. Isso possibilita a configuração de várias instâncias da mesma aplicação sem duplicação de recursos. A sequência
 das fases estão na figura \ref{fig:1}:
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\textwidth]
-      {figuras/atividades}
+      {figuras/fases}
       \caption{Sequência de fases para implantação automatizada de aplicações}
   \label{fig:1}
 \end{figure}
 
-\begin{itemize}
+\begin{enumerate}
   \item  \textbf{Planejamento}: Identificar os componentes mínimos necessários na implantação
  da aplicação.  
   \item  \textbf{Preparação e Instalação de Pacotes}: Preparar o ambiente alvo, 
 isso envolve configuração do sistema operacional e instalação de dependências necessárias.
   \item  \textbf{Configuração}: Editar os arquivos de configuração necessários, tanto 
-da aplicação como de suas dependências.
-  \item  \textbf{Configuração de múltiplas instâncias}: Configurar o suporte de múltiplas instâncias
+da aplicação como de suas dependências. Além disso, configurar o suporte de múltiplas instâncias
 da aplicação.   
   \item  \textbf{Inicialização/Execução}: Testar as receitas construídas, utilizando
 a ferramenta Shak. 
-\end{itemize}
+\end{enumerate}
 
-Também, foi definido as caraterísticas de segurança na implantação, e
+Também foi definido as caraterísticas de segurança na implantação, e
 automatizar os que forem possíveis de serem aplicados dentro do contexto da
 arquitetura proposta. Foi definido que as aplicações sempre usem protocolos 
 seguros, como o \textit{HTTPS}. 

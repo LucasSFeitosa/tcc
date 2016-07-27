@@ -1,12 +1,11 @@
 Fechar isso:
 - de novo, é preciso justificar porque a gente quer que seja em sistemas debian, com pacotes debian. alguns motivos: suporte de segurança, integração, ciclo de desenvolvimento com período de estabilização, etc
-- correção da figura com a fase de múltiplas instancias
-- Trocar as fases de pontinho pra sequencia
 - Descrever a anatomia de uma receita chef
 - use fonte monoespaçada pra exemplos de código/terminal ... e separe claramente do restante do texto.
-
-- além disso tem um *foo* ali meio (???) 
-- explicar no wordpress mútiplos sites e mútiplas instancias
 - Corrgiir todos os comentarios gerais feitos em wordpress
 - na verdade, de lá pra cá o owncloud foi removido do debian, por vários motivos (owncloud)
 - print do protótipo da aplicação web
+- * muitos detalhes super específicos; quem lê o seu trabalho e não trabalha com esses detalhes diretamente fica perdido!
+* por outro lado detalhes importantes faltam, com o fato de que quando vc diz shak install ... hostname=wordpress.dev, a aplicação vai estar disponível em http://wordpress.dev/
+* muitas redundancias/encheções de linguiça
+* em especial a saída do terminal da criação dos arquivos do cookbook é dispensável
