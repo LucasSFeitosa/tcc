@@ -33,10 +33,9 @@ para o funcionamento da aplicação, tais como: banco de dados; pacotes
 pré-instalados; e aplicações pré-configuradas. Para o Wordpress foram escolhidas:
 
 \begin{itemize}
-   \item \textbf{Pacote Wordpress para o Debian:} Pacote Debian com o Wordpress.
-   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o Nginx.
-   \item \textbf{Pacote MySQL para o Debian:} Pacote Debian com o banco de dados MySQL
-   que será usado pelo Wordpress.
+   \item \textbf{Pacote Wordpress para o Debian} 
+   \item \textbf{Pacote Nginx para o Debian:} 
+   \item \textbf{Pacote MySQL para o Debian:}
    \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
    necessários para configurar o Wordpress, o servidor web Nginx e o banco de dados
    MySQL.
@@ -71,7 +70,7 @@ de código \ref{codigo1}:
   rake cookbook
   Cookbook name: wordpress
   knife cookbook create wordpress -o cookbooks/
-  ** Creating cookbook foo in /home/thiago/Shak/cookbooks
+  ** Creating cookbook wordpress in /home/thiago/Shak/cookbooks
   ** Creating README for cookbook: wordpress
   ** Creating CHANGELOG for cookbook: wordpress
   ** Creating metadata for cookbook: wordpress
@@ -118,23 +117,18 @@ a declaração dos pacotes. O código \ref{codigo997} é um exemplo de como
 gerenciar templates numa receita Chef.
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de templates com o chef}, label=codigo997]
-template "text\_file.txt" do
-  source "text\_file.txt"
-  mode "0755"
-  owner "root"
-  group "root"
+
+template "Create autoconfig.php in /etc/wordpress" do
+  source "autoconfig.php.erb"
+  path "/etc/wordpress/autoconfig.php"
+  owner "www-data"
+  group "www-data"
 end
 \end{lstlisting}
 
 \subsection{Múltiplas Instâncias}
 
-O uso de múltiplas instâncias do Wordpress pode ser feito de duas maneiras, e servem
-para que o usuário possa ter várias instâncias de Wordpress no mesmo servidor. No 
-Wordpress, é possível ter múltiplos sites e múltiplas
-instâncias. No caso do Shak, é desejado que seja múltiplas instâncias, a partir da
-repetição da instalação, porém isolando as aplicações.
- 
-Para isso, foi necessário que algumas pastas do Wordpress
+O Wordpress já suporta a funcionalidade de múltiĺas instâncias nativamente. Para configurá-lo, foi necessário que algumas pastas do Wordpress
 fossem isoladas, sendo uma para cada aplicação. Cada instância precisa
 ter seus diretórios isolados, o diretório \textit{wp-content} é o diretório 
 que contém: os uploads; os temas; os plugins; etc. Portanto, para não
@@ -167,7 +161,7 @@ endereço desejado no arquivo \textit{/etc/hosts}. Assim, mesmo que esteja na su
 era possível acessar um endereço mais familiar em seu navegador. Um exemplo da execução
 da instalação via Shak é:
 
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de exexução de instalação do wordpress com shak}]
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do wordpress com shak}]
 shak install wordpress hostname=wordpress.dev
 \end{lstlisting}
 
@@ -201,10 +195,9 @@ mínimas para o funcionamento do Owncloud, tais como: banco de dados; pacotes
 pré-instalados; e aplicações pré-configuradas. Para o Owncloud foram escolhidas:
 
 \begin{itemize}
-   \item \textbf{Pacote Owncloud para o Debian:} Pacote Debian com o Owncloud.
-   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o Nginx.
-   \item \textbf{Pacote Postgresql para o Debian:} Pacote Debian com o banco de dados Postgresql
-   que será usado pelo Owncloud.
+   \item \textbf{Pacote Owncloud para o Debian}
+   \item \textbf{Pacote Nginx para o Debian}
+   \item \textbf{Pacote Postgresql para o Debian}
    \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
    necessários para configurar o Owncloud, o servidor web Nginx e o banco de dados
    Postgresql.
@@ -238,7 +231,7 @@ como exemplificado no trecho de código \ref{codigo2}
   rake cookbook
   Cookbook name: owncloud
   knife cookbook create owncloud -o cookbooks/
-  ** Creating cookbook foo in /home/thiago/Shak/cookbooks
+  ** Creating cookbook owncloud in /home/thiago/Shak/cookbooks
   ** Creating README for cookbook: owncloud
   ** Creating CHANGELOG for cookbook: owncloud
   ** Creating metadata for cookbook: owncloud
@@ -361,14 +354,14 @@ necessário configurar um servidor que utiliza o procolo \textit{IMAP} ou \texti
 também era necessário a configuração de um agente de transferência de e-mails; e também
 alguma ferramenta para controle de spam.
 
-Primeiramente, ficou definido que o protocolo escolhido fosse o protocolo \textit{IMAP}, já
+Primeiramente, foi definido que o protocolo escolhido fosse o protocolo \textit{IMAP}, já
 que o protocolo \textit{IMAP} é um protocolo online, ou seja, ele se conecta ao servidor
 e realiza o download das mensagens, depois ainda  mantém a conexão para que
 as alterações e mensagens novas sejam atualizadas em tempo real. Diferentemente do
 protocolo \textit{POP3} que é um protocolo offline, onde após o download das mensagens encerra
 a conexão. Outra vantagem do \textit{IMAP} em relação ao \textit{POP3}, que é que o 
 \textit{IMAP} mantém uma cópia de mensagens no servidor, ideal para quem precisa 
-acessar os e-mails de mais de um local.
+acessar os e-mails de mais de um local ou a partir de mais de um dispositivo.
 
 O servidor \textit{IMAP} escolhido foi o Dovecot, que é um servidor de e-mail
 \textit{IMAP}, além disso, dovecot é um software livre simples de configurar, requer nenhuma
@@ -386,10 +379,10 @@ um filtro para classificar e-mails e bloquear os e-mails que julgarem como spam 
 Em resumo, o servidor de e-mail é composto de:
 
 \begin{itemize}
-   \item \textbf{Pacote dovecot para o Debian:} Pacote Debian com o dovecot.
-   \item \textbf{Pacote postfix para o Debian:} Pacote Debian com o postfix.
-   \item \textbf{Pacote spamassasin para o Debian:} Pacote Debian com o spamassasin.
-   \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
+   \item \textbf{Pacote dovecot para o Debian}
+   \item \textbf{Pacote postfix para o Debian}
+   \item \textbf{Pacote spamassasin para o Debian}
+   \item \textbf{Arquivos de configuração} Criação dos arquivos de configuração
    necessários para configurar o spamassasin, dovecot e postfix.
 \end{itemize}
 
@@ -513,11 +506,9 @@ mínimas para o funcionamento do MoinMoin, tais como: banco de dados; pacotes
 pré-instalados; e aplicações pré-configuradas. Para o MoinMoin são elas:
 
 \begin{itemize}
-   \item \textbf{Pacote python-moinmoin para o Debian:} Pacote Debian com o MoinMoin.
-   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o Nginx.
-   \item \textbf{Pacote uwsgi para o Debian:} Pacote Debian com o servidor de aplicação web
-uwsgi, com suporte para aplicações escritas em python, utilizando o plugin uwsgi-plugin-python,
-também disponível como um pacote debian.
+   \item \textbf{Pacote python-moinmoin para o Debian}
+   \item \textbf{Pacote Nginx para o Debian}
+   \item \textbf{Pacote uwsgi para o Debian}
    \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
    necessários para configurar o Uwsgi, o servidor web Nginx e o servidor web
 uwsgi.
@@ -528,7 +519,7 @@ Diferentemente das outras aplicações web, moinmoin não utiliza banco de dados
 \subsection{Preparação e Instalação de Pacotes}
 
 Para o funcionamento correto do moinmoin, era necessário a instalação do python, além
-disso, também era necessário o uso de algum servidor web. No caso, utilizaremos o Nginx
+disso, também era necessário o uso de algum servidor web. No caso, foi escolhido o Nginx
 junto ao servidor de aplicação Uwsgi, também era necessário a configuração do 
 moinmoin a partir de seus
 arquivos de configuração, mywiki.py e farmconfig.py.
@@ -544,7 +535,7 @@ estrutura básica de um livro de receitas que deve ser usado pelo Chef, como no 
   rake cookbook
   Cookbook name: moinmoin
   knife cookbook create moinmoin -o cookbooks/
-  ** Creating cookbook foo in /home/thiago/Shak/cookbooks
+  ** Creating cookbook moinmoin in /home/thiago/Shak/cookbooks
   ** Creating README for cookbook: moinmoin
   ** Creating CHANGELOG for cookbook: moinmoin
   ** Creating metadata for cookbook: moinmoin
@@ -574,7 +565,6 @@ informar informações básicas da wiki, como o nome da wiki e seu diretório de
 O último arquivo de configuração é o \textit{farmconfig.py}, que é o responsável pelos 
 links da barra de navegação e responsável por configurar múltiplas instâncias.
 
-%TODO confirmar essa pasta aqui
 Além disso, foi necessário criar a pasta de conteúdos do moinmoin, que por
 escolha devem ficar em /var/lib/moin. Após isso, para que o Nginx funcione corretamente
 com o uwsgi, foi necessário indicar o socket do uwsgi, que foi indicado no uwsgi.ini.
@@ -603,7 +593,7 @@ que será instalada, e segunda o endereço destino, para executar a instalação
 do Owncloud basta:
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do owncloud com shak}]
-\$ shak install moinmoin hostname=moinmoin.dev
+shak install moinmoin hostname=moinmoin.dev
 \end{lstlisting}
 
 E assim, o Chef inicia: o processo de instalação dos pacotes; criação dos arquivos
@@ -631,7 +621,7 @@ Noosfero não estava nos repositórios oficiais do Debian, mas que seria possív
 desde que todas as dependências do Noosfero também estivessem no Debian.
 
 O Noosfero já possui um repositório \footnote{http://download.noosfero.org/debian/jessie/}
-, com suas dependências empacotadas. Porém, algumas delas não se encontram nos repositórios
+com suas dependências empacotadas. Porém, algumas delas não se encontram nos repositórios
 oficiais do Debian, dificultando assim, que o pacote do Noosfero fique disponível
 nos repositórios oficiais do Debian. 
 
@@ -648,15 +638,16 @@ Na tabela \ref{tabela1} em anexo, encontra-se uma lista das dependências
 que estão no repositório do Noosfero,
 com suas versões, e as dependências que estão no Debian Jessie.
 
-Como visto na tabela acima, grande parte das dependências do Noosfero encontram-se
+Como visto na tabela \ref{tabela1}, grande parte das dependências do Noosfero encontram-se
  apenas nas versões \textit{testing} e \textit{unstable} no Debian. Para a continuar com
 a implantação automatizada, seria necessário discutir alguma solução 
-com a comunidade do software. Como sugestão, uma das soluções viáveis seria, 
+com a comunidade do software. 
+
+Como sugestão, uma das soluções viáveis seria 
 sincronizar as versões das dependências do Noosfero, com as versões que são 
 disponibilizadas pelo Debian \textit{testing}. Com isso, o 
 Noosfero passa a ter boa parte de suas dependências suportadas pelo Debian. Além disso, 
-também seria necessário empacotar as bibliotecas que o Noosfero precise, mas 
-que o Debian não possui. 
+também seria necessário empacotar as bibliotecas do Noosfer que o Debian não possui. 
 
 Porém, essa decisão fica a cargo da comunidade da aplicação, e com o Noosfero disponível
 nos repositórios oficiais do Debian, o Shak poderá dar suporte ao Noosfero, 
@@ -681,10 +672,9 @@ na linguagem Php, logo, suas dependências são bem semelhantes entre as aplica�
 Wordpress e Owncloud. As dependências identificadas foram:
 
 \begin{itemize}
-   \item \textbf{Pacote Roundcube para o Debian:} Pacote Debian com o Owncloud.
-   \item \textbf{Pacote Nginx para o Debian:} Pacote Debian com o Nginx.
-   \item \textbf{Pacote Postgresql para o Debian:} Pacote Debian com o banco de dados Postgresql
-   que será usado pelo Roundcube.
+   \item \textbf{Pacote Roundcube para o Debian}
+   \item \textbf{Pacote Nginx para o Debian}
+   \item \textbf{Pacote Postgresql para o Debian}
    \item \textbf{Arquivos de configuração:} Criação dos arquivos de configuração
    necessários para configurar o Roundcube, o servidor web Nginx e o banco de dados
    Postgresql.

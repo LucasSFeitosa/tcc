@@ -31,10 +31,10 @@ qualquer tipo de projeto de software. Isto facilita a coordenação e comunicaç
 entre o vários participantes numa equipe de desenvolvimento de software.
 Dentro da gestão de configuração de software
 existem várias áreas de atuação \cite{gcs}. Este trabalho aborda especificamente a 
-implantação de software dentro da área de gerência de configuração de software.
+implantação de software.
 
 Este capítulo possui a Seção \ref{sec:implantacao}, que fala sobre
-implantação de software, além da subseção \ref{subsec:DevOps} que fala sobre 
+implantação de software, além da Seção \ref{subsec:DevOps} que fala sobre 
 \textit{DevOps}, uma
 nova abordagem que tráz um conceito de implantação
 automatizada de software junto aos métodos ágeis de desenvolvimento de software. 
@@ -45,7 +45,7 @@ implantação automatizada de software, com as características típicas que ess
 ferramentas trazem para tornar a implantação mais rápida e com qualidade.
 
 E por fim, a Seção \ref{sec:seguranca}, que fala sobre quais são os procedimentos 
-que devem ser levados em consideração durante uma implantação de aplicações voltadar
+que devem ser levados em consideração durante uma implantação de aplicações voltada
 para a web.
 
 \section{Implantação de Software}
@@ -56,9 +56,9 @@ e assim, possam proporcionar as funcionalidades necessárias ao usuário final. 
 de desenvolvimento disponibilizará o software, ou uma atualização com novas funcionalidades
 ao usuário. 
 
-Sendo assim, a implantação de software é um conjunto de atividade cruciais
+Sendo assim, a implantação de software é um conjunto de atividades cruciais
 para todos os fornecedores de software. Isto começa desde um pedido de um novo requisito
-de software, até todas as medidas necessárias para essa nova versão fique disponível
+de software, até todas as medidas necessárias para que essa nova versão fique disponível
 para o cliente \cite{5741269}. A implantação de software é composta por várias
 atividades que são essenciais para disponibilizar um produto a alguém, como por exemplo:
 instalação de dependências, arquivos de configuração e instalação da própria aplicação.
@@ -70,11 +70,11 @@ a prática de implantação automatizada facilita na rápida entrega de software
 para implantações de aplicações em servidores na nuvem, como implantação de software
 para usuários em seus computadores \cite{7284592}.
 
-As aplicações de software não são mais sistemas autônomos, 
+As aplicações de software não são mais sistemas isolados, 
 são cada vez mais o resultado da integração de coleções de
 componentes. Isso pode tornar a implantação de software um processo complicado, e
 nem sempre existir a garantia de que cada componente será implantado corretamente.
-Portanto, a equipe de desenvolvimento, deve encontrar uma maneira de lidar
+Portanto, a equipe de desenvolvimento deve encontrar uma maneira de lidar
 com uma maior incerteza no ambiente nos quais seus sistemas vão operar, garantindo
 que a implantação do software seja feita da forma correta, evitando quaisquer acontecimentos
 de erros e imprevistos \cite{deployment1998}.
@@ -82,8 +82,8 @@ de erros e imprevistos \cite{deployment1998}.
 \subsection{Processo de Implantação de Software}
 \label{sub:processoimplantacao}
 
-A implantação de um software, é o processo que vai desde a aquisição desse software
-até a sua execução \cite{leo2014}. O processo implantação consiste em diversas
+A implantação de um software é o processo que vai desde a aquisição desse software
+até a sua execução \cite{leo2014}. O processo de implantação consiste em diversas
 atividades que devem ser executadas desde o planejamento da implantação até a
 disponibilidade para uso.
 
@@ -122,11 +122,10 @@ com \citeonline{omg2006} as fases são:
   \item  \textbf{Preparação:} São os procedimentos necessários para preparar o
   ambiente alvo para que um determinado componente possa ser executado, isso envolve
   configuração do sistema operacional, instalação e configuração de dependências
-  necessárias (por exemplo um servidor web como Apache ou Nginx) e a transferência
-  do componente para o servidor onde ele será executado.
+  necessárias (por exemplo um servidor web como Apache ou Nginx). 
   \item  \textbf{Instalação:} O implantador transfere o componente para a infraestrutura
   alvo, é quando instalamos um dado componente em um servidor, um exemplo disso
-  é a instalação de uma aplicação via pacotes (.deb ou .rmp).
+  é a instalação de uma aplicação via pacotes (.deb ou .rpm).
   \item  \textbf{Configuração:} Edição de arquivos de configuração para alterar
   determinado comportamento de uma aplicação, o implantador aplica configurações
   específicas a aplicação a partir de arquivos de configuração.
@@ -136,16 +135,15 @@ com \citeonline{omg2006} as fases são:
 
 Os termos e fases formam uma estrutura básica que um processo de implantação de software
 deve conter, podendo haver modificações de acordo com a necessidade do implantador. 
-Cada fase é necessária para que possa ter uma implantação consistente, ou seja, as
+Cada fase é necessária para que se possa ter uma implantação consistente, ou seja, as
 atividades dentro de uma implantação de software estarão organizadas, evitando assim
 possíveis erros durante a implantação. Essa organização também pode ajudar o
-time de implantação a encontrar os problemas ocorridos dentro de uma implantação
-de software, caso ocorram.
+time de implantação a diagnosticar eventuais problemas durante a implantação.
 
 Dependendo do tamanho da aplicação, essas fases podem se tornar tarefas complicadas,
 e com isso existe a necessidade de automatizar o processo de implantação. Isso 
 diminui a possibilidade de erros, comparado a uma tarefa manual, e consequentemente
-tornando o trabalho mais ágil, dando adeus aos longos manuais de instalação. 
+torna o trabalho mais ágil, dando adeus aos longos manuais de instalação. 
 O objetivo de um processo de implantação automatizado é proporcionar um processo
  de implantação reprodutível, confiável e fácil de ser executado \cite{humble2010}.
 
@@ -154,7 +152,7 @@ de ferramentas que possam automatizar todo o processo de implantação. Porém, 
 necessário que o implantador compreenda cada fase do processo para que possa ser
 feito um bom planejamento e execução da implantação.
 
-\subsection{Desenvolvimento e Operações (DevOps)}
+\section{Desenvolvimento e Operações (DevOps)}
 \label{subsec:DevOps}
 Como resultado ao longo dos anos, as equipes de desenvolvimento de software
 são capazes de entregar a um ritmo muito mais rápido, principalmente com a adoção
@@ -218,14 +216,12 @@ sistema de computação através de código, com o intuito de automatizar a impl
 de um software e o seu gerenciamento de configurações. Por exemplo, um sistema
 com diferentes configurações de hardware e diferentes
 requisitos de software podem ser especificados e implantados automaticamente
-sem intervenção humana \cite{configurationcodesmell}. Tal procedimento, pode ser
+sem intervenção humana \cite{configurationcodesmell}. Tal procedimento pode ser
 ainda personalizado, conforme as necessidades da implantação. Sendo assim, a implantação
 automatizada não só é mais rápida do que o processo manual, mas também é mais
 confiável e reproduzível.
 
-Esse conceito se complementa com o uso das práticas \textit{DevOps}, com o objetivo
-de automatizar toda a sua infraestrutura, utilizando ferramentas que auxiliam nesse
-processo. Para aplicar a infraestrutura como código em um projeto, é necessário
+Para aplicar a infraestrutura como código em um projeto, é necessário
 migrar a infraestrutura do projeto em código, essencialmente como um
 código que o desenvolvedor lida no seu trabalho diário \cite{byhand}.
 
@@ -244,11 +240,11 @@ qualquer outro estado.
 
 Para realizar essa prática, existem ferramentas como Chef \footnote{https://www.chef.io/chef/} e 
 Puppet \footnote{https://puppet.com/}, que
-fornece aos desenvolvedores várias abstrações. Essas abstrações são para 
+fornecem aos desenvolvedores várias abstrações para 
 expressar etapas de automação,
 de forma independente. Esses recursos podem ser executados várias vezes,
 obtendo-se sempre o mesmo resultado, trazendo uma capacidade de atingir um determinado
-estado desejado sob de diferente circunstâncias. Isso permite múltiplas iterações, 
+estado desejado. Isso permite múltiplas iterações, 
 com implantações frequentes de infraestruturas complexas
 \cite{Hummer2013}.
 
@@ -260,7 +256,7 @@ entanto, apesar da sua importância para as empresas de software, as atividades
 de implantação de software têm recebido pouca atenção \cite{5741269}. Recentemente 
 um número de novas tecnologias começaram a emergir para
 resolver o problema de implantação. As características típicas oferecidas por
-estas tecnologias incluem, sistemas para automatizar a implantação a partir de
+estas tecnologias incluem sistemas para automatizar a implantação a partir de
 configurações, pacotes, gerenciamento de rede e instalação de recursos, com
 propósito de entrega das atualizações de forma automática \cite{deployment1998}.
 
@@ -270,16 +266,10 @@ geral como: Python, Ruby e Shellscript. Também existem ferramentas gerais
 voltados para o processo de implantação, como sistemas de middleware 
 especializados em determinados tipos de artefatos implantáveis \cite{leo2014}.
 
-Um processo de implantação automatizado, depende bastante da integração de diferentes papéis
-numa organização. Foi dito na Seção \ref{subsec:DevOps}, que é importante a
+Um processo de implantação automatizado depende bastante da integração de diferentes papéis
+numa organização. Como foi dito na Seção \ref{subsec:DevOps}, é importante a
 integração entre desenvolvedores e operadores, uma vez que o desenvolvimento desses
 scripts ou utilização das ferramentas precisam de participação de ambos os perfis.
-
-Assim, um grande facilitador da implantação de software são as ferramentas que auxiliam na
-automação das atividades de implantação, pois dependendo do software, a implantação
-pode se tornar um processo com muitas atividades ou bastante longo, e a automação
-busca simplificar a implantação, para evitar erros de instalações manuais e 
-facilitar a replicação em vários ambientes diferentes.
 
 Tais ferramentas, permitem-nos controlar e automatizar a configuração de todos os 
 elementos que compõem um sistema. São eles: software a serem instalados,
@@ -309,7 +299,7 @@ todos os pacotes, arquivos de configuração diretórios e usuários, sendo poss
 definir a dependência entre as tarefas a serem executadas.
 
 Com essas ferramentas, a implantação de um software dentro de uma infraestrutura
-não precisa de  esforço manual. Com elas, podemos automatizar toda a implantação
+não precisa de  esforço manual. Com elas, é possível automatizar toda a implantação
 de um software, desde a preparação do ambiente até a inicialização da aplicação. 
 Sendo assim, possível reduzir o tempo gasto na implantação, sem qualquer esforço
 adicional, o que integra os conceitos de \textit{DevOps} com implantação de 
@@ -318,9 +308,9 @@ software automatizada.
 Além das ferramentas de automação, é importante também entender o empacotamento de
 programas. Tanto Chef como Puppet utilizam a instalação de pacotes como recurso para
 poder instalar softwares, ou seja, é possível buscar os softwares desejados a partir
-dos pacotes disponíveis numa distribuição Linux. 
+dos pacotes disponíveis numa distribuição GNU/Linux. 
 
-As distribuições Linux que
+As distribuições GNU/Linux que
 optam por disponibilizar pacotes, mantém uma infraestrutura de servidores como fonte
 de distribuição de programas \cite{araujo2011apprecommender}. Tais servidores são
 chamados de repositórios, e esses pacotes são gerenciados com softwares conhecidos
@@ -330,7 +320,7 @@ os softwares a serem instalados que estão disponíveis nos respectivos reposit�
 Existem pacotes que dependem do sistema operacional, como por exemplo, pacotes .deb
 para a distribuição Debian e pacotes .rpm para a distribuição Fedora, e
 pacotes independentes de sistema operacional, como por exemplo, pacotes jar da
-linguagem java. Neste trabalho trataremos apenas de pacotes Debian.
+linguagem java. Neste trabalho, foi utilizado apenas de pacotes Debian.
 
 
 \subsection{Pacotes Debian}
@@ -417,7 +407,7 @@ desejáveis da comunicação segura, são elas:
   de invasão.
 \end{itemize}
 
-No contexto de implantação de aplicações web, tomaremos como objetivo a segurança
+No contexto de implantação de aplicações web, foi tomado como objetivo a segurança
 dos dados transmitidos. Com isso, aplicando criptografia nos protocolos da camada
 de aplicação, que serão utilizados neste trabalho, sendo eles os protocolos 
 Hypertext Transfer Protocol \textit{HTTP} e Simple Mail Transfer Protocol 
@@ -439,8 +429,7 @@ está especificado na \textit{RFC} 5321 \footnote{https://www.ietf.org/rfc/rfc53
 
 A aplicações que serão utilizadas neste trabalho, são aplicações web empacotadas no
 Debian. Aplicações web costumam ser aplicações cliente-servidor, que permitem aos
-usuários obterem documentos de servidores web a partir de requisições, 
-esses documentos são padronizados, como por exemplo o \textit{HTML}, 
+usuários obterem documentos de servidores web a partir de requisições. Esses documentos são padronizados, como por exemplo o \textit{HTML}, 
 para que os navegadores possam interpretar e passar a informação ao usuário 
 \cite{kurose2010redes}.
 
@@ -491,7 +480,7 @@ aplicação importante de assinaturas digitais é a certificação de chaves pú
 que certifica que uma chave pública pertence a uma entidade específica \cite{kurose2010redes},
 e a certificação de chaves públicas é utilizada no protocolo \textit{SSL}, visto anteriormente.
 
-Uma maneira de se obter o certificado, é através de uma entidade conhecida como
+Uma maneira de se obter o certificado é através de uma entidade conhecida como
 entidade certificadora, que é responsável por validar e emitir certificados, e
 verifica se uma entidade é realmente quem ela diz ser. Após essa validação, a
 entidade certificadora cria um certificado que vincula a chave pública da entidade

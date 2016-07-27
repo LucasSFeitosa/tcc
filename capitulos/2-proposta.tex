@@ -63,15 +63,14 @@ bases de dados) para que o usuário comum não se preocupe com questões técnic
 Sandstom.io \footnote{https://sandstorm.io/} é uma plataforma de código aberto para servidores
 pessoais. Sandstorm permite instalar
 facilmente as aplicações em que o Sandstorm 
-suporta \citeonline{sandstormio}. Sandstorm trás aplicações prontas para uso, 
+suporta \cite{sandstormio}. Sandstorm trás aplicações prontas para uso, 
 em que o usuário escolhe a aplicação desejada  por meio de uma interface web, 
 e logo após isso, a aplicação já está disponível para uso.
 
 JuJu \footnote{https://jujucharms.com/} é uma ferramenta que permite 
 implementar, configurar, gerenciar, 
 e manter serviços de forma rápida e eficiente, automatizando a instalação e 
-configuração de aplicações na nuvem \cite{juju}. É 
-é uma ferramenta mantida pela Canonical \footnote{http://www.canonical.com/}. 
+configuração de aplicações na nuvem \cite{juju}. É uma ferramenta mantida pela Canonical \footnote{http://www.canonical.com/}. 
 
 O estudo dessas aplicações serve como base para entender como funcionam as aplicações
 já existentes, e como elas são feitas, para que assim seja possível identificar
@@ -82,15 +81,20 @@ A ferramenta \citeonline{juju} utiliza uma abstração conhecida como charm,
 que é basicamente um arquivo com trechos de código. Um charm
 contém toda a lógica de que é preciso para implementar e integrar uma aplicação,
 contendo todo o processo de download de ferramentas, instalação e configuração de
-aplicações. É possível utilizar provisionadores como Chef, Puppet ou Docker. Também 
-é possível reaproveitar os charms feitos pela comunidade do JuJu. Assim,
-reaproveitando os charms prontos ou não precisando escrever um charm do zero.
+aplicações. É possível utilizar provisionadores como Chef, Puppet ou Docker. 
 
+A iteração do usuário com a ferramenta JuJu é através de uma intrerface web, 
+no qual os usuários selecionam os charms disponíveis e os interligam. 
+Por exemplo, é possível adicionar o charm do MySQL e ligar ao charm de uma aplicação
+web, como por exemplo a MediaWiki \footnote{https://www.mediawiki.org/wiki/MediaWiki}. Existem
+vários charms já criados pela comunidade, para que os usuários possam reaproveitar
+os charms já existentes.
+ 
 Já \citeonline{bitnami} trás as aplicações prontas pra uso. Assim, o usuário interage com 
 uma interface web, no formato clique para instalar. Porém,
 o usuário só tem a disposição as aplicações disponibilizadas pelo Bitnami. Isso
 também é a forma em que o Sandstorm trabalha, com a diferença de que o Sandstorm é
-software livre, já Bitnami tem o código fechado, o que dificulta a análise da arquitetura
+software livre, já Bitnami é um software proprietário, o que dificulta a análise da arquitetura
 que é utilizada por eles. 
 
 Por último, o trabalho feito por \citeonline{leo2014} é voltado
@@ -99,8 +103,7 @@ nuvem. Também é possível escalar infraestrutura, utilizando o middleware cons
 em seu trabalho, podendo gerenciar ambientes de computação em nuvem como Amazon EC2 e 
 Openstack. A sua aplicação utiliza o Chef como seu agente de configuração.
 
-Com esse levantamento de trabalhos recentes, as soluções encontradas não resolvem totalmente
-o problema. A grande diferença é que as ferramentas encontradas não utilizam os pacotes
+Com esse levantamento de trabalhos recentes, as soluções encontradas não resolvem a questão problema deste trabalho. A grande diferença é que as ferramentas encontradas não utilizam os pacotes
 disponibilizados pelo Debian. De toda forma, as ferramentas encontradas buscam
 abstrair todo processo de instalação e configuração das aplicações, para que o
 usuário não tenha dificuldades na instalação de aplicações. As ferramentas também
@@ -191,14 +194,12 @@ como Bitnami e Sandstorm, mas o Shak se
 diferencia delas nas seguintes características:
 
 \begin{itemize}
-  \item O Shak pode ser implantando numa máquina virtual na nuvem ou em servidores físicos
-    próprios, a critério do usuário.
 
   \item O Shak reutiliza o trabalho dos mantenedores Debian, que fornecem pacotes
     de alta qualidade.
 
   \item O Shak reutiliza a infraestrutura do Debian, que é utilizada por várias
-outras distribuições Linux baseadas no Debian, como por exemplo: Ubuntu e Linux Mint.
+outras distribuições GNU/Linux baseadas no Debian, como por exemplo: Ubuntu \footnote{http://www.ubuntu.com/} e Linux Mint \footnote{https://www.linuxmint.com/}.
 
 \end{itemize}
 
@@ -206,7 +207,7 @@ Por outro lado, apenas os softwares que estejam empacotados no Debian estarão
 disponíveis, mas isso pode ser visto de forma positiva também. O Shak
 fornecerá um incentivo para que ainda mais softwares estejam disponíveis no
 Debian, o que é um benefício coletivo para o ecossistema do software livre, e
-para os seus usuários. Logo, quanto mais aplicações disponíveis no Debian,
+para os seus usuários. Logo, quanto mais aplicações disponíveis no Shak,
 mais aplicações serão disponibilizadas para os usuários do Debian e seus derivados.
 
 A arquitetura simplificada do Shak, na figura \ref{fig:shak}, mostra quatro
@@ -229,7 +230,7 @@ que foram adicionadas, e suas informações.
 No Shak, uma aplicação possui uma abstração que está exemplificada na figura \ref{fig:shak2},
 onde uma aplicação é uma classe Ruby, e cada aplicação possui um livro de receitas
 Chef associado. Além disso, cada livro de receitas pode definir quais são as entradas que
-a aplicação necessita, como por exemplo, o endereço da aplicação. E essas entradas
+a aplicação necessita, como por exemplo, o endereço da aplicação. Essas entradas
 são informadas, ou pela aplicação web, ou pela interface de linha de comando. As entradas 
 também serão processadas pela aplicação Shak, que guarda essas informações no
 seu repositório de aplicações. 
@@ -265,9 +266,9 @@ Para adicionar uma aplicação que esteja disponível nos repositórios oficiais
 do Debian na ferramenta Shak, é necessário construir o seu respectiovo 
 livro de receitas, utilizando chef, para a
 aplicação desejada. Essa atividade será uma das atividades deste trabalho, sendo assim
-adicionando novas aplicações web a ferramenta Shak.
+adicionando novas aplicações web à ferramenta Shak.
 
-\subsection{Criação de Ambientes de Desenvolvimento}
+\subsection{Gerência de Ambientes de Desenvolvimento}
 
 Uma das necessidades do desenvolvimento do projeto é ter um ambiente de desenvolvimento
 flexível, que possa ser rapidamente construído e destruído. Onde seja possível 
@@ -281,7 +282,7 @@ desatenção ao executar vários passos manuais. A ferramenta escolhida serviu p
 auxiliar na criação das máquinas virtuais, que eram os nós alvo 
 das implantações.
 
-A ferramenta que foi escolhida para auxiliar a criação de um ambiente de desenvolvimento é
+A ferramenta que foi escolhida para auxiliar na gerência de um ambiente de desenvolvimento é
 a ferramenta Vagrant \footnote{https://www.vagrantup.com/}. Com o Vagrant é 
 possível gerenciar a criação de máquinas
 virtuais para os ambientes de desenvolvimento do projeto.
@@ -289,19 +290,14 @@ virtuais para os ambientes de desenvolvimento do projeto.
 O ambiente de desenvolvimento escolhido, foi um ambiente com o sistema Debian na sua versão
 sid 64 bits(que é a versão que contém os pacotes mais atuais, conhecida como versão instável),
 apesar de a versão ser a versão instável, isso foi importante para que tenha disponível 
-as versões mais novas dos pacotes das ferramentas escolhidas.
-
-O repositório do Shak possui alguns scripts
-para instalar algumas dependências. Nesses scripts contém as instalações das 
-dependências para o Shak funcionar perfeitamente
-e também o próprio Chef, que é utilizado pela ferramenta Shak para instalar aplicações. Esses
-scripts podem são referenciados no vagrant, no arquivo Vagrantfile. 
+as versões mais novas dos pacotes das ferramentas escolhidas. Além disso, é preciso que a ferramenta Shak suporte primeiramente a versão instável do Debian, para que assim 
+fosse incluída no próximo lançamento estável do Debian.
 
 \section{Planejamento das Atividades}
 
 As atividades planejadas para a evolução da ferramenta Shak são baseadas nas 
 aplicações que foram escolhidas na Seção
-\ref{subsection:exemplos}. Essas aplicações foram as aplicações que tiveram
+\ref{subsection:exemplos}. Essas foram as aplicações que tiveram
 sua implantação automatizadas pela ferramenta. 
 
 No trabalho, foi feito uma fase exploratória, no qual o planejamento foi
@@ -434,11 +430,11 @@ escolhidos possuem comunidades ativas, isso pode ajudar na resolução de possí
 problemas. Logo, aplicações abandonadas pela sua comunidade foram evitadas, e
   aplicações com comunidade de desenvolvedores e usuários ativas foram priorizadas.
   Por utilizar a distribuição instável, é possível que sejam descobertos
-  erros ou melhorias dentro dessas ferramentas, e tais erros e melhorias são
-  reportados para a comunidade, ou até mesmo problemas solucionados, e 
-  devolvidos aos mantenedores das ferramentas.
+  erros na integração dessas ferramentas com o Debian. Tais erros e melhorias são
+  reportados para o Debian, ou até solucionados, e 
+  devolvidos aos mantenedores dos pacotes.
   \item  [Documentação do software:] A documentação do software também foi
-  levado em consideração, principalmente a documentação da instalação e configuração
+  levada em consideração, principalmente a documentação da instalação e configuração
   dentro da ferramenta. As ferramentas que não possuem documentação de instalação e
   configuração foram evitadas.
   \item  [Aplicações com suporte a federação:] Aplicações federadas permitem
@@ -456,8 +452,7 @@ utilizados para a execução da solução.
 \subsection{Exemplos de uso: busca dos pacotes das aplicações}
 \label{subsection:exemplos}
 
-Para encontrar as aplicações que possam se encaixar dentro desses parâmetros
-devemos buscar por alguns exemplos de uso. Para a escolha das aplicações que
+Para encontrar as aplicações que possam se encaixar dentro desses parâmetros foi necessário buscar por alguns exemplos de uso. Para a escolha das aplicações que
 foram utilizadas como exemplos de uso, foi necessário fazer uma busca nas aplicações
 web  que possuem suporte a configuração de múltiplas
 instâncias, essa busca levou em consideração também, a documentação para realizar
@@ -469,54 +464,19 @@ apt-cache search web | wc -l
 
 O resultado obtido com pacotes que contenham a palavra web recebe o resultado de 3470
 pacotes de diversas aplicações ou módulos de aplicações, como
-Wordpress; Owncloud; Drupal; Mailman e Chromium. Logo, dentro dessa busca
-encontramos alguns pacotes de aplicações conhecidas, para facilitar a busca basta
-aplicar para alguns nomes de aplicações conhecidos como:
-
-\begin{center}
-apt-cache search web | grep wordpress
-\end{center}
-
-Para avaliar se as aplicações possuem suporte a múltiplas instâncias foi necessário
-analisar a documentação das aplicações, as aplicações costumam disponibilizar a sua
-documentação na sua página ou numa wiki, também é possível checar a documentação
-quando se instala uma aplicação nos arquivos de documentação da aplicação em
-/usr/share/doc/ ou também pode-se utilizar os comandos:
-
-\begin{center}
-man "nome aplicação"
-
-info "nome aplicação"
-\end{center}
-
-Analisando a documentação de algumas aplicações como Wordpress, Redmine,
-Owncloud, Mailman, Wikimédia, foram escolhidas as aplicações Wordpress, Owncloud, MoinMoin
+Wordpress; Owncloud; Drupal; Mailman e Chromium.
+ 
+Foram escolhidas as aplicações Wordpress, Owncloud, MoinMoin
 e Roundcube, por conter as características definidas anteriormente. Além disso,
 também foi escolhido a aplicação Noosfero, que é uma aplicação que ainda não
 está no Debian, porém neste trabalho será feito um esforço inicial para que isso
 seja possível.
 
-Foi feito uma análise da documentação dessas ferramentas, para encontrar a
-possibilidade da configuração de múltiplas instâncias no mesmo servidor. Além
-disso, também foi visto se as aplicações tinham suporte ao servidor Nginx que é
-o servidor utilizado pelo Shak. Por fim, as aplicações também foram escolhidas
-pela grande comunidade de usuários ativa e as duas aplicações também possuírem
-canais de \textit{IRC} para tirar dúvidas com desenvolvedores e usuários. 
-
-Também foi levado em consideração o fato da  aplicação Owncloud dar suporte a federação, e 
-até esta fase do trabalho, a aplicação Noosfero também está com suporte a 
-federação, porém ainda em desenvolvimento.
-
 Para realizar a implantação das aplicações, foi importante que as 
 instalações e configurações
-fossem executadas num ambiente limpo, os testes foram criados
+fossem executadas num ambiente limpo. Os testes foram criados
 em máquinas virtuais com a configuração conhecida como minimal, que contém
 instalado apenas as aplicações necessárias para o funcionamento do sistema operacional.
-
-A partir da execução dos exemplos de uso, foi possível a coleta de informações
-necessárias para a validação da implantação correta das aplicações. Essa
-validação, a princípio, foi feita a partir da execução da implantação e
-verificação das funcionalidades da aplicação implantada.
 
 Após a execução da implantação, o testador verificou o perfeito
 funcionamento de algumas funcionalidades básicas das aplicações escolhidas,
