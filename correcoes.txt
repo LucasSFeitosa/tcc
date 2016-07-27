@@ -1,5 +1,4 @@
 Fechar isso:
-- de novo, é preciso justificar porque a gente quer que seja em sistemas debian, com pacotes debian. alguns motivos: suporte de segurança, integração, ciclo de desenvolvimento com período de estabilização, etc
 - use fonte monoespaçada pra exemplos de código/terminal ... e separe claramente do restante do texto.
 - na verdade, de lá pra cá o owncloud foi removido do debian, por vários motivos (owncloud)
 - * muitos detalhes super específicos; quem lê o seu trabalho e não trabalha com esses detalhes diretamente fica perdido!
