@@ -83,7 +83,7 @@ contém toda a lógica de que é preciso para implementar e integrar uma aplica�
 contendo todo o processo de download de ferramentas, instalação e configuração de
 aplicações. É possível utilizar provisionadores como Chef, Puppet ou Docker. 
 
-A iteração do usuário com a ferramenta JuJu é através de uma intrerface web, 
+A iteração do usuário com a ferramenta JuJu é através de uma interface web, 
 no qual os usuários selecionam os charms disponíveis e os interligam. 
 Por exemplo, é possível adicionar o charm do MySQL e ligar ao charm de uma aplicação
 web, como por exemplo a MediaWiki \footnote{https://www.mediawiki.org/wiki/MediaWiki}. Existem
@@ -246,7 +246,7 @@ seu repositório de aplicações.
 Em resumo, a estrutura do Shak utiliza:
 
 \begin{itemize}
-  \item  \textbf{Livro de Receitas Chef:} Shak contém livros de receitas chef
+  \item  \textbf{Livro de Receitas Chef:} Shak contém livros de receitas Chef
   para poder organizar a instalação de cada componente, contendo um livro
   de receitas para cada aplicação que for instalada.
   \item  \textbf{Código Ruby} A arquitetura do Shak foi desenvolvida na linguagem
@@ -263,10 +263,66 @@ Em resumo, a estrutura do Shak utiliza:
 \end{itemize}
 
 Para adicionar uma aplicação que esteja disponível nos repositórios oficiais
-do Debian na ferramenta Shak, é necessário construir o seu respectiovo 
-livro de receitas, utilizando chef, para a
-aplicação desejada. Essa atividade será uma das atividades deste trabalho, sendo assim
-adicionando novas aplicações web à ferramenta Shak.
+do Debian na ferramenta Shak, é necessário construir o seu respectivo 
+livro de receitas, utilizando Chef. 
+
+Para adicionar uma receita Chef à ferramenta Shak, existe um recurso no Shak que
+automatiza todo esse processo, no qual cria uma estrutura padrão de livro de receitas
+Chef. Para usar esse recurso, é necessário executar o comando \textit{rake cookbook}
+no terminal, além de informar o nome do livro de receitas desejado. O resultado
+disso é a criação de arquivos e pastas, que formam a estrutura de um livro de receitas. Um
+exemplo disso é o livro de receitas da aplicação MoinMoin, como na figura \ref{fig:x}. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]
+      {figuras/cookbook}
+      \caption{Estrutura do livro de receitas no Shak.}
+  \label{fig:x}
+\end{figure}
+
+As receitas ficam no diretório \textit{recipes}, o Shak sempre executa a receita que está
+no arquivo \textit{default.rb}, mas isso não impede a criação de outras receitas em outros arquivos,
+desde que sejam incluídas nesse arquivo. 
+
+Os arquivos de configuração ficam nos diretórios \textit{files} e \textit{templates},
+a diferença entre eles é que no diretório \textit{files} ficam os arquivos que
+não são alterados, ou seja, esses arquivos não vão precisar de alterações
+durante a implantação. 
+
+Já no diretório \textit{templates}, ficam os arquivos de configuração que sofrem alterações durante 
+a implantação. Além disso, os arquivos template possuem uma característica, eles 
+são arquivos no formato .erb \textit{(Embedded Ruby)}, que permite que o 
+implantador adicione código Ruby no arquivo de texto. Isso permite configurações
+mais robustas, durante a implantação da aplicação.
+
+Também existem os arquivos que estão na raiz do livro de receitas. O \textit{input.rb}
+é o arquivo em que é possível declarar os atributos das aplicações. 
+Também é possível declarar quais atributos são obrigatórios e quais são únicos,
+como no código \ref{codigox}.
+
+\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de código no arquivo input.rb}, label=codigox]
+text :hostname do                                                                                                                  title 'Website domain'                                                        
+  mandatory                                                                     
+end                                                                             
+                                                                                
+text :path do                                                                   
+  title 'Path'                                                                  
+  default '/'                                                                   
+end                                                                             
+                                                                                
+unique :hostname, :path 
+\end{lstlisting}
+
+Por fim, os arquivos \textit{metadata.rb} e \textit{README.md}, o primeiro possui
+informações sobre o livro de receitas, como o nome, o mantenedor do livro
+de receitas, e sua licença. Já o segundo, possui instruções para utilizar a 
+receita.
+
+Com a estrutura criada, foi necessário construir as receitas, para automatizar
+a implantação das aplicações. A atividade de 
+criação de receitas e suporte das aplicações foi uma das atividades 
+deste trabalho, sendo assim, adicionando novas aplicações web à ferramenta Shak.
 
 \subsection{Gerência de Ambientes de Desenvolvimento}
 
@@ -409,11 +465,10 @@ desses exemplos de uso devem ser feitas a partir de aplicações reais e
 conhecidas na comunidade de software livre. 
 
 Depois da fase exploratória, observou-se outras características importantes, e que 
-devem ser levados em consideração para a escolha das aplicações. além do fato 
+devem ser levados em consideração para a escolha das aplicações, além do fato 
 popularidade, utilizado anteriormente. As seguintes 
 características foram levadas em consideração para a escolha das aplicações:
 
-%TODO definir se vai usar primeira ou terceira pessoa
 \begin{description}
   \item  [Aplicações empacotadas no Debian:] Como o intuito do trabalho
   é realizar implantações múltiplas a partir de um pacote único, tais aplicações

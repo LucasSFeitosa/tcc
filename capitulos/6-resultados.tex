@@ -63,18 +63,7 @@ php5-fpm.
 Para executar essas instalações, foi preciso criar uma receita no livro de receitas
 do Wordpress. Foi necessário criar o próprio livro de receitas no Shak.
 Para isso, existe o comando \textit{rake cookbook}, que cria a estrutura básica
-de um livro de receitas que deve ser usado pelo Chef, como exemplificado no trecho
-de código \ref{codigo1}:
-
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do wordpress com shak}, label=codigo1]
-  rake cookbook
-  Cookbook name: wordpress
-  knife cookbook create wordpress -o cookbooks/
-  ** Creating cookbook wordpress in /home/thiago/Shak/cookbooks
-  ** Creating README for cookbook: wordpress
-  ** Creating CHANGELOG for cookbook: wordpress
-  ** Creating metadata for cookbook: wordpress
-\end{lstlisting}
+de um livro de receitas que deve ser usado pelo Chef.
 
 Assim, com a estrutura gerada pelo rake, é possível declarar as dependências do Wordpress
 dentro do arquivo \textit{default.rb}, dentro da pasta \textit{recipes}. Nesse 
@@ -224,18 +213,7 @@ aplicações na linguagem Php com o banco de dados Postgresql.
 
 Para executar essas instalações, foi preciso criar uma receita no livro de receitas
 do Owncloud. Para isso, foi necessário executar novamente o comando \textit{rake cookbook}, 
-que cria a estrutura básica de um livro de receitas que deve ser usado pelo Chef, 
-como exemplificado no trecho de código \ref{codigo2}
-
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do Owncloud com Shak}, label=codigo2]
-  rake cookbook
-  Cookbook name: owncloud
-  knife cookbook create owncloud -o cookbooks/
-  ** Creating cookbook owncloud in /home/thiago/Shak/cookbooks
-  ** Creating README for cookbook: owncloud
-  ** Creating CHANGELOG for cookbook: owncloud
-  ** Creating metadata for cookbook: owncloud
-\end{lstlisting}
+que cria a estrutura básica de um livro de receitas que deve ser usado pelo Chef. 
 
 Com a estrutura inicial, foi possível declarar as dependências do Owncloud
 dentro do arquivo \textit{default.rb}, que se encontra dentro da pasta 
@@ -528,18 +506,7 @@ Para esse procedimento, foi necessário instalar os pacotes uwsgi,
 uwsgi-plugin-python, e o pacote do moinmoin, chamado python-moinmoin.
 Para executar essas instalações, foi preciso criar uma receita no livro de receitas
 do moinmoin, bastando executar o comando \textit{rake cookbook}, que cria a
-estrutura básica de um livro de receitas que deve ser usado pelo Chef, como no código
-\ref{codigo3}:
-
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de estrutura básica de livro de receitas do moinmoin com shak}, label=codigo3]
-  rake cookbook
-  Cookbook name: moinmoin
-  knife cookbook create moinmoin -o cookbooks/
-  ** Creating cookbook moinmoin in /home/thiago/Shak/cookbooks
-  ** Creating README for cookbook: moinmoin
-  ** Creating CHANGELOG for cookbook: moinmoin
-  ** Creating metadata for cookbook: moinmoin
-\end{lstlisting}
+estrutura básica de um livro de receitas que deve ser usado pelo Chef.
 
 Assim, com a estrutura inicial, foi possível declarar as dependências do moinmoin
 dentro do arquivo \textit{default.rb} dentro da pasta \textit{recipes}.Esse arquivo 
@@ -792,5 +759,4 @@ também gera o código \textit{HTML} e \textit{CSS}, que pode ser aproveitado pa
 a construção do layout do Shak. A sugestão inicial foi feita utilizando \textit{HTML} e \textit{CSS} utilizando bootstrap 3, que é um framework para criar aplicações responsivas 
 na web. A versão inicial está disponível em 
 \url{https://gitlab.com/Thiagovsk/shak_frontend/tree/master}.
-
 
