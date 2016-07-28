@@ -51,10 +51,6 @@ possa ser executado. Isso envolveu a configuração do sistema operacional; inst
 e configuração de dependências necessárias; e a transferência do componente
 para o servidor onde ele será executado.
 
-Para o funcionamento correto do Wordpress, foi necessário a instalação do PHP5. Além
-disso, também é necessário um servidor web. Na ferramenta Shak, o servidor
-web padrão é o Nginx e o banco de dados escolhido foi o MySQL.
-
 Para esse procedimento, foi necessário instalar os pacotes \textit{php5-fpm}; o pacote
 do banco de dados MySQL; e o pacote \textit{nginx}. Além disso, habilitar o serviço do
 \textit{php5-fpm}.
@@ -79,10 +75,6 @@ os serviços que precisam executar; os diretórios; e permissões de usuários. 
 
 \subsection{Configuração}
 \label{wordpress:preparacao}
-
-Como levantado no planejamento, foi necessário a edição de arquivos de configuração. Os
-arquivos de configuração necessários são: os arquivos de configuração do Wordpress; 
-o arquivo de configuração do banco de dados; e arquivo de configuração do servidor Nginx.
 
 O primeiro arquivo de configuração é o \textit{config.php}. Esse arquivo contém a
 configuração onde ficam as informações de banco de dados, como nome do banco de dados;
@@ -174,14 +166,11 @@ que o usuário preferir. Em alguns casos, usuários criam nuvens privadas com
 owncloud, em pequenos servidores configurados em casa.
 
 Para a ferramenta Owncloud, foram seguidos os mesmos passos feitos na aplicação
-Wordpress na Seção 
-\ref{sub:wordpress}.
+Wordpress na Seção \ref{sub:wordpress}.
 
 \subsection{Planejamento}
 
-Inicialmente, foi necessário definir quais são as dependências
-mínimas para o funcionamento do Owncloud, tais como: banco de dados; pacotes
-pré-instalados; e aplicações pré-configuradas. Para o Owncloud foram escolhidas:
+As dependências para o funcionamento do Owncloud são:
 
 \begin{itemize}
    \item \textbf{Pacote Owncloud para o Debian}
@@ -201,10 +190,6 @@ que suportam apenas o Postgresql, o Shak já terá uma estrutura pronta.
 
 \subsection{Preparação e Instalação de Pacotes}
 
-Para o funcionamento do Owncloud, era necessário a instalação do PHP5. Além
-disso, também foi utilizado o servidor web Nginx, e o 
-banco de dados Postgresql.
-
 Para esse procedimento, foi necessário instalar os pacotes \textit{php5-fpm}; o banco
 de dados Postgresql; e o pacote Nginx. Além disso, habilitar o serviço do php5-fpm. 
 Também foi necessário instalar o pacote php5-pgsql, que é um módulo para
@@ -212,29 +197,13 @@ conexões de banco de dados Postgresql, necessário para o funcionamento de
 aplicações na linguagem PHP com o banco de dados Postgresql.
 
 Para executar essas instalações, foi preciso criar uma receita no livro de receitas
-do Owncloud. Para isso, foi necessário executar novamente o comando \textit{rake cookbook}, 
-que cria a estrutura básica de um livro de receitas que deve ser usado pelo Chef. 
+do Owncloud, da mesma forma que em Wordpress.
 
 Com a estrutura inicial, foi possível declarar as dependências do Owncloud
 dentro do arquivo \textit{default.rb}, que se encontra dentro do diretório 
-\textit{recipes}. Nesse arquivo, foi 
-declarado: os pacotes que devem ser instalados; os arquivos de configuração;
-os serviços que precisar executar; os diretórios; permissões de usuários, etc. O código
-\ref{codigo995} é um exemplo
-de como declarar pacotes e serviços dentro de uma receita Chef.
-
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de como habilitar serviço do postgresql com chef}, label=codigo995]
-  package "postgresql"
-  service "postgresql" do
-    action :start
-  end
-\end{lstlisting}
-
+\textit{recipes}.
+ 
 \subsection{Configuração}
-
-Como levantado no planejamento, foi necessário: a edição de arquivos de configuração
-do Owncloud; arquivos de configuração do banco de dados; e arquivo de configuração
-do Nginx.
 
 O primeiro arquivo de configuração é o \textit{autoconfig.php}, esse arquivo
 contém informações importantes, como: nome do banco de dados;
@@ -254,11 +223,10 @@ através de templates, da mesma forma que a aplicação Wordpress.
 
 \subsection{Múltiplas Instâncias}
 
-Diferentemente do Wordpress, o Owncloud não suporta nativamente múltiplas instâncias. Porém isso
-não foi um impeditivo na execução do trabalho, com uma busca, encontrou-se uma 
+Diferentemente do Wordpress, o Owncloud não suporta nativamente múltiplas instâncias. 
+Porém isso não foi um impeditivo na execução do trabalho, com uma busca, encontrou-se uma 
 discussão no repositório oficial do Owncloud relacionado a implementação dessa 
 funcionalidade. 
-
 
 Foi discutido uma proposta \footnote{https://github.com/owncloud/core/pull/16424} 
 de solução que permitiria a configuração de múltiplas instâncias. O
@@ -276,16 +244,6 @@ instâncias para o Owncloud, e enviado ao mantenedor do pacote do Owncloud no De
 Na discussão \footnote{https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=789726},
 a contribuição foi bem vista pelo mantenedor do pacote.
  
-Em paralelo a isso,
-foi necessário utilizar apenas instâncias únicas do Owncloud, porém, também foi
-adicionado na receita do Owncloud o suporte a múltiplas instâncias. Portanto, 
-assim que o Owncloud suportar múltiplas instâncias via pacote Debian, será possível
-também criar múltiplas instâncias do Owncloud.
-
-A solução feita na receita do Owncloud foi baseada na contribuição enviada, portanto,
-os testes foram feitos gerando um novo pacote Debian do Owncloud, incorporando
-a contribuição feita ao Debian. 
-
 Os procedimentos feitos para suportar múltiplas instâncias
 no Owncloud são bem semelhantes aos do Wordpress, criando um diretório de dados
 para cada aplicação; um arquivo de configuração para cada aplicação; e um banco de
@@ -320,12 +278,6 @@ Para adicionar o suporte a servidor de e-mail, também foram seguidos os mesmos 
 feitos no Wordpress na Seção \ref{sub:wordpress} e no Owncloud na Seção\ref{sub:owncloud}. 
 
 \subsection{Planejamento}
-
-No planejamento, foi necessário definir
-quais são as dependências mínimas para o funcionamento do servidor de e-mail, era 
-necessário configurar um servidor que utiliza o procolo \textit{IMAP} ou \textit{POP3};
-também era necessário a configuração de um agente de transferência de e-mails; e também
-alguma ferramenta para controle de spam.
 
 Primeiramente, foi definido que o protocolo escolhido fosse o protocolo \textit{IMAP}, já
 que o protocolo \textit{IMAP} é um protocolo online, ou seja, ele se conecta ao servidor
@@ -387,11 +339,6 @@ incluir esses arquivos na receita que será executada. No caso do Shak, a receit
 que sempre será executada é a receita que está no arquivo \textit{default.rb} no diretório \textit{recipe}.
 
 \subsection{Configuração}
-
-Como levantado no planejamento, foi necessário a edição de arquivos de configuração
-de todas as ferramentas. Existem arquivos de configuração para cada uma delas, inclusive
-o Dovecot, que precisa ser integrado com o Postfix, como agência de transferência
-de e-mails.
 
 Primeiramente, para a configuração do Dovecot, foram utilizados 5 arquivos
 de configuração, o primeiro é o \textit{10-mail.conf} que é um arquivo de configuração para
@@ -474,9 +421,7 @@ feitos em Wordpress \ref{sub:wordpress} e Owncloud \ref{sub:owncloud}.
 
 \subsection{Planejamento}
 
-Primeiramente, foi necessário definir quais são as dependências
-mínimas para o funcionamento do Moinmoin, tais como: banco de dados; pacotes
-pré-instalados; e aplicações pré-configuradas. Para o Moinmoin são elas:
+As dependências necessárias para a aplicação Moinmoin são:
 
 \begin{itemize}
    \item \textbf{Pacote python-moinmoin para o Debian}
@@ -504,15 +449,9 @@ do Moinmoin, bastando executar o comando \textit{rake cookbook}, que cria a
 estrutura básica de um livro de receitas que deve ser usado pelo Chef.
 
 Assim, com a estrutura inicial, foi possível declarar as dependências do Moinmoin
-dentro do arquivo \textit{default.rb} dentro do diretório \textit{recipes}. Esse arquivo 
-é onde se declaram os pacotes que devem ser instalados; os arquivos de configuração;
-os serviços que precisar executar; os diretórios; permissões de usuários; dentre outros.
+dentro do arquivo \textit{default.rb} dentro do diretório \textit{recipes}.
 
 \subsection{Configuração}
-
-Como levantado no planejamento, foi necessário: a edição de arquivos de configuração
-do Moinmoin; arquivos de configuração do uwsgi; e arquivo de configuração
-do Nginx.
 
 O primeiro arquivo de configuração é o \textit{moin.wsgi}, arquivo onde é necessário
 informar, por exemplo, o caminho dos arquivos de configuração do Moinmoin. No caso
@@ -625,13 +564,7 @@ ler seus e-mails a partir de um cliente web.
 Para a ferramenta Roundcube, foram seguidos os mesmos passos feitos em 
 \ref{sub:wordpress} e \ref{sub:owncloud}.
 
-\subsubsection{Planejamento}
-
-Inicialmente, foi necessário definir quais são as dependências
-mínimas para o funcionamento do Roundcube, tais como: banco de dados; pacotes
-pré-instalados; e aplicações pré-configuradas. Roundcube é uma aplicação escrita
-na linguagem PHP, logo, suas dependências são bem semelhantes entre as aplicações
-Wordpress e Owncloud. As dependências identificadas foram:
+As dependências identificadas foram:
 
 \begin{itemize}
    \item \textbf{Pacote Roundcube para o Debian}
@@ -641,12 +574,6 @@ Wordpress e Owncloud. As dependências identificadas foram:
    necessários para configurar o Roundcube, o servidor web Nginx e o banco de dados
    Postgresql.
 \end{itemize}
-
-\subsubsection{Preparação e Instalação de Pacotes}
-
-Para o funcionamento do Roundcube, foi necessário a instalação do PHP5. Além
-disso, também foi utilizado o servidor web Nginx, e o 
-banco de dados Postgresql.
 
 Para facilitar a configuração de aplicações PHP, foi feito uma receita genérica,
 que instala dependências básicas para qualquer aplicação PHP que for usada pelo
@@ -660,12 +587,6 @@ necessário para que Roundcube funcione com o banco de dados PostgeSQL.
 Para executar essas instalações, é preciso criar uma receita no livro de receitas
 do Roundcube, com o comando \textit{rake cookbook}, da mesma forma com as outras aplicações.
  
-Com a estrutura inicial, foi possível declarar as dependências do Roundcube
-dentro do arquivo \textit{default.rb}, que se encontra dentro do diretório 
-\textit{recipes}. 
-
-\subsubsection{Configuração}
-
 O estado atual da aplicação Roundcube no Shak, encontra-se na fase de configuração. A pendência,
 é a configuração do servidor de e-mail, que será utilizado pelo Roundcube. Por ser
 uma configuração pessoal do usuário, ou seja, ele deve inserir o seu serviço
@@ -679,11 +600,11 @@ estará disponível ao usuário, com a conta de e-mail que foi informada.
 Atualmente, a receita do Roduncube já automatiza a instalação da aplicação web. 
 O trabalho atual está disponível no repositório oficial do Shak \footnote{https://gitlab.com/shak/shak/branches}, na branch roundcube.
 
-\section{Segurança}
+\section{Uso de procolos seguros}
 \label{sub:seguranca}
 
 Na implantação das aplicações web, foram feitos dois procedimentos de segurança, o primeiro
-foi forçar as aplicações web a sempre utilizarem o protocolo \textit{HTTP} e a segunda foi forçar o
+foi forçar as aplicações web a sempre utilizarem o protocolo \textit{HTTPS} e a segunda foi forçar o
 servidor de e-mail a não permitir a conexão via protocolos sem criptografia. Para que 
 isso fosse possível, foi necessário gerar um certificado \textit{SSL}. Certificados 
 \textit{SSL} são necessários para que um determinado serviço opere com suporte 
@@ -711,21 +632,18 @@ uma configuração específica no servidor web Nginx, como no código \ref{codig
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de arquivo de configuração do Nginx para aplicações web no shak}, label=codigo994]
   server {
-      server_name <%= @hostname %>;
-      rewrite     \^https://\$server\_name\$request\_uri? permanent;
+    server_name  <%= @hostname %>;
+    rewrite  \^https://\$server\_name\$request\_uri? permanent;
   }
 
   server {
-      server_name <%= @hostname %>;
-
-      listen 443 ssl;
-      ssl_certificate       /etc/ssl/certs/<%= @hostname %>.pem;
-      ssl_certificate_key   /etc/ssl/private/<%= @hostname %>.key;
-
-      access_log            /var/log/nginx/<%= @hostname %>.access.log;
-      error_log             /var/log/nginx/<%= @hostname %>.error.log;
-
-      include /var/lib/Shak/etc/nginx/<%= @hostname %>/*.conf;
+    server_name  <%= @hostname %>;
+    listen 443 ssl;
+    ssl_certificate  /etc/ssl/certs/<%= @hostname %>.pem;
+    ssl_certificate_key  /etc/ssl/private/<%= @hostname %>.key;
+    access_log  /var/log/nginx/<%= @hostname %>.access.log;
+    error_log   /var/log/nginx/<%= @hostname %>.error.log;
+    include  /var/lib/Shak/etc/nginx/<%= @hostname %>/*.conf;
   }
 \end{lstlisting}
 
