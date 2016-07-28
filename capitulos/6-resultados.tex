@@ -27,7 +27,6 @@ seguindo as fases que compõem o processo proposto descrito na Seção \ref{sec:
 
 \subsection{Planejamento}
 
-%TODO ver os ;
 Nesta fase foi preciso definir quais são as dependências mínimas
 para o funcionamento da aplicação, tais como: banco de dados; pacotes
 pré-instalados; e aplicações pré-configuradas. Para o Wordpress foram escolhidas:
@@ -56,9 +55,9 @@ Para o funcionamento correto do Wordpress, foi necessário a instalação do PHP
 disso, também é necessário um servidor web. Na ferramenta Shak, o servidor
 web padrão é o Nginx e o banco de dados escolhido foi o MySQL.
 
-Para esse procedimento, foi necessário instalar os pacotes php5-fpm; o pacote
-do banco de dados MySQL; e o pacote Nginx. Além disso, habilitar o serviço do
-php5-fpm.
+Para esse procedimento, foi necessário instalar os pacotes \textit{php5-fpm}; o pacote
+do banco de dados MySQL; e o pacote \textit{nginx}. Além disso, habilitar o serviço do
+\textit{php5-fpm}.
  
 Para executar essas instalações, foi preciso criar uma receita no livro de receitas
 do Wordpress. Foi necessário criar o próprio livro de receitas no Shak.
@@ -206,7 +205,7 @@ Para o funcionamento do Owncloud, era necessário a instalação do PHP5. Além
 disso, também foi utilizado o servidor web Nginx, e o 
 banco de dados Postgresql.
 
-Para esse procedimento, foi necessário instalar os pacotes php5-fpm; o banco
+Para esse procedimento, foi necessário instalar os pacotes \textit{php5-fpm}; o banco
 de dados Postgresql; e o pacote Nginx. Além disso, habilitar o serviço do php5-fpm. 
 Também foi necessário instalar o pacote php5-pgsql, que é um módulo para
 conexões de banco de dados Postgresql, necessário para o funcionamento de
@@ -364,10 +363,11 @@ Em resumo, o servidor de e-mail é composto de:
 
 Nesta fase, foi necessário separar as dependências dos pacotes para cada ferramenta
 escolhida, para compor o servidor de e-mail. Primeiramente, para o Postfix, são necessários
-os pacotes postfix e bsd-mailx, além de habilitar o serviço do Postfix. Para o Dovecot,
-foi necessário instalar o pacote dovecot-imadp além de habilitar o serviço do Dovecot. 
-Para o Spamassassin, eram necessários os pacotes spamassassin e o pacote spamc, além 
-de habilitar o serviço do Spamassassin.
+os pacotes \textit{postfix} e \textit{bsd-mailx}, além de habilitar o serviço do 
+Postfix. Para o Dovecot,
+foi necessário instalar o pacote \textit{dovecot-imadp} além de habilitar o serviço do Dovecot. 
+Para o Spamassassin, eram necessários os pacotes \textit{spamassassin} e o pacote
+ \textit{spamc}, além de habilitar o serviço do Spamassassin.
 
 Na receita do servidor de e-mail, cada aplicação possui a sua receita específica,
 e o arquivo \textit{default.rb}, que contêm a receita do servidor de e-mail. Esse arquivo
@@ -497,8 +497,8 @@ junto ao servidor de aplicação Uwsgi, também era necessário a configuração
 Moinmoin a partir de seus
 arquivos de configuração, mywiki.py e farmconfig.py.
 
-Para esse procedimento, foi necessário instalar os pacotes uwsgi,
-uwsgi-plugin-python, e o pacote do Moinmoin, chamado python-moinmoin.
+Para esse procedimento, foi necessário instalar os pacotes \textit{uwsgi},
+\textit{uwsgi-plugin-python}, e o pacote do Moinmoin, chamado \textit{python-moinmoin}.
 Para executar essas instalações, foi preciso criar uma receita no livro de receitas
 do Moinmoin, bastando executar o comando \textit{rake cookbook}, que cria a
 estrutura básica de um livro de receitas que deve ser usado pelo Chef.
