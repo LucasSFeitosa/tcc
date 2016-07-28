@@ -1,6 +1,8 @@
 Fechar isso:
+- colocar os pacotes em italico
+- problemas de margem no codigo do nginx
+- jogar os capitulos no libreooffice 
 - use fonte monoespaçada pra exemplos de código/terminal ... e separe claramente do restante do texto.
-- na verdade, de lá pra cá o owncloud foi removido do debian, por vários motivos (owncloud)
 - * muitos detalhes super específicos; quem lê o seu trabalho e não trabalha com esses detalhes diretamente fica perdido!
 * por outro lado detalhes importantes faltam, com o fato de que quando vc diz shak install ... hostname=wordpress.dev, a aplicação vai estar disponível em http://wordpress.dev/
 * muitas redundancias/encheções de linguiça

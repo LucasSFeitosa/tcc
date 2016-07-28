@@ -6,7 +6,7 @@ no Capítulo \ref{cap-metodologia}, as aplicações escolhidas foram
 Owncloud; Wordpress; Moinmoin; Roundcube; e Noosfero. Além da aplicação de serviço
 de e-mail.
  
-Cada fase da implantação será tratado como uma 
+Cada fase da implantação será tratada como uma 
 subseção na descrição de cada aplicação que foi escolhida para exemplo de uso. 
 Todas as atividades foram organizadas,
 via \textit{issues}, no repositório do próprio projeto Shak 
@@ -66,9 +66,9 @@ Para isso, existe o comando \textit{rake cookbook}, que cria a estrutura básica
 de um livro de receitas que deve ser usado pelo Chef.
 
 Assim, com a estrutura gerada pelo rake, é possível declarar as dependências do Wordpress
-dentro do arquivo \textit{default.rb}, dentro da pasta \textit{recipes}. Nesse 
+dentro do arquivo \textit{default.rb}, dentro do diretório \textit{recipes}. Nesse 
 arquivo, são declarados: os pacotes que devem ser instalados; os arquivos de configuração;
-os serviços que precisam executar; as pastas; e permissões de usuários. O código \ref{codigo998}
+os serviços que precisam executar; os diretórios; e permissões de usuários. O código \ref{codigo998}
 é um exemplo de como declarar pacotes e serviços dentro de uma receita Chef.
 
 \begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de criação de serviço do mysql com o chef}, label=codigo998]
@@ -89,7 +89,7 @@ O primeiro arquivo de configuração é o \textit{config.php}. Esse arquivo cont
 configuração onde ficam as informações de banco de dados, como nome do banco de dados;
 login do usuário do banco de dados; senha; o endereço do banco de dados. Além disso,
 cada aplicação deve possuir um diretório
-onde fica os arquivos estáticos, como: temas; galeria de mídias; e plugins 
+onde ficam os arquivos estáticos, como: temas; galeria de mídias; e plugins 
 de cada instância do Wordpress.
 
 Esse arquivo deve ficar no diretório \textit{/etc/wordpress/} e seu nome deve conter
@@ -98,7 +98,7 @@ desejado, como por exemplo config-fga.unb.br.php. O segundo arquivo é o \textit
 cria o banco de dados do Wordpress e dá os privilégios ao usuário desejado. Por fim,
 o arquivo de configuração do Nginx, com a configuração do servidor web.
 
-Na receita chef, esses arquivos de configuração serão criados dentro da pasta 
+Na receita chef, esses arquivos de configuração serão criados dentro do diretório 
 \textit{template}, com o conteúdo dos arquivos de configuração. A ação que cria 
 um arquivo na receita chef é 
 declarada dentro do arquivo \textit{default.rb}, de forma semelhante como foi feito com
@@ -117,11 +117,12 @@ end
 
 \subsection{Múltiplas Instâncias}
 
-O Wordpress já suporta a funcionalidade de múltiĺas instâncias nativamente. Para configurá-lo, foi necessário que algumas pastas do Wordpress
-fossem isoladas, sendo uma para cada aplicação. Cada instância precisa
+O Wordpress já suporta a funcionalidade de múltiplas instâncias nativamente. 
+Para configurá-lo, foi necessário que alguns diretórios do Wordpress
+fossem isolados, sendo um para cada aplicação. Cada instância precisa
 ter seus diretórios isolados, o diretório \textit{wp-content} é o diretório 
 que contém: os uploads; os temas; os plugins; etc. Portanto, para não
-existir conflito entre as instâncias, essas pastas devem estar devidamente separadas
+existir conflito entre as instâncias, esses diretórios devem estar devidamente separados
 com seus caminhos referenciados em cada arquivo \textit{config.php}, o arquivo 
 \textit{config.php} também
 deve ser único para cada instância. 
@@ -130,15 +131,15 @@ Outro fator importante é que, cada instância
 tenha seu banco de dados. Para
 solucionar esse problema, o Shak possui um recurso interessante, onde cada aplicação
 possui um atributo \textit{id}, que é um atributo único para cada instância executada pelo
-Shak. Com isso, foi possível criar pastas personalizadas com o id de cada aplicação, 
+Shak. Com isso, foi possível criar diretórios personalizados com o id de cada aplicação, 
 e também bancos de dados específicos e arquivos \textit{config.php} específicos.
 
 Por fim, era necessário um arquivo de configuração Nginx para cada aplicação,
 como visto no Capítulo \ref{cap-referencial}. Todo arquivo de configuração
-do Nginx possui um bloco server, e cada bloco server equivale a uma hospedagem virtual. 
+do Nginx possui um bloco \textit{server}, e cada bloco \textit{server} equivale a uma hospedagem virtual. 
 Por isso, as aplicações também se tornam independentes, podendo ser acessadas pelo 
 mesmo servidor, mas com endereços diferentes. Um exemplo de arquivo de configuração
-do Nginx, que utiliza o bloco server, pode ser visto no Código \ref{codigo994}.
+do Nginx, que utiliza o bloco \textit{server}, pode ser visto no Código \ref{codigo994}.
 
 \subsection{Inicialização}
 
@@ -163,7 +164,7 @@ já estará pronta para uso no endereço escolhido.
 
 \citeonline{owncloud} é uma ferramenta para compartilhamento de arquivos, é um software 
 livre em que é possível compartilhar
-um ou mais arquivos e pastas do seu computador na nuvem, e sincronizá-los com o seu
+um ou mais arquivos e diretórios do seu computador na nuvem, e sincronizá-los com o seu
 servidor Owncloud. Esses arquivos são imediatamente sincronizados com o servidor
 e disponibilizados para outros dispositivos que utilizam o ambiente de trabalho
 Owncloud ou aplicativo Android ou aplicativo IOS.
@@ -216,10 +217,10 @@ do Owncloud. Para isso, foi necessário executar novamente o comando \textit{rak
 que cria a estrutura básica de um livro de receitas que deve ser usado pelo Chef. 
 
 Com a estrutura inicial, foi possível declarar as dependências do Owncloud
-dentro do arquivo \textit{default.rb}, que se encontra dentro da pasta 
+dentro do arquivo \textit{default.rb}, que se encontra dentro do diretório 
 \textit{recipes}. Nesse arquivo, foi 
 declarado: os pacotes que devem ser instalados; os arquivos de configuração;
-os serviços que precisar executar; as pastas; permissões de usuários, etc. O código
+os serviços que precisar executar; os diretórios; permissões de usuários, etc. O código
 \ref{codigo995} é um exemplo
 de como declarar pacotes e serviços dentro de uma receita Chef.
 
@@ -245,7 +246,7 @@ do administrador. Isso é necessário apenas para o primeiro acesso, ou seja, o 
 fará o login automaticamente quando o Owncloud terminar a instalação. Após isso,
 a recomendação é trocar a senha do administrador.
 
-Além disso, foi necessário criar a pasta de conteúdos públicos do Owncloud, que por
+Além disso, foi necessário criar o diretório de conteúdos públicos do Owncloud, que por
 padrão devem ficar em \textit{/etc/owncloud}. O segundo arquivo é o 
 \textit{postgresql-conf.sql}, que é um pequeno script \textit{SQL} que cria o 
 banco de dados do Owncloud, e configura os
@@ -383,8 +384,7 @@ A função de \textit{include\_recipe} do Chef permite que, aplicações que sã
 por outras aplicações menores, possam ter suas receitas separadas em diferentes arquivos,
 sendo uma receita para cada aplicação menor, que compõe o todo. Com isso, foi possível 
 incluir esses arquivos na receita que será executada. No caso do Shak, a receita
-que sempre será executada é a receita que está no arquivo \textit{default.rb} na
-pasta \textit{recipe}.
+que sempre será executada é a receita que está no arquivo \textit{default.rb} no diretório \textit{recipe}.
 
 \subsection{Configuração}
 
@@ -393,7 +393,7 @@ de todas as ferramentas. Existem arquivos de configuração para cada uma delas,
 o Dovecot, que precisa ser integrado com o Postfix, como agência de transferência
 de e-mails.
 
-Primeiramente, para a configuração do Dovecot, foi utilizado 5 arquivos
+Primeiramente, para a configuração do Dovecot, foram utilizados 5 arquivos
 de configuração, o primeiro é o \textit{10-mail.conf} que é um arquivo de configuração para
 indicar onde é o local no qual os e-mails estão. O segundo arquivo, é o \textit{10-ssl.conf}
 que é o arquivo em que possui os caminhos do certificado \textit{SSL} e da chave \textit{SSL}.
@@ -408,11 +408,11 @@ qualquer conexão segura ou tentativa de conexão insegura.
 
 Para o posfix, são apenas dois arquivos de configuração, o \textit{main.cf} e o 
 \textit{master.cf}.
-O \textit{main.cf} é aonde se configura os parâmetros mínimos de configuração, esse arquivo
+O \textit{main.cf} é onde se configuram os parâmetros mínimos de configuração, esse arquivo
 também contém as configurações que filtram os e-mails com Spamassassin e 
 algumas configurações do \textit{SMTP}. 
 
-No \textit{master.cf}, é definido como um programa cliente se conecta a um serviço, e qual o
+No \textit{master.cf}, é definido como um programa cliente se conecta a um serviço, e qual
 programa é executado quando um serviço é solicitado. Neste caso, foi necessário
 indicar que o servidor de e-mail utilize \textit{SSL}, com autenticação segura, 
 apontando o caminho dos arquivos de chave e certificados.
@@ -504,9 +504,9 @@ do Moinmoin, bastando executar o comando \textit{rake cookbook}, que cria a
 estrutura básica de um livro de receitas que deve ser usado pelo Chef.
 
 Assim, com a estrutura inicial, foi possível declarar as dependências do Moinmoin
-dentro do arquivo \textit{default.rb} dentro da pasta \textit{recipes}. Esse arquivo 
-é aonde se declara os pacotes que devem ser instalados; os arquivos de configuração;
-os serviços que precisar executar; as pastas; permissões de usuários; dentre outros.
+dentro do arquivo \textit{default.rb} dentro do diretório \textit{recipes}. Esse arquivo 
+é onde se declaram os pacotes que devem ser instalados; os arquivos de configuração;
+os serviços que precisar executar; os diretórios; permissões de usuários; dentre outros.
 
 \subsection{Configuração}
 
@@ -527,7 +527,7 @@ informar informações básicas da wiki, como o nome da wiki e seu diretório de
 O último arquivo de configuração é o \textit{farmconfig.py}, que é o responsável pelos 
 links da barra de navegação e responsável por configurar múltiplas instâncias.
 
-Além disso, foi necessário criar a pasta de conteúdos do Moinmoin, que por
+Além disso, foi necessário criar o diretório de conteúdos do Moinmoin, que por
 escolha devem ficar em /var/lib/moin. Após isso, para que o Nginx funcione corretamente
 com o uwsgi, foi necessário indicar o socket do uwsgi, que foi indicado no uwsgi.ini.
 
@@ -661,7 +661,7 @@ Para executar essas instalações, é preciso criar uma receita no livro de rece
 do Roundcube, com o comando \textit{rake cookbook}, da mesma forma com as outras aplicações.
  
 Com a estrutura inicial, foi possível declarar as dependências do Roundcube
-dentro do arquivo \textit{default.rb}, que se encontra dentro da pasta 
+dentro do arquivo \textit{default.rb}, que se encontra dentro do diretório 
 \textit{recipes}. 
 
 \subsubsection{Configuração}

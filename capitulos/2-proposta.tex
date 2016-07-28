@@ -15,7 +15,7 @@ A principal contribuição deste trabalho está em ajudar a responder a seguinte
  \textbf{QP:}
   \textit{
   Como implantar aplicações web em sistema Debian GNU/Linux de forma automatizada e
-  e segura?
+  segura?
 }
 \end{center}
 
@@ -30,7 +30,7 @@ real que deverá ser implantada com sucesso. Essa validação tem seus procedime
 definidos na Seção \ref{subsection:validacao} e as definições dos exemplos de uso
 estão na Seção \ref{subsection:exemplos}.
 
-Inicialmente, foi realizado uma pesquisa dos trabalhos relacionados, para compreender
+Inicialmente, foi realizada uma pesquisa dos trabalhos relacionados, para compreender
 quais eram as soluções na engenharia de software que buscam a automação da implantação
 de aplicações web, a pesqusia tem como objetivo
 gerar conhecimentos para aplicação prática,
@@ -63,7 +63,7 @@ bases de dados) para que o usuário comum não se preocupe com questões técnic
 Sandstom.io \footnote{https://sandstorm.io/} é uma plataforma de código aberto para servidores
 pessoais. Sandstorm permite instalar
 facilmente as aplicações em que o Sandstorm 
-suporta \cite{sandstormio}. Sandstorm trás aplicações prontas para uso, 
+suporta \cite{sandstormio}. Sandstorm traz aplicações prontas para uso, 
 em que o usuário escolhe a aplicação desejada  por meio de uma interface web, 
 e logo após isso, a aplicação já está disponível para uso.
 
@@ -90,7 +90,7 @@ web, como por exemplo a MediaWiki \footnote{https://www.mediawiki.org/wiki/Media
 vários charms já criados pela comunidade, para que os usuários possam reaproveitar
 os charms já existentes.
  
-Já \citeonline{bitnami} trás as aplicações prontas para uso. Assim, o usuário interage com 
+Já \citeonline{bitnami} traz as aplicações prontas para uso. Assim, o usuário interage com 
 uma interface web, no formato clique para instalar. Porém,
 o usuário só tem a disposição as aplicações disponibilizadas pelo Bitnami. Isso
 também é a forma em que o Sandstorm trabalha, com a diferença de que o Sandstorm é
@@ -111,7 +111,7 @@ com um time específico para essas questões, integração de seus pacotes, cicl
 com período de estabilização, dentre outras. 
 
 De toda forma, as ferramentas encontradas buscam
-abstrair todo processo de instalação e configuração das aplicações, para que o
+abstrair todo o processo de instalação e configuração das aplicações, para que o
 usuário não tenha dificuldades na instalação de aplicações. As ferramentas também
 trazem uma interface web para que o usuário não precise executar tarefas via terminal.
 
@@ -120,8 +120,8 @@ infraestrutura como código, como visto no Capítulo \ref{cap-referencial}. Para
 isso, utilizam os provisionadores Chef ou Puppet, tornando mais simples a
 construção de códigos para a instalação e configuração de aplicações. Por outro lado, 
 observa-se que o problema tratado neste trabalho não está totalmente resolvido. Assim, 
-a proposta de solução de implantação automatizada de software em sistemas Debian, é válida
-, já que se diferencia das demais ferramentas encontradas.
+a proposta de solução de implantação automatizada de software em sistemas Debian, é válida, 
+já que se diferencia das demais ferramentas encontradas.
 
 \section{Proposta da solução}
 \label{section:construcao}
@@ -337,7 +337,7 @@ flexível, que possa ser rapidamente construído e destruído. Onde seja possív
 testar as implantações feitas pela ferramenta Shak e verificar os erros da implantação, caso 
 aconteçam. 
 
-Para isso, foi necessário utilizar alguma ferramenta que automatize processo de 
+Para isso, foi necessário utilizar alguma ferramenta que automatize o processo de 
 construir ambientes de desenvolvimento. Construir ambientes manualmente pode
 ser um processo longo e demorado, além disso, é possível que ocorra erros por
 desatenção ao executar vários passos manuais. A ferramenta escolhida serviu para
@@ -385,7 +385,7 @@ As atividades levantadas foram:
    \item  Suporte a instalação automatizada do Owncloud.
    \item  Forçar as aplicações Wordpress e Owncloud a
    utilizar o protocolo HTTPS.
-   \item  Suporte a instalação automatizada do servidor de e-mail,
+   \item  Suporte a instalação automatizada do servidor de e-mail.
    \item  Suporte a instalação automatizada do MoinMoin.
    \item  Suporte a instalação automatizada do Roundcube.
    \item  Suporte a instalação automatizada do Noosfero.
@@ -404,7 +404,7 @@ Roundcube e Noosfero, de acordo com as características desejadas,
 definidas na Seção \ref{subsection:validacao}
 
 Dentro da implantação automatizada de software Debian GNU/Linux, existem várias
-configurações possíveis. Neste trabalho, existem algumas características foram 
+configurações possíveis. Neste trabalho, existem algumas características que foram 
 levadas em consideração, são elas:
 
 \begin{enumerate}
@@ -453,9 +453,9 @@ da aplicação.
 a ferramenta Shak. 
 \end{enumerate}
 
-Também foram definidos as caraterísticas de segurança na implantação, e
-automatizar os que forem possíveis de serem aplicados dentro do contexto da
-arquitetura proposta. Foi definido que as aplicações sempre usem protocolos 
+Também foram definidas as caraterísticas de segurança que as aplicações devem 
+ter na  sua implantação, foi 
+definido que as aplicações sempre usem protocolos 
 seguros, como o \textit{HTTPS}. 
 Para as aplicações web é necessário utilizar o protocolo HTTPS, para aplicações
 de e-mail é necessário utilizar os protocolos \textit{SMTP} e \textit{IMAPS}.
@@ -470,8 +470,8 @@ fim de refinar e evoluir a ferramenta, conforme problemas forem surgindo. A esco
 desses exemplos de uso devem ser feitas a partir de aplicações reais e
 conhecidas na comunidade de software livre. 
 
-Depois da fase exploratória, observou-se outras características importantes, e que 
-devem ser levados em consideração para a escolha das aplicações, além do fato 
+Depois da fase exploratória, observam-se outras características importantes, e que 
+devem ser levados em consideração para a escolha das aplicações, além da 
 popularidade, utilizado anteriormente. As seguintes 
 características foram levadas em consideração para a escolha das aplicações:
 
@@ -527,7 +527,7 @@ Wordpress; Owncloud; Drupal; Mailman e Chromium.
  
 Foram escolhidas as aplicações Wordpress, Owncloud, MoinMoin
 e Roundcube, por conter as características definidas anteriormente. Além disso,
-também foi escolhido a aplicação Noosfero, que é uma aplicação que ainda não
+também foi escolhida a aplicação Noosfero, que é uma aplicação que ainda não
 está no Debian, porém neste trabalho será feito um esforço inicial para que isso
 seja possível.
 
