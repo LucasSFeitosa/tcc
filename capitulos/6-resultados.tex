@@ -342,12 +342,12 @@ O servidor \textit{IMAP} escolhido foi o Dovecot, que é um servidor de e-mail
 administração especial, e ainda usa muito pouca memória \cite{dovecot}. 
 
 O agente de transferência de e-mails escolhido foi o Postfix, que é um software
-livre para envio e entrega de e-mails. Sua escolha foi feita pela facilidade de
+livre para envio e entrega de e-mails. A sua escolha foi feita pela facilidade de
 integração com o Dovecot. Postfix é o software responsável pelo método de entrega de e-mail
 utilizando \textit{SMTP}, como protocolo de transferência de e-mails. 
 
 Por fim, a aplicação que servirá como anti-spam será o Apache SpamAssassin, que 
-é uma plataforma anti-spam que que dá aos administradores de servidor de e-mail, 
+é uma plataforma anti-spam que dá aos administradores de servidor de e-mail, 
 um filtro para classificar e-mails e bloquear os e-mails que julgarem como spam \cite{spam}. 
 
 Em resumo, o servidor de e-mail é composto de:
@@ -369,7 +369,7 @@ foi necessário instalar o pacote dovecot-imadp além de habilitar o serviço do
 Para o Spamassassin, eram necessários os pacotes spamassassin e o pacote spamc, além 
 de habilitar o serviço do Spamassassin.
 
-Na receita do servidor de e-mail, cada aplicação possui sua receita específica,
+Na receita do servidor de e-mail, cada aplicação possui a sua receita específica,
 e o arquivo \textit{default.rb}, que contêm a receita do servidor de e-mail. Esse arquivo
 contém apenas a chamada das receitas das aplicações, como no código \ref{codigo999}:
 
@@ -427,7 +427,7 @@ possui um nível de 0 a 10, em que
 são classificados os e-mails como spam. Por padrão, esse valor é cinco. Porém, se 
 o usuário quiser aumentar o filtro, é necessário aumentar para valores como seis ou sete, 
 até chegar em um nível de confiança em que o spamassasin cuide dos casos falsos-positivos, 
-ou seja, e-mails que não são spam porém foram interpretados como spam.
+ou seja, e-mails que não são spam, porém foram interpretados como spam.
 
 \subsection{Inicialização}
 
@@ -518,7 +518,7 @@ O primeiro arquivo de configuração é o \textit{moin.wsgi}, arquivo onde é ne
 informar, por exemplo, o caminho dos arquivos de configuração do Moinmoin. No caso
 de um pacote Debian, esse caminho por padrão é  \textit{/etc/moin}. Também foi necessário 
 editar o arquivo \textit{uwsgi.ini}, que é o arquivo de configuração
-do uwsgi para sua aplicação. Nele, foi possível adicionar informações importantes, como
+do uwsgi para a sua aplicação. Nele, foi possível adicionar informações importantes, como
 por exemplo: caminho do arquivo de log do uwsgi; caminho do socket;
 e a quantidade máxima de requisições.
 
