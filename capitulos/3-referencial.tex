@@ -1,7 +1,7 @@
 \chapter{Gestão de configuração de software}
 \label{cap-referencial}
 
-De acordo com \citeonline{ieegcs} gestão de configuração de software \textit{(GCS)} 
+De acordo com \citeonline{ieegcs}, gestão de configuração de software \textit{(GCS)} 
 é uma área da engenharia de software cujo objetivo é:
 
 \begin{itemize}
@@ -41,8 +41,7 @@ automatizada de software junto aos métodos ágeis de desenvolvimento de softwar
 
 Depois, a Seção \ref{subsec:metodoseferramentas} que fala sobre
 ferramentas e técnicas que buscam facilitar e resolver os problemas da
-implantação automatizada de software, com as características típicas que essas
-ferramentas trazem para tornar a implantação mais rápida e com qualidade.
+implantação automatizada de software.
 
 E por fim, a Seção \ref{sec:seguranca}, que fala sobre quais são os procedimentos 
 que devem ser levados em consideração durante uma implantação de aplicações voltada
@@ -53,7 +52,7 @@ para a web.
 Software só oferece valor para os clientes quando ele está implantado e em produção,
 e assim, possa proporcionar as funcionalidades necessárias ao usuário final. Por
  isso, a importância da fase de implantação de software, pois é nessa fase em que a equipe
-de desenvolvimento disponibilizará o software, ou uma atualização com novas funcionalidades
+de desenvolvimento disponibilizará o software ou uma atualização com novas funcionalidades
 ao usuário. 
 
 Sendo assim, a implantação de software é um conjunto de atividades cruciais
@@ -84,15 +83,15 @@ de erros e imprevistos \cite{deployment1998}.
 
 A implantação de um software é o processo que vai desde a aquisição desse software
 até a sua execução \cite{leo2014}. O processo de implantação consiste em diversas
-atividades que devem ser executadas desde o planejamento da implantação até a
+atividades que devem ser executadas, desde o planejamento da implantação até a
 disponibilidade para uso.
 
 A \textit{OMG} é uma organização internacional sem fins lucrativos,
 que aprova padrões abertos para tecnologias. Eles definem uma especificação de
 implantação e configuração de aplicações distribuídas baseadas em componentes \cite{omg2006}. 
 A \textit{OMG} também diz que o processo de implantação é um processo que se inicia desde
-a aquisição de um componente até o momento em que esse componente está em plena
-execução, pronto pra uso.
+a aquisição de um componente, até o momento em que esse componente está em plena
+execução pronto pra uso.
 
 Segundo \citeonline{omg2006} os principais termos definidos dentro de uma implantação
 de software são:
@@ -134,11 +133,10 @@ com \citeonline{omg2006} as fases são:
 \end{itemize}
 
 Os termos e fases formam uma estrutura básica que um processo de implantação de software
-deve conter, podendo haver modificações de acordo com a necessidade do implantador. 
-Cada fase é necessária para que se possa ter uma implantação consistente, ou seja, as
+deve conter. Cada fase é necessária para que se possa ter uma implantação consistente, ou seja, as
 atividades dentro de uma implantação de software estarão organizadas, evitando assim
-possíveis erros durante a implantação. Essa organização também pode ajudar o
-time de implantação a diagnosticar eventuais problemas durante a implantação.
+possíveis erros durante a implantação. Essa organização também pode ajudar os 
+implantadores a diagnosticar eventuais problemas.
 
 Dependendo do tamanho da aplicação as fases podem se tornar tarefas complicadas,
 por isso, existe a necessidade de automatizar o processo de implantação. Isso 
@@ -164,7 +162,7 @@ as equipes são capazes de entregar novas funcionalidades.
 
 \textit{DevOps} pode ser visto como um conjunto de práticas e princípios para a 
 entrega de software, com foco na velocidade de entrega e na automação \cite{7173368}. 
-O que acontecia antes, era que o time de desenvolvimento terminavam suas funcionalidades e seus testes e
+Antes o time de desenvolvimento terminavam suas funcionalidades e seus testes e
 entregavam a uma equipe de implantação, e a equipe de implantação precisava
 lidar com os problemas sem a ajuda do time de desenvolvimento. Por isso \textit{DevOps} 
 tenta unir esses dois mundos, fazendo com que as duas equipes compartilhem atividades
@@ -177,7 +175,7 @@ principais benefícios disso, é a capacidade de quantificar os problemas dos do
 para que possa levar a melhoria do desenvolvimento do produto \cite{httermann2012DevOps}.
 
 Em \citeonline{7173368} são abordados as práticas \textit{DevOps}, que podem ser 
-aplicadas diversas vezes dentro de um ciclo de desenvolvimento de software, as 
+aplicadas diversas vezes dentro de um ciclo de desenvolvimento de software. As 
 praticas \textit{DevOps} podem ser resumidas em:
 
  \begin{itemize}
@@ -199,8 +197,8 @@ deve ser sempre contínuo
  \end{itemize}
 
 Os benefícios do uso do \textit{DevOps} são vários, como por exemplo: economia de tempo,
-já que implantação de software passa a ser um processo natural e automatizado, gerando economia de custos, e 
-aumentando a eficiência do desenvolvimento de software como um todo \cite{7173368}.
+já que implantação de software passa a ser um processo natural e automatizado, 
+gerando economia de custos, e aumentando a eficiência do desenvolvimento de software como um todo \cite{7173368}.
 
 Nesse trabalho, foi utilizada a prática \textit{DevOps} de implantação contínua,
 automatizando todo o processo de implantação de aplicações web. 
@@ -233,7 +231,7 @@ além de poder utilizar ferramentas que auxiliem a prática do \textit{DevOps} e
 entre a equipe de desenvolvimento e a equipe de infraestrutura \cite{byhand}. 
 
 Com a infraestrutura sendo tratada como código, é possível utilizar um
-sistema de controle de versão, permitindo que outras pessoas colaborem e trabalhem em
+sistema de controle de versão que permita outras pessoas colaborem e trabalhem em
 equipe. Com a ajuda de um sistema de controle de versão, por exemplo, é possível 
 ter uma documentação completa do estado do seu sistema, 
 através do histórico de alterações, para que seja possível
@@ -288,9 +286,7 @@ especificando a instalação de um software através de regras \cite{6265084}.
 Por exemplo, é possível especificar regras para a configuração do sistema
 a partir de uma infraestrutura básica. No Chef, essa estrutura é conhecida como livro
 de receitas, já em Puppet, essa estrutura é conhecida como manifesto. Esses recursos
-são basicamente arquivos, no qual o implantador define os passos que serão executados,
-cada um podendo executar, por exemplo: um aplicativo, um serviço, papéis de usuários do sistema,
-passos para implantação de arquivos de configuração, etc.
+são basicamente arquivos, no qual o implantador define os passos que serão executados. 
 
 Cada passo da configuração desejada pode depender de outros passos, ou seja, para
 instalar uma aplicação pode ser necessário instalar previamente um compilador ou interpretador
@@ -300,10 +296,10 @@ ferramentas descrevem o estado em que a aplicação deve estar, ou seja,
 todos os pacotes, arquivos de configuração diretórios e usuários, sendo possível 
 definir a dependência entre as tarefas a serem executadas.
 
-Com essas ferramentas, a implantação de um software dentro de uma infraestrutura
-não precisa de  esforço manual. Com elas, é possível automatizar toda a implantação
+Com essas ferramentas a implantação de um software dentro de uma infraestrutura
+não precisa de esforço manual. Com elas, é possível automatizar toda a implantação
 de um software, desde a preparação do ambiente até a inicialização da aplicação. 
-Sendo assim, possível reduzir o tempo gasto na implantação, sem qualquer esforço
+Sendo assim, reduzir o tempo gasto na implantação sem qualquer esforço
 adicional.
 
 Além das ferramentas de automação, é importante também entender o empacotamento de
@@ -320,14 +316,14 @@ os softwares a serem instalados que estão disponíveis nos respectivos reposit�
 
 Existem pacotes que dependem do sistema operacional, como por exemplo, pacotes .deb
 para a distribuição Debian e pacotes .rpm para a distribuição Fedora, e
-pacotes independentes de sistema operacional, como por exemplo, pacotes jar da
-linguagem java. Neste trabalho, foi utilizado apenas de pacotes Debian.
+pacotes independentes de sistema operacional como por exemplo, pacotes jar da
+linguagem java. Neste trabalho foi utilizado apenas de pacotes Debian.
 
 
 \subsection{Pacotes Debian}
 
 O formato utilizado pelo Debian GNU/Linux e seus derivados é o formato de pacotes
-binários conhecido como .deb, um pacote .deb é composto de arquivos executáveis,
+binários conhecido como .deb. Um pacote .deb é composto de arquivos executáveis,
 bibliotecas e documentação associada a um programa ou a um conjunto de programas,
 além de todos os dados e procedimentos necessários para instalar, configurar e remover
 aplicativos de um sistema \cite{araujo2011apprecommender}. A estrutura dos pacotes 
@@ -335,8 +331,8 @@ aplicativos de um sistema \cite{araujo2011apprecommender}. A estrutura dos pacot
 estão especificados no Manual de Políticas do Debian \cite{debian}.
 
 Ao instalar um pacote .deb, são feitos todos os procedimentos necessários para a instalação
-de uma aplicação, porém, existem ainda, casos em que o usuário precise fazer algumas
-configurações. Um exemplo, é quando o usuário precisa configurar um banco de dados
+de uma aplicação, porém, existem ainda, casos em que o usuário precise fazer
+configurações adicionais. Um exemplo é quando o usuário precisa configurar um banco de dados
 ou fazer uma configuração específica de uma aplicação a partir de arquivos de configuração.
 
 Essas tarefas não são de responsabilidade dos pacotes, e sim do usuário que deseja utilizar esse
