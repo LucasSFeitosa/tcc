@@ -303,11 +303,12 @@ implantador adicione código Ruby no arquivo de texto. Isso permite configuraç�
 mais robustas, durante a implantação da aplicação.
 
 Também existem os arquivos que estão na raiz do livro de receitas. O \textit{input.rb}
-é o arquivo em que é possível declarar os atributos das aplicações. 
-Também é possível declarar quais atributos são obrigatórios e quais são únicos,
-como no código \ref{codigox}.
+é o arquivo em que é possível declarar os atributos das aplicações. Também é 
+possível declarar quais atributos são obrigatórios e quais são únicos.
 
-\begin{lstlisting}[language=Ruby,label=dice_index,caption={Exemplo de código no arquivo input.rb}, label=codigox]
+O código \ref{codigox} possui um exemplo de arquivo \textit{input.rb}.
+
+\begin{lstlisting}[basicstyle=\ttfamilylanguage=Ruby,label=dice_index,caption={Exemplo de código no arquivo input.rb}, label=codigox]
 text :hostname do                                                                                                                  title 'Website domain'                                                        
   mandatory                                                                     
 end                                                                             
@@ -424,7 +425,7 @@ da implantação.
 \subsection{Fases e Procedimentos para implantação}
 \label{sec:fases}
 
-Primeiramente, era necessário definir as fases e os procedimentos para a implantação 
+Primeiramente, era necessária a definição das fases e os procedimentos para a implantação 
 automatizada, de acordo com as fases que compõem o processo de 
 implantação de aplicações, e de acordo com a Subseção \ref{sub:processoimplantacao}. 
 
