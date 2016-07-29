@@ -57,7 +57,7 @@ do banco de dados MySQL; e o pacote \textit{nginx}. Além disso, habilitar o ser
  
 Para executar essas instalações, foi preciso criar uma receita no livro de receitas
 do Wordpress. Foi necessário criar o próprio livro de receitas no Shak.
-Para isso, existe o comando \textit{rake cookbook}, que cria a estrutura básica
+Para isso, existe o comando \textit{rake cookbook} que cria a estrutura básica
 de um livro de receitas que deve ser usado pelo Chef.
 
 Assim, com a estrutura gerada pelo rake, é possível declarar as dependências do Wordpress
@@ -143,9 +143,28 @@ Um exemplo da execução da instalação via Shak é:
 shak install wordpress hostname=wordpress.dev
 \end{lstlisting}
 
-Dessa forma, o Chef inicia: o processo de instalação dos pacotes; criação dos arquivos
-de configuração; incia os serviços desejados; e ao fim do procedimento, a aplicação
-já estará pronta para uso no endereço escolhido.
+O Shak processa os dados informados, registrando os dados em seu repositório, e
+inicia a instalação da aplicação, executando sua receita. Dessa forma, o 
+Chef inicia: o processo de instalação dos pacotes; criação dos arquivos
+de configuração; incia os serviços desejados.
+
+Ao fim do procedimento, a aplicação estará pronta para uso no endereço escolhido,
+é possível também verificar o estado atual da aplicação.
+
+Para listar todas as aplicações que estão no repositório do Shak e verificar 
+suas informações é preciso executar:
+
+\begin{lstlisting}[basicstyle=\ttfamily, language=Ruby,label=dice_index,caption={Listagem de aplicações instaladas pelo shak}]
+shak list
+\end{lstlisting}
+
+Assim, é possível verificar o endereço em que a aplicação está disponível,
+além do estado atual da aplicação.
+
+Como dito na Seção \ref{subsection:validacao}, a validação da instalação foi feita
+a partir da verificação do funcionamento das funcionalidades básicas da aplicação,
+além de testar múltiplas instalações no mesmo servidor e verifiacr se todas as
+aplicações instaladas eram acessíveis através do protocolo \textit{HTTPS}.
 
 \section{Owncloud}
 \label{sub:owncloud}
@@ -247,9 +266,7 @@ foi criado uma hospedagem virtual para cada instância do Owncloud.
 
 \subsection{Inicialização}
 
-Após a construção da receita do Owncloud, foi necessário testar a receita construída. 
-Para isso o Shak precisa de duas informações importantes, a primeira é a aplicação
-que será instalada, e segunda o endereço destino. 
+A inicialização da aplicação se dá da mesma forma que na aplicação Wordpress.
 
 Para executar a instalação do Owncloud basta:
 
@@ -257,9 +274,8 @@ Para executar a instalação do Owncloud basta:
 shak install owncloud hostname=owncloud.dev
 \end{lstlisting}
 
-E assim, o Chef inicia o processo de instalação dos pacotes; criação dos arquivos
-de configuração; inicia os serviços desejados; e ao fim do procedimento, a aplicação
-já estará pronta para uso no endereço escolhido.
+A validação da instalação foi feita conforme dito na Seção \ref{subsection:validacao}, 
+da mesma forma que em Wordpress.
 
 \section{Servidor de e-mail}
 \label{sub:e-mail}
@@ -374,20 +390,14 @@ ou seja, e-mails que não são spam, porém foram interpretados como spam.
 
 \subsection{Inicialização}
 
-Após a construção da receita do servidor de e-mail, foi necessário testar a receita construída,
-para isso, o Shak precisa de duas informações importantes. A primeira é a aplicação
-que será instalada, e segunda o endereço destino. 
+A inicialização da aplicação se dá da mesma forma que nas aplicações Wordpress
+e Owncloud.
 
 Para executar a instalação do servidor de e-mail basta:
 
 \begin{lstlisting}[basicstyle=\ttfamily, language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do servidor de e-mail com shak}]
 Shak install e-mail hostname=owncloud.dev
 \end{lstlisting}
-
-
-E assim, o Chef inicia: o processo de instalação dos pacotes; criação dos arquivos
-de configuração; incia os serviços desejados; e ao fim do procedimento a aplicação
-já estará pronta para uso no endereço escolhido.
 
 Para testar o funcionamento, foram feitos dois procedimentos. O primeiro, era utilizar
 um cliente de e-mail para testes. O cliente de e-mail escolhido foi o mutt, utilizando
@@ -438,7 +448,7 @@ Diferentemente das outras aplicações web, Moinmoin não utiliza banco de dados
 Para esse procedimento, foi necessário instalar os pacotes \textit{uwsgi},
 \textit{uwsgi-plugin-python}, e o pacote do Moinmoin, chamado \textit{python-moinmoin}.
 Para executar essas instalações, foi preciso criar uma receita no livro de receitas
-do Moinmoin, bastando executar o comando \textit{rake cookbook}, que cria a
+do Moinmoin, bastando executar o comando \textit{rake cookbook} que cria a
 estrutura básica de um livro de receitas que deve ser usado pelo Chef.
 
 Assim, com a estrutura inicial, foi possível declarar as dependências do Moinmoin
@@ -481,9 +491,8 @@ informações novas são inseridas no arquivo \textit{farmconfig.py}.
 
 \subsection{Inicialização}
 
-Após a construção da receita do Moinmoin, foi necessário testar a receita construída. Para 
-isso, o Shak precisa de duas informações importantes, a primeira é a aplicação
-que será instalada, e segunda o endereço destino. 
+A inicialização da aplicação se dá da mesma forma que nas aplicações Wordpress
+e Owncloud.
 
 Para executar a instalação do MoinMoin basta:
 
@@ -491,9 +500,8 @@ Para executar a instalação do MoinMoin basta:
 shak install moinmoin hostname=moinmoin.dev
 \end{lstlisting}
 
-E assim, o Chef inicia: o processo de instalação dos pacotes; criação dos arquivos
-de configuração; incia os serviços desejados; e ao fim do procedimento a aplicação
-já estará pronta para uso no endereço escolhido.
+A validação da instalação foi feita conforme dito na Seção \ref{subsection:validacao}, 
+da mesma forma que em Wordpress e Owncloud.
 
 \section{Outras Aplicações}
 \label{sub:appnencerradas}
@@ -569,26 +577,26 @@ As dependências identificadas foram:
    Postgresql.
 \end{itemize}
 
-Para facilitar a configuração de aplicações PHP, foi feito uma receita genérica,
+Para facilitar a configuração de aplicações PHP, foi feito uma receita genérica
 que instala dependências básicas para qualquer aplicação PHP que for usada pelo
 Shak. Essa receita instala e habilita o PHP5, além de instalar o Nginx. A partir
 disto, as aplicações Owncloud e Wordpress também passaram a usar esta receita
 genérica, removendo duplicações de suas receitas.
 
-Por fim, também foi necessário instalar o pacote roundcube-pgsql, que é um módulo 
+Por fim, também foi necessário instalar o pacote roundcube-pgsql que é um módulo 
 necessário para que Roundcube funcione com o banco de dados PostgreSQL.
  
 Para executar essas instalações, é preciso criar uma receita no livro de receitas
-do Roundcube, com o comando \textit{rake cookbook}, da mesma forma com as outras aplicações.
+do Roundcube com o comando \textit{rake cookbook}, da mesma forma com as outras aplicações.
  
-O estado atual da aplicação Roundcube no Shak, encontra-se na fase de configuração. A pendência,
+O estado atual da aplicação Roundcube no Shak, encontra-se na fase de configuração. A pendência 
 é a configuração do servidor de e-mail, que será utilizado pelo Roundcube. Por ser
 uma configuração pessoal do usuário, ou seja, ele deve inserir o seu serviço
 de e-mail preferido, essa configuração ainda não foi automatizada. 
 
-Como sugestão de trabalhos futuros, é necessário evoluir a receita do Roundcube, 
-para que possa receber os dados do serviço de e-mail, fornecidos pelo usuário, 
-durante sua instalação. Com isso, ao finalizar a instalação, a aplicação já 
+Como sugestão de trabalhos futuros, é necessário evoluir a receita do Roundcube 
+para que possa receber os dados do serviço de e-mail, fornecidos pelo usuário 
+durante sua instalação. Com isso, ao finalizar a instalação a aplicação já 
 estará disponível ao usuário, com a conta de e-mail que foi informada.
 
 Atualmente, a receita do Roduncube já automatiza a instalação da aplicação web. 
@@ -651,7 +659,7 @@ as aplicações utilizarão um protocolo mais seguro, utilizando criptografia do
 \section{Protótipo da aplicação web}
 \label{sub:prototipo}
 
-Outro resultado obtido neste trabalho foi a proposta de um protótipo para a interface
+Por fim, outra contribuição neste trabalho foi a proposta de um protótipo para a interface
 web da aplicação. Como um dos objetivos do Shak é possuir uma interface web para que
 os usuários não precisem utilizar um terminal para realizar as ações, também foi
 feito um protótipo funcional, para ser aplicado no shak. 
