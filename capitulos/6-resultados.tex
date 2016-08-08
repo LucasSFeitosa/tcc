@@ -57,8 +57,6 @@ do banco de dados MySQL; e o pacote \textit{nginx}. Além disso, habilitar o ser
  
 Para executar essas instalações, foi preciso criar uma receita no livro de receitas
 do Wordpress. Foi necessário criar o próprio livro de receitas no Shak.
-Para isso, existe o comando \textit{rake cookbook} que cria a estrutura básica
-de um livro de receitas que deve ser usado pelo Chef.
 
 Assim, com a estrutura gerada pelo rake, é possível declarar as dependências do Wordpress
 dentro do arquivo \textit{default.rb}, dentro do diretório \textit{recipes}. Nesse 
@@ -137,13 +135,9 @@ não é preciso configurar um ip ou configurar um \textit{DNS}. Foi preciso adic
 endereço desejado no arquivo \textit{/etc/hosts}. Assim, mesmo que esteja na sua máquina local, 
 era possível acessar um endereço mais familiar em seu navegador. 
 
-Um exemplo da execução da instalação via Shak é:
-
-\begin{lstlisting}[basicstyle=\ttfamily, language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do wordpress com shak}]
-shak install wordpress hostname=wordpress.dev
-\end{lstlisting}
-
-O Shak processa os dados informados, registrando os dados em seu repositório, e
+Um exemplo da execução da instalação via Shak é executando o comando
+\textit{"shak install wordpress hostname=wordpress.dev"}. Assim, o 
+Shak processa os dados informados, registrando os dados em seu repositório, e
 inicia a instalação da aplicação, executando sua receita. Dessa forma, o 
 Chef inicia: o processo de instalação dos pacotes; criação dos arquivos
 de configuração; incia os serviços desejados.
@@ -152,14 +146,8 @@ Ao fim do procedimento, a aplicação estará pronta para uso no endereço escol
 é possível também verificar o estado atual da aplicação.
 
 Para listar todas as aplicações que estão no repositório do Shak e verificar 
-suas informações é preciso executar:
-
-\begin{lstlisting}[basicstyle=\ttfamily, language=Ruby,label=dice_index,caption={Listagem de aplicações instaladas pelo shak}]
-shak list
-\end{lstlisting}
-
-Assim, é possível verificar o endereço em que a aplicação está disponível,
-além do estado atual da aplicação.
+suas informações é preciso executar o comando \textit{"shak list"}. Assim, é 
+possível verificar o endereço em que a aplicação está disponível, além do estado atual da aplicação.
 
 Como dito na Seção \ref{subsection:validacao}, a validação da instalação foi feita
 a partir da verificação do funcionamento das funcionalidades básicas da aplicação,
@@ -199,7 +187,7 @@ As dependências para o funcionamento do Owncloud são:
 
 Diferentemente da aplicação Wordpress, na aplicação Owncloud o 
 banco de dados escolhido foi o postgresql. Na documentação do Wordpress é recomendado
-o uso do banco de dados MySQL, porém no Owncloud fica a escolha do desenvolvedor.
+o uso do banco de dados MySQL, porém no Owncloud fica à escolha do desenvolvedor.
 A escolha do Postgresql teve como motivação, a possibilidade de trabalhar com dois bancos de
 dados diferentes, aumentando o suporte do Shak. Assim, quando existirem aplicações
 que suportam apenas o Postgresql, o Shak já terá uma estrutura pronta.
@@ -253,7 +241,7 @@ enviar uma contribuição ao pacote do Owncloud no Debian, onde assim a contribu
 poderia ser facilmente utilizada por mais pessoas que queiram essa funcionalidade,
 bastando utilizar a versão disponibilizada nos servidores do Debian. 
 
-Com isso, foi feito a contribuição que adicionaria a funcionalidade de múltiplas 
+Com isso, foi feita a contribuição que adicionaria a funcionalidade de múltiplas 
 instâncias para o Owncloud, e enviado ao mantenedor do pacote do Owncloud no Debian. 
 Na discussão \footnote{https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=789726},
 a contribuição foi bem vista pelo mantenedor do pacote.
@@ -262,17 +250,13 @@ Os procedimentos feitos para suportar múltiplas instâncias
 no Owncloud são bem semelhantes aos do Wordpress, criando um diretório de dados
 para cada aplicação; um arquivo de configuração para cada aplicação; e um banco de
 dados para cada aplicação. Seguindo a mesma abordagem do Wordpress, também
-foi criado uma hospedagem virtual para cada instância do Owncloud.
+foi criada uma hospedagem virtual para cada instância do Owncloud.
 
 \subsection{Inicialização}
 
 A inicialização da aplicação se dá da mesma forma que na aplicação Wordpress.
 
-Para executar a instalação do Owncloud basta:
-
-\begin{lstlisting}[basicstyle=\ttfamily, language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do Owncloud com shak}]
-shak install owncloud hostname=owncloud.dev
-\end{lstlisting}
+Para executar a instalação do Owncloud basta executar o comando \textit{"shak install owncloud hostname=owncloud.dev"}.
 
 A validação da instalação foi feita conforme dito na Seção \ref{subsection:validacao}, 
 da mesma forma que em Wordpress.
@@ -295,12 +279,12 @@ que o protocolo \textit{IMAP} é um protocolo online, ou seja, ele se conecta ao
 e realiza o download das mensagens, depois ainda  mantém a conexão para que
 as alterações e mensagens novas sejam atualizadas em tempo real. Diferentemente do
 protocolo \textit{POP3} que é um protocolo offline, onde após o download das mensagens encerra
-a conexão. Outra vantagem do \textit{IMAP} em relação ao \textit{POP3}, que é que o 
+a conexão. Outra vantagem do \textit{IMAP} em relação ao \textit{POP3}, é que o 
 \textit{IMAP} mantém uma cópia de mensagens no servidor, ideal para quem precisa 
 acessar os e-mails de mais de um local ou a partir de mais de um dispositivo.
 
 O servidor \textit{IMAP} escolhido foi o Dovecot, que é um servidor de e-mail
-\textit{IMAP}, além disso, Dovecot é um software livre simples de configurar, requer nenhuma
+\textit{IMAP}, além disso, Dovecot é um software livre simples de configurar, não requer 
 administração especial, e ainda usa muito pouca memória \cite{dovecot}. 
 
 O agente de transferência de e-mails escolhido foi o Postfix, que é um software
@@ -376,10 +360,10 @@ programa é executado quando um serviço é solicitado. Neste caso, foi necessá
 indicar que o servidor de e-mail utilize \textit{SSL}, com autenticação segura, 
 apontando o caminho dos arquivos de chave e certificados.
 
-Por fim, a configuração do spamassasin. São necessários dois arquivos de configuração.
-O arquivo \textit{spamassassin}, que é o arquivo de configurações padrão para o spamassasin e o
+Por fim, a configuração do Spamassasin. São necessários dois arquivos de configuração.
+O arquivo \textit{spamassassin}, que é o arquivo de configurações padrão para o Spamassasin e o
 \textit{local.cf} que são as configurações locais. No Spamassassin, foi preciso habilitar 
-o serviço do spamassasin e configurar o caminho dos arquivo de log.
+o serviço do Spamassasin e configurar o caminho dos arquivo de log.
 
 Já o arquivo \textit{local.cf}, possui o parâmetro required\_score. Esse parâmetro 
 possui um nível de 0 a 10, em que 
@@ -393,26 +377,18 @@ ou seja, e-mails que não são spam, porém foram interpretados como spam.
 A inicialização da aplicação se dá da mesma forma que nas aplicações Wordpress
 e Owncloud.
 
-Para executar a instalação do servidor de e-mail basta:
-
-\begin{lstlisting}[basicstyle=\ttfamily, language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do servidor de e-mail com shak}]
-Shak install e-mail hostname=owncloud.dev
-\end{lstlisting}
+Para executar a instalação do servidor de e-mail basta executar o comando \textit{
+shak install e-mail hostname=owncloud.dev}
 
 Para testar o funcionamento, foram feitos dois procedimentos. O primeiro, era utilizar
 um cliente de e-mail para testes. O cliente de e-mail escolhido foi o mutt, utilizando
 suas funções básicas de enviar e receber e-mails. O segundo passo, foi realizar conexões
-com o servidor de e-mail via telnet. 
+com o servidor de e-mail via comando \textit{telnet}. 
 
-Para isso foi necessário executar os seguintes comandos:
-
-\begin{lstlisting}[basicstyle=\ttfamily, language=Ruby,label=dice_index,caption={Exemplo de teste de conexão telnet no servidor imap}]
-   telnet localhost imap
-   telnet localhost imaps
-\end{lstlisting}
-
-Pela configuração do servidor de e-mail, não foi possível abrir uma conexão telnet
-com o parâmetro imap, porém com o parâmetro imaps foi possível, isso serviu para testar 
+Para isso, foi necessário executar os seguintes comandos: \textit{telnet localhost imap} e
+\textit{telnet localhost imaps}. Pela configuração do servidor de e-mail, não foi possível abrir uma conexão 
+\textit{telnet}
+com o parâmetro \textit{imap}, porém com o parâmetro \textit{imaps} foi possível, isso serviu para testar 
 que o servidor de e-mail impediu conexões que não 
 utilizam os protocolos criptografados.
 
@@ -421,11 +397,11 @@ utilizam os protocolos criptografados.
 
 \cite{moin} é uma ferramenta de construção
 de wikis, com uma grande comunidade de usuários, podendo criar páginas web
-facilmente editáveis. Moinmoin é software livre, alguns exemplos
+facilmente editáveis. Moinmoin é software livre. Alguns exemplos
 de wiki que utilizam o Moinmoin são: Wiki do Debian, Wiki do Python e Wiki do Apache,
 contendo várias documentações relacionadas aos seus softwares. 
 
-Para a implantação automatizada do MoinMon, foram seguidos os mesmos passos
+Para a implantação automatizada do Moinmoin, foram seguidos os mesmos passos
 feitos em Wordpress \ref{sub:wordpress} e Owncloud \ref{sub:owncloud}.
 
 \subsection{Planejamento}
@@ -448,8 +424,7 @@ Diferentemente das outras aplicações web, Moinmoin não utiliza banco de dados
 Para esse procedimento, foi necessário instalar os pacotes \textit{uwsgi},
 \textit{uwsgi-plugin-python}, e o pacote do Moinmoin, chamado \textit{python-moinmoin}.
 Para executar essas instalações, foi preciso criar uma receita no livro de receitas
-do Moinmoin, bastando executar o comando \textit{rake cookbook} que cria a
-estrutura básica de um livro de receitas que deve ser usado pelo Chef.
+do Moinmoin.
 
 Assim, com a estrutura inicial, foi possível declarar as dependências do Moinmoin
 dentro do arquivo \textit{default.rb} dentro do diretório \textit{recipes}.
@@ -494,12 +469,7 @@ informações novas são inseridas no arquivo \textit{farmconfig.py}.
 A inicialização da aplicação se dá da mesma forma que nas aplicações Wordpress
 e Owncloud.
 
-Para executar a instalação do MoinMoin basta:
-
-\begin{lstlisting}[basicstyle=\ttfamily, language=Ruby,label=dice_index,caption={Exemplo de execução de instalação do owncloud com shak}]
-shak install moinmoin hostname=moinmoin.dev
-\end{lstlisting}
-
+Para executar a instalação do Moinmoin executar o comando \textit{shak install moinmoin hostname=moinmoin.dev}. 
 A validação da instalação foi feita conforme dito na Seção \ref{subsection:validacao}, 
 da mesma forma que em Wordpress e Owncloud.
 
@@ -514,7 +484,7 @@ com essas duas aplicações.
 \label{subsub:noosfero}
 
 \citeonline{noosfero} é uma plataforma web para redes sociais e 
-de economia social e solidária. Ela possui funcionalidades como blog; e-Porfolios; 
+de economia social e solidária. Ela possui funcionalidades como blog; e-Portfolios; 
 CMS; RSS; discussão temática; agenda de eventos; e inteligência coletiva para a 
 economia solidária no mesmo sistema.
 
@@ -542,7 +512,7 @@ que estão no repositório do Noosfero,
 com suas versões, e as dependências que estão no Debian Jessie.
 
 Como visto na tabela \ref{tabela1}, grande parte das dependências do Noosfero encontram-se
- apenas nas versões \textit{testing} e \textit{unstable} no Debian. Para a continuar com
+ apenas nas versões \textit{testing} e \textit{unstable} no Debian. Para continuar com
 a implantação automatizada, seria necessário discutir alguma solução 
 com a comunidade do software. 
 
@@ -587,8 +557,8 @@ Por fim, também foi necessário instalar o pacote roundcube-pgsql que é um mó
 necessário para que Roundcube funcione com o banco de dados PostgreSQL.
  
 Para executar essas instalações, é preciso criar uma receita no livro de receitas
-do Roundcube com o comando \textit{rake cookbook}, da mesma forma com as outras aplicações.
- 
+do Roundcube. 
+
 O estado atual da aplicação Roundcube no Shak, encontra-se na fase de configuração. A pendência 
 é a configuração do servidor de e-mail, que será utilizado pelo Roundcube. Por ser
 uma configuração pessoal do usuário, ou seja, ele deve inserir o seu serviço
@@ -618,7 +588,7 @@ autoassinados.
 Para adicionar esse novo suporte ao Shak, foi necessário criar uma receita Chef,
 para que possa gerenciar os certificados \textit{SSL}. Optou-se por utilizar a ferramenta
 Openssl para geração das chaves e certificados, Openssl é uma ferramenta de
-implementação do Transport Layer Security \textit{(TLS)} e Secure Sockets Layer \textit{(SSL)},
+implementação do \textit{Transport Layer Security} \textit{(TLS)} e \textit{Secure Sockets Layer} \textit{(SSL)},
 além de ser uma biblioteca de propósito geral de criptografia \cite{openssl}.
 
 Esse novo componente no Shak é composto do pacote openssl, além da criação
@@ -632,7 +602,7 @@ Com as chaves geradas, bastou configurar as aplicações indicando os caminhos d
 e das chaves. Para forçar as aplicações web a utilizarem o \textit{HTTP}, foi necessário fazer
 uma configuração específica no servidor web Nginx. 
 
-O código \ref{codigo994}, mostra como foi feito.
+O Código \ref{codigo994}, mostra como foi feito.
 
 \begin{lstlisting}[basicstyle=\ttfamily,language=Ruby,label=dice_index,caption={Exemplo de arquivo de configuração do Nginx para aplicações web no shak}, label=codigo994]
   server {

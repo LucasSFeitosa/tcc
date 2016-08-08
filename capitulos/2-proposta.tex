@@ -19,12 +19,12 @@ A principal contribuição deste trabalho está em ajudar a responder a seguinte
 }
 \end{center}
 
-Dado objetivo e a questão problema, este trabalho consiste em contribuir
+Dado o objetivo e a questão problema, este trabalho consiste em contribuir
 com a proposta de uma solução de gerência de configuração de software, que permita implantar
 aplicações web em sistemas Debian GNU/Linux de forma automatizada e segura.
 
 Além disso, a solução proposta deverá passar
-por uma validação dos resultados, baseada na observação
+por uma validação dos resultados baseada na observação
 da execução da solução em exemplos de uso. Cada exemplo conterá uma aplicação
 real que deverá ser implantada com sucesso. Essa validação tem seus procedimentos
 definidos na Seção \ref{subsection:validacao} e as definições dos exemplos de uso
@@ -52,7 +52,7 @@ implantação aliado com a gerência de recursos de
 hardware.
 
 Existem ferramentas disponíveis no mercado que também trazem a proposta
-de automação de instalação de aplicações, BitNami \footnote{https://bitnami.com/} é uma 
+de automação de instalação de aplicações, a ferramenta BitNami \footnote{https://bitnami.com/} é uma 
 biblioteca de aplicativos populares e ambientes de desenvolvimento, 
 que podem ser instalados com apenas um clique, 
 através de uma interface web amigável. Ela automatiza todo o processo de 
@@ -62,8 +62,8 @@ bases de dados) para que o usuário comum não se preocupe com questões técnic
 
 Sandstom.io \footnote{https://sandstorm.io/} é uma plataforma de código aberto para servidores
 pessoais. Sandstorm permite instalar
-facilmente as aplicações em que o Sandstorm 
-suporta \cite{sandstormio}. Sandstorm traz aplicações prontas para uso, 
+facilmente as aplicações que o Sandstorm 
+suporta \cite{sandstormio}. A ferramenta Sandstorm traz aplicações prontas para uso, 
 em que o usuário escolhe a aplicação desejada  por meio de uma interface web, 
 e logo após isso, a aplicação já está disponível para uso.
 
@@ -91,15 +91,15 @@ vários charms já criados pela comunidade, para que os usuários possam reaprov
 os charms já existentes.
  
 Já \citeonline{bitnami} traz as aplicações prontas para uso. Assim, o usuário interage com 
-uma interface web, no formato clique para instalar. Porém,
-o usuário só tem a disposição as aplicações disponibilizadas pelo Bitnami. Isso
+uma interface web, escolhendo as aplicações que deseja instalar. Porém,
+o usuário só tem à disposição as aplicações disponibilizadas pelo Bitnami. Isso
 também é a forma em que o Sandstorm trabalha, com a diferença de que o Sandstorm é
 software livre, já Bitnami é um software proprietário, o que dificulta a análise da arquitetura
 que é utilizada por eles. 
 
 Por último, o trabalho feito por \citeonline{leo2014} é voltado
 para serviços web de grande escala, com foco em implantação de aplicações na
-nuvem. Também é possível escalar infraestrutura, utilizando o middleware construído 
+nuvem. Também é possível gerenciar infraestrutura, utilizando o middleware construído 
 em seu trabalho, podendo gerenciar ambientes de computação em nuvem como Amazon EC2 e 
 Openstack. A sua aplicação utiliza o Chef como seu agente de configuração.
 
@@ -156,7 +156,8 @@ a execução de algumas atividades. Os critérios para escolha das ferramentas s
   as
   comunidades de software livre costumam usar listas de e-mail e canais no \textit{IRC}
   para a comunicação de seus desenvolvedores. Logo, toda comunicação, é feita
-  pelos canais de \textit{IRC} das ferramentas e suas respectivas listas de e-mail.
+  pelos canais de \textit{IRC} das ferramentas e suas respectivas listas de e-mail. 
+  A comunicação é feita com a comunidade das ferramentas.
 \end{itemize}
 
 \subsection{Ferramenta Shak}
@@ -167,7 +168,7 @@ ao máximo que usuários sem conhecimento técnico possam ter os seus próprios
 serviços de Internet, garantindo a sua privacidade e segurança. 
 
 Durante o Google Summer of Code 2015 \footnote{https://www.google-melange.com/gsoc/project/details/google/gsoc2015/thiagovsk/5757334940811264}, o autor deste trabalho realizou 
-várias atividades relacionadas à evolução da ferramenta Shak. Tornando a ferramenta, uma
+várias atividades relacionadas à evolução da ferramenta Shak. Tornando a ferramenta uma
  solução para implantação automatizada de aplicações web em sistemas Debian, 
 justificando assim a sua escolha.
 
@@ -209,12 +210,12 @@ outras distribuições GNU/Linux baseadas no Debian, como por exemplo: Ubuntu \f
 
 \end{itemize}
 
-A arquitetura simplificada do Shak, na Figura \ref{fig:shak}, mostra quatro
+A arquitetura simplificada do Shak na Figura \ref{fig:shak}, mostra quatro
 componentes importantes. Os dois primeiros são a interface web e a interface
 por linha de comando, essas duas interfaces são responsáveis por coletar os
-dados do usuário, como por exemplo, a aplicação que se deseja instalar.
+dados do usuário, por exemplo, a aplicação que se deseja instalar.
 
-Os dados vindos dessas interfaces são gerenciados pela aplicação Shak, e mantidos
+Os dados vindos dessas interfaces são gerenciados pela aplicação Shak e mantidos
 na base de dados chamada repositório. O repositório do Shak contém as aplicações
 que foram adicionadas, e suas informações.
 
@@ -229,7 +230,7 @@ que foram adicionadas, e suas informações.
 No Shak, uma aplicação possui uma abstração que está exemplificada na Figura \ref{fig:shak2},
 onde uma aplicação é uma classe Ruby, e cada aplicação possui um livro de receitas
 Chef associado. Além disso, cada livro de receitas pode definir quais são as entradas que
-a aplicação necessita, como por exemplo, o endereço da aplicação. Essas entradas
+a aplicação necessita, por exemplo, o endereço da aplicação. Essas entradas
 são informadas pela aplicação web, ou pela interface de linha de comando. As entradas 
 também serão processadas pela aplicação Shak que guarda essas informações no
 seu repositório de aplicações. 
@@ -254,8 +255,8 @@ Em resumo, a estrutura do Shak utiliza:
   servidor \textit{HTTP} de alto desempenho \cite{nginx}.
   \item  \textbf{Pacotes Debian:} As bibliotecas utilizadas estão incluídos na distribuição
   oficial do Debian.
-  \item  \textbf{Gems:} Uso de gems para a aplicação,
-  uma gem nada mais é do que uma biblioteca Ruby, que provê um formato padrão para
+  \item  \textbf{Gems:} Uso de Gems para a aplicação. Uma gem nada mais é do 
+que uma biblioteca Ruby, que provê um formato padrão para
   a distribuição de programas Ruby \cite{gem}.
   \item  \textbf{Código Shellscript:} Os códigos ShellScript são utilizados
   principalmente para configurações de ambiente de desenvolvimento. 
@@ -315,9 +316,9 @@ end
 unique :hostname, :path 
 \end{lstlisting}
 
-Por fim, os arquivos \textit{metadata.rb} e \textit{README.md}, o primeiro possui
-informações sobre o livro de receitas, como o nome, o mantenedor do livro
-de receitas, e sua licença. Já o segundo, possui instruções para utilizar a 
+Existem também dois arquivos que contém informações das receitas, são os 
+arquivos \textit{metadata.rb} e \textit{README.md}, o primeiro possui
+informações sobre o livro de receita. Já o segundo possui instruções para utilizar a 
 receita.
 
 Com a estrutura criada, foi necessário construir as receitas, para automatizar
@@ -328,17 +329,15 @@ deste trabalho, sendo assim, adicionando novas aplicações web à ferramenta Sh
 \subsection{Gerência de Ambientes de Desenvolvimento}
 
 Uma das necessidades do desenvolvimento do projeto é ter um ambiente de desenvolvimento
-flexível, que possa ser rapidamente construído e destruído. Onde seja possível 
+flexível, que possa ser rapidamente construído e destruído, onde seja possível 
 testar as implantações feitas pela ferramenta Shak e verificar os erros da implantação, caso 
 aconteçam. 
 
-Para isso, foi necessário utilizar alguma ferramenta que automatize o processo de 
+Para isso, foi necessário utilizar uma ferramenta que automatize o processo de 
 construir ambientes de desenvolvimento. Construir ambientes manualmente pode
 ser um processo longo e demorado, além disso, é possível que ocorra erros por
-desatenção ao executar vários passos manuais. A ferramenta escolhida serviu para
-auxiliar na criação das máquinas virtuais, que eram os nós alvo 
-das implantações.
-
+desatenção ao executar vários passos manuais.
+ 
 A ferramenta que foi escolhida para auxiliar na gerência de um ambiente de desenvolvimento é
 a ferramenta Vagrant \footnote{https://www.vagrantup.com/}. Com o Vagrant é 
 possível gerenciar a criação de máquinas
@@ -357,7 +356,7 @@ aplicações que foram escolhidas na Seção
 \ref{subsection:exemplos}. Essas foram as aplicações que tiveram
 sua implantação automatizadas pela ferramenta. 
 
-No trabalho, foi feito uma fase exploratória, no qual o planejamento foi
+No trabalho, foi feita uma fase exploratória, na qual o planejamento foi
 suportar a instalação do Owncloud e Wordpress de forma 
 automatizada. A escolha das duas ferramentas foi feita pelo autor e pelo co-orientador
 deste trabalho, levando em consideração a popularidade das duas ferramentas nas 
@@ -376,14 +375,14 @@ que devem ser levadas em consideração para a escolha das próximas aplicaçõe
 As atividades levantadas foram:
 
  \begin{enumerate}
-   \item  Suporte a instalação automatizada do Wordpress.
-   \item  Suporte a instalação automatizada do Owncloud.
+   \item  Suporte à instalação automatizada do Wordpress.
+   \item  Suporte à instalação automatizada do Owncloud.
    \item  Forçar as aplicações Wordpress e Owncloud a
    utilizar o protocolo HTTPS.
-   \item  Suporte a instalação automatizada do servidor de e-mail.
-   \item  Suporte a instalação automatizada do MoinMoin.
-   \item  Suporte a instalação automatizada do Roundcube.
-   \item  Suporte a instalação automatizada do Noosfero.
+   \item  Suporte à instalação automatizada do servidor de e-mail.
+   \item  Suporte à instalação automatizada do MoinMoin.
+   \item  Suporte à instalação automatizada do Roundcube.
+   \item  Suporte à instalação automatizada do Noosfero.
  \end{enumerate}
 
 Ao verificar que tanto a ferramenta Owncloud como a ferramenta Wordpress precisam
@@ -423,10 +422,10 @@ Primeiramente, era necessária a definição das fases e os procedimentos para a
 automatizada, de acordo com as fases que compõem o processo de 
 implantação de aplicações, e de acordo com a Subseção \ref{sub:processoimplantacao}. 
 
-Neste trabalho, foi adicionado na fase de configuração, a atividade de configuração de múltiplas
+Neste trabalho, foi adicionada na fase de configuração, a atividade de configuração de múltiplas
 instâncias, que é a fase responsável por habilitar a implantação de múltiplas 
 instâncias de uma aplicação. Isso possibilita a configuração de várias instâncias da mesma aplicação sem duplicação de recursos. A sequência
-das fases estão na Figura \ref{fig:1}:
+das fases está na Figura \ref{fig:1}:
 
 \begin{figure}[h]
   \centering
@@ -452,7 +451,7 @@ Também foram definidas as caraterísticas de segurança que as aplicações dev
 ter na  sua implantação, foi 
 definido que as aplicações sempre usem protocolos 
 seguros, como o \textit{HTTPS}. 
-Para as aplicações web é necessário utilizar o protocolo HTTPS, para aplicações
+Para as aplicações web é necessário utilizar o protocolo \textit{HTTPS}, para aplicações
 de e-mail é necessário utilizar os protocolos \textit{SMTP} e \textit{IMAPS}.
 
 \subsection{Validação da solução}

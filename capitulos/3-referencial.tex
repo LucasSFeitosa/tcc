@@ -19,7 +19,7 @@ estar em qualquer projeto de desenvolvimento de software. Ela é
 tradicionalmente dividida em três atividades, e são elas: configuração,
 identificação e controle. Isto é encarado como uma ferramenta de
 gestão que pode ajudar na orientação de cada projeto, pois ajuda a manter a
-integridade do produto e manter o qualidade do projeto sob controle \cite{gcs}. 
+integridade do produto e manter a qualidade do projeto sob controle \cite{gcs}. 
 
 Ela também é essencial para a engenharia de software, pois estabelece e protege a
 integridade de um produto ao longo da sua vida útil, percorrendo através dos
@@ -82,11 +82,9 @@ de erros e imprevistos \cite{deployment1998}.
 \label{sub:processoimplantacao}
 
 A implantação de um software é o processo que vai desde a aquisição desse software
-até a sua execução \cite{leo2014}. O processo de implantação consiste em diversas
-atividades que devem ser executadas, desde o planejamento da implantação até a
-disponibilidade para uso.
+até a sua execução \cite{leo2014}.
 
-A \textit{OMG} é uma organização internacional sem fins lucrativos,
+A Object Management Group \textit{(OMG)} é uma organização internacional sem fins lucrativos,
 que aprova padrões abertos para tecnologias. Eles definem uma especificação de
 implantação e configuração de aplicações distribuídas baseadas em componentes \cite{omg2006}. 
 A \textit{OMG} também diz que o processo de implantação é um processo que se inicia desde
@@ -111,7 +109,7 @@ de software são:
   pacotes independentes de sistema operacional como por exemplo pacotes jar.
 \end{itemize}
 
-Além disso, é definido as fases que compõem o processo de implantação e de acordo
+Além disso, são definidas as fases que compõem o processo de implantação e de acordo
 com \citeonline{omg2006} as fases são:
 
 \begin{itemize}
@@ -142,8 +140,8 @@ Dependendo do tamanho da aplicação as fases podem se tornar tarefas complicada
 por isso, existe a necessidade de automatizar o processo de implantação. Isso 
 diminui a possibilidade de erros, comparado a uma tarefa manual, e consequentemente
 torna o trabalho mais ágil, eliminando a necessidade de manuais de instalação. 
-O objetivo de um processo de implantação automatizado é proporcionar um processo
- de implantação reprodutível, confiável e fácil de ser executado \cite{humble2010}.
+O objetivo de um processo de implantação automatizado é proporcionar uma implantação confiável e 
+fácil de ser executada \cite{humble2010}.
 
 Para que a implantação automatizada de software seja possível, é necessário o uso
 de ferramentas que possam automatizar todo o processo de implantação. Porém, é 
@@ -162,8 +160,8 @@ as equipes são capazes de entregar novas funcionalidades.
 
 \textit{DevOps} pode ser visto como um conjunto de práticas e princípios para a 
 entrega de software, com foco na velocidade de entrega e na automação \cite{7173368}. 
-Antes o time de desenvolvimento terminavam suas funcionalidades e seus testes e
-entregavam a uma equipe de implantação, e a equipe de implantação precisava
+Antes o time de desenvolvimento terminava suas funcionalidades e seus testes e
+entregava a uma equipe de implantação, e a equipe de implantação precisava
 lidar com os problemas sem a ajuda do time de desenvolvimento. Por isso \textit{DevOps} 
 tenta unir esses dois mundos, fazendo com que as duas equipes compartilhem atividades
  e responsabilidades \cite{6265084}.
@@ -263,7 +261,7 @@ propósito de entrega das atualizações de forma automática \cite{deployment19
 Para a implantação automatizada de software, é
 possível utilizar linguagens de \textit{script} de propósito
 geral como: Python, Ruby e Shellscript. Também existem ferramentas gerais 
-voltados para o processo de implantação, como sistemas de \textit{middleware} 
+voltadas para o processo de implantação, como sistemas de \textit{middleware} 
 especializados em determinados tipos de artefatos implantáveis \cite{leo2014}.
 
 Um processo de implantação automatizado depende bastante da integração de diferentes papéis
@@ -317,7 +315,7 @@ os softwares a serem instalados que estão disponíveis nos respectivos reposit�
 Existem pacotes que dependem do sistema operacional, como por exemplo, pacotes .deb
 para a distribuição Debian e pacotes .rpm para a distribuição Fedora, e
 pacotes independentes de sistema operacional como por exemplo, pacotes jar da
-linguagem java. Neste trabalho foi utilizado apenas de pacotes Debian.
+linguagem java. Neste trabalho foram utilizados apenas de pacotes Debian.
 
 
 \subsection{Pacotes Debian}
@@ -337,7 +335,7 @@ ou fazer uma configuração específica de uma aplicação a partir de arquivos 
 
 Essas tarefas não são de responsabilidade dos pacotes, e sim do usuário que deseja utilizar esse
 software, já que o pacote não poderia prever qual é a estrutura e a configuração
-que o usuário pretende utilizar. Logo, a execução desses passos são feitas de
+que o usuário pretende utilizar. Logo, a execução desses passos é feita de
 acordo com a preferência do usuário, podendo ser feita manualmente ou a partir
 de uma implantação automatizada que utilize alguma ferramenta para isso. Um exemplo
 desse tipo de atividade, que não é de responsabilidade de um pacote, é a configuração
@@ -381,18 +379,18 @@ de um pacote. Outro fator, é que um pacote também não pode prever quais são
 os procedimentos de segurança que devem ser tomados numa implantação, como por 
 exemplo, a criação de certificados digitais. 
 
-Esses procedimentos estão relacionados a segurança na implantação de aplicações web 
+Esses procedimentos estão relacionados à segurança na implantação de aplicações web 
 utilizando pacotes Debian, no qual trata o uso de protocolos que utilizam criptografia
 para a segurança de dados.
 
 Existem algumas categorias predominantes e prejudiciais de ataques na Internet. São elas: 
 ataques via malware, recusa de serviços, analisador
-de pacotes, disfarce na fonte e modificação e exclusão de mensagem. Para proteger
+de pacotes, disfarce na fonte e modificação ou exclusão de mensagem. Para proteger
 desses ataques é importante o uso de comunicação segura, protegendo as aplicações 
 \cite{kurose2010redes} 
 
 Para isso, \citeonline{kurose2010redes} ainda identifica as propriedades 
-desejáveis da comunicação segura, são elas:
+desejáveis da comunicação segura, sendo elas:
 
 \begin{itemize}
   \item \textbf{Confidencialidade:} Diz respeito a somente o remetente e o destinatário
@@ -401,7 +399,7 @@ desejáveis da comunicação segura, são elas:
   precisar confirmar a identidade da outra parte envolvida na comunicação.
   \item \textbf{Integridade da Mensagem:} Diz respeito a assegurar que o conteúdo
   da mensagem não seja modificado.
-  \item \textbf{Segurança Operacional:} Diz respeito a segurança da rede, no qual
+  \item \textbf{Segurança Operacional:} Diz respeito à segurança da rede, no qual
   os atacantes podem tentar adquirir os segredos da rede e lançar ataques DoS,
   por isso é necessário uma boa configuração de firewall e sistemas de detecção
   de invasão.
@@ -427,7 +425,7 @@ especificação do protocolo \textit{HTTP} está disponível na \textit{RFC} 261
 \footnote{https://www.ietf.org/rfc/rfc2616.txt}, já o protocolo \textit{SMTP} 
 está especificado na \textit{RFC} 5321 \footnote{https://www.ietf.org/rfc/rfc5321.txt}.
 
-A aplicações que serão utilizadas neste trabalho, são aplicações web empacotadas no
+As aplicações que serão utilizadas neste trabalho, são aplicações web empacotadas no
 Debian. Aplicações web costumam ser aplicações cliente-servidor, que permitem aos
 usuários obterem documentos de servidores web a partir de requisições. Esses documentos são padronizados, como por exemplo o \textit{HTML}, 
 para que os navegadores possam interpretar e passar a informação ao usuário 
@@ -450,10 +448,10 @@ o protocolo \textit{SMTP} é um protocolo de envio de informações \cite{kurose
 Isso implica que, para um usuário recuperar as informações de e-mail, é necessário 
 o uso de outros componentes. Já que isso não é possível via \textit{SMTP}, para 
 resolver isto existem os protocolos de acesso ao correio, entre eles o 
-Post Office Protocol \textit{(POP3)} e Internet Message Access Protocol \textit{(IMAP)}.
+\textit{Post Office Protocol} \textit{(POP3)} e \textit{Internet Message Access Protocol} \textit{(IMAP)}.
 
 Para adicionar uma camada de segurança, com sigilo e integridade de dados, é necessário
-o uso de outro protocolo, o protocolo Secure Socket Layer \textit{(SSL)}, para 
+o uso de outro protocolo, o protocolo \textit{Secure Socket Layer} \textit{(SSL)}, para 
 complementar os protocolos \textit{HTTP} e \textit{SMTP}. O protocolo \textit{SSL} 
 é utilizado por basicamente todos os sites conhecidos, como Google,
 Amazon e eBay. Seu uso é para oferecer segurança em transações, pois ele cria um
