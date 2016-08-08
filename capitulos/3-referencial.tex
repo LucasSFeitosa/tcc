@@ -102,11 +102,12 @@ de software são:
   \item  \textbf{Nó:} É um recurso computacional onde se implanta um componente,
   por exemplo uma máquina virtual dentro do servidor que vai hospedar um serviço
   de banco de dados. Os nós fazem parte do ambiente alvo.
-  \item  \textbf{Pacote:} Artefato executável que contém o código binário do componente
-  . É por meio de um pacote que um serviço pode ser instalado e executado dentro
+  \item  \textbf{Pacote:} Artefato executável que contém o código binário do componente ou código
+fonte pronto para instalação ou compilação. É por meio de um pacote que um serviço pode ser instalado e executado dentro
   de um sistema operacional, e que são característicos dependendo da distribuição
   do sistema operacional, por exemplo: .deb para Debian e .rpm para Redhat, ou
-  pacotes independentes de sistema operacional como por exemplo pacotes jar.
+  pacotes independentes de sistema operacional como por exemplo pacotes Jar para java,
+pacotes Pip para o python e Gem para ruby.
 \end{itemize}
 
 Além disso, são definidas as fases que compõem o processo de implantação e de acordo
@@ -312,12 +313,6 @@ chamados de repositórios, e esses pacotes são gerenciados com softwares conhec
 como sistemas gerenciadores de pacotes, que possuem a responsabilidade de buscar
 os softwares a serem instalados que estão disponíveis nos respectivos repositórios.
 
-Existem pacotes que dependem do sistema operacional, como por exemplo, pacotes .deb
-para a distribuição Debian e pacotes .rpm para a distribuição Fedora, e
-pacotes independentes de sistema operacional como por exemplo, pacotes jar da
-linguagem java. Neste trabalho foram utilizados apenas de pacotes Debian.
-
-
 \subsection{Pacotes Debian}
 
 O formato utilizado pelo Debian GNU/Linux e seus derivados é o formato de pacotes
@@ -420,14 +415,17 @@ aplicações de rede e seus protocolos, incluindo os protocolos \textit{HTTP} e
 aplicações web utilizam o \textit{HTTP} para transferência de arquivos e o \textit{SMTP} para
 transferência de mensagens de correio eletrônico. 
 
-Os protocolos \textit{HTTP} e \textit{SMTP} estão especificados em \textit{RFCs}, a 
+Os protocolos \textit{HTTP} e \textit{SMTP} estão especificados em \textit{Request for Comments} 
+\textit{(RFC)}, que são documentos técnicos que especifica os padrões implementados
+na internet. A 
 especificação do protocolo \textit{HTTP} está disponível na \textit{RFC} 2616 
 \footnote{https://www.ietf.org/rfc/rfc2616.txt}, já o protocolo \textit{SMTP} 
 está especificado na \textit{RFC} 5321 \footnote{https://www.ietf.org/rfc/rfc5321.txt}.
 
 As aplicações que serão utilizadas neste trabalho, são aplicações web empacotadas no
 Debian. Aplicações web costumam ser aplicações cliente-servidor, que permitem aos
-usuários obterem documentos de servidores web a partir de requisições. Esses documentos são padronizados, como por exemplo o \textit{HTML}, 
+usuários obterem documentos de servidores web a partir de requisições. Esses documentos 
+são padronizados, como por exemplo o \textit{HyperText Markup Language} \textit{HTML}, 
 para que os navegadores possam interpretar e passar a informação ao usuário 
 \cite{kurose2010redes}.
 

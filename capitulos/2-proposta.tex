@@ -3,7 +3,7 @@
 \label{cap-metodologia}
 Este capítulo aborda o planejamento para a execução do projeto,
 contendo os procedimentos e técnicas utilizados, a fim de
-explicar como o desenvolvimento foi realizado para atingir os seus objetivos,
+explicar como o desenvolvimento foi realizado pelo autor para atingir os objetivos,
 servindo como base para a sua reprodução em trabalhos futuros.
 
 O trabalho é fundamentado na proposta de uma solução, utilizando conceitos e práticas
@@ -172,6 +172,10 @@ várias atividades relacionadas à evolução da ferramenta Shak. Tornando a fer
  solução para implantação automatizada de aplicações web em sistemas Debian, 
 justificando assim a sua escolha.
 
+Atualmente, existem dois desenvolvedores evoluíndo a ferramenta, o criador da ferramenta
+Antônio Terceiro e o autor deste trabalho, e a ferramenta ainda está em um estágio
+inicial, em sua versão 0.0.1.
+
 De acordo com \citeonline{shak2015}, esta plataforma está concebida de acordo 
 com os seguintes princípios:
 
@@ -262,6 +266,12 @@ que uma biblioteca Ruby, que provê um formato padrão para
   principalmente para configurações de ambiente de desenvolvimento. 
 \end{itemize}
 
+O processo de instalação da ferramenta shak é composto por: clonar o repositório
+do Shak \footnote{https://gitlab.com/shak/shak} e executar o script \textit{bootstrap.sh} na
+pasta \textit{utils}, esse script que é responsável por instalar as dependências do Shak. A princípio a ferramenta
+Shak ainda não está disponível nos repositórios oficiais do Debian, porém o objetivo do projeto 
+é que futuramente ela esteja disponível.
+
 Para adicionar uma aplicação que esteja disponível nos repositórios oficiais
 do Debian na ferramenta Shak, é necessário construir o seu respectivo 
 livro de receitas, utilizando a ferramenta Chef. 
@@ -325,6 +335,17 @@ Com a estrutura criada, foi necessário construir as receitas, para automatizar
 a implantação das aplicações. A atividade de 
 criação de receitas e suporte das aplicações foi uma das atividades 
 deste trabalho, sendo assim, adicionando novas aplicações web à ferramenta Shak.
+
+Por fim, para implantar as aplicações, é necessário criar um ambiente alvo com
+o sistema Debian/GNU Linux. Algumas ferramentas já foram testadas pelo autor deste
+trabalho, como por exemplo: Vagrant com Virtualbox, além de máquinas virtuais criadas
+na nuvem. É necessário instalar a ferramenta Shak no servidor desejado, para poder
+instalar as aplicações disponíveis.
+
+A ferramenta Shak suporta as aplicações empacotadas na estrutura de pacotes debian
+e disponíveis nos servidores oficiais Debian GNU/Linus e seus derivados
+, não suportando as mesmas aplicações disponíveis por outras distribuições, como
+RedHat.
 
 \subsection{Gerência de Ambientes de Desenvolvimento}
 
