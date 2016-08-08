@@ -154,6 +154,19 @@ a partir da verificação do funcionamento das funcionalidades básicas da aplic
 além de testar múltiplas instalações no mesmo servidor e verificar se todas as
 aplicações instaladas eram acessíveis através do protocolo \textit{HTTPS}.
 
+Um resumo das fases está na Figura \ref{fw}
+\begin{figure}[h]                                                                                                                      
+  \centering                                                                    
+  \includegraphics[width=0.8\textwidth]                                         
+      {figuras/wordpress}                                                            
+      \caption{Resumo das fases no worrdpress}                     
+  \label{fw}                                                              
+\end{figure} 
+
+\section{Segurança na Implantação de Aplicações Web}
+\label{sec:seguranca}
+
+
 \section{Owncloud}
 \label{sub:owncloud}
 
@@ -230,7 +243,7 @@ Porém isso não foi um impeditivo na execução do trabalho, com uma busca, enc
 discussão no repositório oficial do Owncloud relacionado a implementação dessa 
 funcionalidade. 
 
-Existe uma discução na comunidade do Owncloud uma proposta \footnote{https://github.com/owncloud/core/pull/16424} 
+Existe uma discussão na comunidade do Owncloud uma proposta \footnote{https://github.com/owncloud/core/pull/16424} 
 de solução que permitiria a configuração de múltiplas instâncias. O
 resultado desta discussão foi que, os desenvolvedores do Owncloud não acharam relevante
 a funcionalidade, mas caso o desenvolvedor ache necessário, ele poderia fazer essa
@@ -260,6 +273,17 @@ Para executar a instalação do Owncloud basta executar o comando \textit{"shak 
 
 A validação da instalação foi feita conforme dito na Seção \ref{subsection:validacao}, 
 da mesma forma que em Wordpress.
+
+Um resumo das fases está na Figura \ref{fo}
+\begin{figure}[h]                                                                                                                      
+  \centering                                                                    
+  \includegraphics[width=0.8\textwidth]                                         
+      {figuras/owncloud}                                                            
+      \caption{Resumo das fases no owncloud}                     
+  \label{fo}                                                              
+\end{figure} 
+
+
 
 \section{Servidor de e-mail}
 \label{sub:e-mail}
@@ -392,6 +416,15 @@ com o parâmetro \textit{imap}, porém com o parâmetro \textit{imaps} foi poss�
 que o servidor de e-mail impediu conexões que não 
 utilizam os protocolos criptografados.
 
+Um resumo das fases está na Figura \ref{fe}
+\begin{figure}[h]                                                                                                                      
+  \centering                                                                    
+  \includegraphics[width=0.8\textwidth]                                         
+      {figuras/email}                                                            
+      \caption{Resumo das fases no e-mail}                     
+  \label{fw}                                                              
+\end{figure} 
+
 \section{Moinmoin}
 \label{sub:moinmoin}
 
@@ -473,10 +506,21 @@ Para executar a instalação do Moinmoin executar o comando \textit{shak install
 A validação da instalação foi feita conforme dito na Seção \ref{subsection:validacao}, 
 da mesma forma que em Wordpress e Owncloud.
 
+Um resumo das fases está na Figura \ref{fe}
+\begin{figure}[h]                                                                                                                      
+  \centering                                                                    
+  \includegraphics[width=0.8\textwidth]                                         
+      {figuras/moinmoin}                                                            
+      \caption{Resumo das fases no Moinmoin}                     
+  \label{fw}                                                              
+\end{figure} 
+
+
+
 \section{Outras Contribuições}
 \label{sub:appnencerradas}
 
-Além das aplicaçoes citadas, o autor deste trabalho também realizou algumas melhorias
+Além das aplicações citadas, o autor deste trabalho também realizou algumas melhorias
 na ferramenta Shak. A primeira foi adicionar atributo id para cada aplicação, possibilitando
 configurações customizadas para cada receita chef no Shak. A segunda foi a melhoria 
 na gerência de arquivos de configuração Nginx, possibilitando que cada aplicação
